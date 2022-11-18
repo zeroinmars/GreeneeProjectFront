@@ -1,0 +1,10 @@
+div {
+  width: 100px;
+  height: 100px;
+  animation-name: scollUpEvent;
+  animation-duration: 4s;
+}
+
+@keyframes scrollUpEvent {
+  
+}
