@@ -1,4 +1,4 @@
-import AddEventButton from '../components/AddEventButton';
+import AddEventButton from '../components/FreqCompo/AddEventButton';
 
 
 export default () => {

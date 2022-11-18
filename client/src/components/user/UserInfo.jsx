@@ -3,8 +3,8 @@ import {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import { CircularProgress } from '@mui/material';
 import axios from 'axios';
-import Snackbar from '../Snackbar';
-import Progress from '../Progress';
+import Snackbar from '../FreqCompo/Snackbar';
+import Progress from '../FreqCompo/Progress';
 
 const tableRow = ['아이디','비밀번호','이름','성별','생년월일','직업','집주소','회사주소','질병','삭제'];
 export default () => {

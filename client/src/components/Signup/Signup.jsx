@@ -5,8 +5,8 @@ import axios from 'axios';
 import {Box, Stepper, Step, StepLabel, Button, Container} from '@mui/material';
 import {useNavigate} from 'react-router-dom';
 import {useDispatch} from 'react-redux';
-import Snackbar from '../Snackbar';
-import Progress from '../Progress';
+import Snackbar from '../FreqCompo/Snackbar';
+import Progress from '../FreqCompo/Progress';
 
 
 

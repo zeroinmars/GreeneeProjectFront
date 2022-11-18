@@ -22,7 +22,9 @@ const Login = () => {
     axios.post(url, {email:emailRef.current.value, pw:pwRef.current.value})
     .then((res)=>{
       if (res.data != "NoneId") {
-      dispatch({type:"CONFIRM", confirm: true});
+        dispatch({type:"CONFIRM", confirm: true}); 
+        // Login 컴포넌트에 바로 알람을 출력하면 로그인이 성공이 되면 MyProfile 페이지에서 Login 컴포넌트를 MyProfile 컴포넌트로 전환해버리기 때문에 Login 컴포넌트에 알람을 출력해도 알람이 뜨지 않는다.
+        // 그래서 cofirm이라는 변수만 한개 설정한 뒤 MyProfile
       dispatch({type:"PROGRESS", progress:{progressToggle:false}});
       dispatch({type:"SESSION", session: res.data.rows[0]});
     } else {

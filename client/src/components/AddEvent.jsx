@@ -2,9 +2,11 @@ import React, {useState} from 'react'
 import {Button, Box, Stack, Switch, TextField, FormControlLabel } from '@mui/material'
 import {LocalizationProvider, TimePicker, MobileDatePicker } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import CheckWeeks from './FreqCompo/CheckWeeks';
 import dayjs from 'dayjs';
 
 const AddEvent = () => {
+  const [checkWeeks, setCheckWeeks] = useState({mon:false,tue:false,wed:false,thur:false,fri:false,sat:false,sun:false});
   const [checkDaily, setCheckDaily] = useState(false);
   const [checkDetail, setCheckDetail] = useState(true);
   const [eventInfo, setEventInfo] = useState({});
@@ -47,7 +49,8 @@ const AddEvent = () => {
 
   return (
     <Box sx={{width:"80%", m:"auto", mt:"60px"}}>
-      <FormControlLabel control={<Switch name="isDaily" onChange={handleDailyRoutin} />} label="일상루틴" />
+      <FormControlLabel control={<Switch name="isDaily" onChange={handleDailyRoutin} />} label="일상루틴" /><br/>
+        {checkDaily?<CheckWeeks checkWeeks={checkWeeks} setCheckWeeks={setCheckWeeks}/>:""}
       <Stack spacing={1}>
         <TextField label="제목" name="title" variant="standard" sx={{mb:"20px"}} onChange={handleEventInfo}/>
         {!checkDaily?
