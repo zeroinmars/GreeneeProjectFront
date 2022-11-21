@@ -4,17 +4,12 @@ const conn = require("../config")
 
 const router = express.Router();
 
-router.get('/routerMain',()=>{
-  console.log('main router enter')
-})
-
 router.post("/lifeConcierge/api/signup", (req,res)=>{
   const sql = "insert into userinfo values (null, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, now(), 0, null);";
   const params = [req.body.email, req.body.pw, req.body.name, req.body.gender, req.body.birthday, req.body.job, req.body.hAddr, req.body.cAddr, req.body.disease, 
     req.body.transpo, req.body.hobby, req.body.food, req.body.drink, req.body.mbti, req.body.fashion, req.body.music
   ]
   console.log(params);
-  // const query1 = conn.format(sqlQuery1, params1);
 
   conn.query(sql, params, (err, rows)=>{
     if(err) {
@@ -79,15 +74,47 @@ router.post('/lifeConcierge/api/userDelete', (req,res)=>{
 })
 
 router.post('/lifeConcierge/api/addEvent', (req,res)=> {
+  const email = req.body.email;
   const title = req.body.title;
-  const sDate = req.body.sDate;
-  const sTime = req.body.sTime;
-  const eDate = req.body.eDate;
-  const eTime = req.body.eTime;
+  const start = req.body.start;
+  const end = req.body.end;
   const content = req.body.content;
-  const location = req.body.location;
-  const isDaily = req.body.isDaily;
-  const params = [title, sDate, sTime, eDate, eTime, content, location, isDaily, params]
+  const sLocation = req.body.sLocation;
+  const eLocation = req.body.eLocation;
+  const checkDaily = req.body.checkDaily;
+  const checkWeeks = JSON.stringify(req.body.checkWeeks);
+  const confirm = [email, start, end, title, content, sLocation, eLocation, checkDaily, checkWeeks]
+  console.log(confirm)
+  if(checkDaily) {
+    const sql = "insert into dailyevent values(?, ?, ?, ?, ?, ?, ?, ?)";
+    const params = [email, start, end, title, content, sLocation, eLocation, checkWeeks];
+    conn.query(sql, params, (err, rows)=>{
+      if(err){
+        console.log(err);
+        res.send("에러");
+      } else if (rows.length == 0) {
+        console.log("DB 적용 안됌");
+        res.send("DB 적용 안됌");
+      } else {
+        res.send(rows);
+      }
+    })
+  } else {
+    const sql = "insert into specialevent values(?, ?, ?, ?, ?, ?, ?, null)";
+    const params = [email, start, end, title, content, sLocation, eLocation];
+    conn.query(sql, params, (err, rows)=>{
+      if(err){
+        console.log(err);
+        res.send("에러");
+      } else if (rows.length == 0) {
+        console.log("DB 적용 안됌");
+        res.send("DB 적용 안됌");
+      } else {
+        res.send(rows);
+      }
+    })
+  }
+
 })
 
 router.get('/lifeConcierge/api/session', (req,res)=>{
@@ -95,6 +122,16 @@ router.get('/lifeConcierge/api/session', (req,res)=>{
   res.send(req.session.user);
 })
 
-
+router.post('/lifeConcierge/api/showDailyEvent', (req,res)=>{
+  conn.query("select * from dailyevent where email = ?", [req.body.email], (err,rows)=>{
+    if(err){
+      res.send(err);
+    } else if (rows.length==0) {
+      res.send("없는 계정");
+    } else {
+      res.send(rows);
+    }
+  })
+});
 
 module.exports = router;

@@ -1,13 +1,13 @@
+import { Routes, Route, BrowserRouter} from 'react-router-dom';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import axios from 'axios';
 import Signup from './pages/Signup';
 import Calendar from './pages/Calendar';
 import Test from './pages/Test';
-import { Routes, Route, BrowserRouter} from 'react-router-dom';
 import UserInfo from './pages/UserInfo';
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import MyProfile from './pages/MyProfile';
-import axios from 'axios';
 import Home from './pages/Home'
+import MyProfile from './pages/MyProfile';
 import LabelBottomNavigation from './components/LabelBottomNavigation';
 import AddEvent from './components/AddEvent';
 

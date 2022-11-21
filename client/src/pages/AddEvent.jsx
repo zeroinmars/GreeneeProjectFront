@@ -4,6 +4,7 @@ import AddEvent from '../components/AddEvent';
 const AddEventPage = () => {
   return (
     <>
+      
       <AddEvent/>
     </>
   )
