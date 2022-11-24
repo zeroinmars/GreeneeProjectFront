@@ -17,6 +17,8 @@ const botAvatar = greenihead;
     userFontColor: "#fff",
     marginbottom: '1px'
 }; */
+
+// 받을 것 
 const steps = [
     {
         id: '1',
