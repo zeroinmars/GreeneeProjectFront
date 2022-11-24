@@ -15,7 +15,7 @@ const botAvatar = greenihead;
     botFontColor: "#fff",
     userBubbleColor: "#2196f3",
     userFontColor: "#fff",
-    marginbottom: '1px'
+    marginbottom: '1px git  '
 }; */
 
 // 받을 것 
