@@ -49,7 +49,7 @@ export default function LabelBottomNavigation() {
 
               <BottomNavigationAction
             onClick={()=>{nav("/addEvent")}}
-            label="Add"
+            label="추가"
             value="Add"
             icon={<AddIcon />}
             />  
@@ -64,10 +64,11 @@ export default function LabelBottomNavigation() {
             />
 
             <BottomNavigationAction
+            
               onClick={() => {
                 nav("/myProfile");
               }}
-              label="마이페이지"
+              label="내 정보"
               value="myProfile"
               icon={<SentimentSatisfiedAltIcon />}
             />
