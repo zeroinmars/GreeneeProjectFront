@@ -83,7 +83,7 @@ const AddEvent = () => {
             renderInput={(label) => <TextField size="small" {...label} />}
           />
           <TimePicker 
-            label="시작 시간"
+            label="시작"
             value={start}
             onChange={handleStartDate}
             renderInput={(label) => <TextField size="small" {...label} />}/>
