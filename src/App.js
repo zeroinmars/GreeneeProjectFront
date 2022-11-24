@@ -9,7 +9,7 @@ import MyProfile from "./pages/MyProfile";
 import axios from "axios";
 import Home from "./pages/Home";
 import LabelBottomNavigation from "./components/LabelBottomNavigation";
-import AddEvent from "./components/AddEvent";
+import AddEvent from "./components/AddEvent1";
 /* import Chatbot from "./components/chatbot/Chatbot"; */
 import ChatbotSteps from "./components/chatbot/ChatbotSteps";
 import Memo from "./pages/Memo";
