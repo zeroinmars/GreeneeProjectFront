@@ -68,17 +68,7 @@ background: #73baad;
 } */
 /* 그리니 챗봇 */
 .greeniChatbot{
-background: #ffffff;
-}
-/* 챗봇 전체블록*/
-.lfsaZN  {
-  background: #b10808;
-}
-.sc-jrcTuL {
-  background: #b10808;
- }
-.rsc-container{
-  background: #b10808;
+  background : rgb(215, 237, 188) ;
 }
 /* 푸터 마진탑 제거 */
 .css-1umtxyw {
@@ -92,22 +82,47 @@ background: #ffffff;
  
 /*  background-color: #73baad; */
 /*  z-index: 60; */
-border-top:90px solid rgb(215, 237, 188);
- border-bottom:160px solid rgb(215, 237, 188) ;
+margin-top:90px ;
+margin-bottom:90px ;
+/* border-top:90px solid rgb(215, 237, 188);
+ border-bottom:160px solid rgb(215, 237, 188) ; */
 }
 
-/* 풀캘린더 요일 ㅇ */
-/* .fc .fc-col-header-cell-cushion {
-  display: inline-block;
-  padding: 2px 4px;
-  background-color: #D7EDBC;
-} */
-/* 풀캘린더 헤더 X */
-/* .fc .fc-button-primary {
-  color: #fff;
-  color: var(--fc-button-text-color, #fff);
-  background-color: #6AA258;
-  background-color: var(--fc-button-bg-color, #6AA258);
-  border-color: #6AA258;
-  border-color: var(--fc-button-border-color, #6AA258);
-} */
+ 
+/* 푸터 아이콘배경 */
+/* .css-i4bv87-MuiSvgIcon-root {
+  background: brown;*/
+
+/* 헤더알람배경 */
+ 
+/* 헤더알람배경뒤 */
+.HeaderAlarmBC{
+  background: rgb(215, 237, 188)
+}
+
+/* 캘린더 배경 */
+.fc-theme-standard{
+  background: rgb(215, 237, 188);
+  margin: 10px;
+}
+
+/* 전체 바탕색 */
+:root{
+  background: rgb(215, 237, 188);
+}
+
+/* 이벤트 추가 페이지 여백 */
+.css-1okj3ks-MuiStack-root{
+  margin: 25px;
+}
+
+/* 이벤트 추가 페이지 하단 '등록'버튼 */
+.css-123ac5x-MuiButtonBase-root-MuiButton-root{
+  background-color: #6AA258
+}
+
+/* 이벤트 추가 페이지 에 상단 일상루틴 버튼 */
+.css-julti5-MuiSwitch-root{
+  margin-top: 25px;
+  margin-left: 30px;
+}

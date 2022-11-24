@@ -130,7 +130,7 @@ const AddEvent = () => {
           </Select>
         </FormControl>
       </Stack>
-      <Button sx={{mt:"10px", float:"right"}} variant="contained" onClick={handleFormSubmit}>등록</Button>
+      <Button sx={{mt:"10px",marginRight:'25px', float:"right"}} variant="contained" onClick={handleFormSubmit}>등록</Button>
       <Snackbar/>
       <Progress/>
     </Box>
