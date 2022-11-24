@@ -1,0 +1,113 @@
+/* 승민 */
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
+body {
+  margin: auto;
+  font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+}
+code {
+  font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+}
+
+/* 세형 */
+
+/* 홈 +버튼 */
+.MuiBox-root.css-in5br9 {
+  z-index: 20;
+  margin-right:auto;
+}
+/* 푸터  바텀메뉴 */
+.MuiBottomNavigation-root.css-3mtf2r-MuiBottomNavigation-root {
+  z-index: 20;
+}
+/* 푸터 바텀메뉴 */
+.MuiBottomNavigation-root{
+  background:#6AA258;
+}
+/* 캘린더.윈도버전몇개더보기 */
+/* .mbsc-windows.mbsc-calendar-text-more .mbsc-calendar-label-text{
+  content: url("./img/iconUnder.png"); 
+} */
+/* 로그인화면 캐릭터 이미지 */
+.greenihead{
+/*    width: 30%; */
+  margin-bottom: 5%; 
+/*    margin-left: 10%; */
+font-size: 23px;
+    font-variant: all-petite-caps;
+}
+/* 로긴창 */
+.divLogin{
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+/*   margin-top: 5%; */
+  padding:1px;
+}
+/* 로긴창 글씨*/
+.greeniWelcome{
+  font-size: large;
+  font-weight: bold;
+  margin-bottom: 10%;
+}
+
+/* + 버튼 */
+/* .css-1suf56w-MuiButtonBase-root-MuiFab-root{
+  background: #6AA258;
+  margin-right:20px;
+  box-shadow: none;
+  z-index: 20;
+}
+.css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root.Mui-selected{
+  color:#ffffff;
+} */
+
+/* +버튼 틀 */
+/* .css-in5br9{
+background: #73baad;
+} */
+/* 그리니 챗봇 */
+.greeniChatbot{
+background: #ffffff;
+}
+/* 챗봇 전체블록*/
+.lfsaZN  {
+  background: #b10808;
+}
+.sc-jrcTuL {
+  background: #b10808;
+ }
+.rsc-container{
+  background: #b10808;
+}
+/* 푸터 마진탑 제거 */
+.css-1umtxyw {
+  margin-bottom: 0%;
+}
+
+/* 회원가입로그인 블락 보더로 내리고 색상 넣기 */
+.divLogin{
+  /* margin-top: 60%;  */
+/* margin-top: 50%; */
+ 
+/*  background-color: #73baad; */
+/*  z-index: 60; */
+border-top:90px solid rgb(215, 237, 188);
+ border-bottom:160px solid rgb(215, 237, 188) ;
+}
+
+/* 풀캘린더 요일 ㅇ */
+/* .fc .fc-col-header-cell-cushion {
+  display: inline-block;
+  padding: 2px 4px;
+  background-color: #D7EDBC;
+} */
+/* 풀캘린더 헤더 X */
+/* .fc .fc-button-primary {
+  color: #fff;
+  color: var(--fc-button-text-color, #fff);
+  background-color: #6AA258;
+  background-color: var(--fc-button-bg-color, #6AA258);
+  border-color: #6AA258;
+  border-color: var(--fc-button-border-color, #6AA258);
+} */
