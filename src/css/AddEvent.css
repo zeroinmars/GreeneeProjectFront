@@ -2,6 +2,7 @@
     width: 90%;
     margin: auto;
     margin-top: 60px;
+   
 }
 
 .s_day{
@@ -28,10 +29,9 @@
     background-color: white;
 }
 
-.okay{
-    width:80vw; 
-    margin: auto;
-    margin-Bottom: 8px; 
+.registration_btn{
+    width: 90vw; 
+    margin: auto; 
     background-color: #CEDD38; 
     border-radius: 20px;
 }

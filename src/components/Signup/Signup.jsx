@@ -8,8 +8,6 @@ import {useDispatch} from 'react-redux';
 import Snackbar from '../FreqCompo/Snackbar';
 import Progress from '../FreqCompo/Progress';
 
-
-
 const steps = ['상세정보', '성향 정보'];
 export default function HorizontalLinearStepper() {
 
@@ -24,10 +22,10 @@ export default function HorizontalLinearStepper() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [inputUserInfo, setInputUserInfo] = useState({
-    email:"",pw:"",name:"",gender:"",birthday:"",job:"",hAddr:"",cAddr:"",disease:""
+    email:"",pw:"",name:"",gender:"",birthday:"",job:"",hAddr:"",cAddr:""
   });
   const [inputUserChar, setInputUserChar] = useState({
-    transpo:"",hobby:"",food:"",drink:"",mbti:"",fashion:"",music:""
+    transpo:"",hobby:"",food:"",drink:"",mbti:"",music:""
   })
   const [activeStep, setActiveStep] = useState(0);
   const [skipped, setSkipped] = useState(new Set());
@@ -131,7 +129,7 @@ export default function HorizontalLinearStepper() {
   }
 
   return (
-    <Box sx={{ m:"auto", width: '90%', mt:'5%', mb:'20%', border:"1px solid black"}}>
+    <Box sx={{ m:"auto", width: '90%', mt:'5%', mb:'20%'}}>
       <Stepper activeStep={activeStep} alternativeLabel sx={{mt:"3%"}}>
         {steps.map((label, index) => {
           const stepProps = {};
@@ -180,7 +178,6 @@ export default function HorizontalLinearStepper() {
               Skip
             </Button>
           )}
-
           <Button onClick={handleNext}>
             {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
           </Button>

@@ -1,10 +1,12 @@
 .divLogin{
     width: 90%;
-    height: 20%;
+    height: 100vh;
     /* 밑에 하얀부분 제거(?)*/
     padding: 20px;
     background-color: #D7EDBC;
+    
     scrollbar-width: none;
+    background-size: cover;
 }
 
 .greenee{

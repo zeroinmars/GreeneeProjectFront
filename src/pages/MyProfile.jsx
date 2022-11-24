@@ -1,11 +1,11 @@
-import React, {useEffect} from 'react'
-import Login from '../components/Login';
-import MyProfile from '../components/MyProfile';
-import {useSelector, useDispatch} from 'react-redux';
-import { Button } from'@mui/material';
-import Snackbar from '../components/FreqCompo/Snackbar';
-import MessageIcon from '@mui/icons-material/Message';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from "react";
+import Login from "../components/Login";
+import MyProfile from "../components/MyProfile";
+import { useSelector, useDispatch } from "react-redux";
+import Snackbar from "../components/FreqCompo/Snackbar";
+/* import { Button } from "@mui/material";
+import MessageIcon from "@mui/icons-material/Message";
+import { Link } from "react-router-dom"; */
 
 export default () => {
   const dispatch = useDispatch();
@@ -22,21 +22,16 @@ export default () => {
   const session = useSelector(state=>(state.session))
   const isLoggedin = useSelector(state=>(state.isLoggedin))
   const isLoggedout = useSelector(state=>(state.isLoggedout))
+  
   return (
+
     <div>
-        {/* <Button onClick={()=>{console.log(session)}}>세션 데이터 확인</Button> */}
-        {session.email?<MyProfile/>:<Login/>}
-        <Snackbar/>
-        
-        
-        {/* 챗봇버튼 */}
-        {/* <Link style={{position:"fixed", bottom:"80px", right:"10px"}} to='/chatbot'> <MessageIcon/> </Link> */}
-        {/* <a href='https://hope69034-chatbotgreeni-psychotherapy-toa0l9.streamlit.app/' style={{position:"fixed", bottom:"80px", right:"10px"}}><MessageIcon></MessageIcon></a> */}
-
-     
-
+      {/* <Button onClick={()=>{console.log(session)}}>세션 데이터 확인</Button> */}
+      {session.email ? <MyProfile /> : <Login />}
+      <Snackbar />
+      {/* 챗봇버튼 */}
+      {/* <Link style={{position:"fixed", bottom:"80px", right:"10px"}} to='/chatbot'> <MessageIcon/> </Link> */}
+      {/* <a href='https://hope69034-chatbotgreeni-psychotherapy-toa0l9.streamlit.app/' style={{position:"fixed", bottom:"80px", right:"10px"}}><MessageIcon></MessageIcon></a> */}
     </div>
-  )
-}
-
-
+  );
+};

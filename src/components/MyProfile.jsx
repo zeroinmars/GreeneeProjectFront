@@ -13,18 +13,17 @@ export default () => {
     dispatch({type:"PROGRESS", progress:{progressToggle:true}});
     axios.get('/lifeConcierge/api/logout')
     .then(()=>{
-      dispatch({type:"ISLOGGEDOUT", isLoggedout:true});
     })
     .catch(()=>{
-      dispatch({type:"SNACKBAR/ON", snackbar:{snackbarToggle:true, explain:"로그아웃 실패", severity:"error"}});
-      
+      dispatch({type:"SNACKBAR/ON", snackbar:{snackbarToggle:true}});  
     })
     window.location.replace("/myProfile");
   }
   return (
     <div style={{height:"500px", display:"flex", flexWrap:"wrap"}}>
-      <div style={{margin:"auto", display:"block"}}>{`${session.name} 프로필`}</div>
-      <Button style={{margin:"auto"}} variant="contained" color="success" onClick={handleLogout}>로그아웃</Button>
+      <div style={{margin:"auto", display:"block"}}>{`${session.name} 프로필`}
+      </div>
+        <Button style={{margin:"auto"}} variant="contained" color="success" onClick={handleLogout}>로그아웃</Button>
       {session.email=="admin"? 
       <div style={{margin:"auto"}}>
         <Button variant='contained' color="success" onClick={()=>{nav('/userinfo')}}>고객 정보 확인</Button>

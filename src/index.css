@@ -1,7 +1,7 @@
 /* 승민 */
 @import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
 body {
-  margin: 0;
+  margin: auto;
   font-family: 'Spoqa Han Sans Neo', 'sans-serif';
 }
 code {
@@ -10,10 +10,6 @@ code {
 
 /* 세형 */
 
-/* 홈 어젠다 */
-.mbsc-event-group.mbsc-material {
-  background: rgb(255, 255, 255);
-}
 /* 홈 +버튼 */
 .MuiBox-root.css-in5br9 {
   z-index: 20;
@@ -25,19 +21,12 @@ code {
 }
 /* 푸터 바텀메뉴 */
 .MuiBottomNavigation-root{
-  background:#ffffff;
+  background:#6AA258;
 }
 /* 캘린더.윈도버전몇개더보기 */
-.mbsc-windows.mbsc-calendar-text-more .mbsc-calendar-label-text{
-  /* font-weight: 600; */
+/* .mbsc-windows.mbsc-calendar-text-more .mbsc-calendar-label-text{
   content: url("./img/iconUnder.png"); 
-}
-/* 캘린더.윈도우.월화수목 */
-.mbsc-windows.mbsc-calendar-body .mbsc-calendar-week-day{
-  color: #171915;
-  font-size : 15px;
-  
-}
+} */
 /* 로그인화면 캐릭터 이미지 */
 .greenihead{
 /*    width: 30%; */
@@ -61,33 +50,22 @@ font-size: 23px;
   font-weight: bold;
   margin-bottom: 10%;
 }
+
 /* + 버튼 */
-.css-1suf56w-MuiButtonBase-root-MuiFab-root{
-  background: #AFE372;
+/* .css-1suf56w-MuiButtonBase-root-MuiFab-root{
+  background: #6AA258;
   margin-right:20px;
   box-shadow: none;
+  z-index: 20;
 }
+.css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root.Mui-selected{
+  color:#ffffff;
+} */
 
 /* +버튼 틀 */
 /* .css-in5br9{
 background: #73baad;
 } */
-
-/* windows헤더 */  
-.mbsc-windows.mbsc-calendar-button.mbsc-button.mbsc-font{
-  color: #010101;
-  font-weight: 700;
-}
-/* windows헤더 가운데 정렬*/  
-.mbsc-calendar-controls{
-  justify-content: center;
-}
-
-/* 
-.mbsc-calendar-controls .mbsc-windows{
-  margin:auto;
-}   */
-
 /* 그리니 챗봇 */
 .greeniChatbot{
 background: #ffffff;
@@ -102,13 +80,34 @@ background: #ffffff;
 .rsc-container{
   background: #b10808;
 }
-
-
-
-
-
-/*  */
-.fc-toolbar {
-  z-index: 30;
+/* 푸터 마진탑 제거 */
+.css-1umtxyw {
+  margin-bottom: 0%;
 }
 
+/* 회원가입로그인 블락 보더로 내리고 색상 넣기 */
+.divLogin{
+  /* margin-top: 60%;  */
+/* margin-top: 50%; */
+ 
+/*  background-color: #73baad; */
+/*  z-index: 60; */
+border-top:90px solid rgb(215, 237, 188);
+ border-bottom:160px solid rgb(215, 237, 188) ;
+}
+
+/* 풀캘린더 요일 ㅇ */
+/* .fc .fc-col-header-cell-cushion {
+  display: inline-block;
+  padding: 2px 4px;
+  background-color: #D7EDBC;
+} */
+/* 풀캘린더 헤더 X */
+/* .fc .fc-button-primary {
+  color: #fff;
+  color: var(--fc-button-text-color, #fff);
+  background-color: #6AA258;
+  background-color: var(--fc-button-bg-color, #6AA258);
+  border-color: #6AA258;
+  border-color: var(--fc-button-border-color, #6AA258);
+} */

@@ -1,34 +1,14 @@
 import React, {useRef, useEffect} from 'react';
 import {useNavigate} from 'react-router-dom';
-import { FormControl, TextField, Button, colors } from '@mui/material';
+import { FormControl, TextField, Button } from '@mui/material';
 import axios from 'axios';
 import {useDispatch} from 'react-redux';
 import SnackBar from './FreqCompo/Snackbar';
-import Progress from './FreqCompo/Progress';
-import "../css/Login.css";
+import Progress from './FreqCompo/Progress'
+/* import MessageIcon from '@mui/icons-material/Message';
+import { Link } from 'react-router-dom'; */
 import greenee from '../img/greenee.png'
-//import url(spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
-
-
-/* mui css에 css파일을 오버라이딩 하기 위한*/
-import { CacheProvider } from "@emotion/react";
-import createCache from "@emotion/cache";
-const cache = createCache({
-  key: "css",
-  prepend: true,
-});
-
-
-//import MessageIcon from '@mui/icons-material/Message';
-//import { Link } from 'react-router-dom';
-//const chatbotButtonStyle={
-  //marginLeft:'85%',
-  /* inlineSize:'3%', */
-//}
-
-
-
-
+import "../css/Login.css";
 
 const Login = () => {
   const nav = useNavigate();
@@ -63,27 +43,17 @@ const Login = () => {
     emailRef.current.value = "";
     pwRef.current.value = "";
   }
+
   return (
     <>
-    <CacheProvider value={cache}>
-    
-    
-{/* 
-      <div style={{ backgrounImage : "url(" + greenihead + ")" }}> 
-     <img src='../img/greenihead.png' className='greenihead'></img>   
- <div style={{backgrounImage : "url(" + greenihead + ")"  }}>  */}
- 
-
-    <div className='divLogin'> 
-    
+      {/* <div style={{ backgrounImage : "url(" + greenihead + ")" }}> 
+      <img src='../img/greenihead.png' className='greenihead'></img>   
+      <div style={{backgrounImage : "url(" + greenihead + ")"  }}>*/}  
+    <div className='divLogin' style={{width:"90%", height:'100%', padding:"20px", backgroundColor:'#D7EDBC', scrollbarWidth:'none'}}> 
     {/* <div className='divLogin' style={{    width:"80%", border:"1px solid black", padding:"20px"}}>  */}
-
-
-    <img src={ greenee } className={'greenee'}/> 
+    <img src={ greenee } className={'greenee'} style={{width:"60%", padding:"20px"}} /> 
     <h60 className='greeniWelcome'> Hello, My name is Greeni.</h60>
-
-
-      <FormControl fullWidth>
+    <FormControl fullWidth>
         <TextField variant="standard" inputRef={emailRef} label='이메일' name='email' onChange={(e)=>{emailRef.current.value = e.target.value}}/><br></br>
         <TextField variant="standard" inputRef={pwRef} label='비밀번호' name='pw' type="password" onChange={(e)=>{pwRef.current.value = e.target.value;}}/><br></br>
         <Button variant="contained" onClick={()=>{nav("/signup")}} className='signup_btn' >회원가입</Button>      
@@ -91,9 +61,7 @@ const Login = () => {
       </FormControl>
       <SnackBar/>
       <Progress/>
-
     </div>
-      </CacheProvider>
     </>
   )
 }

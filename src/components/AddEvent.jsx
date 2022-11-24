@@ -70,7 +70,7 @@ const AddEvent = () => {
   }
 
   return (
-    <Box sx={{width:"80%", m:"auto", mt:"60px"}}>
+    <Box className='test'>
       <FormControlLabel control={<Switch name="checkDaily" onChange={handleDailyRoutin} />} label="일상루틴" /><br/>
       <Stack spacing={1}>
         <TextField size="small" label="제목" name="title" variant="standard" sx={{mb:"20px"}} onChange={handleEventInfo}/>
@@ -105,9 +105,14 @@ const AddEvent = () => {
         </LocalizationProvider>
         <br/>
         {checkDaily?<CheckWeeks checkWeeks={checkWeeks} setCheckWeeks={setCheckWeeks}/>:""}
+        
+        {/* <TextField size="small" label="내용" name="content" multiline rows={5} variant="outlined" style={{marginBottom:"20px"}} onChange={handleEventInfo}/> */}
         <TextField size="small" label="내용" name="content" multiline rows={3} variant="outlined" sx={{mb:"20px"}} onChange={handleEventInfo}/>
+
+        {/* <TextField label="장소" name="location" variant="outlined" sx={{mb:"20px"}} onChange={handleEventInfo}/> */}
         <TextField size="small" label="출발장소" name="sLocation" variant="standard" sx={{mb:"20px"}} onChange={handleEventInfo}/>
         <TextField size="small" label="도착장소" name="eLocation" variant="standard" sx={{mb:"20px"}} onChange={handleEventInfo}/>
+        
         <FormControlLabel control={<Switch name="checkDaily" onChange={()=>{setCheckSpecial(!checkSpecial)}} />} label="특별일정" /><br/>
         <FormControl variant='filled' size='small' sx={{width:"200px", mt:"0"}}>
           <InputLabel id="demo-simple-select-label">미리 알림</InputLabel>
@@ -125,7 +130,7 @@ const AddEvent = () => {
           </Select>
         </FormControl>
       </Stack>
-      <Button sx={{mt:"20px"}} variant="contained" onClick={handleFormSubmit}>등록</Button>
+      <Button sx={{mt:"10px", float:"right"}} variant="contained" onClick={handleFormSubmit}>등록</Button>
       <Snackbar/>
       <Progress/>
     </Box>

@@ -3,6 +3,14 @@ import axios from 'axios'
 import {useSelector} from'react-redux';
 import {useState} from 'react';
 
+/* mui css에 css파일을 오버라이딩 하기 위한*/
+/* import { CacheProvider } from "@emotion/react";
+import createCache from "@emotion/cache";
+const cache = createCache({
+  key: "css",
+  prepend: true,
+}); */
+
 export default ({ inputUserInfo, setInputUserInfo }) => {
   const userInfo = useSelector(state=>state.user.userInfo);
   const addCustomer = () => {
@@ -35,30 +43,34 @@ export default ({ inputUserInfo, setInputUserInfo }) => {
     
   }
   return(
-    <Container sx={{marginTop:"2%"}}>
+  
+    <>
+      <Container sx={{marginTop:"10%"}}>
       <form onSubmit={handleFormSubmit}>
         <Stack spacing={2} alignItems="stretch">
-          <TextField error={inputUserInfo.email===""?true:false} label="E-mail" name="email" value={inputUserInfo.email} onChange={handleOnChange}></TextField>
-          <TextField error={inputUserInfo.pw===""?true:false} label="비밀번호" type="password" name="pw" onChange={(e)=>{setInputUserInfo({...inputUserInfo, pw:e.target.value})}}></TextField>
-          <TextField error={inputUserInfo.name===""?true:false} label="이름" name="name" value={inputUserInfo.name} onChange={(e)=>{setInputUserInfo({...inputUserInfo, name:e.target.value})}}></TextField>
-          <FormControl>
+          <TextField style={{marginTop:"30px"}} variant="standard" placeholder="이메일"error={inputUserInfo.email===""?true:false}  name="email" value={inputUserInfo.email} onChange={handleOnChange}></TextField>
+          {/* <TextField variant="standard" error={inputUserInfo.pw===""?true:false} label="비밀번호" type="password" name="pw" onChange={(e)=>{setInputUserInfo({...inputUserInfo, pw:e.target.value})}}></TextField> */}
+          <TextField style={{marginTop:"30px"}} variant="standard" placeholder="비밀번호"error={inputUserInfo.pw===""?true:false}  type="password" name="pw" onChange={(e)=>{setInputUserInfo({...inputUserInfo, pw:e.target.value})}}></TextField>
+          {/* 비밀번호 확인 구현 */}
+          <TextField style={{marginTop:"30px"}} variant="standard" placeholder="비밀번호확인" error={inputUserInfo.pw===""?true:false}  type="password" name="pw" onChange={(e)=>{setInputUserInfo({...inputUserInfo, pw:e.target.value})}}></TextField>
+          <TextField style={{marginTop:"30px"}} variant="standard" placeholder="이름"error={inputUserInfo.name===""?true:false} name="name" value={inputUserInfo.name} onChange={(e)=>{setInputUserInfo({...inputUserInfo, name:e.target.value})}}></TextField>
+          <TextField style={{marginTop:"30px"}} variant="standard" placeholder="자택 주소"error={inputUserInfo.hAddr===""?true:false} name="hAddr" value={inputUserInfo.hAddr} onChange={(e)=>{setInputUserInfo({...inputUserInfo, hAddr:e.target.value})}}></TextField>
+          <TextField style={{marginTop:"30px"}} variant="standard" placeholder="회사 주소"error={inputUserInfo.cAddr===""?true:false} name="cAddr" value={inputUserInfo.cAddr} onChange={(e)=>{setInputUserInfo({...inputUserInfo, cAddr:e.target.value})}}></TextField>
+          <TextField style={{marginTop:"30px"}} variant="standard" placeholder="생년월일"error={inputUserInfo.brithday===""?true:false} helperText="생년월일" required type="date" name="birthday" value={inputUserInfo.birthday} onChange={(e)=>{setInputUserInfo({...inputUserInfo, birthday:e.target.value})}}></TextField>
+          <FormControl style={{marginTop:"30px"}}>
             <FormLabel id="demo-radio-buttons-group-label">성별</FormLabel>
             <RadioGroup
               row
               aria-labelledby="demo-radio-buttons-group-label"
               name="gender"
             >
-              <FormControlLabel value="남자" control={<Radio onChange={(e)=>{setInputUserInfo({...inputUserInfo, gender : e.target.value})}}/>} label="남자" />
-              <FormControlLabel value="여자" control={<Radio onChange={(e)=>{setInputUserInfo({...inputUserInfo, gender : e.target.value})}}/>} label="여자" />
+              <FormControlLabel value="남성" control={<Radio onChange={(e)=>{setInputUserInfo({...inputUserInfo, gender : e.target.value})}}/>} label="남자" />
+              <FormControlLabel value="여성" control={<Radio onChange={(e)=>{setInputUserInfo({...inputUserInfo, gender : e.target.value})}}/>} label="여자" />
             </RadioGroup>
           </FormControl>
-          <TextField error={inputUserInfo.brithday===""?true:false} helperText="생년월일" required type="date" name="birthday" value={inputUserInfo.birthday} onChange={(e)=>{setInputUserInfo({...inputUserInfo, birthday:e.target.value})}}></TextField>
-          <TextField error={inputUserInfo.job===""?true:false} label="직업" name="job" value={inputUserInfo.job} onChange={(e)=>{setInputUserInfo({...inputUserInfo, job:e.target.value})}}></TextField>
-          <TextField error={inputUserInfo.hAddr===""?true:false} label="집주소" name="hAddr" value={inputUserInfo.hAddr} onChange={(e)=>{setInputUserInfo({...inputUserInfo, hAddr:e.target.value})}}></TextField>
-          <TextField error={inputUserInfo.cAddr===""?true:false} label="회사주소" name="cAddr" value={inputUserInfo.cAddr} onChange={(e)=>{setInputUserInfo({...inputUserInfo, cAddr:e.target.value})}}></TextField>
-          <TextField error={inputUserInfo.disease===""?true:false} label="질병" name="disease" value={inputUserInfo.disease} onChange={(e)=>{setInputUserInfo({...inputUserInfo, disease:e.target.value})}}></TextField>
         </Stack>
       </form>
     </Container>
+    </>
   );
 }
