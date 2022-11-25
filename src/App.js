@@ -13,6 +13,9 @@ import AddEvent from "./components/AddEvent";
 import ChatbotSteps from "./components/chatbot/ChatbotSteps";
 import Memo from "./pages/Memo";
 
+/* 노드모듈폴더 커먼.main.css파일 끌어오기 */
+import './main.css';
+
 /* mui css에 css파일을 오버라이딩 하기 위한*/
 import { CacheProvider } from "@emotion/react";
 import createCache from "@emotion/cache";
