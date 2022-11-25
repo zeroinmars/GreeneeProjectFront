@@ -10,33 +10,32 @@ class ChatbotReview extends Component {
     super(props);
 
     this.state = {
-      name: "",
-      gender: "",
-      age: "",
+      transport: "",
+      job: "",
+      hobby: "",
+      food: "",
+      music: "",
     };
   }
-  
-  /*     handleSubmit(){
-        axios.post(url ,data ) 
-        .then((res)=>{console.log()})
-        .catch((res)=>{console.log('error')})
-    } */
 
   componentWillMount() {
     const { steps } = this.props;
-    const { name, gender, age } = steps;
+    const { transport, job, hobby, food, music } = steps;
 
-    this.setState({ name, gender, age });
+    this.setState({ transport, job, hobby, food, music });
   }
 
   render() {
-    let { name, gender, age } = this.state;
+    let { transport, job, hobby, food, music } = this.state;
 
     let data = {
-      name: name.value,
-      gender: gender.value,
-      age: age.value,
+      transport: transport.value,
+      job: job.value,
+      hobby: hobby.value,
+      food: food.value,
+      music: music.value,
     };
+
     axios
       .post("/chatbotUpdate", data)
       .then((res) => {
@@ -46,32 +45,47 @@ class ChatbotReview extends Component {
         console.log("error");
       });
 
+    /*     const title = {
+        style:"border-bottom: 3px solid;",
+        background: "teal",
+        padding: ".375rem .75rem",
+        border: "1px solid teal",
+        borderRadius: ".25rem",
+        fontSize: "1rem",
+        lineHeight: 1.5,  
+      }; */
+
     return (
-      /*   <form onSubmit={'/chatbotUpdate'} method='post'> */
-      <div style={{ width: "100%" }}>
-        <table>
-          <tbody>
-            <tr>
-              <td>Name :</td>
-              <td>{name.value}</td>
-              {/* <td id = 'name'>{name.value}</td> */}
-            </tr>
-            <tr>
-              <td>Gender : </td>
-              <td>{gender.value}</td>
-              {/* <td id = 'gender'>{gender.value}</td> */}
-            </tr>
-            <tr>
-              <td>Age : </td>
-              <td>{age.value}</td>
-              {/* <td id = 'age'>{age.value}</td> */}
-            </tr>
-          </tbody>
-        </table>
-        {/*   <button type='submit'>db로보내서수정</button> */}
-        {/* <button onClick={handleSubmit}>db로보내서수정</button> */}
-      </div>
-      /*  </form> */
+      <form onSubmit={"/chatbotUpdate"} method="post">
+        <div style={{ width: "100%" }}>
+          <tt colspan="2">정확히 입력하셨습니까?</tt>
+          <table style={{ borderTop: "solid", borderBottom: "solid" }}>
+            <tbody>
+              <tr>
+                <td>교통수단 :</td>
+                <td>{transport.value}</td>
+              </tr>
+              <tr>
+                <td>직업 : </td>
+                <td>{job.value}</td>
+              </tr>
+              <tr>
+                <td>취미 : </td>
+                <td>{hobby.value}</td>
+              </tr>
+              <tr>
+                <td>좋아하는 음식 : </td>
+                <td>{food.value}</td>
+              </tr>
+              <tr>
+                <td>좋아하는 음악 : </td>
+                <td>{music.value}</td>
+              </tr>
+            </tbody>
+          </table>
+          <button type="submit" style={{border : '5px solid' ,borderRadius: '30%',borderColor:'#CEDD38',color: 'white',background: '#CEDD38',margin: '5px'}}>네</button>
+        </div>
+      </form>
     );
   }
 }

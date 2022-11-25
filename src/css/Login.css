@@ -11,7 +11,9 @@
 
 .greenee{
     width: 60%;
-    padding: 20px;
+    padding: 20px;  
+    background: rgb(215, 237, 188);
+   /*  margin-top:10px; */
 }
 
 /* 회원가입 버튼 */

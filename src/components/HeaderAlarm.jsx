@@ -7,9 +7,10 @@ import greenee from "../img/greenee.png";
 
 const HeaderAlarm = () => {
   return (
+    <tt className='HeaderAlarm2'>
     <div>
       <div>
-        <div>
+        <div className='HeaderAlarmBC'>
           <img
             src={greenee}
             className={"greenee"}
@@ -19,6 +20,7 @@ const HeaderAlarm = () => {
         {/* <div>여기에 실시간 알림?</div> */}
       </div>
     </div>
+    </tt>
   );
 };
 

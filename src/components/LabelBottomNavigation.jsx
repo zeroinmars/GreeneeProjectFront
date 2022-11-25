@@ -6,8 +6,8 @@ import HomeIcon from "@mui/icons-material/Home";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import ArticleIcon from "@mui/icons-material/Article";
 import { Box } from "@mui/material";
-import AddIcon from '@mui/icons-material/Add';
-
+/* import AddIcon from '@mui/icons-material/Add'; */
+import AddCircleIcon from '@mui/icons-material/AddCircle';
 export default function LabelBottomNavigation() {
 
   const [value, setValue] = React.useState("recents");
@@ -47,11 +47,12 @@ export default function LabelBottomNavigation() {
               icon={<CalendarMonthIcon />}
             />
 
-              <BottomNavigationAction
+              <BottomNavigationAction sx={{ color:'#CEDD38'}}
+              /* <BottomNavigationAction sx={{ color:'red' ,backgroundColor:'white' }} */
             onClick={()=>{nav("/addEvent")}}
-            label="Add"
+            label="추가"
             value="Add"
-            icon={<AddIcon />}
+            icon={<AddCircleIcon />}
             />  
 
             <BottomNavigationAction
@@ -64,10 +65,11 @@ export default function LabelBottomNavigation() {
             />
 
             <BottomNavigationAction
+            
               onClick={() => {
                 nav("/myProfile");
               }}
-              label="마이페이지"
+              label="내 정보"
               value="myProfile"
               icon={<SentimentSatisfiedAltIcon />}
             />

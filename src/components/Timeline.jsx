@@ -21,7 +21,7 @@ function Timeline() {
           // 날짜, today, prev, next 순서
           start: "prev",
           center: "title",
-          end: "today next", //today는 확인 후 지우기
+          end: "next today", //today는 확인 후 지우기
         }}
       />
     </>

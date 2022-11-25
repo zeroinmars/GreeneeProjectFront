@@ -149,7 +149,17 @@ const AddEvent = () => {
         <TextField size="small" label="내용" name="content" multiline rows={3} variant="outlined" sx={{mb:"20px"}} onChange={handleEventInfo}/>
         {/* <TextField label="장소" name="location" variant="outlined" sx={{mb:"20px"}} onChange={handleEventInfo}/> */}
       </Stack>
+
+
+
+
+
+
+
+
+      <Button sx={{mt:"10px",marginRight:'25px', float:"right"}} variant="contained" onClick={handleFormSubmit}>등록</Button>
       <FormControlLabel style={{float:"right"}} control={<Switch name="checkRecommend" onChange={()=>{setCheckRecommend(!checkRecommend)}} />} label="추천받기" /><br/>
+   
       {checkRecommend?
       <div>
         {cateList.map((data, index)=>(
@@ -158,7 +168,11 @@ const AddEvent = () => {
         <Button style={{border:"solid black"}} onClick={()=>{setOpenCategory(true)}}>+</Button>
       </div>
       :""}<br/>
-      <Button sx={{mt:"10px", float:"right"}} variant="contained" onClick={handleFormSubmit}>등록</Button>
+  
+  
+
+
+
 
       <Snackbar/>
       <Progress/>
@@ -199,6 +213,11 @@ const AddEvent = () => {
           </div>
         </DialogTitle>
       </Dialog>
+
+
+
+
+      
     </Box>
   )
 }

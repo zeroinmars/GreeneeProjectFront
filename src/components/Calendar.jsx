@@ -57,9 +57,9 @@ const Calendar = () => {
         }}
         headerToolbar={{
           // 날짜, today, prev, next 순서
-          start: "prevYear prev",
+          start: "prev",
           center: "title",
-          end: "next nextYear today", //today는 확인 후 지우기
+          end: "next today", //today는 확인 후 지우기
         }}
         titleFormat={function(date) {
           if (date.date.month < 9) {
