@@ -9,8 +9,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import Progress from './FreqCompo/Progress';
 import Snackbar from './FreqCompo/Snackbar';
+import MapAPI from './MapAPI';
 
 const AddEvent = () => {
+  const [sLocation, setSLocation] = useState('');
+  const [eLocation, setELocation] = useState('');
+
   const [openTag, setOpenTag] = useState(false);
   const [openCategory, setOpenCategory] = useState(false);
   const [tag, setTag] = useState({tagName:"", tagColor:"#2bcdb2"});
@@ -70,9 +74,9 @@ const AddEvent = () => {
   }
   const handleFormSubmit = () => {
     const url = "http://localhost:5000/lifeConcierge/api/addEvent";
-    console.log({...eventInfo,checkWeeks, email, checkSpecial, preAlarm, tag, cateList});
+    console.log({...eventInfo,checkWeeks, email, checkSpecial, preAlarm, tag, cateList, sLocation, eLocation});
     dispatch({type:"PROGRESS", progress:{progressToggle:true}});
-    axios.post(url, {...eventInfo,checkWeeks, email, checkSpecial, preAlarm, tag, cateList})
+    axios.post(url, {...eventInfo,checkWeeks, email, checkSpecial, preAlarm, tag, cateList, sLocation, eLocation})
     .then((res)=>{
       if(res.data.affectedRows) {
         dispatch({type:"ISEVENTADDED", isEventAdded:true})
@@ -138,8 +142,9 @@ const AddEvent = () => {
             <MenuItem value={60}>60분전</MenuItem>
           </Select>
         </FormControl>
-        <TextField size="small" label="출발장소" name="sLocation" variant="standard" sx={{mb:"20px"}} onChange={handleEventInfo}/>
-        <TextField size="small" label="도착장소" name="eLocation" variant="standard" sx={{mb:"20px"}} onChange={handleEventInfo}/>
+        <MapAPI sLocation={sLocation} setSLocation={setSLocation} 
+            eLocation={eLocation} setELocation={setELocation}>
+        </MapAPI>
         
         <CheckWeeks checkWeeks={checkWeeks} setCheckWeeks={setCheckWeeks}/>
         

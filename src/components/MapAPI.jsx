@@ -4,7 +4,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { TextField } from '@mui/material'
 import { Dialog } from '@mui/material';
 import Slide from '@mui/material/Slide';
-import "./map.css";
+import "../css/map.css"
 
 
 const { kakao } = window;
