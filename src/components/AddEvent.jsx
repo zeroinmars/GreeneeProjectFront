@@ -13,7 +13,7 @@ import Snackbar from './FreqCompo/Snackbar';
 const AddEvent = () => {
   const [openTag, setOpenTag] = useState(false);
   const [openCategory, setOpenCategory] = useState(false);
-  const [tag, setTag] = useState({tagName:"", tagColor:""});
+  const [tag, setTag] = useState({tagName:"", tagColor:"#2bcdb2"});
   const nav = useNavigate();
   const dispatch = useDispatch();
   const email = useSelector(state=>(state.session.email));
@@ -70,14 +70,14 @@ const AddEvent = () => {
   }
   const handleFormSubmit = () => {
     const url = "http://localhost:5000/lifeConcierge/api/addEvent";
-    console.log({...eventInfo,checkWeeks, email, checkSpecial, preAlarm});
+    console.log({...eventInfo,checkWeeks, email, checkSpecial, preAlarm, tag, cateList});
     dispatch({type:"PROGRESS", progress:{progressToggle:true}});
-    axios.post(url, {...eventInfo,checkWeeks, email, checkSpecial, preAlarm})
+    axios.post(url, {...eventInfo,checkWeeks, email, checkSpecial, preAlarm, tag, cateList})
     .then((res)=>{
       if(res.data.affectedRows) {
         dispatch({type:"ISEVENTADDED", isEventAdded:true})
         dispatch({type:"PROGRESS", progress:{progressToggle:false}});
-        nav('/home');
+        nav('/calendar');
       } else {
         dispatch({type:"SNACKBAR/ON", snackbar: {snackbarToggle:true, explain:"일정등록 실패", severity:"error"}});
         dispatch({type:"PROGRESS", progress:{progressToggle:false}});
@@ -183,7 +183,17 @@ const AddEvent = () => {
         <DialogTitle>
           <div>
             <Button name="건강/운동/헬스케어" style={{background:"#ffc847", color:"white"}} onClick={handleCategory}>건강/운동/헬스케어</Button><br/>
-            <Button name="반려동물" style={{background:"#22c847", color:"white"}} onClick={handleCategory}>반려동물</Button>
+            <Button name="금융/자산/제테크" style={{background:"#22c847", color:"white"}} onClick={handleCategory}>금융/자산/제테크</Button>
+            <Button name="반려동물" style={{background:"#2293c8", color:"white"}} onClick={handleCategory}>반려동물</Button>
+            <Button name="뷰티/패션/쇼핑" style={{background:"#96c822", color:"white"}} onClick={handleCategory}>뷰티/패션/쇼핑</Button>
+            <Button name="생활/리빙" style={{background:"#c822af", color:"white"}} onClick={handleCategory}>생활/리빙</Button>
+            <Button name="여행/레저" style={{background:"#c82257", color:"white"}} onClick={handleCategory}>여행/레저</Button>
+            <Button name="예술/엔터테인먼드" style={{background:"#c8a722", color:"white"}} onClick={handleCategory}>예술/엔터테인먼드</Button>
+            <Button name="유아/어린이/교육" style={{background:"#1d0303", color:"white"}} onClick={handleCategory}>유아/어린이/교육</Button>
+            <Button name="음식/요리" style={{background:"#2d4e68", color:"white"}} onClick={handleCategory}>음식/요리</Button>
+            <Button name="자동차/이동수단" style={{background:"#7e54c6", color:"white"}} onClick={handleCategory}>자동차/이동수단</Button>
+            <Button name="취미생활/자기개발" style={{background:"#e38e27", color:"white"}} onClick={handleCategory}>취미생활/자기개발</Button>
+            <Button name="로컬 전용" style={{background:"#8d2d19", color:"white"}} onClick={handleCategory}>로컬 전용</Button>
           </div>
         </DialogTitle>
       </Dialog>
