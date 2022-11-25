@@ -7,7 +7,7 @@ export default () => {
     <div>
       <HeaderAlarm />
       <Calendar />
-      {/* <AddEventButton /> */}
+      <AddEventButton />
     </div>
   );
 };

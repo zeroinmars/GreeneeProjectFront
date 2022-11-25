@@ -82,10 +82,10 @@ background: #73baad;
  
 /*  background-color: #73baad; */
 /*  z-index: 60; */
-margin-top:90px ;
-margin-bottom:90px ;
-/* border-top:90px solid rgb(215, 237, 188);
- border-bottom:160px solid rgb(215, 237, 188) ; */
+/* margin-top:90px ;
+margin-bottom:90px ; */
+ border-top:90px solid rgb(215, 237, 188);
+ border-bottom:160px solid rgb(215, 237, 188) ;  
 }
 
  

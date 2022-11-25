@@ -7,8 +7,8 @@ import SnackBar from './FreqCompo/Snackbar';
 import Progress from './FreqCompo/Progress'
 /* import MessageIcon from '@mui/icons-material/Message';
 import { Link } from 'react-router-dom'; */
-import greenee from '../img/greenee.png'
-import "../css/Login.css";
+import greenee from '../img/greenee.png';
+import '../css/Login.css';
 
 const Login = () => {
   const nav = useNavigate();

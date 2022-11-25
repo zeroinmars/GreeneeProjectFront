@@ -51,9 +51,6 @@
 .fc a[data-navlink] {
     cursor: pointer;
   }
-.fc a[data-navlink]:hover {
-    text-decoration: underline;
-  }
 .fc-direction-ltr {
   direction: ltr;
   text-align: left;
@@ -689,13 +686,17 @@ A HORIZONTAL event
     opacity: 0.65;
     font-size: 1.1em;
   }
-.fc-theme-standard .fc-popover {
+
+.fc-theme-standard .fc-popover-header {
+    background: rgba(208, 208, 208, 0.3);
+    background: var(--fc-neutral-bg-color, rgba(208, 208, 208, 0.3));
+  }
+  .fc a[data-navlink]:hover {
+    text-decoration: underline;
+  }
+  .fc-theme-standard .fc-popover {
     border: 1px solid #ddd;
     border: 1px solid var(--fc-border-color, #ddd);
     background: #fff;
     background: var(--fc-page-bg-color, #fff);
-  }
-.fc-theme-standard .fc-popover-header {
-    background: rgba(208, 208, 208, 0.3);
-    background: var(--fc-neutral-bg-color, rgba(208, 208, 208, 0.3));
   }
