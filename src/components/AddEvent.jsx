@@ -11,6 +11,7 @@ import Progress from './FreqCompo/Progress';
 import Snackbar from './FreqCompo/Snackbar';
 
 const AddEvent = () => {
+  const [checkDaily, setCheckDaily] = useState(false);
   const [openTag, setOpenTag] = useState(false);
   const [openCategory, setOpenCategory] = useState(false);
   const [tag, setTag] = useState({tagName:"", tagColor:"#2bcdb2"});
@@ -90,6 +91,7 @@ const AddEvent = () => {
   return (
     <Box className='test'>
       <Button onClick={handleOpenTag} style={{background:tag.tagColor, color:"white"}}>{tag.tagName?tag.tagName:"태그"}</Button>
+      {tag.tagName=="데일리루틴"?<Button>태그</Button>:""}
       <Stack spacing={1}>
         <TextField size="small" label="제목" name="title" variant="standard" sx={{mb:"20px"}} onChange={handleEventInfo}/>
         <FormControlLabel control={<Switch name="checkSpecial" onChange={()=>{setCheckSpecial(!checkSpecial)}} />} label="특별일정" /><br/>
@@ -166,8 +168,8 @@ const AddEvent = () => {
           태그 선택
         </DialogTitle>
         <DialogTitle>
+          {tag.tagName=="데일리루틴"?"":<Button name="데일리루틴" style={{background:"#94ab50", color:"white"}} onClick={(e)=>{setTag({...tag, tagName: e.target.name, tagColor:"#94ab50"}); setOpenTag(false)}}>데일리루틴</Button>}<br/>
           <Button name="업무/학교" style={{background:"#ffc847", color:"white"}} onClick={(e)=>{setTag({...tag, tagName: e.target.name, tagColor:"#ffc847"}); setOpenTag(false)}}>업무/학교</Button><br/>
-          <Button name="데일리루틴" style={{background:"#94ab50", color:"white"}} onClick={(e)=>{setTag({...tag, tagName: e.target.name, tagColor:"#94ab50"}); setOpenTag(false)}}>데일리루틴</Button><br/>
           <Button name="여행/데이트/취미" style={{background:"#8ed4c9", color:"white"}} onClick={(e)=>{setTag({...tag, tagName: e.target.name, tagColor:"#8ed4c9"}); setOpenTag(false)}}>여행/데이트/취미</Button><br/>
           <Button name="건강/핼스" style={{background:"#855e95", color:"white"}} onClick={(e)=>{setTag({...tag, tagName: e.target.name, tagColor:"#855e95"}); setOpenTag(false)}}>건강/핼스</Button><br/>
           <Button name="쇼핑/구매/외식" style={{background:"#e6c2ce", color:"white"}} onClick={(e)=>{setTag({...tag, tagName: e.target.name, tagColor:"#e6c2ce"}); setOpenTag(false)}}>쇼핑/구매/외식</Button><br/>

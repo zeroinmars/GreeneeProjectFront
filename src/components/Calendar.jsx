@@ -19,7 +19,7 @@ const Calendar = () => {
     setOpen(false);
   };
   const viewEvent = () => {
-    
+
   };
 
   return (
@@ -31,16 +31,17 @@ const Calendar = () => {
           day: "narrow",
         }}
         events={[
-          { title: "", date: "2022-11-28" },
           { title: "event 1", date: "2022-11-22" },
           { title: "event 1", date: "2022-11-19" },
         ]}
         //**이벤트별로 색 다르게 해야됨
+        weekends={true}
         eventDisplay="list-item" //이벤트 모양? list-item, none
         eventColor="red"
         eventClick={handleClick}
         plugins={[dayGridPlugin]}
         initialView="dayGridMonth"
+        droppable={true}
         buttonIcons={
           {
             //버튼 아이콘?
