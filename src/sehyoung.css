@@ -102,13 +102,13 @@ margin-bottom:90px ;
 
 /* 캘린더 배경 */
 .fc-theme-standard{
-  background: rgb(215, 237, 188);
+  background: rgb(255, 255, 255);
   margin: 10px;
 }
 
 /* 전체 바탕색 */
 :root{
-  background: rgb(215, 237, 188);
+  background: rgb(255, 255, 255);
 }
 
 /* 이벤트 추가 페이지 여백 */
@@ -132,3 +132,37 @@ margin-bottom:90px ;
   margin-left: 20px; 
 }  */
  
+
+/* .fc-today-button .fc-button .fc-button-primary{
+background: turquoise;
+}
+.fc-button .fc-button-primary{
+  background: turquoise;
+  }
+  .fc-button-primary{
+    background: turquoise;
+    }
+
+
+    
+.fc-today-button .fc-button  {
+  background: turquoise;
+  }
+
+  
+.fc-today-button  {
+  background: turquoise;
+  }
+
+
+  .fc-direction-ltr .fc-toolbar > * > :not(:first-child){
+    background: turquoise;
+  }
+
+  .fc-toolbar > * > :not(:first-child){
+    background: turquoise;
+  }
+
+:not(:first-child){
+    background: turquoise;
+  } */

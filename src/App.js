@@ -16,6 +16,11 @@ import Memo from "./pages/Memo";
 /* css 파일 임포트 */
 import './dabin.css';
 import './sehyoung.css'
+import './css/AddEvent.css'
+import './css/LabelBottomNavigation.css'
+import './css/Login.css'
+import './css/UserInfo.css'
+
 
 /* mui css에 css파일을 오버라이딩 하기 위한*/
 import { CacheProvider } from "@emotion/react";
