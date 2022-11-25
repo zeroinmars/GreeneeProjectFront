@@ -19,7 +19,7 @@ const Calendar = () => {
     setOpen(false);
   };
   const viewEvent = () => {
-    nav("/event");
+    
   };
 
   return (
@@ -36,7 +36,7 @@ const Calendar = () => {
           { title: "event 1", date: "2022-11-19" },
         ]}
         //**이벤트별로 색 다르게 해야됨
-        eventDisplay="" //이벤트 모양?
+        eventDisplay="list-item" //이벤트 모양? list-item, none
         eventColor="red"
         eventClick={handleClick}
         plugins={[dayGridPlugin]}
@@ -70,7 +70,7 @@ const Calendar = () => {
 
         //  weekends={false} //주말 생성
       />
-      <Dialog onClose={handleClose} open={open} onClick={viewEvent}>
+      <Dialog onClose={handleClose} open={open}>
         {" "}
         {/* onClick={} 안에 함수이름 넣어야함 */}
         <DialogTitle>클릭한 날짜</DialogTitle>
