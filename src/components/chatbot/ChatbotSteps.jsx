@@ -19,6 +19,8 @@ let randomfirst;
 let randomSecond;
 let randomThird;
 const avatarArray = [greenihead,greenihead2,iconStar,iconUnder]
+const avatarArray2 = [greenihead,greenihead2,iconStar]
+const avatarArray3 = [greenihead,greenihead2]
 /* first랑 second에는 뒤에 공백하나 */
 const firstArray = ["오늘 기분이 어때요? ",'만나서 반가워요. 이름이 뭐에요? ','하잇! 아무말이나 해봐요~~ ']
 const secondArray = ['','','','','네~ ',"답변 감사해요!! ",'ㅎ ','고마워요 ','ㅋㅋ ']
@@ -26,15 +28,17 @@ const thirdArray = ['','','','당신이 궁금해요!', '제발 알려주세요�
 '이 물음에 대답을 하지 않으면...','사랑해요^^','ㅋㅋㅋㅋ','^ㅡ^','^^','궁금!','ㅇㅅㅇ',
 '^^*','안 알려주면 가만 안 있을 거예요~']
 function randomF(){
+  botAvatarRandom = avatarArray[Math.floor(Math.random() * avatarArray.length)]
   randomfirst = firstArray[Math.floor(Math.random() * firstArray.length)]
   return randomfirst
 }
 function randomS(){
+  botAvatarRandom = avatarArray2[Math.floor(Math.random() * avatarArray2.length)]
   randomSecond = secondArray[Math.floor(Math.random() * secondArray.length)]
   return randomSecond
 }
 function randomT(){
-  botAvatarRandom = avatarArray[Math.floor(Math.random() * avatarArray.length)]
+  botAvatarRandom = avatarArray3[Math.floor(Math./*  */random() * avatarArray3.length)]
   randomThird = thirdArray[Math.floor(Math.random() * thirdArray.length)]
   return randomThird
 }
@@ -42,7 +46,7 @@ function randomT(){
 /* 변수 */
 
 /* 봇딜레이 1000 마다 1초 .밀리세컨 */
-let botDelay = 0;
+let botDelay = 2000;
 /* 유저 인풋 창 전송버튼 */
 const submitButtonStyle = {};
 /* 유저 인풋 창 */
@@ -198,7 +202,7 @@ const steps = [
   },
   {
     id: "6",
-    message: randomS() + "정확히 입력하셨나요?",
+    message: "정확히 입력하셨나요?",
     trigger: "review",
   },
   {
