@@ -224,8 +224,9 @@ const steps = [
       { value: "교통수단", label: "교통수단", trigger: "update-transport" },
       { value: "직업", label: "직업", trigger: "update-job" },
       { value: "취미", label: "취미", trigger: "update-hobby" },
-      { value: "좋아하는음악", label: "좋아하는음식", trigger: "update-food" },
       { value: "좋아하는음악", label: "좋아하는음악", trigger: "update-music" },
+      { value: "좋아하는음식", label: "좋아하는음식", trigger: "update-food" },
+      { value: "좋아하는음료", label: "좋아하는음료", trigger: "update-drink" },
     ],
   },
   {
@@ -244,13 +245,18 @@ const steps = [
     trigger: "6",
   },
   {
+    id: "update-music",
+    update: "music",
+    trigger: "6",
+  },
+  {
     id: "update-food",
     update: "food",
     trigger: "6",
   },
   {
-    id: "update-music",
-    update: "music",
+    id: "update-drink",
+    update: "drink",
     trigger: "6",
   },
 /*   {
