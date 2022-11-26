@@ -19,8 +19,9 @@ let randomfirst;
 let randomSecond;
 let randomThird;
 const avatarArray = [greenihead,greenihead2,iconStar,iconUnder]
+/* first랑 second에는 뒤에 공백하나 */
 const firstArray = ["오늘 기분이 어때요? ",'만나서 반가워요. 이름이 뭐에요? ','하잇! 아무말이나 해봐요~~']
-const secondArray = ['','','','','네~ ',"답변 감사해요!!",'ㅎ ','고마워요 ','ㅋㅋ ']
+const secondArray = ['','','','','네~ ',"답변 감사해요!! ",'ㅎ ','고마워요 ','ㅋㅋ ']
 const thirdArray = ['','','','당신이 궁금해요!', '제발 알려주세요ㅜㅜ','ㅇㅅㅇ','ㅇㅅㅇ',
 '이 물음에 대답을 하지 않으면...','사랑해요^^','ㅋㅋㅋㅋ','^ㅡ^','^^','궁금!','ㅇㅅㅇ',
 '^^*']
@@ -197,7 +198,7 @@ const steps = [
   },
   {
     id: "6",
-    message: randomS() + "정확히 입력하셨나요? " + randomT(),
+    message: randomS() + "정확히 입력하셨나요?",
     trigger: "review",
   },
   {
