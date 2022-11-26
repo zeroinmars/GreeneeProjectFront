@@ -210,7 +210,7 @@ const steps = [
   {
     id: "update",
     options: [
-      { value: "no", label: "아니오", trigger: "update-yes" },
+      { value: "no", label: "아니, 잘못 입력했어", trigger: "update-yes" },
       /* { value: 'yes', label: '네', trigger: 'end-message' }, */
     ],
   },

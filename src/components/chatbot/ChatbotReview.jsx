@@ -90,7 +90,7 @@ class ChatbotReview extends Component {
           </table> */}
 
 
-          <button type="submit" style={{border : '5px solid' ,borderRadius: '60px 60px 20px',borderColor:'#f39c12',color: 'white',background: '#f39c12',marginTop: '8px'}}>네, 홈으로 가겠습니다</button>
+          <button type="submit" style={{border : '5px solid' ,borderRadius: '60px 60px 20px',borderColor:'#f39c12',color: 'white',background: '#f39c12',marginTop: '8px'}}>응, 고마워</button>
         </div>
       </form>
     );
