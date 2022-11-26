@@ -3,7 +3,7 @@ import ChatBot from "react-simple-chatbot";
 import ChatbotReview from "./ChatbotReview";
 import { ThemeProvider } from "styled-components";
 
-/* 랜덤펑션용 임포트 */
+/* 랜덤 아바타 펑션용 임포트 */
 import greenihead2 from "../../img/greenihead.png"; 
 import greenihead from "../../img/greenee.png";
 import iconStar from "../../img/iconStar.png";
