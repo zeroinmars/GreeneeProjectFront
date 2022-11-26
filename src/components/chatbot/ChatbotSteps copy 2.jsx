@@ -2,38 +2,28 @@ import React, { Component } from "react";
 import ChatBot from "react-simple-chatbot";
 import ChatbotReview from "./ChatbotReview";
 import { ThemeProvider } from "styled-components";
-
-/* 랜덤펑션용 임포트 */
 import greenihead2 from "../../img/greenihead.png"; 
 import greenihead from "../../img/greenee.png";
-import iconStar from "../../img/iconStar.png";
-import iconUnder from "../../img/iconUnder.png";
 
 /* 봇아바타랜덤돌리기 */
+/* let botAvatar */
+let botAvatarRandom;
+
+const avatarArray = [greenihead,greenihead2]
+function aniInput(){
+  return aniOutput()
+}
+function aniOutput(){
+  botAvatarRandom = avatarArray[Math.floor(Math.random() * avatarArray.length)];
+  return botAvatarRandom
+}
+
+
 /* Math.random() 함수는 0 ~ 1 사이의 숫자를 반환합니다. 그리고 0과 배열의 마지막
 인덱스 사이의 값을 구하기 위해서는 Math.random() 함수와 배열의 length를 곱합니다.
 마지막으로 Math.random() 함수의 반환 값 * 배열의 length는 정수 또는 실수이므로 
 Math.floor() 함수를 호출하여 정수로 반올림합니다. */
-let botAvatarRandom;
-let randomQuestion;
-let randomInitiate;
-const avatarArray = [greenihead,greenihead2,iconStar,iconUnder]
-const answerArray = ['당신이 궁금해요!', '제발 알려주세요ㅜㅜ',
-'이 물음에 대답을 하지 않으면...','사랑해요^^']
-const initiateArray = ["오늘 기분이 어때요?",'만나서 반가워요. 이름이 뭐에요?', 
-'당신 같은 사람의 비서라니 기뻐요. 그래서 말인데 연봉은?']
-function randomQ(){
-  botAvatarRandom = avatarArray[Math.floor(Math.random() * avatarArray.length)]
-  randomQuestion = answerArray[Math.floor(Math.random() * answerArray.length)]
-  return randomQuestion
-}
-function randomI(){
-  randomInitiate = initiateArray[Math.floor(Math.random() * initiateArray.length)]
-  return 'AI비서 그리니의 로딩이 끝났습니다. ' + randomInitiate
-}
 
-/* 봇딜레이 1000 마다 1초 .밀리세컨 */
-let botDelay = 3000;
 /* 유저 인풋 창 전송버튼 */
 const submitButtonStyle = {};
 /* 유저 인풋 창 */
@@ -47,7 +37,8 @@ const footerStyle = {
 const placeholder = "자신의 정보를 입력해주세요!";
 /* 이렇게하면 채팅방 폭 MAX로 자동 */
 const width = {};
-
+/* 봇딜레이 1000 마다 1초 밀리세컨 */
+const botDelay = 0;
 /* 옵션주는 버블창 */
 const bubbleOptionStyle = {
   background: "#f39c12",
@@ -93,18 +84,13 @@ const darkTheme = {
 /* 대본 */
 const steps = [
   {
-    id: "0",
-    message: randomI(),
-    trigger: "user",
-  },
-  {
-    id: "user",
-    user:true,
-    trigger: "1",
-  },
-  {
     id: "1",
-    message: "답변 감사해요^^ 교통수단은 무엇인가요? " + randomQ(),
+    message: "교통수단이 무엇인가요?",
+    trigger: "Btransport",
+  },
+  {
+    id: "Btransport",
+    message: aniInput(),
     trigger: "transport",
   },
   {
@@ -114,10 +100,9 @@ const steps = [
       { value: "자가용", label: "자가용", trigger: "2" },
     ],
   },
-
   {
     id: "2",
-    message: "직업이 무엇인가요? " + randomQ(),
+    message: "직업이 무엇인가요?",
     trigger: "job",
   },
   {
@@ -137,7 +122,7 @@ const steps = [
   },
   {
     id: "3",
-    message: "취미가 무엇인가요? " + randomQ(),
+    message: "취미가 무엇인가요?",
     trigger: "hobby",
   },
   {
@@ -156,7 +141,7 @@ const steps = [
   },
   {
     id: "4",
-    message: "좋아하는 음식이 무엇인가요? " + randomQ(),
+    message: "좋아하는 음식이 무엇인가요?",
     trigger: "food",
   },
   {
@@ -171,7 +156,7 @@ const steps = [
   },
   {
     id: "5",
-    message: "좋아하는 음악이 무엇인가요? " + randomQ(),
+    message: "좋아하는 음악이 무엇인가요?",
     trigger: "music",
   },
   {
@@ -188,7 +173,7 @@ const steps = [
   },
   {
     id: "6",
-    message: "정확히 입력하셨나요? " + randomQ(),
+    message: "정확히 입력하셨습니까?",
     trigger: "review",
   },
   {
@@ -206,7 +191,7 @@ const steps = [
   },
   {
     id: "update-yes",
-    message: "어느 정보를 수정하시겠어요?",
+    message: "어느 정보를 수정하시겠습니까?",
     trigger: "update-fields",
   },
   {
@@ -244,11 +229,11 @@ const steps = [
     update: "music",
     trigger: "review",
   },
-/*   {
+  {
     id: "end-message",
     message: "정보를 수정했습니다.",
     end: true,
-  }, */
+  },
   /*     {
         id: 'age',
         user: true,

@@ -58,8 +58,13 @@ class ChatbotReview extends Component {
     return (
       <form onSubmit={"/chatbotUpdate"} method="post">
         <div style={{ width: "100%" }}>
-          <tt colspan="2">정확히 입력하셨습니까?</tt>
-          <table style={{ borderTop: "solid", borderBottom: "solid" }}>
+          {/* <table style={{ borderTop: "solid", borderBottom: "solid" }}> */}
+                <qq style={{ fontSize: '15px',fontWeight: "bold",color: "white",}}>교통수단 : </qq>{transport.value}<br></br>
+                <qq style={{ fontSize: '15px',fontWeight: "bold",color: "white",}}>직업 : </qq>{job.value}<br></br>
+                <qq style={{ fontSize: '15px',fontWeight: "bold",color: "white",}}>취미 : </qq>{hobby.value} <br></br>
+                <qq style={{ fontSize: '15px',fontWeight: "bold",color: "white",}}>좋아하는 음식 : </qq>{food.value} <br></br>
+                <qq style={{ fontSize: '15px',fontWeight: "bold",color: "white",}}>좋아하는 음악 : </qq>{music.value}  <br></br>
+        {/*   <table>
             <tbody>
               <tr>
                 <td>교통수단 :</td>
@@ -82,8 +87,10 @@ class ChatbotReview extends Component {
                 <td>{music.value}</td>
               </tr>
             </tbody>
-          </table>
-          <button type="submit" style={{border : '5px solid' ,borderRadius: '30%',borderColor:'#CEDD38',color: 'white',background: '#CEDD38',margin: '5px'}}>네</button>
+          </table> */}
+
+
+          <button type="submit" style={{border : '5px solid' ,borderRadius: '60px 60px 20px',borderColor:'#f39c12',color: 'white',background: '#f39c12',marginTop: '8px'}}>네, 홈으로 가겠습니다</button>
         </div>
       </form>
     );

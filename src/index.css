@@ -25,7 +25,7 @@ code {
 }
 /* 푸터 바텀메뉴 */
 .MuiBottomNavigation-root{
-  background:#ffffff;
+  background:#efefef;
 }
 /* 캘린더.윈도버전몇개더보기 */
 .mbsc-windows.mbsc-calendar-text-more .mbsc-calendar-label-text{
@@ -70,59 +70,37 @@ font-size: 23px;
   margin-bottom:5px;
   box-shadow: none;
 }
-
 /*바텀 네비 클릭했을떄*/
 .css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root.Mui-selected{
   color:#6AA258;
   font-family: 'Spoqa Han Sans Neo', 'sans-serif';
 }
-
+/*캘린더 상단바 탑마진*/
+.fc .fc-toolbar.fc-header-toolbar {
+  margin-top:15px;
+}
+/* 회원가입 버튼 */
+.signup_btn{
+  width: 80vw; 
+  margin: auto;
+  margin-Bottom: 8px; 
+  /* background: linear-gradient(to left,#CEDD38,#AFE372);  */
+  background-color:#AFE372;
+  border-radius: 20px;
+}
+/* 회원가입 버튼*** */
+.css-sghohy-MuiButtonBase-root-MuiButton-root{
+  background-color: #AFE372;
+}
 /*AddEvent.jsx 전체 마진*/
 .css-1okj3ks-MuiStack-root>:not(style)+:not(style){
   margin-top:12px !important;
 }
-
 /*AddEvent.jsx 제목추가 마진*/
 .css-1x51dt5-MuiInputBase-input-MuiInput-input{
   margin-top:12px !important;
 }
-
-
-/* +버튼 틀 */
-/* .css-in5br9{
-background: #73baad;
-} */
-
-/* windows헤더 */  
-.mbsc-windows.mbsc-calendar-button.mbsc-button.mbsc-font{
-  color: #010101;
-  font-weight: 700;
-}
-/* windows헤더 가운데 정렬*/  
-.mbsc-calendar-controls{
-  justify-content: center;
-}
-
-/* 
-.mbsc-calendar-controls .mbsc-windows{
-  margin:auto;
-}   */
-
-/* 그리니 챗봇 */
-.greeniChatbot{
-background: #ffffff;
-}
-/* 챗봇 전체블록*/
-.lfsaZN  {
-  background: #b10808;
-}
-.sc-jrcTuL {
-  background: #b10808;
- }
-.rsc-container{
-  background: #b10808;
-}
-
+/*  */
 .fc .fc-button-primary {
   color: #fff;
   color: var(--fc-button-text-color, #fff);
@@ -131,12 +109,6 @@ background: #ffffff;
   border-color: #6AA258;
   border-color: var(--fc-button-border-color, #6AA258);
 }
-
-/*캘린더 상단바 탑마진*/
-.fc .fc-toolbar.fc-header-toolbar {
-  margin-top:15px;
-}
-
 .divLogin{
   width: 90%;
   height: 100vh;
@@ -147,29 +119,6 @@ background: #ffffff;
   scrollbar-width: none;
   background-size: cover;
 }
-
-.greenee{
-  width: 60%;
-  padding: 20px;  
-  background: rgb(215, 237, 188);
- /*  margin-top:10px; */
-}
-
-/* 회원가입 버튼 */
-.signup_btn{
-  width: 80vw; 
-  margin: auto;
-  margin-Bottom: 8px; 
-  /* background: linear-gradient(to left,#CEDD38,#AFE372);  */
-  background-color:#AFE372;
-  border-radius: 20px;
-}
-
-/* 회원가입 버튼*** */
-.css-sghohy-MuiButtonBase-root-MuiButton-root{
-  background-color: #AFE372;
-}
-
 .login_btn{
   width:80vw; 
   margin: auto;
@@ -177,3 +126,15 @@ background: #ffffff;
   background-color: #CEDD38; 
   border-radius: 20px;
 }
+.greenee{
+  width: 60%;
+  padding: 200px;  
+  background: rgb(215, 237, 188);
+ /*  margin-top:10px; */
+}
+/* 메모페이지 그리니 버튼 11/27sh */
+.greenee20{
+width: 50%;
+}
+
+ 
