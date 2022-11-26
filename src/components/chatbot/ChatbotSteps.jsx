@@ -302,7 +302,7 @@ class ChatbotSteps extends Component {
               /* height={height} */
               floating="true" /* 채팅창 버튼으로 자동 플로팅 */
               floatingStyle={floatingStyle}
-              /* floatingIcon={greenihead}   */
+              /* floatingIcon={greenihead}     */
             />
           </div>
         </ThemeProvider>
