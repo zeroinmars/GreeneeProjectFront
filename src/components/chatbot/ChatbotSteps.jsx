@@ -60,7 +60,7 @@ const bubbleOptionStyle = {
 
 /* 플로팅(채팅창 아이콘) */
 const floatingStyle = {
-  background: "#efefef",
+/*   background: "#efefef", */
   marginRight: '142px',  
   marginBottop: "0px",   
   border: "5px solid",
