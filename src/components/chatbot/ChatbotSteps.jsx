@@ -63,7 +63,7 @@ const floatingStyle = {
   /* borderColor:'#7e7e7e', */
   /* Top: '100px', */
   background: "#2ecc71",  
-  /* marginRight: '230px',  */ 
+  marginRight: '230px',   
   /* marginBottop: "200px", */   
   bottom:'815px',
   padding: "0px",

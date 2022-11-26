@@ -31,7 +31,7 @@ class ChatbotReview extends Component {
     this.setState({ transport, job, hobby, music, food, drink });
   }
   render() { 
-    let { transport, job, hobby, food, drink , music} = this.state;
+    let { transport, job, hobby, music, food, drink} = this.state;
     let data = {
       transport: transport.value,
       job: job.value,
@@ -48,7 +48,7 @@ class ChatbotReview extends Component {
                 <qq style={{ fontSize: '15px',fontWeight: "bold",color: "white",}}>취미 : </qq>{hobby.value}  <br></br>
                 <qq style={{ fontSize: '15px',fontWeight: "bold",color: "white",}}>좋아하는 음악 : </qq>{music.value}<br></br>
                 <qq style={{ fontSize: '15px',fontWeight: "bold",color: "white",}}>좋아하는 음식 : </qq>{food.value}<br></br>
-                <qq style={{ fontSize: '15px',fontWeight: "bold",color: "white",}}>좋아하는 음료 : </qq>{music.value}<br></br>
+                <qq style={{ fontSize: '15px',fontWeight: "bold",color: "white",}}>좋아하는 음료 : </qq>{drink.value}<br></br>
           <button type="submit" style={{border : '5px solid' ,borderRadius: '60px 60px 20px',borderColor:'#f39c12',color: 'white',background: '#f39c12',marginTop: '8px'}}> 응, 앞으로 잘 부탁해 </button>
         </div>
       </form>
