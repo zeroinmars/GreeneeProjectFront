@@ -32,6 +32,9 @@ function randomI(){
   return 'AI비서 그리니의 로딩이 끝났습니다. ' + randomInitiate
 }
 
+
+/* 변수 */
+
 /* 봇딜레이 1000 마다 1초 .밀리세컨 */
 let botDelay = 3000;
 /* 유저 인풋 창 전송버튼 */
@@ -45,15 +48,16 @@ const footerStyle = {
 };
 /* 유저 인풋 창 플레이스홀더 */
 const placeholder = "자신의 정보를 입력해주세요!";
-/* 이렇게하면 채팅방 폭 MAX로 자동 */
-const width = {};
+/* 이렇게하면 채팅방 폭 MAX로 자동 (플로팅 아닐 때)*/
+/* const width = {}; */
 
 /* 옵션주는 버블창 */
 const bubbleOptionStyle = {
   background: "#f39c12",
 };
-/* height 고정을 풀어주는 옵션 */
+/* height 고정을 풀어주는 옵션 (플로팅 중 아닐 때) */
 /* const height = {}; */
+
 /* 플로팅(채팅창 아이콘) */
 const floatingStyle = {
   background: "#efefef",
@@ -298,7 +302,7 @@ class ChatbotSteps extends Component {
               /* height={height} */
               floating="true" /* 채팅창 버튼으로 자동 플로팅 */
               floatingStyle={floatingStyle}
-              floatingIcon={greenihead}  
+              /* floatingIcon={greenihead}   */
             />
           </div>
         </ThemeProvider>
