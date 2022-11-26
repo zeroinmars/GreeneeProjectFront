@@ -2,13 +2,11 @@ import React, { Component } from "react";
 import ChatBot from "react-simple-chatbot";
 import ChatbotReview from "./ChatbotReview";
 import { ThemeProvider } from "styled-components";
-
 /* 랜덤 아바타 펑션용 임포트 */
 import greenihead2 from "../../img/greenihead.png"; 
 import greenihead from "../../img/greenee.png";
 import iconStar from "../../img/iconStar.png";
 import iconUnder from "../../img/iconUnder.png";
-
 /* 봇아바타랜덤돌리기 */
 /* Math.random() 함수는 0 ~ 1 사이의 숫자를 반환합니다. 그리고 0과 배열의 마지막
 인덱스 사이의 값을 구하기 위해서는 Math.random() 함수와 배열의 length를 곱합니다.
@@ -19,32 +17,28 @@ let randomfirst;
 let randomSecond;
 let randomThird;
 const avatarArray = [greenihead,greenihead2,iconStar,iconUnder]
-const avatarArray2 = [greenihead,greenihead2,iconStar]
-const avatarArray3 = [greenihead,greenihead2]
 /* first랑 second에는 뒤에 공백하나 */
-const firstArray = ["오늘 기분이 어때요? ",'만나서 반가워요. 이름이 뭐에요? ','하잇! 아무말이나 해봐요~~ ']
-const secondArray = ['','','','','네~ ',"답변 감사해요!! ",'ㅎ ','고마워요 ','ㅋㅋ ']
-const thirdArray = ['','','','당신이 궁금해요!', '제발 알려주세요ㅜㅜ','ㅇㅅㅇ','ㅇㅅㅇ',
-'이 물음에 대답을 하지 않으면...','사랑해요^^','ㅋㅋㅋㅋ','^ㅡ^','^^','궁금!','ㅇㅅㅇ',
-'^^*','안 알려주면 가만 안 있을 거예요~']
+const firstArray = ["AI비서 그리니입니다. 회원님의 정보가 필요합니다.",
+'만나서 반갑습니다. 그리니입니다.',
+"Load Complete, AI Secretary 'Greenee'",
+'회원님의 성향 정보를 받겠습니다.']
+const secondArray = ['','','','','네. ','음. ','그럼. ']
+const thirdArray = ['','','','','잘 읽고 답변해 주시길 바랍니다.',
+'서비스에 필요한 정보입니다.','궁금합니다.','언제든 수정이 가능합니다.'] 
 function randomF(){
   botAvatarRandom = avatarArray[Math.floor(Math.random() * avatarArray.length)]
   randomfirst = firstArray[Math.floor(Math.random() * firstArray.length)]
   return randomfirst
 }
 function randomS(){
-  botAvatarRandom = avatarArray2[Math.floor(Math.random() * avatarArray2.length)]
   randomSecond = secondArray[Math.floor(Math.random() * secondArray.length)]
   return randomSecond
 }
 function randomT(){
-  botAvatarRandom = avatarArray3[Math.floor(Math./*  */random() * avatarArray3.length)]
   randomThird = thirdArray[Math.floor(Math.random() * thirdArray.length)]
   return randomThird
 }
-
 /* 변수 */
-
 /* 봇딜레이 1000 마다 1초 .밀리세컨 */
 let botDelay = 2000;
 /* 유저 인풋 창 전송버튼 */
@@ -54,31 +48,27 @@ const inputStyle = {};
 /* 유저 인풋창 전체 */
 const footerStyle = {
   background:"#efefef", 
-/*   background: "#fff", */
 };
 /* 유저 인풋 창 플레이스홀더 */
-const placeholder = "자신의 정보를 입력해주세요!";
-/* 이렇게하면 채팅방 폭 MAX로 자동 (플로팅 아닐 때)*/
-/* const width = {}; */
-
+const placeholder = "자신의 정보를 입력해주세요.";
+/* const width = {}; */  /* 이렇게하면 채팅방 폭 MAX로 자동 (플로팅 아닐 때)*/
+/* const height = {}; */  /* height 고정을 풀어주는 옵션 (플로팅 중 아닐 때) */
 /* 옵션주는 버블창 */
 const bubbleOptionStyle = {
   background: "#f39c12",
 };
-/* height 고정을 풀어주는 옵션 (플로팅 중 아닐 때) */
-/* const height = {}; */
-
 /* 플로팅(채팅창 아이콘) */
 const floatingStyle = {
-/*   background: "#efefef", */
-  marginRight: '142px',  
-  marginBottop: "0px",   
-  border: "5px solid",
-  borderColor:'#7e7e7e',
+  /* border: "5px solid", */
+  /* borderColor:'#7e7e7e', */
+  /* Top: '100px', */
+  background: "#2ecc71",  
+  /* marginRight: '230px',  */ 
+  /* marginBottop: "200px", */   
+  bottom:'815px',
   padding: "0px",
   zIndex:'999999999999999999999999',
 };
-
 /* 테마 1, 2  */
 const lightTheme = {
 /*   background: "#fff", */
@@ -103,35 +93,31 @@ const darkTheme = {
   userBubbleColor: "#f39c12",
   userFontColor: "#fff",
 };
-
 /* 대본 */
 const steps = [
   {
     id: "0",
     message: randomF(),
-    trigger: "user",
-  },
-  {
-    id: "user",
-    user:true,
     trigger: "1",
   },
   {
     id: "1",
-    message: randomS() + "교통수단은 무엇인가요?",
+    message: randomS() + "교통수단은 무엇인가요? " + randomT(),
     trigger: "transport",
   },
   {
     id: "transport",
     options: [
-      { value: "대중교통", label: "대중교통", trigger: "2" },
       { value: "자가용", label: "자가용", trigger: "2" },
+      { value: "버스", label: "버스", trigger: "2" },
+      { value: "택시", label: "택시", trigger: "2" },
+      { value: "지하철", label: "지하철", trigger: "2" },
     ],
   },
 
   {
     id: "2",
-    message: randomS() + "직업은요? " + randomT(),
+    message: randomS() + "직업을 여쭤봐도 되겠습니까? " + randomT(),
     trigger: "job",
   },
   {
@@ -146,62 +132,71 @@ const steps = [
       { value: "노무", label: "노무", trigger: "3" },
       { value: "운전", label: "운전", trigger: "3" },
       { value: "영업", label: "영업", trigger: "3" },
-      { value: "기타", label: "기타", trigger: "3" },
     ],
   },
   {
     id: "3",
-    message: randomS() + "취미도 궁금해요! " + randomT(),
+    message: randomS() + "취미도 알려주시면 정말 감사하겠습니다. " + randomT(),
     trigger: "hobby",
   },
   {
     id: "hobby",
     options: [
       { value: "운동", label: "운동", trigger: "4" },
-      { value: "무술", label: "무술", trigger: "4" },
-      { value: "보디빌딩", label: "보디빌딩", trigger: "4" },
-      { value: "조깅", label: "조깅", trigger: "4" },
       { value: "게임", label: "게임", trigger: "4" },
       { value: "그림", label: "그림", trigger: "4" },
       { value: "음악 ", label: "음악", trigger: "4" },
       { value: "영화", label: "영화", trigger: "4" },
-      { value: "기타", label: "기타", trigger: "4" },
+      { value: "독서", label: "독서", trigger: "4" },
     ],
   },
   {
     id: "4",
-    message: randomS() + "좋아하는 음식도 말해줘요~ " + randomT(),
-    trigger: "food",
-  },
-  {
-    id: "food",
-    options: [
-      { value: "한식", label: "한식", trigger: "5" },
-      { value: "중식", label: "중식", trigger: "5" },
-      { value: "일식", label: "일식", trigger: "5" },
-      { value: "양식", label: "양식", trigger: "5" },
-      { value: "기타", label: "기타", trigger: "5" },
-    ],
-  },
-  {
-    id: "5",
-    message: randomS() + "좋아하는 음악은? " + randomT(),
+    message: randomS() + "좋아하는 음악도 알려주세요. " + randomT(),
     trigger: "music",
   },
   {
     id: "music",
     options: [
-      { value: "클래식", label: "클래식", trigger: "6" },
-      { value: "발라드", label: "발라드", trigger: "6" },
-      { value: "힙합", label: "힙합", trigger: "6" },
-      { value: "락", label: "락", trigger: "6" },
-      { value: "트로트", label: "트로트", trigger: "6" },
-      { value: "댄스", label: "댄스", trigger: "6" },
-      { value: "기타", label: "기타", trigger: "6" },
+      { value: "클래식", label: "클래식", trigger: "5" },
+      { value: "발라드", label: "발라드", trigger: "5" },
+      { value: "힙합", label: "힙합", trigger: "5" },
+      { value: "락", label: "락", trigger: "5" },
+      { value: "트로트", label: "트로트", trigger: "5" },
+      { value: "댄스", label: "댄스", trigger: "5" },
+    ],
+  },
+  {
+    id: "5",
+    message: randomS() + "좋아하는 음식 정보도 필요합니다. " + randomT(),
+    trigger: "food",
+  },
+  {
+    id: "food",
+    options: [
+      { value: "한식", label: "한식", trigger: "6" },
+      { value: "중식", label: "중식", trigger: "6" },
+      { value: "일식", label: "일식", trigger: "6" },
+      { value: "양식", label: "양식", trigger: "6" },
+
     ],
   },
   {
     id: "6",
+    message: randomS() + "마지막으로 좋아하는 음료 정보가 필요합니다. " + randomT(),
+    trigger: "drink",
+  },
+  {
+    id: "drink",
+    options: [
+      { value: "커피", label: "커피", trigger: "7" },
+      { value: "차", label: "차", trigger: "7" },
+      { value: "탄산음료", label: "탄산음료", trigger: "7" },
+      { value: "프라페", label: "프라페", trigger: "7" },
+    ],
+  },
+  {
+    id: "7",
     message: "정확히 입력하셨나요?",
     trigger: "review",
   },
@@ -291,7 +286,7 @@ class ChatbotSteps extends Component {
               marginRight: "-1px",
               marginTop: "-7.73px",
               /* borderBottom: "65px solid", */
-              borderColor: "#fff",
+              borderColor: "#fff", 
               /* alignItems: "baseline", */
               /* display:'inline', */ 
             }}
