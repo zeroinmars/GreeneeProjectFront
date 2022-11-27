@@ -1,3 +1,4 @@
+/* import */
 import React, { Component } from "react";
 import ChatBot from "react-simple-chatbot";
 import ChatbotReview from "./ChatbotReview";
@@ -7,68 +8,83 @@ import greenihead2 from "../../img/greenihead.png";
 import greenihead from "../../img/greenee.png";
 import iconStar from "../../img/iconStar.png";
 import iconUnder from "../../img/iconUnder.png";
+/* export */
+class ChatbotSteps extends Component {
+  render(props) {
+    const config = {
+      steps: steps, //인풋아웃풋대본
+      headerTitle:"Greenee", //채팅창 타이틀
+      className:"greeniChatbot", //클래스네임(CSS를위한)(채팅창외부)
+      hideUserAvatar:"true",
+      placeholder:"  자신의 정보를 입력해주세요.",
+      botDelay:2000,
+      footerStyle:{background:"#efefef",},
+      bubbleOptionStyle:{background: "#f39c12",},
+      botAvatar:avatarArray[Math.floor(Math.random() * avatarArray.length)],
+      floating:"true", /* 채팅창 버튼으로 자동 플로팅 */
+      floatingStyle:floatingStyle,
+      //floatingIcon={greenihead},     
+      //submitButtonStyle:{},
+      //inputStyle:{},
+      //width: {},
+      //height: {},
+    }
+    return (
+      <>
+        <ThemeProvider theme={lightTheme}>
+          <div style={{marginRight: "-1px",marginTop: "-7.73px",borderColor: "#fff",}}>
+            <ChatBot {...config}/>
+          </div>
+        </ThemeProvider>
+      </>
+    );
+  }
+}
+export default ChatbotSteps;
 /* 봇아바타랜덤돌리기 */
 /* Math.random() 함수는 0 ~ 1 사이의 숫자를 반환합니다. 그리고 0과 배열의 마지막
 인덱스 사이의 값을 구하기 위해서는 Math.random() 함수와 배열의 length를 곱합니다.
 마지막으로 Math.random() 함수의 반환 값 * 배열의 length는 정수 또는 실수이므로 
 Math.floor() 함수를 호출하여 정수로 반올림합니다. */
-let botAvatarRandom;
 let avatarArray = [greenihead,greenihead2,iconStar,iconUnder]
-/* first랑 second에는 뒤에 공백하나 */
-let firstArray = ["AI비서 그리니입니다. 회원님의 정보가 필요합니다.",
-'만나서 반갑습니다. 그리니입니다.',
-"Load Complete, AI Secretary 'Greenee'",
-'회원님의 성향 정보를 받겠습니다.']
+let firstArray = ["AI비서 그리니입니다. 회원님의 정보가 필요합니다.",'만나서 반갑습니다. 그리니입니다.', "Load Complete, AI Secretary 'Greenee'",'회원님의 성향 정보를 받겠습니다.']
 let secondArray = ['','','','','네. 그럼, ','음, ','그럼, ', '네. ']
-let transportArray = [
-'교통수단은 무엇인가요? ',
-'교통수단을 여쭤봐도 되겠습니까? ',
-'교통수단을 알려주시면 정말 감사하겠습니다. ',
-'교통수단 정보가 필요합니다. ',
+let thirdArray = ['','','','','잘 읽고 답변해 주시길 바랍니다.','서비스에 필요한 정보입니다.','궁금해요.','언제든 수정이 가능합니다.','답변에 따라 좋은 정보를 추천해드립니다.'] 
+let transportArray = ['교통수단은 무엇인가요? ','교통수단을 여쭤봐도 되겠습니까? ','교통수단을 알려주시면 정말 감사하겠습니다. ','교통수단 정보가 필요합니다. ',]
+let jobArray = ['직업은 무엇인가요? ','직업을 여쭤봐도 되겠습니까? ','직업을 알려주시면 정말 감사하겠습니다. ','직업 정보가 필요합니다. ',]
+let hobbyArray = [
+'취미는 무엇인가요? ',
+'취미를 여쭤봐도 되겠습니까? ',
+'취미를 알려주시면 정말 감사하겠습니다. ',
+'취미 정보가 필요합니다. ',
 ]
-let jobArray = [
-  '직업은 무엇인가요? ',
-  '직업을 여쭤봐도 되겠습니까? ',
-  '직업을 알려주시면 정말 감사하겠습니다. ',
-  '직업 정보가 필요합니다. ',
-  ]
-  let hobbyArray = [
-    '취미는 무엇인가요? ',
-    '취미를 여쭤봐도 되겠습니까? ',
-    '취미를 알려주시면 정말 감사하겠습니다. ',
-    '취미 정보가 필요합니다. ',
-    ]
-    let musicArray = [
-      '좋아하는 음악은 무엇인가요? ',
-      '좋아하는 음악을 여쭤봐도 되겠습니까? ',
-      '좋아하는 음악을 알려주시면 정말 감사하겠습니다. ',
-      '좋아하는 음악 정보가 필요합니다. ',
-      ]
-      let foodArray = [
-        '좋아하는 음식은 무엇인가요? ',
-        '좋아하는 음식을 여쭤봐도 되겠습니까? ',
-        '좋아하는 음식을 알려주시면 정말 감사하겠습니다. ',
-        '좋아하는 음식 정보가 필요합니다. ',
-        ]
-        let drinkArray = [
-          '좋아하는 음료는 무엇인가요? ',
-          '좋아하는 음료를 여쭤봐도 되겠습니까? ',
-          '좋아하는 음료를 알려주시면 정말 감사하겠습니다. ',
-          '좋아하는 음료 정보가 필요합니다. ',
-          ]
-let thirdArray = ['','','','','잘 읽고 답변해 주시길 바랍니다.',
-'서비스에 필요한 정보입니다.','궁금해요.','언제든 수정이 가능합니다.',
-'답변에 따라 좋은 정보를 추천해드립니다.'] 
+let musicArray = [
+'좋아하는 음악은 무엇인가요? ',
+'좋아하는 음악을 여쭤봐도 되겠습니까? ',
+'좋아하는 음악을 알려주시면 정말 감사하겠습니다. ',
+'좋아하는 음악 정보가 필요합니다. ',
+]
+let foodArray = [
+'좋아하는 음식은 무엇인가요? ',
+'좋아하는 음식을 여쭤봐도 되겠습니까? ',
+'좋아하는 음식을 알려주시면 정말 감사하겠습니다. ',
+'좋아하는 음식 정보가 필요합니다. ',
+]
+let drinkArray = [
+'좋아하는 음료는 무엇인가요? ',
+'좋아하는 음료를 여쭤봐도 되겠습니까? ',
+'좋아하는 음료를 알려주시면 정말 감사하겠습니다. ',
+'좋아하는 음료 정보가 필요합니다. ',
+]
 /* 첫인사 */
 function randomF(){
-  botAvatarRandom = avatarArray[Math.floor(Math.random() * avatarArray.length)]
   return firstArray[Math.floor(Math.random() * firstArray.length)]
 }
 /* 앞문장 */
 function randomS(){
   return secondArray[Math.floor(Math.random() * secondArray.length)]
 }
-/* 성향묻기 */
+/* 중간문장 성향묻기 */
 function randomTransport(){
   return transportArray[Math.floor(Math.random() * transportArray.length)]
 }
@@ -91,63 +107,6 @@ function randomDrink(){
 function randomT(){
   return thirdArray[Math.floor(Math.random() * thirdArray.length)]
 }
-/* 변수 */
-/* 봇딜레이 1000 마다 1초 .밀리세컨 */
-let botDelay = 2000;
-/* 유저 인풋 창 전송버튼 */
-const submitButtonStyle = {};
-/* 유저 인풋 창 */
-const inputStyle = {};
-/* 유저 인풋창 전체 */
-const footerStyle = {
-  background:"#efefef", 
-};
-/* 유저 인풋 창 플레이스홀더 */
-const placeholder = "  자신의 정보를 입력해주세요.";
-/* const width = {}; */  /* 이렇게하면 채팅방 폭 MAX로 자동 (플로팅 아닐 때)*/
-/* const height = {}; */  /* height 고정을 풀어주는 옵션 (플로팅 중 아닐 때) */
-/* 옵션주는 버블창 */
-const bubbleOptionStyle = {
-  background: "#f39c12",
-};
-/* 플로팅(채팅창 아이콘) */
-const floatingStyle = {
-  /* border: "5px solid", */
-  /* borderColor:'#7e7e7e', */
-  /* Top: '100px', */
-  background: "#2ecc71",  
-/*   marginRight: '200px',   
-  bottom:'600px', */
-  marginRight: '240px',   
-  bottom:'830px',
-  padding: "0px",
-  zIndex:'999999999999999999999999',
-};
-/* 테마 1, 2  */
-const lightTheme = {
-/*   background: "#fff", */
-  background: "#f0fddd",  
-  fontFamily: "Helvetica Neue",
-  headerBgColor: "#2ecc71",
-  headerFontColor: "#fff",
-  headerFontSize: "20px",
-  botBubbleColor: "#2ecc71",
-  botFontColor: "#fff",
-  userBubbleColor: "#f39c12",
-  userFontColor: "#fff",
-};
-const darkTheme = {
-  background: "#f0fddd",
-  fontFamily: "Helvetica Neue",
-  headerBgColor: "#2ecc71",
-  headerFontColor: "#fff",
-  headerFontSize: "20px",
-  botBubbleColor: "#2ecc71",
-  botFontColor: "#fff",
-  userBubbleColor: "#f39c12",
-  userFontColor: "#fff",
-};
-/* 대본 */
 const steps = [
   {
     id: "0",
@@ -319,46 +278,24 @@ const steps = [
         },
     }, */
 ];
-/* export */
-class ChatbotSteps extends Component {
-  render() {
-    return (
-      <>
-        <ThemeProvider theme={lightTheme}>
-          {/* <ThemeProvider theme={darkTheme}> */}
-          <div
-            style={{
-              marginRight: "-1px",
-              marginTop: "-7.73px",
-              /* borderBottom: "65px solid", */
-              borderColor: "#fff", 
-              zIndex:'9999999999999999999999',
-              /* alignItems: "baseline", */
-              /* display:'inline', */ 
-            }}
-          >
-            <ChatBot
-              headerTitle="Greenee" //채팅창 타이틀
-              steps={steps} //인풋아웃풋대본
-              botAvatar={botAvatarRandom}
-              className="greeniChatbot" //클래스네임(CSS를위한)(채팅창외부)
-              hideUserAvatar="true"
-              submitButtonStyle={submitButtonStyle}
-         /*      width={width} */  /* 채팅방 폭 MAX로 하는 옵션 */
-              placeholder={placeholder}
-              inputStyle={inputStyle}
-              footerStyle={footerStyle}
-              botDelay={botDelay}
-              bubbleOptionStyle={bubbleOptionStyle}
-              /* height={height} */
-              floating="true" /* 채팅창 버튼으로 자동 플로팅 */
-              floatingStyle={floatingStyle}
-              /* floatingIcon={greenihead}     */
-            />
-          </div>
-        </ThemeProvider>
-      </>
-    );
-  }
-}
-export default ChatbotSteps;
+const lightTheme = {
+  background: "#f0fddd",  
+  fontFamily: "Helvetica Neue",
+  headerBgColor: "#2ecc71",
+  headerFontColor: "#fff",
+  headerFontSize: "20px",
+  botBubbleColor: "#2ecc71",
+  botFontColor: "#fff",
+  userBubbleColor: "#f39c12",
+  userFontColor: "#fff",
+};
+/* 플로팅(채팅창 아이콘) 스타일 */
+const floatingStyle = {
+  background: "#2ecc71",  
+  marginRight: '240px',   
+  padding: "0px",
+  bottom:'830px', 
+  /* border: "5px solid", */
+  /* borderColor:'#7e7e7e', */
+  /* Top: '100px', */
+};
