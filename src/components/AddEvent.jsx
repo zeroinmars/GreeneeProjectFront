@@ -34,8 +34,8 @@ const AddEvent = () => {
     setOpenTag2(true);
   }
   const [cateList, setCateList] = useState([]);
-  const [start, setStart] = useState(dayjs('2022-11-18T21:11:54'));
-  const [end, setEnd] = useState(dayjs('2022-11-19T21:11:54'));
+  const [start, setStart] = useState(dayjs('2022-11-18T00:00:00'));
+  const [end, setEnd] = useState(dayjs('2022-11-19T00:00:00'));
 
   const handleS = (n) => {
     setStart(n);
