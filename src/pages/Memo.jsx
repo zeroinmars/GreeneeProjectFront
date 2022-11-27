@@ -13,8 +13,6 @@ import ChatbotSteps from '../components/chatbot/ChatbotSteps'
   zIndex: "20",
 }; */
 
-import Aa from  '../components/chatbot/aa'
-
 const Memo = () => {
   return (
     <>
@@ -25,7 +23,6 @@ const Memo = () => {
         <img className='greenee20' src={greenee2}/> 
       </Link> */}
       <ChatbotSteps></ChatbotSteps>
-      <Aa></Aa>
     </>
   );
 };
