@@ -429,7 +429,7 @@ const lightTheme = {
 /* 플로팅(채팅창 아이콘) 스타일 */
 const floatingStyle = {
   background: "#2ecc71",
-  marginRight: "240px",
+  marginRight: "300px",
   padding: "0px",
   bottom: "110px",
   /* border: "5px solid", */

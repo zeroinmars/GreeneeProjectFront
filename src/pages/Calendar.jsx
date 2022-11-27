@@ -1,7 +1,7 @@
 import Calendar from "../components/Calendar";
 import AddEventButton from "../components/FreqCompo/AddEventButton";
 import HeaderAlarm from "../components/HeaderAlarm";
-import ChatbotSteps from '../components/chatbot/ChatbotSteps'
+/* import ChatbotSteps from '../components/chatbot/ChatbotSteps' */
 
 export default () => {
   return (
@@ -9,7 +9,7 @@ export default () => {
       <HeaderAlarm />
       <Calendar />
       <AddEventButton />
-      <ChatbotSteps></ChatbotSteps>
+      {/* <ChatbotSteps></ChatbotSteps> */}
     </div>
   );
 };
