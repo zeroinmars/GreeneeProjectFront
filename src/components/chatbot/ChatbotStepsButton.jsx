@@ -13,83 +13,30 @@ import iconUnder from "../../img/iconUnder.png";
 마지막으로 Math.random() 함수의 반환 값 * 배열의 length는 정수 또는 실수이므로 
 Math.floor() 함수를 호출하여 정수로 반올림합니다. */
 let botAvatarRandom;
-let avatarArray = [greenihead,greenihead2,iconStar,iconUnder]
+let randomfirst;
+let randomSecond;
+let randomThird;
+const avatarArray = [greenihead,greenihead2,iconStar,iconUnder]
 /* first랑 second에는 뒤에 공백하나 */
-let firstArray = ["AI비서 그리니입니다. 회원님의 정보가 필요합니다.",
+const firstArray = ["AI비서 그리니입니다. 회원님의 정보가 필요합니다.",
 '만나서 반갑습니다. 그리니입니다.',
 "Load Complete, AI Secretary 'Greenee'",
 '회원님의 성향 정보를 받겠습니다.']
-let secondArray = ['','','','','네. 그럼, ','음, ','그럼, ', '네. ']
-let transportArray = [
-'교통수단은 무엇인가요? ',
-'교통수단을 여쭤봐도 되겠습니까? ',
-'교통수단을 알려주시면 정말 감사하겠습니다. ',
-'교통수단 정보가 필요합니다. ',
-]
-let jobArray = [
-  '직업은 무엇인가요? ',
-  '직업을 여쭤봐도 되겠습니까? ',
-  '직업을 알려주시면 정말 감사하겠습니다. ',
-  '직업 정보가 필요합니다. ',
-  ]
-  let hobbyArray = [
-    '취미는 무엇인가요? ',
-    '취미를 여쭤봐도 되겠습니까? ',
-    '취미를 알려주시면 정말 감사하겠습니다. ',
-    '취미 정보가 필요합니다. ',
-    ]
-    let musicArray = [
-      '좋아하는 음악은 무엇인가요? ',
-      '좋아하는 음악을 여쭤봐도 되겠습니까? ',
-      '좋아하는 음악을 알려주시면 정말 감사하겠습니다. ',
-      '좋아하는 음악 정보가 필요합니다. ',
-      ]
-      let foodArray = [
-        '좋아하는 음식은 무엇인가요? ',
-        '좋아하는 음식을 여쭤봐도 되겠습니까? ',
-        '좋아하는 음식을 알려주시면 정말 감사하겠습니다. ',
-        '좋아하는 음식 정보가 필요합니다. ',
-        ]
-        let drinkArray = [
-          '좋아하는 음료는 무엇인가요? ',
-          '좋아하는 음료를 여쭤봐도 되겠습니까? ',
-          '좋아하는 음료를 알려주시면 정말 감사하겠습니다. ',
-          '좋아하는 음료 정보가 필요합니다. ',
-          ]
-let thirdArray = ['','','','','잘 읽고 답변해 주시길 바랍니다.',
-'서비스에 필요한 정보입니다.','궁금해요.','언제든 수정이 가능합니다.',
-'답변에 따라 좋은 정보를 추천해드립니다.'] 
-/* 첫인사 */
+const secondArray = ['','','','','네. ','음. ','그럼. ']
+const thirdArray = ['','','','','잘 읽고 답변해 주시길 바랍니다.',
+'서비스에 필요한 정보입니다.','궁금해요.','언제든 수정이 가능합니다.'] 
 function randomF(){
   botAvatarRandom = avatarArray[Math.floor(Math.random() * avatarArray.length)]
-  return firstArray[Math.floor(Math.random() * firstArray.length)]
+  randomfirst = firstArray[Math.floor(Math.random() * firstArray.length)]
+  return randomfirst
 }
-/* 앞문장 */
 function randomS(){
-  return secondArray[Math.floor(Math.random() * secondArray.length)]
+  randomSecond = secondArray[Math.floor(Math.random() * secondArray.length)]
+  return randomSecond
 }
-/* 성향묻기 */
-function randomTransport(){
-  return transportArray[Math.floor(Math.random() * transportArray.length)]
-}
-function randomJob(){
-  return jobArray[Math.floor(Math.random() * jobArray.length)]
-}
-function randomHobby(){
-  return hobbyArray[Math.floor(Math.random() * hobbyArray.length)]
-}
-function randomMusic(){
-  return musicArray[Math.floor(Math.random() * musicArray.length)]
-}
-function randomFood(){
-  return foodArray[Math.floor(Math.random() * foodArray.length)]
-}
-function randomDrink(){
-  return drinkArray[Math.floor(Math.random() * drinkArray.length)]
-}
-/* 뒷문장 */
 function randomT(){
-  return thirdArray[Math.floor(Math.random() * thirdArray.length)]
+  randomThird = thirdArray[Math.floor(Math.random() * thirdArray.length)]
+  return randomThird
 }
 /* 변수 */
 /* 봇딜레이 1000 마다 1초 .밀리세컨 */
@@ -103,7 +50,7 @@ const footerStyle = {
   background:"#efefef", 
 };
 /* 유저 인풋 창 플레이스홀더 */
-const placeholder = "  자신의 정보를 입력해주세요.";
+const placeholder = "자신의 정보를 입력해주세요.";
 /* const width = {}; */  /* 이렇게하면 채팅방 폭 MAX로 자동 (플로팅 아닐 때)*/
 /* const height = {}; */  /* height 고정을 풀어주는 옵션 (플로팅 중 아닐 때) */
 /* 옵션주는 버블창 */
@@ -116,10 +63,9 @@ const floatingStyle = {
   /* borderColor:'#7e7e7e', */
   /* Top: '100px', */
   background: "#2ecc71",  
-/*   marginRight: '200px',   
-  bottom:'600px', */
-  marginRight: '240px',   
-  bottom:'830px',
+  marginRight: '230px',   
+  /* marginBottop: "200px", */   
+  bottom:'815px',
   padding: "0px",
   zIndex:'999999999999999999999999',
 };
@@ -156,7 +102,7 @@ const steps = [
   },
   {
     id: "1",
-    message: randomS() + randomTransport() + randomT(),
+    message: randomS() + "교통수단은 무엇인가요? " + randomT(),
     trigger: "transport",
   },
   {
@@ -168,29 +114,45 @@ const steps = [
       { value: "지하철", label: "지하철", trigger: "2" },
     ],
   },
+
   {
     id: "2",
-    message: randomS() + randomJob() + randomT(),
+    message: randomS() + "직업을 여쭤봐도 되겠습니까? " + randomT(),
     trigger: "job",
   },
   {
     id: "job",
-    user: true,
-    trigger: "3",
+    options: [
+      { value: "사무", label: "사무", trigger: "3" },
+      { value: "음식", label: "음식", trigger: "3" },
+      { value: "보안", label: "보안", trigger: "3" },
+      { value: "보건 ", label: "보건", trigger: "3" },
+      { value: "관리", label: "관리", trigger: "3" },
+      { value: "농업", label: "농업", trigger: "3" },
+      { value: "노무", label: "노무", trigger: "3" },
+      { value: "운전", label: "운전", trigger: "3" },
+      { value: "영업", label: "영업", trigger: "3" },
+    ],
   },
   {
     id: "3",
-    message: randomS() + randomHobby() + randomT(),
+    message: randomS() + "취미도 알려주시면 정말 감사하겠습니다. " + randomT(),
     trigger: "hobby",
   },
   {
     id: "hobby",
-    user: true,
-    trigger: "4",
+    options: [
+      { value: "운동", label: "운동", trigger: "4" },
+      { value: "게임", label: "게임", trigger: "4" },
+      { value: "그림", label: "그림", trigger: "4" },
+      { value: "음악 ", label: "음악", trigger: "4" },
+      { value: "영화", label: "영화", trigger: "4" },
+      { value: "독서", label: "독서", trigger: "4" },
+    ],
   },
   {
     id: "4",
-    message: randomS() + randomMusic() + randomT(),
+    message: randomS() + "좋아하는 음악도 알려주세요. " + randomT(),
     trigger: "music",
   },
   {
@@ -206,7 +168,7 @@ const steps = [
   },
   {
     id: "5",
-    message: randomS() + randomFood() + randomT(),
+    message: randomS() + "좋아하는 음식 정보도 필요합니다. " + randomT(),
     trigger: "food",
   },
   {
@@ -216,13 +178,12 @@ const steps = [
       { value: "중식", label: "중식", trigger: "6" },
       { value: "일식", label: "일식", trigger: "6" },
       { value: "양식", label: "양식", trigger: "6" },
-      { value: "패스트푸드", label: "패스트푸드", trigger: "6" },
 
     ],
   },
   {
     id: "6",
-    message: randomS() + randomDrink() + randomT(),
+    message: randomS() + "마지막으로 좋아하는 음료 정보가 필요합니다. " + randomT(),
     trigger: "drink",
   },
   {
@@ -254,7 +215,7 @@ const steps = [
   },
   {
     id: "update-yes",
-    message: "수정할 정보를 선택하고 입력해주세요.",
+    message: "어느 정보를 수정하시겠어요?",
     trigger: "update-fields",
   },
   {
@@ -271,32 +232,32 @@ const steps = [
   {
     id: "update-transport",
     update: "transport",
-    trigger: "7",
+    trigger: "6",
   },
   {
     id: "update-job",
     update: "job",
-    trigger: "7",
+    trigger: "6",
   },
   {
     id: "update-hobby",
     update: "hobby",
-    trigger: "7",
+    trigger: "6",
   },
   {
     id: "update-music",
     update: "music",
-    trigger: "7",
+    trigger: "6",
   },
   {
     id: "update-food",
     update: "food",
-    trigger: "7",
+    trigger: "6",
   },
   {
     id: "update-drink",
     update: "drink",
-    trigger: "7",
+    trigger: "6",
   },
 /*   {
     id: "end-message",
@@ -338,7 +299,7 @@ class ChatbotSteps extends Component {
             }}
           >
             <ChatBot
-              headerTitle="Greenee" //채팅창 타이틀
+              headerTitle="Greenee.AI" //채팅창 타이틀
               steps={steps} //인풋아웃풋대본
               botAvatar={botAvatarRandom}
               className="greeniChatbot" //클래스네임(CSS를위한)(채팅창외부)
