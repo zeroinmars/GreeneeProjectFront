@@ -57,9 +57,20 @@ let firstArray = [
   "AI비서 그리니입니다. 회원님의 정보가 필요합니다.",
   "만나서 반갑습니다. 그리니입니다.",
   "Load Complete, AI Secretary 'Greenee'",
-  "회원님의 정보를 받겠습니다.",
+  "회원님의 성향 정보를 받겠습니다.",
 ];
 let secondArray = ["", "", "", "", "네. 그럼, ", "음, ", "그럼, ", "네. "];
+let thirdArray = [
+  "",
+  "",
+  "",
+  "",
+  "잘 읽고 답변해 주시길 바랍니다.",
+  "서비스에 필요한 정보입니다.",
+  "궁금해요.",
+  "언제든 수정이 가능합니다.",
+  "답변에 따라 좋은 정보를 추천해드립니다.",
+];
 let transportArray = [
   "교통수단은 무엇인가요? ",
   "교통수단을 여쭤봐도 되겠습니까? ",
@@ -95,17 +106,6 @@ let drinkArray = [
   "좋아하는 음료를 여쭤봐도 되겠습니까? ",
   "좋아하는 음료를 알려주시면 정말 감사하겠습니다. ",
   "좋아하는 음료 정보가 필요합니다. ",
-];
-let thirdArray = [
-  "",
-  "",
-  "",
-  "",
-  "잘 읽고 답변해 주시길 바랍니다.",
-  "서비스에 필요한 정보입니다.",
-  "궁금해요.",
-  "언제든 수정이 가능합니다.",
-  "답변에 따라 좋은 정보를 추천해드립니다.",
 ];
 /* 첫인사 */
 function randomF() {
@@ -146,155 +146,86 @@ const steps = [
   },
   {
     id: "1",
-    message: "기상시간을 숫자 4개로 적어주세요. 0000 ~ 2459",
-    trigger: "wake",
-  },
-  {
-    id: "wake",
-    user: true,
-    trigger: "2",
-    validator: (value) => {
-      if (/^([0-1]?[0-9]|2[0-4])([0-5][0-9])(:[0-5][0-9])?$/.test(value)) {
-        return true;
-      } else {
-        return "ex) 오후1시30분 > 1340";
-      }
-    },
-  },
-  {
-    id: "2",
-    message: "출근시간을 숫자 4개로 적어주세요. 0000 ~ 2459",
-    trigger: "startwork",
-  },
-  {
-    id: "startwork",
-    user: true,
-    trigger: "3",
-    validator: (value) => {
-      if (/^([0-1]?[0-9]|2[0-4])([0-5][0-9])(:[0-5][0-9])?$/.test(value)) {
-        return true;
-      } else {
-        return "ex) 오후1시30분 > 1340";
-      }
-    },
-  },
-
-  {
-    id: "3",
-    message: "점심시간을 숫자 4개로 적어주세요. 0000 ~ 2459",
-    trigger: "lunch",
-  },
-  {
-    id: "lunch",
-    user: true,
-    trigger: "4",
-    validator: (value) => {
-      if (/^([0-1]?[0-9]|2[0-4])([0-5][0-9])(:[0-5][0-9])?$/.test(value)) {
-        return true;
-      } else {
-        return "ex) 오후1시30분 > 1340";
-      }
-    },
-  },
-  {
-    id: "4",
-    message: "퇴근시간을 숫자 4개로 적어주세요. 0000 ~ 2459",
-    trigger: "endwork",
-  },
-  {
-    id: "endwork",
-    user: true,
-    trigger: "5",
-    validator: (value) => {
-      if (/^([0-1]?[0-9]|2[0-4])([0-5][0-9])(:[0-5][0-9])?$/.test(value)) {
-        return true;
-      } else {
-        return "ex) 오후1시30분 > 1340";
-      }
-    },
-  },
-  {
-    id: "5",
     message: randomS() + randomTransport() + randomT(),
     trigger: "transport",
   },
   {
     id: "transport",
     options: [
-      { value: "자가용", label: "자가용", trigger: "6" },
-      { value: "버스", label: "버스", trigger: "6" },
-      { value: "택시", label: "택시", trigger: "6" },
-      { value: "지하철", label: "지하철", trigger: "6" },
+      { value: "자가용", label: "자가용", trigger: "2" },
+      { value: "버스", label: "버스", trigger: "2" },
+      { value: "택시", label: "택시", trigger: "2" },
+      { value: "지하철", label: "지하철", trigger: "2" },
     ],
   },
   {
-    id: "6",
+    id: "2",
     message: randomS() + randomJob() + randomT(),
     trigger: "job",
   },
   {
     id: "job",
     user: true,
-    trigger: "7",
+    trigger: "3",
   },
   {
-    id: "7",
+    id: "3",
     message: randomS() + randomHobby() + randomT(),
     trigger: "hobby",
   },
   {
     id: "hobby",
     user: true,
-    trigger: "8",
+    trigger: "4",
   },
   {
-    id: "8",
+    id: "4",
     message: randomS() + randomMusic() + randomT(),
     trigger: "music",
   },
   {
     id: "music",
     options: [
-      { value: "클래식", label: "클래식", trigger: "9" },
-      { value: "발라드", label: "발라드", trigger: "9" },
-      { value: "힙합", label: "힙합", trigger: "9" },
-      { value: "락", label: "락", trigger: "9" },
-      { value: "트로트", label: "트로트", trigger: "9" },
-      { value: "댄스", label: "댄스", trigger: "9" },
-      { value: "인디", label: "인디", trigger: "9" },
+      { value: "클래식", label: "클래식", trigger: "5" },
+      { value: "발라드", label: "발라드", trigger: "5" },
+      { value: "힙합", label: "힙합", trigger: "5" },
+      { value: "락", label: "락", trigger: "5" },
+      { value: "트로트", label: "트로트", trigger: "5" },
+      { value: "댄스", label: "댄스", trigger: "5" },
+      { value: "인디", label: "인디", trigger: "5" },
     ],
   },
   {
-    id: "9",
+    id: "5",
     message: randomS() + randomFood() + randomT(),
     trigger: "food",
   },
   {
     id: "food",
     options: [
-      { value: "한식", label: "한식", trigger: "10" },
-      { value: "중식", label: "중식", trigger: "10" },
-      { value: "일식", label: "일식", trigger: "10" },
-      { value: "양식", label: "양식", trigger: "10" },
-      { value: "패스트푸드", label: "패스트푸드", trigger: "10" },
+      { value: "한식", label: "한식", trigger: "6" },
+      { value: "중식", label: "중식", trigger: "6" },
+      { value: "일식", label: "일식", trigger: "6" },
+      { value: "양식", label: "양식", trigger: "6" },
+      { value: "패스트푸드", label: "패스트푸드", trigger: "6" },
     ],
   },
   {
-    id: "10",
+    id: "6",
     message: randomS() + randomDrink() + randomT(),
     trigger: "drink",
   },
   {
     id: "drink",
     options: [
-      { value: "커피", label: "커피", trigger: "11" },
-      { value: "차", label: "차", trigger: "11" },
-      { value: "탄산음료", label: "탄산음료", trigger: "11" },
-      { value: "프라페", label: "프라페", trigger: "11" },
+      { value: "커피", label: "커피", trigger: "7" },
+      { value: "차", label: "차", trigger: "7" },
+      { value: "탄산음료", label: "탄산음료", trigger: "7" },
+      { value: "프라페", label: "프라페", trigger: "7" },
     ],
   },
   {
-    id: "11",
+    id: "7",
     message: "정확히 입력하셨나요?",
     trigger: "review",
   },
@@ -319,10 +250,6 @@ const steps = [
   {
     id: "update-fields",
     options: [
-      { value: "기상시간", label: "기상시간", trigger: "update-wake" },
-      { value: "출근시간", label: "출근시간", trigger: "update-startwork" },
-      { value: "점심시간", label: "점심시간", trigger: "update-lunch" },
-      { value: "퇴근시간", label: "퇴근시간", trigger: "update-endwork" },
       { value: "교통수단", label: "교통수단", trigger: "update-transport" },
       { value: "직업", label: "직업", trigger: "update-job" },
       { value: "취미", label: "취미", trigger: "update-hobby" },
@@ -332,61 +259,41 @@ const steps = [
     ],
   },
   {
-    id: "update-wake",
-    update: "wake",
-    trigger: "11",
-  },
-  {
-    id: "update-startwork",
-    update: "startwork",
-    trigger: "11",
-  },
-  {
-    id: "update-lunch",
-    update: "lunch",
-    trigger: "11",
-  },
-  {
-    id: "update-endwork",
-    update: "endwork",
-    trigger: "11",
-  },
-  {
     id: "update-transport",
     update: "transport",
-    trigger: "11",
+    trigger: "7",
   },
   {
     id: "update-job",
     update: "job",
-    trigger: "11",
+    trigger: "7",
   },
   {
     id: "update-hobby",
     update: "hobby",
-    trigger: "11",
+    trigger: "7",
   },
   {
     id: "update-music",
     update: "music",
-    trigger: "11",
+    trigger: "7",
   },
   {
     id: "update-food",
     update: "food",
-    trigger: "11",
+    trigger: "7",
   },
   {
     id: "update-drink",
     update: "drink",
-    trigger: "11",
+    trigger: "7",
   },
   /*   {
     id: "end-message",
     message: "정보를 수정했습니다.",
     end: true,
-  },  
-  {
+  }, */
+  /*     {
         id: 'age',
         user: true,
         trigger: '7',
@@ -400,20 +307,7 @@ const steps = [
             }
             return true;
         },
-    }, 
-      {
-    id: 'startwork',
-    user: true,
-    trigger: '3',
-    validator: (value) => {
-        if (/^([0-1]?[0-9]|2[0-4])([0-5][0-9])(:[0-5][0-9])?$/.test(value)) {
-          return true;
-        }
-        else {
-          return 'ex) 오후1시30분 > 1340';
-        }
-    },
-  },*/
+    }, */
 ];
 const lightTheme = {
   background: "#f0fddd",
