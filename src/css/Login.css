@@ -1,14 +1,13 @@
 .divLogin{
-    width: 90%;
-    height: 100vh;
-    /* 밑에 하얀부분 제거(?)*/
-    padding: 20px;
-    background-color: #D7EDBC;
-    
-    scrollbar-width: none;
+    /* width: 90%; */
+    height: 100vh; /* 높이최대치 */
+    /* padding: 20px; */     /* 밑에 하얀부분 제거(?)*/
     background-size: cover;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
-
 .greenee{
     width: 60%;
     padding: 20px;  

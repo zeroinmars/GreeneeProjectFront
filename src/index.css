@@ -2,10 +2,10 @@
 @import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
 body {
   margin: auto;
-  font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+  font-family: "Spoqa Han Sans Neo", "sans-serif";
 }
 code {
-  font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+  font-family: "Spoqa Han Sans Neo", "sans-serif";
 }
 
 /* 세형 */
@@ -17,124 +17,102 @@ code {
 /* 홈 +버튼 */
 .MuiBox-root.css-in5br9 {
   /* z-index: 200 !important; */
-  margin-right:auto;
+  margin-right: auto;
 }
 /* 푸터  바텀메뉴 */
 .MuiBottomNavigation-root.css-3mtf2r-MuiBottomNavigation-root {
   z-index: 20;
 }
 /* 푸터 바텀메뉴 */
-.MuiBottomNavigation-root{
-  background:#efefef;
+.MuiBottomNavigation-root {
+  background: #efefef;
 }
 /* 캘린더.윈도버전몇개더보기 */
-.mbsc-windows.mbsc-calendar-text-more .mbsc-calendar-label-text{
+.mbsc-windows.mbsc-calendar-text-more .mbsc-calendar-label-text {
   /* font-weight: 600; */
-  content: url("./img/iconUnder.png"); 
+  content: url("./img/iconUnder.png");
 }
 /* 캘린더.윈도우.월화수목 */
-.mbsc-windows.mbsc-calendar-body .mbsc-calendar-week-day{
+.mbsc-windows.mbsc-calendar-body .mbsc-calendar-week-day {
   color: #171915;
-  font-size : 15px;
-  
+  font-size: 15px;
 }
 /* 로그인화면 캐릭터 이미지 */
-.greenihead{
-/*    width: 30%; */
-  margin-bottom: 5%; 
-/*    margin-left: 10%; */
-font-size: 23px;
-    font-variant: all-petite-caps;
-}
-/* 로긴창 */
-.divLogin{
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-/*   margin-top: 5%; */
-  padding:1px;
+.greenihead {
+  /*    width: 30%; */
+  margin-bottom: 5%;
+  /*    margin-left: 10%; */
+  font-size: 23px;
+  font-variant: all-petite-caps;
 }
 /* 로긴창 글씨*/
-.greeniWelcome{
+.greeniWelcome {
   font-size: large;
   font-weight: bold;
   margin-bottom: 10%;
 }
 /* + 버튼 */
-.css-1byb73o-MuiButtonBase-root-MuiFab-root{
-  background: #AFE372;
-  color:#6AA258;
+.css-1byb73o-MuiButtonBase-root-MuiFab-root {
+  background: #afe372;
+  color: #6aa258;
   font-size: 50px;
-  margin-right:15px;
-  margin-bottom:5px;
+  margin-right: 15px;
+  margin-bottom: 5px;
   box-shadow: none;
 }
 /*바텀 네비 클릭했을떄*/
-.css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root.Mui-selected{
-  color:#6AA258;
-  font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+.css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root.Mui-selected {
+  color: #6aa258;
+  font-family: "Spoqa Han Sans Neo", "sans-serif";
 }
 /*캘린더 상단바 탑마진*/
 .fc .fc-toolbar.fc-header-toolbar {
-  margin-top:15px;
+  margin-top: 15px;
 }
 /* 회원가입 버튼 */
-.signup_btn{
-  width: 80vw; 
+.signup_btn {
+  width: 80vw;
   margin: auto;
-  margin-Bottom: 8px; 
+  margin-bottom: 8px;
   /* background: linear-gradient(to left,#CEDD38,#AFE372);  */
-  background-color:#AFE372;
+  background-color: #afe372;
   border-radius: 20px;
 }
 /* 회원가입 버튼*** */
-.css-sghohy-MuiButtonBase-root-MuiButton-root{
-  background-color: #AFE372;
+.css-sghohy-MuiButtonBase-root-MuiButton-root {
+  background-color: #afe372;
 }
 /*AddEvent.jsx 전체 마진*/
-.css-1okj3ks-MuiStack-root>:not(style)+:not(style){
-  margin-top:12px !important;
+.css-1okj3ks-MuiStack-root > :not(style) + :not(style) {
+  margin-top: 12px !important;
 }
 /*AddEvent.jsx 제목추가 마진*/
-.css-1x51dt5-MuiInputBase-input-MuiInput-input{
-  margin-top:12px !important;
+.css-1x51dt5-MuiInputBase-input-MuiInput-input {
+  margin-top: 12px !important;
 }
 /*  */
 .fc .fc-button-primary {
   color: #fff;
   color: var(--fc-button-text-color, #fff);
-  background-color: #6AA258;
-  background-color: var(--fc-button-bg-color, #6AA258);
-  border-color: #6AA258;
-  border-color: var(--fc-button-border-color, #6AA258);
+  background-color: #6aa258;
+  background-color: var(--fc-button-bg-color, #6aa258);
+  border-color: #6aa258;
+  border-color: var(--fc-button-border-color, #6aa258);
 }
-.divLogin{
-  width: 90%;
-  height: 100vh;
-  /* 밑에 하얀부분 제거(?)*/
-  padding: 20px;
-  background-color: #D7EDBC;
-  
-  scrollbar-width: none;
-  background-size: cover;
-}
-.login_btn{
-  width:80vw; 
+.login_btn {
+  width: 80vw;
   margin: auto;
-  margin-Bottom: 8px; 
-  background-color: #CEDD38; 
+  margin-bottom: 8px;
+  background-color: #cedd38;
   border-radius: 20px;
 }
-.greenee{
+.greenee {
   width: 60%;
-  padding: 200px;  
+  padding: 200px;
   background: rgb(215, 237, 188);
- /*  margin-top:10px; */
+  /*  margin-top:10px; */
 }
 /* 메모페이지 그리니 버튼 11/27sh */
-.greenee20{
-width: 50%;
+.greenee20 {
+  width: 50%;
 }
-
- 
