@@ -4,6 +4,7 @@ import MemoCompo from "../components/MemoCompo";
 import { Link } from "react-router-dom";
 import greenee2 from "../img/greenee.png";
 /* import ChatbotSteps from '../components/chatbot/ChatbotSteps' */
+import TalkChat from '../components/chatbot/TalkChat'
 /* const chatbotButtonStyle = {
   marginLeft: "85%",
   inlineSize: "3%",
@@ -24,6 +25,7 @@ const Memo = () => {
         <img className='greenee20' src={greenee2}/> 
       </Link> */}
       {/* <ChatbotSteps></ChatbotSteps> */}
+      <TalkChat></TalkChat>
     </>
   );
 };
