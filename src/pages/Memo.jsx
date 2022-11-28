@@ -1,6 +1,6 @@
 import React from "react";
 import MemoCompo from "../components/MemoCompo";
-/* import MessageIcon from "@mui/icons-material/Message"; */
+import MessageIcon from "@mui/icons-material/Message"
 import { Link } from "react-router-dom";
 import greenee2 from "../img/greenee.png";
 /* import ChatbotSteps from '../components/chatbot/ChatbotSteps' */
@@ -21,9 +21,9 @@ const Memo = () => {
       메모페이지
       <MemoCompo></MemoCompo>
       {/* 챗봇 진입 */}
-      <Link style={chatbotButtonStyle} to="/chatbotsteps">
+      {/* <Link to="/chatbotsteps">
         <MessageIcon />
-      </Link>
+      </Link> */}
 
       {/* <Link style={chatbotButtonStyle} to="/chatbotsteps"> */}
       {/*       <Link to="/chatbotsteps">

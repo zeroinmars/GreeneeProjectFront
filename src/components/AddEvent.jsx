@@ -9,6 +9,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import Progress from './FreqCompo/Progress';
 import Snackbar from './FreqCompo/Snackbar';
+import MapAPI from './MapAPI';
+
 
 const AddEvent = () => {
   const [fontColor, ] = useState("white"); // 태그 색깔 지정 변수
@@ -22,11 +24,14 @@ const AddEvent = () => {
   const dispatch = useDispatch();
   const email = useSelector(state=>(state.session.email)); // 리덕스 스토어에 저장되어있는 세션 email 값을 가져옴
   const [checkWeeks, setCheckWeeks] = useState({mon:false,tue:false,wed:false,thu:false,fri:false,sat:false,sun:false});
-  const [eventInfo, setEventInfo] = useState({
+  const [eventInfo, setEventInfo] = useState({ //title, 
   });
   const [checkSpecial, setCheckSpecial] = useState(false);
   const [preAlarm, setPreAlarm] = useState(0);
   const [checkRecommend, setCheckRecommend] = useState(false);
+  const [sLocation, setSLocation] = useState('');
+  const [eLocation, setELocation] = useState('');
+
   const handleOpenTag = () => {
     setOpenTag(true);
   }
@@ -151,9 +156,9 @@ const AddEvent = () => {
             <MenuItem value={60}>60분전</MenuItem>
           </Select>
         </FormControl>
-        <TextField size="small" label="출발장소" name="sLocation" variant="standard" sx={{mb:"20px"}} onChange={handleEventInfo}/>
-        <TextField size="small" label="도착장소" name="eLocation" variant="standard" sx={{mb:"20px"}} onChange={handleEventInfo}/>
-        
+        <MapAPI sLocation={sLocation} setSLocation={setSLocation} 
+            eLocation={eLocation} setELocation={setELocation}>
+        </MapAPI>
         {tag.tagName=="데일리루틴"?<CheckWeeks checkWeeks={checkWeeks} setCheckWeeks={setCheckWeeks}/>:""}
         
         {/* <TextField size="small" label="내용" name="content" multiline rows={5} variant="outlined" style={{marginBottom:"20px"}} onChange={handleEventInfo}/> */}
