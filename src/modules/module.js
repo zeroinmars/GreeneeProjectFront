@@ -37,11 +37,15 @@ const reducer = (state = initialState, action) =>{
     case "USER/USERINFO":
       return {...state, user: {...state.user, userInfo: action.user.userInfo}};
     case "ISLOGGEDIN":
-      return {...state, isLoggedin: action.isLoggedin}
+      return {...state, isLoggedin: action.isLoggedin};
     case "ISLOGGEDOUT":
-      return {...state, isLoggedout: action.isLoggedout}
+      return {...state, isLoggedout: action.isLoggedout};
     case "ISEVENTADDED":
-      return {...state, isEventAdded: action.isEventAdded}
+      return {...state, isEventAdded: action.isEventAdded};
+    case "DAILYEVENT":
+      return {...state, dailyEvent: action.dailyEvent};
+    case "SPECIALEVENT":
+      return {...state, specialEvent: action.specialEvent};
     default:
       return {...state};
   }

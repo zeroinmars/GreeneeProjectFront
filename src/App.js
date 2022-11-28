@@ -6,7 +6,7 @@ import Calendar from "./pages/Calendar";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import UserInfo from "./pages/UserInfo";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import MyProfile from "./pages/MyProfile";
 import axios from "axios";
 import Home from "./pages/Home";
@@ -33,8 +33,10 @@ const theme = createTheme({
   },
 });
 function App() {
+  const email = useSelector(state=>(state.session.email));
   const dispatch = useDispatch(); // store 공간안에 값을 저장하기 위해 userDispatch함수 호출
   useEffect(() => {
+    console.log(email, '랜더')
     // 화면이 랜더링 될때마다 서버에 사용자 session 정보가 있는지 없는지 검증하는 구문 세션이 있으면 로그인 되어있고 그렇지 않으면 로그인 되어있지 않다.
     axios
       .get("/lifeConcierge/api/session") // 랜더링 될때마다 get 방식으로 서버에 요청
@@ -44,6 +46,17 @@ function App() {
       .catch(() => {
         console.log("세션 호출 에러");
       });
+    console.log(email, '이메일 ㅣㅇㅆ는지')
+    axios.post("/lifeConcierge/api/showDailyEvent", {email})
+    .then((res)=>{
+      dispatch({type:"DAILYEVENT", dailyEvent: res.data})
+    })
+
+    axios.post("/lifeConcierge/api/showSpecialEvent", {email})
+    .then((res) => {
+      dispatch({type:"SPECIALEVENT", specialEvent: res.data})
+    })
+    
   });
   return (
     <div className="App">
