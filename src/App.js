@@ -1,6 +1,6 @@
 // import Door from "./pages/Door";
 /* import Test from './pages/Test'; */
-import ChatbotSteps from './components/chatbot/ChatbotSteps'
+import ChatbotSteps from "./components/chatbot/ChatbotSteps";
 import Signup from "./pages/Signup";
 import Calendar from "./pages/Calendar";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
@@ -47,8 +47,12 @@ function App() {
   });
   return (
     <div className="App">
-      <ThemeProvider theme={theme}> {/* theme 무조건 가장 외곽에 */}
-        <CacheProvider value={cache}> {/* 므이 css */}
+      <ThemeProvider theme={theme}>
+        {" "}
+        {/* theme 무조건 가장 외곽에 */}
+        <CacheProvider value={cache}>
+          {" "}
+          {/* 므이 css */}
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<Home />} />
