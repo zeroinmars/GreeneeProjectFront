@@ -9,30 +9,7 @@ import interactionPlugin from "@fullcalendar/interaction";
 import { NextPlan, Preview } from "@mui/icons-material"; */
 
 const Calendar = () => {
-  const events = useSelector((state) => {
-    return state.specialEvent.map((data, idx) => {
-        let info = {};
-        if (idx >= 22) {
-          info.title = data.title;
-          info.date = data.start.substr(0,10);
-          info.content = data.content;
-          info.sTime = data.start.substr(10);
-        }
-        return info
-      })
-     
-  });
-  // const [testEvents, setEvents] = useState({});
-  // setEvents(specialEvent.map((data, idx) => {
-  //   let info = {};
-  //   if (idx >= 22) {
-  //     info.title = data.title;
-  //     info.date = data.start.substr(0,10);
-  //     info.content = data.content;
-  //     info.sTime = data.start.substr(10);
-  //   }
-  //   return info
-  // }))
+  const events = useSelector(state => (state.specialEvent));
 
   const nav = useNavigate();
   const [open, setOpen] = useState(false); //보관할 초기값
@@ -41,9 +18,7 @@ const Calendar = () => {
 
   const handleClick = () => {
     const clickedEvent = events.filter(data => { 
-      console.log(data.date, '머냐');
-      
-      return data.start.substr(0,10) == eventDate 
+      return data.start == eventDate 
     }).sort((a, b) => {
       if (a.sTime > b.sTime) return 1;
       if (a.sTime < b.sTime) return -1;
@@ -81,7 +56,7 @@ const Calendar = () => {
 
   // DB 연결 전 임시로 데이터 만들어 봄
   // const events = [
-  //   { title: "", date: "2022-11-28", color: 'red' },
+  //   { title: "", start: "2022-11-28", end:'2022-11-30',color: 'red' },
   //   { title: "event 2", date: "2022-11-22" },
   //   {
   //     title: "회식", date: "2022-11-19",
@@ -112,10 +87,7 @@ const Calendar = () => {
         titleformat={{
           day: "narrow",
         }}
-        events={[
-          { title: "event 1", date: "2022-11-22" },
-          { title: "event 1", date: "2022-11-19" },
-        ]}
+        events={events}
         //**이벤트별로 색 다르게 해야됨
         weekends={true}
         eventDisplay="list-item" //이벤트 모양? list-item, none
@@ -167,6 +139,7 @@ const Calendar = () => {
 
         {eventInfo.map((data) => {
           const color = data.tag.slice(-9,-2);
+          // const color = data.color
           return <div style={{ width: '330px', padding: "0 10px" }}>
             <hr></hr>
             <span>{data.sTime}</span>

@@ -1,7 +1,7 @@
 import React from 'react'
 // import FavoriteIcon from '@mui/icons-material/Favorite';
 import AddIcon from '@mui/icons-material/Add';
-import {Fab, Box} from '@mui/material';
+import { Fab, Box } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
 
@@ -16,7 +16,7 @@ const cache = createCache({
 
 
 
- const AddEventButton = () => {
+const AddEventButton = () => {
   const nav = useNavigate();
   const handleAddEvent = () => {
     nav('/addEvent');
@@ -24,20 +24,20 @@ const cache = createCache({
   return (
 
     <>
-<CacheProvider value={cache}>
+      <CacheProvider value={cache}>
 
 
 
-  <Box sx={{position:"absolute", bottom:"65px", width:"100%", display : "flex", justifyContent:"right" }}>
-    <Fab color="primary" aria-label="add" onClick={handleAddEvent}>
-      <AddIcon />
-    </Fab>
-  </Box>
+        <Box sx={{ position: "absolute", bottom: "65px", width: "100%", display: "flex", justifyContent: "right" }}>
+          <Fab color="primary" aria-label="add" onClick={handleAddEvent}>
+            <AddIcon />
+          </Fab>
+        </Box>
 
 
-  </CacheProvider>
+      </CacheProvider>
 
-  </>
+    </>
   )
 }
 

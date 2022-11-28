@@ -46,7 +46,7 @@ function App() {
       .catch(() => {
         console.log("세션 호출 에러");
       });
-    console.log(email, '이메일 ㅣㅇㅆ는지')
+    console.log(email, '이메일 있는지')
     axios.post("/lifeConcierge/api/showDailyEvent", {email})
     .then((res)=>{
       dispatch({type:"DAILYEVENT", dailyEvent: res.data})
