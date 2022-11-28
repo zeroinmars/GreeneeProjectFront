@@ -16,6 +16,7 @@
     "@mui/private-theming": "^5.10.15",
     "@mui/styled-engine": "^5.10.14",
     "@mui/x-date-pickers": "^5.0.8",
+    "@slack/web-api": "^6.8.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -26,6 +27,7 @@
     "mysql": "^2.18.1",
     "react": "^18.2.0",
     "react-bootstrap": "^2.6.0",
+    "react-css-loaders": "^0.0.6",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.4.3",
@@ -34,6 +36,7 @@
     "redux": "^4.2.0",
     "styled-components": "^5.3.6",
     "typescript": "^4.9.3",
+    "validator": "^13.7.0",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -60,5 +63,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy" : "http://localhost:5000"
+  "proxy": "http://localhost:5000"
 }
