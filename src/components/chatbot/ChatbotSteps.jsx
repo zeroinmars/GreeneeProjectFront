@@ -4,10 +4,13 @@ import ChatBot from "react-simple-chatbot";
 import ChatbotReview from "./ChatbotReview";
 import { ThemeProvider } from "styled-components";
 /* 랜덤 아바타 펑션용 임포트 */
-import greenihead2 from "../../img/greenihead.png";
-import greenihead from "../../img/greenee.png";
-import iconStar from "../../img/iconStar.png";
-import iconUnder from "../../img/iconUnder.png";
+import a1 from "../../img/a1.jpg";
+import a2 from "../../img/a2.jpg";
+import a3 from "../../img/a3.jpg";
+import a4 from "../../img/a4.jpg";
+import a5 from "../../img/a5.jpg";
+import a6 from "../../img/a6.jpg";
+import a7 from "../../img/a7.jpg";
 /* export */
 class ChatbotSteps extends Component {
   render(props) {
@@ -52,7 +55,7 @@ export default ChatbotSteps;
 인덱스 사이의 값을 구하기 위해서는 Math.random() 함수와 배열의 length를 곱합니다.
 마지막으로 Math.random() 함수의 반환 값 * 배열의 length는 정수 또는 실수이므로 
 Math.floor() 함수를 호출하여 정수로 반올림합니다. */
-let avatarArray = [greenihead, greenihead2, iconStar, iconUnder];
+let avatarArray = [a1,a2,a3,a4,a5,a6,a7]
 let firstArray = [
   "AI비서 그리니입니다. 회원님의 정보가 필요합니다.",
   "만나서 반갑습니다. 그리니입니다.",
