@@ -18,8 +18,7 @@ const Memo = () => {
       <MemoCompo></MemoCompo>
       {/* 챗봇 진입 */}
       <Link style={chatbotButtonStyle} to="/chatbotsteps">
-        {" "}
-        <MessageIcon />{" "}
+        <MessageIcon />
       </Link>
     </>
   );
