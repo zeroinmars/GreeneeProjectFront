@@ -8,10 +8,6 @@ class ChatbotReview extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      wake: "",
-      startwork: "",
-      lunch: "",
-      endwork: "",
       transport: "",
       job: "",
       hobby: "",
@@ -22,49 +18,12 @@ class ChatbotReview extends Component {
   }
   componentWillMount() {
     const { steps } = this.props;
-    const {
-      wake,
-      startwork,
-      lunch,
-      endwork,
-      transport,
-      job,
-      hobby,
-      music,
-      food,
-      drink,
-    } = steps;
-    this.setState({
-      wake,
-      startwork,
-      lunch,
-      endwork,
-      transport,
-      job,
-      hobby,
-      music,
-      food,
-      drink,
-    });
+    const { transport, job, hobby, music, food, drink } = steps;
+    this.setState({ transport, job, hobby, music, food, drink });
   }
   render() {
-    let {
-      wake,
-      startwork,
-      lunch,
-      endwork,
-      transport,
-      job,
-      hobby,
-      music,
-      food,
-      drink,
-    } = this.state;
+    let { transport, job, hobby, music, food, drink } = this.state;
     let data = {
-      wake: wake.value,
-      startwork: startwork.value,
-      lunch: lunch.value,
-      endwork: endwork.value,
       transport: transport.value,
       job: job.value,
       hobby: hobby.value,
@@ -87,26 +46,6 @@ class ChatbotReview extends Component {
     return (
       <form>
         <div style={{ width: "100%" }}>
-          <qq style={{ fontSize: "15px", fontWeight: "bold", color: "white" }}>
-            기상시간 :{" "}
-          </qq>
-          {wake.value}
-          <br></br>
-          <qq style={{ fontSize: "15px", fontWeight: "bold", color: "white" }}>
-            출근시간 :{" "}
-          </qq>
-          {startwork.value}
-          <br></br>
-          <qq style={{ fontSize: "15px", fontWeight: "bold", color: "white" }}>
-            점심시간 :{" "}
-          </qq>
-          {lunch.value}
-          <br></br>
-          <qq style={{ fontSize: "15px", fontWeight: "bold", color: "white" }}>
-            퇴근시간 :{" "}
-          </qq>
-          {endwork.value}
-          <br></br>
           <qq style={{ fontSize: "15px", fontWeight: "bold", color: "white" }}>
             교통수단 :{" "}
           </qq>

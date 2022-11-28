@@ -1,17 +1,21 @@
 import React from "react";
 
-
 const MemoCompo = () => {
-  return 
-  <>
-aaaaaaaaaaaa
-aaaaaaaa
-aaaaaaaaaaaaaaaaaaaa
-a
-  
-  </>;
+  return (
+    <div>
+      <p>eralrelalr</p>
+    </div>
+  )
 };
 export default MemoCompo;
+
+
+const Memo = () =>{
+  return(
+    <>
+    </>
+  )
+}
 
  
 

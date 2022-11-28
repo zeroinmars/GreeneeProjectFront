@@ -1,6 +1,8 @@
+// import Door from "./pages/Door";
+/* import Test from './pages/Test'; */
+import ChatbotSteps from "./components/chatbot/ChatbotSteps";
 import Signup from "./pages/Signup";
 import Calendar from "./pages/Calendar";
-/* import Test from './pages/Test'; */
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import UserInfo from "./pages/UserInfo";
 import { useEffect } from "react";
@@ -10,9 +12,12 @@ import axios from "axios";
 import Home from "./pages/Home";
 import LabelBottomNavigation from "./components/LabelBottomNavigation";
 import AddEvent from "./components/AddEvent";
-import ChatbotSteps from "./components/chatbot/ChatbotSteps";
 import Memo from "./pages/Memo";
-
+import { createTheme, ThemeProvider } from "@mui/material"; //mui 폰트 변경
+/* css 파일 임포트 */
+import "./dabin.css";
+import "./index.css";
+import "./sehyoung.css";
 /* mui css에 css파일을 오버라이딩 하기 위한*/
 import { CacheProvider } from "@emotion/react";
 import createCache from "@emotion/cache";
@@ -20,7 +25,13 @@ const cache = createCache({
   key: "css",
   prepend: true,
 });
-
+/* mui 폰트 변경 */
+const theme = createTheme({
+  typography: {
+    fontFamily: ["Spoqa Han Sans Neo", "sans-serif"].join(","),
+    fontSize: 16,
+  },
+});
 function App() {
   const dispatch = useDispatch(); // store 공간안에 값을 저장하기 위해 userDispatch함수 호출
   useEffect(() => {
@@ -34,31 +45,33 @@ function App() {
         console.log("세션 호출 에러");
       });
   });
-
   return (
-    /* mui css에 css파일을 오버라이딩 하기 위한  */
-    /* 이거 하니까 css로 푸터 색상 변경 가능, 위에IMPORT랑cache필요 */
-    <CacheProvider value={cache}>
-      <div className="App">
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            {/* timeline */}
-            <Route path="/calendar" element={<Calendar />} />
-            <Route path="/myProfile" element={<MyProfile />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/userInfo" element={<UserInfo />} />
-            <Route path="/addEvent" element={<AddEvent />} />
-            <Route path="/ChatbotSteps" element={<ChatbotSteps />} />
-            <Route path="/Memo" element={<Memo />} />
-            {/*  <Route path="/test" element={<Test/>}/> */}
-          </Routes>
-          {/* 푸터 앱하단 메뉴 */}
-          <LabelBottomNavigation></LabelBottomNavigation>
-        </BrowserRouter>
-      </div>
-    </CacheProvider>
+    <div className="App">
+      <ThemeProvider theme={theme}>
+        {" "}
+        {/* theme 무조건 가장 외곽에 */}
+        <CacheProvider value={cache}>
+          {" "}
+          {/* 므이 css */}
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/calendar" element={<Calendar />} />
+              <Route path="/myProfile" element={<MyProfile />} />
+              <Route path="/signup" element={<Signup />} />
+              <Route path="/userInfo" element={<UserInfo />} />
+              <Route path="/addEvent" element={<AddEvent />} />
+              <Route path="/Memo" element={<Memo />} />
+              {/* <Route path="/" element={<Door />} /> */}
+              {/* <Route path="/ChatbotSteps" element={<ChatbotSteps />} /> */}
+              {/*  <Route path="/test" element={<Test/>}/> */}
+            </Routes>
+            <LabelBottomNavigation></LabelBottomNavigation>
+            <ChatbotSteps></ChatbotSteps>
+          </BrowserRouter>
+        </CacheProvider>
+      </ThemeProvider>
+    </div>
   );
 }
-
 export default App;

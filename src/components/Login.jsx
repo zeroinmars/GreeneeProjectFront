@@ -7,8 +7,8 @@ import SnackBar from './FreqCompo/Snackbar';
 import Progress from './FreqCompo/Progress'
 /* import MessageIcon from '@mui/icons-material/Message';
 import { Link } from 'react-router-dom'; */
-import greenee from '../img/greenee.png'
-import "../css/Login.css";
+import greenee from '../img/greenee.png';
+import '../css/Login.css';
 
 const Login = () => {
   const nav = useNavigate();
@@ -49,7 +49,7 @@ const Login = () => {
       {/* <div style={{ backgrounImage : "url(" + greenihead + ")" }}> 
       <img src='../img/greenihead.png' className='greenihead'></img>   
       <div style={{backgrounImage : "url(" + greenihead + ")"  }}>*/}  
-    <div className='divLogin' style={{width:"90%", height:'100%', padding:"20px", backgroundColor:'#D7EDBC', scrollbarWidth:'none'}}> 
+    <div className='divLogin' style={{padding:"20px", backgroundColor:'#D7EDBC', scrollbarWidth:'none'}}> 
     {/* <div className='divLogin' style={{    width:"80%", border:"1px solid black", padding:"20px"}}>  */}
     <img src={ greenee } className={'greenee'} style={{width:"60%", padding:"20px"}} /> 
     <h60 className='greeniWelcome'> Hello, My name is Greenee.</h60>

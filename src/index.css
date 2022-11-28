@@ -2,133 +2,117 @@
 @import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
 body {
   margin: auto;
-  font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+  font-family: "Spoqa Han Sans Neo", "sans-serif";
 }
 code {
-  font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+  font-family: "Spoqa Han Sans Neo", "sans-serif";
 }
 
 /* 세형 */
 
+/* 홈 어젠다 */
+.mbsc-event-group.mbsc-material {
+  background: rgb(255, 255, 255);
+}
 /* 홈 +버튼 */
 .MuiBox-root.css-in5br9 {
-  z-index: 20;
-  margin-right:auto;
+  /* z-index: 200 !important; */
+  margin-right: auto;
 }
 /* 푸터  바텀메뉴 */
 .MuiBottomNavigation-root.css-3mtf2r-MuiBottomNavigation-root {
   z-index: 20;
 }
 /* 푸터 바텀메뉴 */
-.MuiBottomNavigation-root{
-  background:#6AA258;
+.MuiBottomNavigation-root {
+  background: #efefef;
 }
 /* 캘린더.윈도버전몇개더보기 */
-/* .mbsc-windows.mbsc-calendar-text-more .mbsc-calendar-label-text{
-  content: url("./img/iconUnder.png"); 
-} */
-/* 로그인화면 캐릭터 이미지 */
-.greenihead{
-/*    width: 30%; */
-  margin-bottom: 5%; 
-/*    margin-left: 10%; */
-font-size: 23px;
-    font-variant: all-petite-caps;
+.mbsc-windows.mbsc-calendar-text-more .mbsc-calendar-label-text {
+  /* font-weight: 600; */
+  content: url("./img/iconUnder.png");
 }
-/* 로긴창 */
-.divLogin{
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-/*   margin-top: 5%; */
-  padding:1px;
+/* 캘린더.윈도우.월화수목 */
+.mbsc-windows.mbsc-calendar-body .mbsc-calendar-week-day {
+  color: #171915;
+  font-size: 15px;
+}
+/* 로그인화면 캐릭터 이미지 */
+.greenihead {
+  /*    width: 30%; */
+  margin-bottom: 5%;
+  /*    margin-left: 10%; */
+  font-size: 23px;
+  font-variant: all-petite-caps;
 }
 /* 로긴창 글씨*/
-.greeniWelcome{
+.greeniWelcome {
   font-size: large;
   font-weight: bold;
   margin-bottom: 10%;
 }
-
 /* + 버튼 */
-/* .css-1suf56w-MuiButtonBase-root-MuiFab-root{
-  background: #6AA258;
-  margin-right:20px;
+.css-1byb73o-MuiButtonBase-root-MuiFab-root {
+  background: #afe372;
+  color: #6aa258;
+  font-size: 50px;
+  margin-right: 15px;
+  margin-bottom: 5px;
   box-shadow: none;
-  z-index: 20;
 }
-.css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root.Mui-selected{
-  color:#ffffff;
-} */
-
-/* +버튼 틀 */
-/* .css-in5br9{
-background: #73baad;
-} */
-/* 그리니 챗봇 */
-.greeniChatbot{
-  background : rgb(215, 237, 188) ;
+/*바텀 네비 클릭했을떄*/
+.css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root.Mui-selected {
+  color: #6aa258;
+  font-family: "Spoqa Han Sans Neo", "sans-serif";
 }
-/* 푸터 마진탑 제거 */
-.css-1umtxyw {
-  margin-bottom: 0%;
+/*캘린더 상단바 탑마진*/
+.fc .fc-toolbar.fc-header-toolbar {
+  margin-top: 15px;
 }
-
-/* 회원가입로그인 블락 보더로 내리고 색상 넣기 */
-.divLogin{
-  /* margin-top: 60%;  */
-/* margin-top: 50%; */
- 
-/*  background-color: #73baad; */
-/*  z-index: 60; */
-margin-top:90px ;
-margin-bottom:90px ;
-/* border-top:90px solid rgb(215, 237, 188);
- border-bottom:160px solid rgb(215, 237, 188) ; */
+/* 회원가입 버튼 */
+.signup_btn {
+  width: 80vw;
+  margin: auto;
+  margin-bottom: 8px;
+  /* background: linear-gradient(to left,#CEDD38,#AFE372);  */
+  background-color: #afe372;
+  border-radius: 20px;
 }
-
- 
-/* 푸터 아이콘배경 */
-/* .css-i4bv87-MuiSvgIcon-root {
-  background: brown;*/
-
-/* 헤더알람배경 */
- 
-/* 헤더알람배경뒤 */
-.HeaderAlarmBC{
-  background: rgb(215, 237, 188)
+/* 회원가입 버튼*** */
+.css-sghohy-MuiButtonBase-root-MuiButton-root {
+  background-color: #afe372;
 }
-
-/* 캘린더 배경 */
-.fc-theme-standard{
+/*AddEvent.jsx 전체 마진*/
+.css-1okj3ks-MuiStack-root > :not(style) + :not(style) {
+  margin-top: 12px !important;
+}
+/*AddEvent.jsx 제목추가 마진*/
+.css-1x51dt5-MuiInputBase-input-MuiInput-input {
+  margin-top: 12px !important;
+}
+/*  */
+.fc .fc-button-primary {
+  color: #fff;
+  color: var(--fc-button-text-color, #fff);
+  background-color: #6aa258;
+  background-color: var(--fc-button-bg-color, #6aa258);
+  border-color: #6aa258;
+  border-color: var(--fc-button-border-color, #6aa258);
+}
+.login_btn {
+  width: 80vw;
+  margin: auto;
+  margin-bottom: 8px;
+  background-color: #cedd38;
+  border-radius: 20px;
+}
+.greenee {
+  width: 60%;
+  padding: 200px;
   background: rgb(215, 237, 188);
-  margin: 10px;
+  /*  margin-top:10px; */
 }
-
-/* 전체 바탕색 */
-:root{
-  background: rgb(215, 237, 188);
+/* 메모페이지 그리니 버튼 11/27sh */
+.greenee20 {
+  width: 50%;
 }
-
-/* 이벤트 추가 페이지 여백 */
-.css-1okj3ks-MuiStack-root{
-  margin: 25px;
-}
-
-/* 이벤트 추가 페이지 하단 '등록'버튼 */
-.css-123ac5x-MuiButtonBase-root-MuiButton-root{
-  background-color: #6AA258
-}
-
-/* 이벤트 추가 페이지 에 상단 일상루틴 버튼 */
-.css-julti5-MuiSwitch-root{
-  margin-top: 25px;
-  margin-left: 30px;
-}
-
-/* 챗봇 채팅창 여백 작동ㅇ*/
-/*   .bJddHQ{
-  margin-left: 20px; 
-}  */
- 
