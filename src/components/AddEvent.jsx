@@ -94,20 +94,20 @@ const AddEvent = () => {
     let sDay = start.$y +'-'+ (start.$M + 1) +'-'+ start.$D;
     let eDay = end.$y +'-'+ (end.$M + 1) +'-'+ end.$D;
     const url = "http://localhost:5000/lifeConcierge/api/addEvent";
-    console.log(typeof sDay, eDay);
+    
     if (email) {
       dispatch({ type: "PROGRESS", progress: { progressToggle: true } });
-      axios.post(url, { ...eventInfo, checkWeeks, email, checkSpecial, preAlarm, tag, tag2, cateList, start: sDay, end: eDay, sTime, eTime })
+      axios.post(url, { ...eventInfo, checkWeeks, email, checkSpecial, preAlarm, tag, tag2, cateList, start: sDay, end: eDay, sTime, eTime, sLocation, eLocation })
         .then((res) => {
           if (res.data.affectedRows) {
-            dispatch({ type: "ISEVENTADDED", isEventAdded: true })
+            dispatch({ type: "ISEVENTADDED", isEventAdded: true });
             dispatch({ type: "PROGRESS", progress: { progressToggle: false } });
             nav('/calendar');
+            
           } else {
             dispatch({ type: "SNACKBAR/ON", snackbar: { snackbarToggle: true, explain: "일정등록 실패", severity: "error" } });
             dispatch({ type: "PROGRESS", progress: { progressToggle: false } });
           }
-
         })
         .catch((err) => { console.log("에러 발생") })
     } else {
@@ -118,15 +118,6 @@ const AddEvent = () => {
 
   return (
     <Box className='test'>
-      
-      <button onClick={() => {
-        console.log(start.$y +'-'+ (start.$M + 1) +'-'+ start.$D);
-      }}>check</button>
-
-      <button onClick={() => {
-        console.log(sTime)
-      }}>시간 보기</button>
-
       <Button onClick={handleOpenTag} style={{ background: tag.tagColor, color: fontColor }}>{tag.tagName ? tag.tagName : "태그"}</Button>
       {tag.tagName == "데일리루틴" ? <Button onClick={handleOpenTag2} style={{ background: tag2.tagColor, color: fontColor }}>{tag2.tagName ? tag2.tagName : "태그"}</Button> : ""}
       <Stack spacing={1}>

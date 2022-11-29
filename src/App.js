@@ -13,6 +13,7 @@ import Home from "./pages/Home";
 import LabelBottomNavigation from "./components/LabelBottomNavigation";
 import AddEvent from "./components/AddEvent";
 import Memo from "./pages/Memo";
+import UpdateEvent from "./components/UpdateEvent";
 import { createTheme, ThemeProvider } from "@mui/material"; //mui 폰트 변경
 /* css 파일 임포트 */
 import "./dabin.css";
@@ -75,6 +76,7 @@ function App() {
               <Route path="/userInfo" element={<UserInfo />} />
               <Route path="/addEvent" element={<AddEvent />} />
               <Route path="/Memo" element={<Memo />} />
+              <Route path="/updateEvent" element={<UpdateEvent />}></Route>
               {/* <Route path="/" element={<Door />} /> */}
               {/* <Route path="/ChatbotSteps" element={<ChatbotSteps />} /> */}
               {/*  <Route path="/test" element={<Test/>}/> */}
