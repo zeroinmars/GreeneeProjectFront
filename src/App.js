@@ -1,20 +1,20 @@
 // import Door from "./pages/Door";
 /* import Test from './pages/Test'; */
-import ChatbotSteps from "./components/chatbot/ChatbotSteps";
-import Signup from "./pages/Signup";
-import Calendar from "./pages/Calendar";
-import { Routes, Route, BrowserRouter } from "react-router-dom";
-import UserInfo from "./pages/UserInfo";
 import { useEffect } from "react";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import MyProfile from "./pages/MyProfile";
-import axios from "axios";
-import Home from "./pages/Home";
-import LabelBottomNavigation from "./components/LabelBottomNavigation";
-import AddEvent from "./components/AddEvent";
-import Memo from "./pages/Memo";
-import UpdateEvent from "./components/UpdateEvent";
 import { createTheme, ThemeProvider } from "@mui/material"; //mui 폰트 변경
+import Home from "./pages/Home";
+import Calendar from "./pages/Calendar";
+import Memo from "./pages/Memo";
+import MyProfile from "./pages/MyProfile";
+import Signup from "./pages/Signup";
+import UserInfo from "./pages/UserInfo";
+import AddEvent from "./components/AddEvent";
+import UpdateEvent from "./components/UpdateEvent";
+import ChatbotSteps from "./components/chatbot/ChatbotSteps";
+import LabelBottomNavigation from "./components/LabelBottomNavigation";
+import axios from "axios";
 /* css 파일 임포트 */
 import "./dabin.css";
 import "./index.css";
@@ -81,8 +81,8 @@ function App() {
               {/* <Route path="/ChatbotSteps" element={<ChatbotSteps />} /> */}
               {/*  <Route path="/test" element={<Test/>}/> */}
             </Routes>
-            <LabelBottomNavigation></LabelBottomNavigation>
-            <ChatbotSteps></ChatbotSteps>
+            {/* <LabelBottomNavigation></LabelBottomNavigation> */}
+            {/* <ChatbotSteps></ChatbotSteps> */}
           </BrowserRouter>
         </CacheProvider>
       </ThemeProvider>
