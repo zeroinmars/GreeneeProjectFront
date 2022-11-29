@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom';
 import Progress from './FreqCompo/Progress';
 import Snackbar from './FreqCompo/Snackbar';
 import MapAPI from './MapAPI';
-
+import LabelBottomNavigation from './LabelBottomNavigation';
 
 const AddEvent = () => {
   const [fontColor,] = useState("white"); // 태그 색깔 지정 변수
@@ -97,7 +97,7 @@ const AddEvent = () => {
     
     if (email) {
       dispatch({ type: "PROGRESS", progress: { progressToggle: true } });
-      axios.post(url, { ...eventInfo, checkWeeks, email, checkSpecial, preAlarm, tag, tag2, cateList, start: sDay, end: eDay, sTime, eTime, sLocation, eLocation })
+      axios.post(url, { ...eventInfo, checkWeeks, email, checkSpecial, preAlarm, tag : tag.tagName, color: tag.tagColor, cateList, start: sDay, end: eDay, sTime, eTime, sLocation, eLocation })
         .then((res) => {
           if (res.data.affectedRows) {
             dispatch({ type: "ISEVENTADDED", isEventAdded: true });
@@ -241,6 +241,7 @@ const AddEvent = () => {
           </div>
         </DialogTitle>
       </Dialog>
+      <LabelBottomNavigation></LabelBottomNavigation>
     </Box>
   )
 }
