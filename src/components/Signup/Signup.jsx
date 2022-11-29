@@ -1,84 +1,32 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import UserInfo from './UserInfo';
-import UserChar from './UserChar';
 import axios from 'axios';
-import {Box, Stepper, Step, StepLabel, Button, Container} from '@mui/material';
+import {Box, Button} from '@mui/material';
 import {useNavigate} from 'react-router-dom';
 import {useDispatch} from 'react-redux';
 import Snackbar from '../FreqCompo/Snackbar';
 import Progress from '../FreqCompo/Progress';
+import HeaderAlarm from '../HeaderAlarm';
+import {Radio, RadioGroup, FormControlLabel, FormControl, FormLabel, Container, TextField, Stack} from '@mui/material';
 
-const steps = ['상세정보', '성향 정보'];
-export default function HorizontalLinearStepper() {
 
-  useEffect(()=>{
-    callApi()
-    .then((res)=>{
-      dispatch({type:"USER/USERINFO", user:{userInfo:res}});
-    })
-    .catch((err)=>{console.log(err)})
-  },[])
 
+const Signup =  () => {
+  const style = {
+    input : {marginTop:"30px"}
+  }
+  
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [inputUserInfo, setInputUserInfo] = useState({
-    email:"",pw:"",name:"",gender:"",birthday:"",job:"",hAddr:"",cAddr:""
+  const [pwCheck, setPwCheck] = useState('');
+  const [userInfo, setUserInfo] = useState({
+    email:"",pw:"", name:"",gender:"",birthday:"",hAddr:"",cAddr:""
   });
-  const [inputUserChar, setInputUserChar] = useState({
-    transpo:"",hobby:"",food:"",drink:"",mbti:"",music:""
-  })
-  const [activeStep, setActiveStep] = useState(0);
-  const [skipped, setSkipped] = useState(new Set());
 
-    
-  const callApi = async ()=>{
-    const response = await fetch('/lifeConcierge/api/userInfo');
-    const body = await response.json();
-    return body;
+  const handleOnChange = (e)=>{
+    setUserInfo({...userInfo, [e.target.name]:e.target.value})
   }
 
-  const isStepOptional = (step) => {
-    return step === 1;
-  };
-
-  const isStepSkipped = (step) => {
-    return skipped.has(step);
-  };
-
-  const handleNext = () => {
-    let newSkipped = skipped;
-    if (isStepSkipped(activeStep)) {
-      newSkipped = new Set(newSkipped.values());
-      newSkipped.delete(activeStep);
-    }
-
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-    setSkipped(newSkipped);
-  };
-
-  const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
-  };
-
-  const handleSkip = () => {
-    if (!isStepOptional(activeStep)) {
-      // You probably want to guard against something like this,
-      // it should never occur unless someone's actively trying to break something.
-      throw new Error("You can't skip a step that isn't optional.");
-    }
-
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-    setSkipped((prevSkipped) => {
-      const newSkipped = new Set(prevSkipped.values());
-      newSkipped.add(activeStep);
-      return newSkipped;
-    });
-  };
-
-  const handleReset = () => {
-    setActiveStep(0);
-  };
-  
   const isAllNotUndefined = (obj) => {
     for (let i of Object.values(obj)) {
       if(i == false) {
@@ -90,27 +38,9 @@ export default function HorizontalLinearStepper() {
 
   const handleFormSubmit = (e) => {
     const url = "/lifeConcierge/api/signup";
-    const data = {
-      email:inputUserInfo.email,
-      pw:inputUserInfo.pw,
-      name:inputUserInfo.name,
-      gender:inputUserInfo.gender,
-      birthday:inputUserInfo.birthday,
-      job:inputUserInfo.job,
-      hAddr:inputUserInfo.hAddr,
-      cAddr:inputUserInfo.cAddr,
-      disease:inputUserInfo.disease,
-      transpo:inputUserChar.transpo,
-      hobby:inputUserChar.hobby,
-      food:inputUserChar.food,
-      drink:inputUserChar.drink,
-      mbti:inputUserChar.mbti,
-      fashion:inputUserChar.fashion,
-      music:inputUserChar.music,
-    }
-    if (isAllNotUndefined(data)) {
+    if (isAllNotUndefined(userInfo)) {
       dispatch({type:"PROGRESS", progress:{progressToggle:true}});
-      axios.post(url, data)
+      axios.post(url, userInfo)
       .then((res)=>{
         console.log(res);
         dispatch({type:"PROGRESS", progress:{progressToggle:false}});
@@ -129,63 +59,35 @@ export default function HorizontalLinearStepper() {
   }
 
   return (
-    <Box sx={{ m:"auto", width: '90%', mt:'5%', mb:'20%'}}>
-      <Stepper activeStep={activeStep} alternativeLabel sx={{mt:"3%"}}>
-        {steps.map((label, index) => {
-          const stepProps = {};
-          const labelProps = {};
-          // if (isStepOptional(index)) {
-          //   labelProps.optional = (
-          //     <Typography variant="caption">Optional</Typography>
-          //   );
-          // }
-          if (isStepSkipped(index)) {
-            stepProps.completed = false;
-          }
-          return (
-            <Step key={label} completed={false}>
-              <StepLabel {...labelProps} >{label}</StepLabel>
-            </Step>
-          );
-        })}
-      </Stepper>
-      {activeStep === 0 ?<UserInfo inputUserInfo={inputUserInfo} setInputUserInfo={setInputUserInfo}/>: <UserChar inputUserChar={inputUserChar} setInputUserChar={setInputUserChar}/>}
-      {activeStep === steps.length ? (
-      <Container fixed>
-        <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
-          <Box sx={{ flex: 'auto' }} />
-          {/* <Typography sx={{ mt: 2, mb: 1 }}>
-            모든 작성이 완료 되었습니다. 
-          </Typography> */}
-          {/* <Button variant="contained" onClick={handleCheck} sx={{mr:"5px"}}> 체크하기 </Button> */}
-          <Button variant="contained" onClick={handleFormSubmit} sx={{mr:"5px"}}> 제출하기 </Button>
-          <Button variant="outlined" onClick={handleReset}>Reset</Button>
-        </Box>
-      </Container>
-      ) : (
-      <Container fixed>
-        <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2}}>
-          <Button
-            disabled={activeStep === 0}
-            onClick={handleBack}
-            sx={{ mr: 1 }}
-          >
-            Back
-          </Button>
-          <Box sx={{ flex: '1 1 auto' }} />
-          {isStepOptional(activeStep) && (
-            <Button color="inherit" onClick={handleSkip} sx={{ mr: 1 }}>
-              Skip
-            </Button>
-          )}
-          <Button onClick={handleNext}>
-            {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
-          </Button>
-        </Box>
-      </Container>
-      )}
+    <Box>
+      <HeaderAlarm></HeaderAlarm>
+      <Container sx={{marginTop:"10%"}}>
+        <Stack spacing={2} alignItems="stretch">
+          <TextField style={style.input} variant="standard" value={userInfo.email} placeholder="이메일"  name="email" onChange={handleOnChange}></TextField>
+          <TextField style={style.input} variant="standard" value={userInfo.pw} placeholder="비밀번호"  type="password" name="pw" onChange={handleOnChange}></TextField>
+          <TextField error={userInfo.pw !== pwCheck} style={style.input} variant="standard" value={pwCheck} placeholder="비밀번호확인" type="password" onChange={(e) => {setPwCheck(e.target.value)}}></TextField>
+          <TextField style={style.input} variant="standard" value={userInfo.name} placeholder="이름" name="name" onChange={handleOnChange}></TextField>
+          <TextField style={style.input} variant="standard" value={userInfo.hAddr} placeholder="자택 주소" name="hAddr" onChange={handleOnChange}></TextField>
+          <TextField style={style.input} variant="standard" value={userInfo.cAddr} placeholder="회사 주소" name="cAddr" onChange={handleOnChange}></TextField>
+          <TextField style={style.input} variant="standard" value={userInfo.birthday} placeholder="생년월일" helperText="생년월일" required type="date" name="birthday" onChange={(e)=>{setUserInfo({...userInfo, birthday:e.target.value})}}></TextField>
+          <FormControl >
+            <FormLabel id="demo-radio-buttons-group-label">성별</FormLabel>
+            <RadioGroup
+              row
+              aria-labelledby="demo-radio-buttons-group-label"
+              name="gender"
+            >
+              <FormControlLabel value="남성" control={<Radio onChange={(e)=>{setUserInfo({...userInfo, gender : e.target.value})}}/>} label="남자" />
+              <FormControlLabel value="여성" control={<Radio onChange={(e)=>{setUserInfo({...userInfo, gender : e.target.value})}}/>} label="여자" />
+            </RadioGroup>
+          </FormControl>
+          <Button variant='contained' color='success' onClick={handleFormSubmit}>등록</Button>
+        </Stack>
+    </Container>
     <Progress/>
     <Snackbar/>
     </Box>
   );
 }
+
+export default  Signup;
