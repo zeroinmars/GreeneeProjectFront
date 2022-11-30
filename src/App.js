@@ -12,6 +12,7 @@ import Signup from "./pages/Signup";
 import UserInfo from "./pages/UserInfo";
 import AddEvent from "./components/AddEvent";
 import UpdateEvent from "./components/UpdateEvent";
+import AddMemo from "./components/AddMemo";
 import ChatbotSteps from "./components/chatbot/ChatbotSteps";
 import LabelBottomNavigation from "./components/LabelBottomNavigation";
 import axios from "axios";
@@ -76,6 +77,7 @@ function App() {
               <Route path="/userInfo" element={<UserInfo />} />
               <Route path="/addEvent" element={<AddEvent />} />
               <Route path="/Memo" element={<Memo />} />
+              <Route path="/addMemo" element={<AddMemo />}></Route>
               <Route path="/updateEvent" element={<UpdateEvent />}></Route>
               {/* <Route path="/" element={<Door />} /> */}
               {/* <Route path="/ChatbotSteps" element={<ChatbotSteps />} /> */}

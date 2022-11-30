@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import '../css/memo.css'
-import { Fab, Box } from '@mui/material';
+// import { Fab, Box } from '@mui/material';
 import backback from "../img/backback2.png";
 import trash from "../img/trash.png";
-import Button from "@mui/material/Button";
-import { makeStyles } from '@mui/styles';
+// import Button from "@mui/material/Button";
+// import { makeStyles } from '@mui/styles';
 import { useNavigate } from 'react-router-dom';
 
 

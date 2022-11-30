@@ -1,10 +1,10 @@
+import FullCalendar from "@fullcalendar/react"; // must go before plugins
 import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
 
 import { Button, Dialog, DialogTitle, DialogActions, DialogContent } from "@mui/material"; //mui의 Dialog
 
-import FullCalendar from "@fullcalendar/react"; // must go before plugins
 import dayGridPlugin from "@fullcalendar/daygrid"; // a plugin!
 
 import axios from 'axios';
@@ -110,13 +110,13 @@ const Calendar = () => {
           day: "narrow",
         }}
         events={events}
+        plugins={[dayGridPlugin]}
         //**이벤트별로 색 다르게 해야됨
         weekends={true}
         eventDisplay="list-item" //이벤트 모양? list-item, none
         eventColor="red"
         eventClick={handleClick}
 
-        plugins={[dayGridPlugin]}
         initialView="dayGridMonth"
         droppable={true}
         buttonIcons={

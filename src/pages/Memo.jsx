@@ -20,7 +20,6 @@ import ChatbotSteps from '../components/chatbot/ChatbotSteps'
 const Memo = () => {
   return (
     <>
-      메모페이지
       <MemoCompo></MemoCompo>
       <LabelBottomNavigation></LabelBottomNavigation>
       {/* 챗봇 진입 */}
