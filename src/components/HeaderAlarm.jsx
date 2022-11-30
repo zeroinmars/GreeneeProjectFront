@@ -1,35 +1,29 @@
 import React from "react";
 import greenee from "../img/greenee.png";
 import { Link } from "react-router-dom";
-/* import TalkChat from './chatbot/TalkChat' */
-const style={
-  backgroundColor:'#D7EDBC'
-  }
+import '../css/test.css'
+import { useSelector } from "react-redux";
+
 
 const HeaderAlarm = () => {
+  const userName = useSelector(state => (state.userName));
+  const style = {
+    backgroundColor: '#D7EDBC',
+    display: 'flex'
+  }
   return (
-    <tt className='HeaderAlarm2'>
     <div style={style}>
-      <div>
-        <div className='HeaderAlarmBC'>
-      
-
-                {/* 챗봇 진입 */}
-         <Link to="/ChatPage">
-         <img
-            src={greenee}
-            className={"greenee"}
-            style={{ width: "70px", padding: "20px"}}
-          />
-      </Link> 
-
-
-
-        </div>
-        {/* <div>여기에 실시간 알림?</div> */}
+      <Link to="/ChatPage">
+        <img
+          src={greenee}
+          className={"greenee"}
+          style={{ width: "70px", padding: "20px" }}
+        />
+      </Link>
+      <div class="room-list-empty-room">
+        {userName}님, 반가워요
       </div>
     </div>
-    </tt>
   );
 };
 

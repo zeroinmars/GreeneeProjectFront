@@ -94,10 +94,24 @@ const AddEvent = () => {
     let sDay = start.$y +'-'+ (start.$M + 1) +'-'+ start.$D;
     let eDay = end.$y +'-'+ (end.$M + 1) +'-'+ end.$D;
     const url = "http://localhost:5000/lifeConcierge/api/addEvent";
-    
+    console.log(tag.tagName)
+
+    let tempTag;
+    let tempColor;
+    if (tag.tagName !== '데일리루틴') {
+      tempTag = tag.tagName;
+      tempColor = tag.tagColor;
+    } else {
+      tempTag = tag2.tagName;
+      tempColor = tag2.tagColor;
+    }
+    console.log(tempTag, tempColor)
     if (email) {
       dispatch({ type: "PROGRESS", progress: { progressToggle: true } });
-      axios.post(url, { ...eventInfo, checkWeeks, email, checkSpecial, preAlarm, tag : tag.tagName, color: tag.tagColor, cateList, start: sDay, end: eDay, sTime, eTime, sLocation, eLocation })
+      axios.post(url, { 
+                    ...eventInfo, checkWeeks, email, checkSpecial, preAlarm, 
+                    tag : tag.tagName, color: tag.tagColor, tag2: tag2.tagName, color2: tag2.tagColor,
+                    cateList, start: sDay, end: eDay, sTime, eTime, sLocation, eLocation })
         .then((res) => {
           if (res.data.affectedRows) {
             dispatch({ type: "ISEVENTADDED", isEventAdded: true });

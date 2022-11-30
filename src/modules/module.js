@@ -36,6 +36,8 @@ const reducer = (state = initialState, action) =>{
       return {...state, progress: {...state.progress, progressToggle: action.progress.progressToggle}};
     case "USER/USERINFO":
       return {...state, user: {...state.user, userInfo: action.user.userInfo}};
+    case "USERNAME":
+      return {...state, userName: action.userName};
     case "ISLOGGEDIN":
       return {...state, isLoggedin: action.isLoggedin};
     case "ISLOGGEDOUT":
@@ -51,4 +53,4 @@ const reducer = (state = initialState, action) =>{
   }
 };
 
-export default reducer
+export default reducer;

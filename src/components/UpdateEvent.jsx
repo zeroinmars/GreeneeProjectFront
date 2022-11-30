@@ -21,7 +21,7 @@ const UpdateEvent = () => {
     const [openTag, setOpenTag] = useState(false);
     const [openTag2, setOpenTag2] = useState(false);
     const [openCategory, setOpenCategory] = useState(false);
-    
+
     const nav = useNavigate();
     const dispatch = useDispatch();
     const email = useSelector(state => (state.session.email)); // 리덕스 스토어에 저장되어있는 세션 email 값을 가져옴
@@ -105,6 +105,10 @@ const UpdateEvent = () => {
         let sDay = start.$y + '-' + (start.$M + 1) + '-' + start.$D;
         let eDay = end.$y + '-' + (end.$M + 1) + '-' + end.$D;
         const url = "http://localhost:5000/lifeConcierge/api/UpdateEvent";
+        console.log({
+            ...eventInfo, checkWeeks, email, checkSpecial, preAlarm, tag: tag.tagName, color: tag.tagColor,
+            cateList, start: sDay, end: eDay, sTime, eTime, sLocation, eLocation
+        })
         if (email) {
             dispatch({ type: "PROGRESS", progress: { progressToggle: true } });
             axios.post(url, {
@@ -131,7 +135,6 @@ const UpdateEvent = () => {
 
     return (
         <Box className='test'>
-
             <Button onClick={handleOpenTag} style={{ background: tag.tagColor, color: fontColor }}>{tag.tagName ? tag.tagName : "태그"}</Button>
             {tag.tagName == "데일리루틴" ? <Button onClick={handleOpenTag2} style={{ background: tag2.tagColor, color: fontColor }}>{tag2.tagName ? tag2.tagName : "태그"}</Button> : ""}
             <Stack spacing={1}>
