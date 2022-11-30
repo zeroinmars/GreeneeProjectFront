@@ -164,7 +164,7 @@ const Calendar = () => {
           return <div style={{ width: '330px', padding: "0 10px" }}>
             <hr></hr>
             <span>{data.sTime}</span>
-            <DialogTitle><span style={{ color: data.color }}>●</span> {data.title}</DialogTitle>
+            <DialogTitle style={{textAlign: 'left'}}><span style={{ color: data.color }}>●</span> {data.title}</DialogTitle>
             <DialogContent>{data.content}</DialogContent>
             {/* <DialogActions> */}
             <Button onClick={viewEvent} value={idx}>일정 보기</Button>
