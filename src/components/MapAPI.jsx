@@ -4,7 +4,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { TextField } from '@mui/material'
 import { Dialog } from '@mui/material';
 import Slide from '@mui/material/Slide';
-import "./map.css";
+import "../css/map.css"
 
 
 const { kakao } = window;
@@ -41,8 +41,8 @@ const MapAPI = ({sLocation, eLocation, setSLocation, setELocation}) => {
   const [endAddr, setEndAddr] = useState('');
 
   // 출발지, 도착지 상태값(사용자가 보는 주소)
-  const [startUserAddr, setStartUserAddr] = useState('');
-  const [endUserAddr, setEndUserAddr] = useState('');
+  const [startUserAddr, setStartUserAddr] = useState(sLocation);
+  const [endUserAddr, setEndUserAddr] = useState(eLocation);
 
   // 지도 검색 버튼 찾기
   const searchButton = useRef();

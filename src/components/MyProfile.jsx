@@ -4,7 +4,7 @@ import { Button } from'@mui/material';
 import axios from 'axios';
 import Progress from './FreqCompo/Progress';
 import { useNavigate } from'react-router-dom';
-
+import LabelBottomNavigation from './LabelBottomNavigation';
 export default () => {
   const nav = useNavigate();
   const dispatch = useDispatch();
@@ -21,9 +21,10 @@ export default () => {
   }
   return (
     <div style={{height:"500px", display:"flex", flexWrap:"wrap"}}>
+      <LabelBottomNavigation></LabelBottomNavigation>
       <div style={{margin:"auto", display:"block"}}>{`${session.name} 프로필`}
       </div>
-        <Button style={{margin:"auto"}} variant="contained" color="success" onClick={handleLogout}>로그아웃</Button>
+      <Button style={{margin:"auto"}} variant="contained" color="success" onClick={handleLogout}>로그아웃</Button>
       {session.email=="admin"? 
       <div style={{margin:"auto"}}>
         <Button variant='contained' color="success" onClick={()=>{nav('/userinfo')}}>고객 정보 확인</Button>
