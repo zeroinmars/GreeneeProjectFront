@@ -1,9 +1,6 @@
 import { Form, Button } from "react-bootstrap";
 import sendImage from "../../../img/send-icon.png";
 import React, { useState } from "react";
-
-
-
 const { Configuration, OpenAIApi } = require("openai");
 const configuration = new Configuration({
   apiKey: "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",

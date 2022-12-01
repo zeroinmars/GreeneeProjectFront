@@ -2,9 +2,6 @@ import React from "react";
 import {Toast,ToastContainer} from 'react-bootstrap'
 import Footer from './Footer'
 import a2 from "../../../img/greenee.png";
-
-
-
 function Main(props) {
   return (
       <main className = "main-container">

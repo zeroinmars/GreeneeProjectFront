@@ -3,20 +3,35 @@
 import React, { useEffect, useState, useRef } from "react";
 import { TextField, Button } from '@mui/material'
 import { Dialog } from '@mui/material';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import SearchIcon from '@mui/icons-material/Search';
 import Slide from '@mui/material/Slide';
 import "../css/map.css"
 import "../css/AddEvent.css"
 
 const { kakao } = window;
 
+const theme = createTheme({
+  palette: {
+    // primary: {
+    //   // Purple and green play nicely together.
+    //   main: purple[500],
+    // },
+    secondary: {
+      // This is green.A700 as hex.
+      main: '#11cb5f',
+    },
+  },
+});
+
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-const MapAPI = ({sLocation, eLocation, setSLocation, setELocation}) => {
+const MapAPI = ({ sLocation, eLocation, setSLocation, setELocation }) => {
   const [sLabel, setSLabel] = useState('출발 장소');
   const [eLabel, setELabel] = useState('도착 장소');
-  
+
   const inputLabel = () => {
     if (flag === '출발지') {
       setSLabel('');
@@ -25,7 +40,7 @@ const MapAPI = ({sLocation, eLocation, setSLocation, setELocation}) => {
     }
     setSLocation(startAddr);
     setELocation(endAddr);
-    
+
     handleCheckClose();
     handleClose();
   }
@@ -354,15 +369,15 @@ const MapAPI = ({sLocation, eLocation, setSLocation, setELocation}) => {
 
   return (
     <>
-      <TextField 
-        size="small" variant="standard" sx={{ mb: "20px" }} 
-        value={startUserAddr} label={sLabel} name="sLocation" 
+      <TextField
+        size="small" variant="standard" sx={{ mb: "20px" }}
+        value={startUserAddr} label={sLabel} name="sLocation"
         onClick={handleOpenStart}
       />
 
-      <TextField 
-        size="small" variant="standard" sx={{ mb: "20px" }} 
-        value={endUserAddr} label={eLabel} name="eLocation" 
+      <TextField
+        size="small" variant="standard" sx={{ mb: "20px" }}
+        value={endUserAddr} label={eLabel} name="eLocation"
         onClick={handleOpenEnd}
       />
 
@@ -374,9 +389,15 @@ const MapAPI = ({sLocation, eLocation, setSLocation, setELocation}) => {
           <div className="option">
             <div>
               <Button onClick={handleClose}>닫기</Button>
-              <button onClick={handleClose}> 닫기 </button>
-              <input type="text" id="keyword" size="15" />
-              <button ref={searchButton}>검색하기</button>
+
+              <input type="text" id="keyword" size="20" />
+              
+              <ThemeProvider theme={theme}>
+                <Button variant="contained" color='secondary' style={{color:'white', font:'bold'}}
+                  size="small" startIcon={<SearchIcon />} ref={searchButton}>
+                  검색
+                </Button>
+              </ThemeProvider>
             </div>
           </div>
 

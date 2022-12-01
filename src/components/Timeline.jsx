@@ -16,17 +16,12 @@ function Timeline() {
     { start: '2022-11-30 09:50', end: '2022-11-30 09:55', title: 'a' },
     { start: '2022-12-01 09:30', end: '2022-12-01 10:40', title: 'dsa' },
     { start: '2022-12-01 09:30', end: '2022-12-01 10:40', title: 'dsa' },
-    { start: '2022-12-01 09:30', end: '2022-12-01 10:40', title: 'dsa' },
+    { start: '2022-12-01 09:30', end: '2022-12-31 10:40', title: '일정' },
     { start: '2022-12-01', end: '2022-12-10', title: 'dasdsda', weekday: '목요일' },
   ]
 
-  const check = () => {
-    console.log(events)
-  }
-
   return (
     <>
-      <button onClick={check}>check</button>
       <FullCalendar
         // plugins={[timeGridPlugin]}
         // initialView='timeGridDay'

@@ -1,28 +1,22 @@
-import React from "react"; 
- 
-
+import React from "react";
+import "./TalkChat.css";
+/* bootstrap */
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {Form,Button} from 'react-bootstrap'
+/* img */
+import sendImage from '../../img/send-icon.png'
+/* header */
+import {Navbar} from 'react-bootstrap'
 
 
 /* import { Configuration, OpenAIApi } from "https://cdn.skypack.dev/openai"; */
 const { Configuration, OpenAIApi } = require("openai");
 const configuration = new Configuration({
-  apiKey: "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",
+  apiKey: "1212",
 });
 const openai = new OpenAIApi(configuration);
 
 function TalkChat() {
-
-
- /*  const [message, setMessage] = useState([{msg:"hi", from:false}])
-  const getMessage = (msg, from) =>{
-    setMessage((current) => [...current,({msg:msg, from:from})])
-  } */
-
-
-
-
-
-
   function abc() {
     /* 인풋 */
     let template = `
@@ -63,7 +57,11 @@ function TalkChat() {
   /* 출력 */
   return (
     <>
- 
+     <Navbar bg="primary" variant="dark" className = "header-container">
+        <Navbar.Brand className = "header-title-container">
+            <h3>&nbsp;Greenee</h3>
+        </Navbar.Brand>
+    </Navbar>
 
       <div className="chat-content">
         <div className="line">
@@ -78,9 +76,15 @@ function TalkChat() {
         전송
       </button>
       <div className="App">
+      <Button variant="primary">Primary</Button>{' '}
     </div>
 
-  
+    <footer>
+    <Form.Control placeholder="" className="input-form"/>
+        <Button variant="white" type="submit" className="input-button">
+            <img className = "send-icon" src={sendImage} />
+        </Button>
+        </footer>
     
     </>
   );

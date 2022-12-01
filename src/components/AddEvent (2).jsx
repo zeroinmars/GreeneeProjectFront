@@ -16,7 +16,6 @@ import { useNavigate } from 'react-router-dom';
 import Progress from './FreqCompo/Progress';
 import Snackbar from './FreqCompo/Snackbar';
 import MapAPI from './MapAPI';
-import LabelBottomNavigation from './LabelBottomNavigation';
 import '../css/AddEvent.css';
 
 
@@ -31,7 +30,7 @@ const AddEvent = () => {
   const nav = useNavigate();
   const dispatch = useDispatch();
   const email = useSelector(state => (state.session.email)); // 리덕스 스토어에 저장되어있는 세션 email 값을 가져옴
-  const [checkWeeks, setCheckWeeks] = useState({ mon: false, tue: false, wed: false, thu: false, fri: false, sat: false, sun: false });
+  const [checkWeeks, setCheckWeeks] = useState({ mon: false, tue: false, wed: false, thu: false, fri: false, sat: false, sun: false});
   const [eventInfo, setEventInfo] = useState({ //title, 
   });
   const [checkSpecial, setCheckSpecial] = useState(false);
@@ -53,6 +52,7 @@ const AddEvent = () => {
   const [eTime, setETime] = useState('');
 
   const handleStartDate = (n) => {
+    console.log(n)
     setStart(n);
   }
   const handleEndDate = (n) => {
@@ -63,7 +63,7 @@ const AddEvent = () => {
     let minute = n.$m;
     hour = hour < 10 ? '0' + hour : hour;
     minute = minute < 10 ? '0' + minute : minute;
-
+    
     setStart(n);
     setSTime(hour + ':' + minute);
   };
@@ -87,53 +87,34 @@ const AddEvent = () => {
       }
       if (count == 0) {
         console.log(e.target.style.accentColor);
-        setCateList([...cateList, { name: e.target.name, color: e.target.style.accentColor }]); setOpenCategory(false)
+        setCateList([...cateList, {name:e.target.name, color: e.target.style.accentColor}]); setOpenCategory(false)
       }
     } else {
-      setCateList([...cateList, { name: e.target.name, color: e.target.style.accentColor }]); setOpenCategory(false)
+      setCateList([...cateList, {name:e.target.name, color: e.target.style.accentColor}]); setOpenCategory(false)
     }
   }
+
   const handleEventInfo = (e) => {
     setEventInfo({ ...eventInfo, [e.target.name]: e.target.value })
   }
   const handleFormSubmit = () => {
-    const sMonth = start.$M + 1;
-    const sDay = start.$D;
-    const eMonth = end.$M + 1;
-    const eDay = end.$D;
-
-    const sDate = start.$y + '-' + (sMonth < 10 ? '0' + sMonth : sMonth) + '-' + (sDay < 10 ? '0' + sDay : sDay);
-    const eDate = end.$y + '-' + (eMonth < 10 ? '0' + eMonth : eMonth) + '-' + (eDay < 10 ? '0' + eDay : eDay);
+    let sDay = start.$y +'-'+ (start.$M + 1) +'-'+ start.$D;
+    let eDay = end.$y +'-'+ (end.$M + 1) +'-'+ end.$D;
     const url = "http://localhost:5000/lifeConcierge/api/addEvent";
-    console.log(tag.tagName)
-
-    let tempTag;
-    let tempColor;
-    if (tag.tagName !== '데일리루틴') {
-      tempTag = tag.tagName;
-      tempColor = tag.tagColor;
-    } else {
-      tempTag = tag2.tagName;
-      tempColor = tag2.tagColor;
-    }
-    console.log(tempTag, tempColor)
+    console.log(typeof sDay, eDay);
     if (email) {
       dispatch({ type: "PROGRESS", progress: { progressToggle: true } });
-      axios.post(url, {
-        ...eventInfo, checkWeeks, email, checkSpecial, preAlarm,
-        tag: tag.tagName, color: tag.tagColor, tag2: tag2.tagName, color2: tag2.tagColor,
-        cateList, start: sDate, end: eDate, sTime, eTime, sLocation, eLocation
-      })
+      axios.post(url, { ...eventInfo, checkWeeks, email, checkSpecial, preAlarm, tag, tag2, cateList, start: sDay, end: eDay, sTime, eTime })
         .then((res) => {
           if (res.data.affectedRows) {
-            dispatch({ type: "ISEVENTADDED", isEventAdded: true });
+            dispatch({ type: "ISEVENTADDED", isEventAdded: true })
             dispatch({ type: "PROGRESS", progress: { progressToggle: false } });
             nav('/calendar');
-
           } else {
             dispatch({ type: "SNACKBAR/ON", snackbar: { snackbarToggle: true, explain: "일정등록 실패", severity: "error" } });
             dispatch({ type: "PROGRESS", progress: { progressToggle: false } });
           }
+
         })
         .catch((err) => { console.log("에러 발생") })
     } else {
@@ -143,112 +124,30 @@ const AddEvent = () => {
   }
 
   return (
-
     <div className='addeventbody'>
-      <Box className='addevent'>
-        {/* <button onClick={() => {
+    <Box className='addevent'>
+      {/* <button onClick={() => {
         console.log(start.$y +'-'+ (start.$M + 1) +'-'+ start.$D);
       }}>check</button>
 
       <button onClick={() => {
         console.log(sTime)
       }}>시간 보기</button> */}
-        <Button onClick={handleOpenTag} style={{ background: tag.tagColor, color: fontColor, marginTop: '20px' }}>{tag.tagName ? tag.tagName : "태그"}</Button>
-        {tag.tagName == "데일리루틴" ? <Button onClick={handleOpenTag2} style={{ background: tag2.tagColor, color: fontColor, marginTop: '20px' }}>{tag2.tagName ? tag2.tagName : "태그"}</Button> : ""}
-        <Stack spacing={1}>
-          <div className='important' >
-            <input style={{ width: "100%" }} className='input' placeholder="제목 추가" type='text' name="title" onChange={handleEventInfo} />
-            {/* <TextField size="small" placeholder="제목" name="title" variant="standard" sx={{ mb: "20px" }} onChange={handleEventInfo} /> */}
-            {/* {tag.tagName == "데일리루틴" ? "" :
+      <Button onClick={handleOpenTag} style={{ background: tag.tagColor, color: fontColor, marginTop:'20px'}}>{tag.tagName ? tag.tagName : "태그"}</Button>
+      {tag.tagName == "데일리루틴" ? <Button onClick={handleOpenTag2} style={{ background: tag2.tagColor, color: fontColor, marginTop:'20px' }}>{tag2.tagName ? tag2.tagName : "태그"}</Button> : ""}
+      <Stack spacing={1}>
+      <div className='important' >
+        <input style={{width:"100%"}} className='input' placeholder="제목 추가" type='text' name="제목" onChange={handleEventInfo}/>
+        {/* <TextField size="small" placeholder="제목" name="title" variant="standard" sx={{ mb: "20px" }} onChange={handleEventInfo} /> */}
+        {/* {tag.tagName == "데일리루틴" ? "" :
         <FormControlLabel control={<Switch name="checkSpecial" onChange={() => { setCheckSpecial(!checkSpecial) }} />} label="주요일정" />
         } */}
-            {checkSpecial ? <span onClick={() => { setCheckSpecial(false) }} className="star_yellow">⭐</span> :
-              <span onClick={() => { setCheckSpecial(true) }} className="star_white" star_yellow>⭐</span>}
-            {/* <div className='importantfont'>주요일정</div> */}
-          </div>
-
-
-          {/* {tag.tagName !== "데일리루틴" ?
-            <div>
-              <div className='datetime'>
-                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                  <MobileDatePicker
-                    label="시작 날짜"
-                    inputFormat="YYYY/MM/DD"
-                    onChange={handleStartDate}
-                    value={start}
-                    renderInput={(label) => <TextField size="small" variant='standard' {...label} />}
-                  />
-                  <TimePicker
-                    label="시작 시간"
-                    value={start}
-                    onChange={handleStartTime}
-                    renderInput={(label) => <TextField size="small" variant='standard' {...label} />} />
-                </LocalizationProvider>
-              </div>
-
-              <div
-                className='datetime'>
-                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                  <MobileDatePicker
-                    label="종료 날짜"
-                    inputFormat="YYYY/MM/DD"
-                    onChange={handleEndDate}
-                    value={end}
-                    renderInput={(label) => <TextField size="small" variant='standard' {...label} />}
-                  />
-                  <TimePicker
-                    label="종료 시간"
-                    value={end}
-                    onChange={handleEndTime}
-                    renderInput={(label) => <div style={{ display: "flex" }}><TextField size="small" variant='standard' {...label} /></div>} />
-                </LocalizationProvider>
-              </div>
-            </div>
-            :
-            <div>
-              <div className='datetime'>
-                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                  <MobileDatePicker
-                    label="루틴 시작"
-                    inputFormat="YYYY/MM/DD"
-                    onChange={handleStartDate}
-                    value={start}
-                    renderInput={(label) => <TextField size="small" variant='standard' {...label} />}
-                  />
-                </LocalizationProvider>
-                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                  <MobileDatePicker
-                    label="루틴 종료"
-                    inputFormat="YYYY/MM/DD"
-                    onChange={handleEndDate}
-                    value={end}
-                    renderInput={(label) => <TextField size="small" variant='standard' {...label} />}
-                  />
-                </LocalizationProvider>
-
-              </div>
-
-              <div className='datetime'>
-                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                  <TimePicker
-                    label="시작 시간"
-                    value={start}
-                    onChange={handleStartTime}
-                    renderInput={(label) => <TextField size="small" variant='standard' {...label} />} />
-                </LocalizationProvider>
-
-                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                  <TimePicker
-                    label="종료 시간"
-                    value={end}
-                    onChange={handleEndTime}
-                    renderInput={(label) => <div style={{ display: "flex" }}><TextField size="small" variant='standard' {...label} /></div>} />
-                </LocalizationProvider>
-              </div>
-            </div>
-          } */}
-<div className='datetime'>
+        {checkSpecial?<span onClick={()=>{setCheckSpecial(false)}} className="star_yellow">⭐</span> :
+        <span onClick={()=>{setCheckSpecial(true)}} className="star_white"star_yellow>⭐</span>}
+        {/* <div className='importantfont'>주요일정</div> */}
+      </div>
+        
+        <div className='datetime'>
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <MobileDatePicker
             // label="시작 날짜"
@@ -281,58 +180,59 @@ const AddEvent = () => {
             renderInput={(label) => <div style={{display:"flex"}}><TextField size="small" variant='standard' {...label} /></div>} />
         </LocalizationProvider> 
         </div>        
-          <div className='alarm'>
-
-            <NotificationsNoneIcon fontSize='large' style={{ visibility: "visible" }} />
-            <FormControl variant='filled' size='small'>
-              {/* <InputLabel id="demo-simple-select-label">미리 알림</InputLabel> */}
-              <Select
-                // labelId="demo-simple-select-label"
-                // id="demo-simple-select"
-                value={preAlarm}
-                onChange={(e) => { setPreAlarm(e.target.value) }}
-              >
-                <MenuItem value={0}>알람없음</MenuItem>
-                <MenuItem value={10}>10분전</MenuItem>
-                <MenuItem value={20}>20분전</MenuItem>
-                <MenuItem value={30}>30분전</MenuItem>
-                <MenuItem value={60}>60분전</MenuItem>
-              </Select>
-            </FormControl>
-          </div>
-
-          <MapAPI sLocation={sLocation} setSLocation={setSLocation}
-            eLocation={eLocation} setELocation={setELocation}>
-          </MapAPI>
-          {tag.tagName == "데일리루틴" ? <CheckWeeks checkWeeks={checkWeeks} setCheckWeeks={setCheckWeeks} /> : ""}
-          {/* <TextField size="small" label="내용" name="content" multiline rows={5} variant="outlined" style={{marginBottom:"20px"}} onChange={handleEventInfo}/> */}
-          <TextField size="small" placeholder="메모" name="content" multiline rows={3} variant="outlined" sx={{ mb: "20px" }} onChange={handleEventInfo} />
-          {/* <TextField label="장소" name="location" variant="outlined" sx={{mb:"20px"}} onChange={handleEventInfo}/> */}
-        </Stack>
-        <div className='test'>
-          <FormControlLabel style={{ float: "right" }} control={<Switch name="checkRecommend" onChange={() => { setCheckRecommend(!checkRecommend) }} />} label="추천받기" /><br />
-
-          {checkRecommend ?
-            <div className="container">
-              {cateList.map((data, index) => (
-                <div style={{ float: 'left', marginRight: "0px" }}>
-                  <div style={{ display: "flex", flexWrap: "wrap" }}>
-                    <div style={{ background: data.color, width: "15px", marginRight: '5px' }}></div>
-                    <Button style={{ marginLeft: "-4px", color: 'black', justifyContent: "left" }} name={data.name} key={index} onClick={(e) => { setCateList(cateList.filter((data) => (data.name !== e.target.name))) }}>{data.name}</Button>
-                  </div>
-                </div>
-              ))}
-            </div>
-            : ""}
-            <AddCircleOutlineIcon onClick={() => { setOpenCategory(true) }} style={{color:'#7e7e7e'}}/>
-          <Button sx={{ mt: "10px", float: "right" }} variant="contained" onClick={handleFormSubmit}>등록</Button>
+        
+        <div className='alarm'>
+  
+          <NotificationsNoneIcon fontSize='large' style={{visibility:"visible"}}/>
+        <FormControl variant='filled' size='small'>
+          {/* <InputLabel id="demo-simple-select-label">미리 알림</InputLabel> */}
+          <Select
+            // labelId="demo-simple-select-label"
+            // id="demo-simple-select"
+            value={preAlarm}
+            onChange={(e) => { setPreAlarm(e.target.value) }}
+          >
+            <MenuItem value={0}>알람없음</MenuItem>
+            <MenuItem value={10}>10분전</MenuItem>
+            <MenuItem value={20}>20분전</MenuItem>
+            <MenuItem value={30}>30분전</MenuItem>
+            <MenuItem value={60}>60분전</MenuItem>
+          </Select>
+        </FormControl>
         </div>
-        {/* <Button sx={{ mt: "10px", float: "right" }} variant="contained" onClick={handleFormSubmit}>등록</Button> */}
 
-        <Snackbar />
-        <Progress />
-        {/* 태그 1 선택 모달창  */}
-        <Dialog open={openTag} onClose={() => { setOpenTag(false) }}>
+        <MapAPI sLocation={sLocation} setSLocation={setSLocation}
+          eLocation={eLocation} setELocation={setELocation}>
+        </MapAPI>
+        {tag.tagName == "데일리루틴" ? <CheckWeeks checkWeeks={checkWeeks} setCheckWeeks={setCheckWeeks} /> : ""}
+        {/* <TextField size="small" label="내용" name="content" multiline rows={5} variant="outlined" style={{marginBottom:"20px"}} onChange={handleEventInfo}/> */}
+        <TextField size="small" placeholder="메모" name="content" multiline rows={3} variant="outlined" sx={{ mb: "20px"}} onChange={handleEventInfo} />
+        {/* <TextField label="장소" name="location" variant="outlined" sx={{mb:"20px"}} onChange={handleEventInfo}/> */}
+      </Stack>
+      <div>
+      <FormControlLabel style={{ float: "right" }} control={<Switch name="checkRecommend" onChange={() => { setCheckRecommend(!checkRecommend) }} />} label="추천받기" /><br />
+      
+      {checkRecommend ?
+        <div className="container">
+          {cateList.map((data, index) => (
+            <div style={{float:'left' ,marginRight:"0px"}}>
+              <div style={{display:"flex" , flexWrap:"wrap"}}>
+                <div style={{background:data.color, width:"15px", marginRight:'5px'}}></div>
+                <Button style={{marginLeft:"-4px", color:'black', justifyContent:"left"}} name={data.name} key={index} onClick={(e) => { setCateList(cateList.filter((data) => (data.name !== e.target.name))) }}>{data.name}</Button>
+              </div>
+            </div>
+          ))}
+        </div>
+        : ""}
+        <AddCircleOutlineIcon onClick={() => { setOpenCategory(true) }} style={{color:'#7e7e7e'}}/>
+        <Button sx={{ mt: "10px", float: "right" }} variant="contained" onClick={handleFormSubmit}>등록</Button>
+      </div>  
+      {/* <Button sx={{ mt: "10px", float: "right" }} variant="contained" onClick={handleFormSubmit}>등록</Button> */}
+
+      <Snackbar />
+      <Progress />
+      {/* 태그 1 선택 모달창  */}
+      <Dialog open={openTag} onClose={() => { setOpenTag(false) }}>
       <div className='tagselect'>
         <DialogTitle>
           태그 선택
@@ -461,10 +361,8 @@ const AddEvent = () => {
           </div>
         </DialogTitle>
       </Dialog>
-      </Box>
-      <LabelBottomNavigation></LabelBottomNavigation>
+    </Box>
     </div>
-
   )
 }
 export default AddEvent;

@@ -1,12 +1,18 @@
 import React from "react"; 
- 
+/* bootstrap */
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {Form,Button} from 'react-bootstrap'
+/* img */
+import sendImage from '../../../img/send-icon.png'
+/* header */
+import {Navbar} from 'react-bootstrap'
 
 
 
 /* import { Configuration, OpenAIApi } from "https://cdn.skypack.dev/openai"; */
 const { Configuration, OpenAIApi } = require("openai");
 const configuration = new Configuration({
-  apiKey: "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",
+  apiKey: "1212",
 });
 const openai = new OpenAIApi(configuration);
 

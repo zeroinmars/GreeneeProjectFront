@@ -28,12 +28,6 @@
     background-color: white;
 }
 
-/*배경색*/
-.addeventbody{
-    background-color: #efefef;
-    height:100%;
-}
-
 .registration_btn{
     width: 90vw; 
     margin: auto; 
@@ -75,7 +69,7 @@
     color: transparent; /* 기존 이모지 컬러 제거 */
     text-shadow: 0 0 0 #FF9C00;
     position:absolute;
-    top:40%;
+    top:35%;
     right:3%;
 }
 
@@ -86,27 +80,18 @@
 
 .datetime{
     display: flex;
+    margin: 12px 0;
 }
 
 .css-1u3bzj6-MuiFormControl-root-MuiTextField-root{
     display: flex;
 }
-
-.css-nz481w-MuiInputBase-input-MuiInput-input {
-    margin-top:20px;
-}
-
-.alarm{
-    display: flex
-}
-
 /*알람 아이콘*/
 .css-p2kfw9-MuiSvgIcon-root{
-    font-size:35px;
+    font-size:1em;
     margin-top: 20px;
     margin-right:5px;
 }
-
 
 /*알람 체크박스*/
 .css-r918sm-MuiInputBase-root-MuiFilledInput-root-MuiSelect-root {
@@ -121,7 +106,16 @@
     background-color:#efefef;
 }
 
+.css-12wnr2w-MuiButtonBase-root-MuiCheckbox-root.Mui-checked{
+    color:red;
+}
+.css-12wnr2w-MuiButtonBase-root-MuiCheckbox-root.MuiCheckbox-indeterminate {
+    color:#ebcf00;
+}
 
+.css-1okj3ks-MuiStack-root>:not(style)+:not(style){
+    font-size:30px;
+}
 /*제목 추가*/
 .input {
     outline: none;
@@ -136,7 +130,6 @@
     margin-top: 30px;
     padding-left:15px;
 }
-
 /*첫번째 모달*/
 .tagcolor {
     height: 30px; width: 30px;
@@ -156,35 +149,17 @@
     background-color: #efefef;
 }
 
+.App{
+    background-color:#efefef;
+}
+
 /*메모*/
 .css-10l86rx-MuiInputBase-root-MuiOutlinedInput-root{
     background-color:#fff;
-    margin-top: 20px;
 }
 
-/*카테고리 추가*/
-.css-9nvqg8-MuiButtonBase-root-MuiButton-root{
+body{
     color:black;
 }
-
-/*등록btn*/
-.css-ytl6fu-MuiButtonBase-root-MuiButton-root{
-    background-color:#2ecc71;
-    box-shadow: none;
-    width:370px;
-    font-size: 20px;
-}
-
-.css-ytl6fu-MuiButtonBase-root-MuiButton-root:hover{
-    background-color: #2ecc71;
-    box-shadow: none;
-}
-
-.container{
-    display: grid;
-    grid-template-areas:"1fr 1fr 1fr"; 
-    margin-top: 30px;
-}
-
 
 

@@ -16,7 +16,9 @@ import UserInfo from "./pages/UserInfo";
 import AddEvent from "./components/AddEvent";
 import UpdateEvent from "./components/UpdateEvent";
 import AddMemo from "./components/AddMemo";
-
+// import ChatbotSteps from "./components/chatbot/ChatbotSteps";
+import LabelBottomNavigation from "./components/LabelBottomNavigation";
+ 
 /* css 파일 임포트 */
 import "./dabin.css";
 import "./index.css";
