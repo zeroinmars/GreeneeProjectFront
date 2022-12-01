@@ -52,7 +52,6 @@ const AddEvent = () => {
   const [eTime, setETime] = useState('');
 
   const handleStartDate = (n) => {
-    console.log(n)
     setStart(n);
   }
   const handleEndDate = (n) => {
@@ -98,8 +97,13 @@ const AddEvent = () => {
     setEventInfo({ ...eventInfo, [e.target.name]: e.target.value })
   }
   const handleFormSubmit = () => {
-    let sDay = start.$y + '-' + (start.$M + 1) + '-' + start.$D;
-    let eDay = end.$y + '-' + (end.$M + 1) + '-' + end.$D;
+    const sMonth = start.$M + 1;
+    const sDay = start.$D;
+    const eMonth = end.$M + 1;
+    const eDay = end.$D;
+
+    const sDate = start.$y + '-' + (sMonth < 10 ? '0' + sMonth : sMonth) + '-' + (sDay < 10 ? '0' + sDay : sDay);
+    const eDate = end.$y + '-' + (eMonth < 10 ? '0' + eMonth : eMonth) + '-' + (eDay < 10 ? '0' + eDay : eDay);
     const url = "http://localhost:5000/lifeConcierge/api/addEvent";
     console.log(tag.tagName)
 
@@ -118,7 +122,7 @@ const AddEvent = () => {
       axios.post(url, {
         ...eventInfo, checkWeeks, email, checkSpecial, preAlarm,
         tag: tag.tagName, color: tag.tagColor, tag2: tag2.tagName, color2: tag2.tagColor,
-        cateList, start: sDay, end: eDay, sTime, eTime, sLocation, eLocation
+        cateList, start: sDate, end: eDate, sTime, eTime, sLocation, eLocation
       })
         .then((res) => {
           if (res.data.affectedRows) {
@@ -162,39 +166,87 @@ const AddEvent = () => {
             {/* <div className='importantfont'>주요일정</div> */}
           </div>
 
-          <div className='datetime'>
-            <LocalizationProvider dateAdapter={AdapterDayjs}>
+          
+          {tag.tagName !== "데일리루틴" ?
+            <div>
+              <div className='datetime'>
+                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                  <MobileDatePicker
+                    label="시작 날짜"
+                    inputFormat="YYYY/MM/DD"
+                    onChange={handleStartDate}
+                    value={start}
+                    renderInput={(label) => <TextField size="small" variant='standard' {...label} />}
+                  />
+                  <TimePicker
+                    label="시작 시간"
+                    value={start}
+                    onChange={handleStartTime}
+                    renderInput={(label) => <TextField size="small" variant='standard' {...label} />} />
+                </LocalizationProvider>
+              </div>
+              
+              <div
+               className='datetime'>
+                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                  <MobileDatePicker
+                    label="종료 날짜"
+                    inputFormat="YYYY/MM/DD"
+                    onChange={handleEndDate}
+                    value={end}
+                    renderInput={(label) => <TextField size="small" variant='standard' {...label} />}
+                  />
+                  <TimePicker
+                    label="종료 시간"
+                    value={end}
+                    onChange={handleEndTime}
+                    renderInput={(label) => <div style={{ display: "flex" }}><TextField size="small" variant='standard' {...label} /></div>} />
+                </LocalizationProvider>
+              </div>
+            </div>
+            :
+            <div>
+              <div className='datetime'>
+              <LocalizationProvider dateAdapter={AdapterDayjs}>
               <MobileDatePicker
-                // label="시작 날짜"
-                inputFormat="YYYY/MM/DD"
-                onChange={handleStartDate}
-                value={start}
-                renderInput={(label) => <TextField size="small" variant='standard' {...label} />}
-              />
-              <TimePicker
-                // label="시작 시간"
-                value={start}
-                onChange={handleStartTime}
-                renderInput={(label) => <TextField size="small" variant='standard' {...label} />} />
-            </LocalizationProvider>
-          </div>
+                    label="루틴 시작"
+                    inputFormat="YYYY/MM/DD"
+                    onChange={handleStartDate}
+                    value={start}
+                    renderInput={(label) => <TextField size="small" variant='standard' {...label} />}
+                  />
+              </LocalizationProvider>
+              <LocalizationProvider dateAdapter={AdapterDayjs}>
+                  <MobileDatePicker
+                    label="루틴 종료"
+                    inputFormat="YYYY/MM/DD"
+                    onChange={handleEndDate}
+                    value={end}
+                    renderInput={(label) => <TextField size="small" variant='standard' {...label} />}
+                  />
+                </LocalizationProvider>
+                
+              </div>
+              
+              <div className='datetime'>
+                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                  <TimePicker
+                    label="시작 시간"
+                    value={start}
+                    onChange={handleStartTime}
+                    renderInput={(label) => <TextField size="small" variant='standard' {...label} />} />
+                </LocalizationProvider>
 
-          <div className='datetime'>
-            <LocalizationProvider dateAdapter={AdapterDayjs}>
-              <MobileDatePicker
-                // label="종료 날짜"
-                inputFormat="YYYY/MM/DD"
-                onChange={handleEndDate}
-                value={end}
-                renderInput={(label) => <TextField size="small" variant='standard' {...label} />}
-              />
-              <TimePicker
-                // label="종료 시간"
-                value={end}
-                onChange={handleEndTime}
-                renderInput={(label) => <div style={{ display: "flex" }}><TextField size="small" variant='standard' {...label} /></div>} />
-            </LocalizationProvider>
-          </div>
+                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                  <TimePicker
+                    label="종료 시간"
+                    value={end}
+                    onChange={handleEndTime}
+                    renderInput={(label) => <div style={{ display: "flex" }}><TextField size="small" variant='standard' {...label} /></div>} />
+                </LocalizationProvider>
+              </div>
+            </div>
+          }
 
           <div className='alarm'>
 
