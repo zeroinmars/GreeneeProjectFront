@@ -75,11 +75,10 @@ const AddEvent = () => {
       for (let i of cateList) {
         if (i === e.target.name) {
           count += 1
-        } else {
-
         }
       }
       if (count == 0) {
+        console.log(console.log(e.target.style.accentColor));
         setCateList([...cateList, e.target.name]); setOpenCategory(false)
       }
     } else {
@@ -211,7 +210,7 @@ const AddEvent = () => {
           태그 선택
         </DialogTitle>
         <DialogTitle>
-          <Button name="업무/학교" style={{ background: "#ffc847", color: fontColor }} onClick={(e) => { setTag2({ ...tag2, tagName: e.target.name, tagColor: "#ffc847" }); setOpenTag2(false) }}>업무/학교</Button><br />
+          <Button name="업무/학교" text="#ffc847" style={{ ee: "#ffc847", background: "#ffc847", color: fontColor }} onClick={(e) => { setTag2({ ...tag2, tagName: e.target.name, tagColor: "#ffc847" }); setOpenTag2(false) }}>업무/학교</Button><br />
           <Button name="여행/데이트/취미" style={{ background: "#8ed4c9", color: fontColor }} onClick={(e) => { setTag2({ ...tag2, tagName: e.target.name, tagColor: "#8ed4c9" }); setOpenTag2(false) }}>여행/데이트/취미</Button><br />
           <Button name="건강/핼스" style={{ background: "#855e95", color: fontColor }} onClick={(e) => { setTag2({ ...tag2, tagName: e.target.name, tagColor: "#855e95" }); setOpenTag2(false) }}>건강/핼스</Button><br />
           <Button name="쇼핑/구매/외식" style={{ background: "#e6c2ce", color: fontColor }} onClick={(e) => { setTag2({ ...tag2, tagName: e.target.name, tagColor: "#e6c2ce" }); setOpenTag2(false) }}>쇼핑/구매/외식</Button><br />
@@ -226,7 +225,7 @@ const AddEvent = () => {
         </DialogTitle>
         <DialogTitle>
           <div>
-            <Button name="건강/운동/헬스케어" style={{ background: "#ffc847", color: fontColor }} onClick={handleCategory}>건강/운동/헬스케어</Button><br />
+            <Button name="건강/운동/헬스케어" style={{ background: "#ffc847", color: fontColor, accentColor: "#ffc847"}} onClick={handleCategory}>건강/운동/헬스케어</Button><br />
             <Button name="금융/자산/제테크" style={{ background: "#22c847", color: fontColor }} onClick={handleCategory}>금융/자산/제테크</Button>
             <Button name="반려동물" style={{ background: "#2293c8", color: fontColor }} onClick={handleCategory}>반려동물</Button>
             <Button name="뷰티/패션/쇼핑" style={{ background: "#96c822", color: fontColor }} onClick={handleCategory}>뷰티/패션/쇼핑</Button>
