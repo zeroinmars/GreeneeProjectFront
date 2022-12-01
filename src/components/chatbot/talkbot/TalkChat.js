@@ -1,9 +1,30 @@
-import React from "react";
-import "./TalkChat.css";
+import React from "react"; 
+ 
+
+
+
 /* import { Configuration, OpenAIApi } from "https://cdn.skypack.dev/openai"; */
-const { Configuration, OpenAIApi }  = require("openai");
+const { Configuration, OpenAIApi } = require("openai");
+const configuration = new Configuration({
+  apiKey: "1212",
+});
+const openai = new OpenAIApi(configuration);
+
 function TalkChat() {
+
+
+ /*  const [message, setMessage] = useState([{msg:"hi", from:false}])
+  const getMessage = (msg, from) =>{
+    setMessage((current) => [...current,({msg:msg, from:from})])
+  } */
+
+
+
+
+
+
   function abc() {
+    /* 인풋 */
     let template = `
         <div className='line'>
             <span className='chat-box min'>${
@@ -15,25 +36,20 @@ function TalkChat() {
       .querySelector(".chat-content")
       .insertAdjacentHTML("beforeend", template);
 
-    const configuration = new Configuration({
-      apiKey: "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",
-    });
-
-    const openai = new OpenAIApi(configuration);
-
+    /* 아웃풋 */
     openai
       .createCompletion({
-        model: "text-ada-001",
-        prompt: document.querySelector("#input").value, //유저인풋
-        temperature: 0.7,
-        max_tokens: 15,
+        model: "text-davinci-003",
+        prompt: document.querySelector("#input").value,
+        //prompt: document.querySelector("#input").value, //유저인풋
+        temperature: 0.5,
+        max_tokens: 200,
         top_p: 1,
         frequency_penalty: 0,
         presence_penalty: 0,
       })
       .then((result) => {
-        //아웃풋
-        console.log(result.data);
+        console.log(result.data.choices[0].text);
         let template = `
           <div className='line'>
           <span className='chat-box'>${result.data.choices[0].text}</span>
@@ -44,8 +60,11 @@ function TalkChat() {
       });
   }
 
+  /* 출력 */
   return (
     <>
+ 
+
       <div className="chat-content">
         <div className="line">
           <span className="chat-box">안녕1</span>
@@ -58,6 +77,11 @@ function TalkChat() {
       <button id="send" onClick={abc}>
         전송
       </button>
+      <div className="App">
+    </div>
+
+  
+    
     </>
   );
 }

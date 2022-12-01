@@ -1,15 +1,36 @@
 import React from "react";
- /*  import AddEvent from "../components/AddEvent"; */
-import TalkChat from '../components/chatbot/TalkChat'
-import ChatbotSteps from '../components/chatbot/ChatbotSteps'  
-import Talkbot from '../components/chatbot/Talkbot'  
+import ChatbotSteps from '../components/chatbot/infobot/ChatbotSteps'  
+//import TalkChat from '../components/chatbot/talkbot/TalkChat'
+import Header from '../components/chatbot/talkbot/Header'
+import Main from '../components/chatbot/talkbot/Main'
+import Footer from'../components/chatbot/talkbot/Footer'
+import { useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import '../components/chatbot/talkbot/TalkChat.css';
+
+
 function ChatPage() {
   
+  const [message, setMessage] = useState([{msg:"안녕하세요. AI 비서 그리니입니다.", from:false}])
+
+  const getMessage = (msg, from) =>{
+    setMessage((current) => [...current,({msg:msg, from:from})])
+  }
+
   return (
     <>
-  <TalkChat /> 
+ <Header/>
+
+ <Main message = {message}/>
+
+
+ <Footer setMessage = {getMessage}/>
+
+
+
+
   <ChatbotSteps></ChatbotSteps>   
-  <Talkbot></Talkbot>
+
     </>
   );
 };

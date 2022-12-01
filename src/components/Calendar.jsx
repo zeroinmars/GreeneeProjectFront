@@ -105,6 +105,7 @@ const Calendar = () => {
     <div>
       <FullCalendar //속성값들
         //  locale='ko' //한글 설정
+        style={{backgroundColor:'white'}}
         height={"700px"}
         titleformat={{
           day: "narrow",
@@ -116,7 +117,7 @@ const Calendar = () => {
         eventDisplay="list-item" //이벤트 모양? list-item, none
         eventColor="red"
         eventClick={handleClick}
-
+        
         initialView="dayGridMonth"
         droppable={true}
         buttonIcons={
@@ -178,48 +179,28 @@ const Calendar = () => {
           <DialogTitle style={{ textAlign: 'center', backgroundColor: showEvent.color }}>{showEvent.title}</DialogTitle>
           <table style={{ minWidth: "-webkit-fill-available", padding: '0 10px' }}>
             <tr>
-              <td>
-                <h4>장소</h4>
-              </td>
-              <td colSpan={3}>
-                <p>{showEvent.eLocation ? showEvent.eLocation : '-'}</p>
-              </td>
+              <td><h4>장소</h4></td>
+              <td colSpan={3}><p>{showEvent.eLocation ? showEvent.eLocation : '-'}</p></td>
             </tr>
             <tr>
-              <td>
-                <h4>내용</h4>
-              </td>
-              <td colSpan={3}>
-                <p>{showEvent.content ? showEvent.content : '-'}</p>
-              </td>
+              <td><h4>출발지</h4></td>
+              <td colSpan={3}><p>{showEvent.sLocation ? showEvent.sLocation : '-'}</p></td>
             </tr>
             <tr>
-              <td>
-                <h4>시작일</h4>
-              </td>
-              <td>
-                <p>{showEvent.sDate}</p>
-              </td>
-              <td>
-                <h4>시간</h4>
-              </td>
-              <td>
-                <p>{showEvent.sTime}</p>
-              </td>
+              <td><h4>내용</h4></td>
+              <td colSpan={3}><p>{showEvent.content ? showEvent.content : '-'}</p></td>
             </tr>
             <tr>
-              <td>
-                <h4>종료일</h4>
-              </td>
-              <td>
-                <p>{showEvent.eDate}</p>
-              </td>
-              <td>
-                <h4>시간</h4>
-              </td>
-              <td>
-                <p>{showEvent.eTime}</p>
-              </td>
+              <td><h4>시작일</h4></td> <td><p>{showEvent.sDate}</p></td>
+              <td><h4>시간</h4></td> <td><p>{showEvent.sTime}</p></td>
+            </tr>
+            <tr>
+              <td> <h4>종료일</h4></td> <td><p>{showEvent.eDate}</p></td>
+              <td><h4>시간</h4></td> <td><p>{showEvent.eTime}</p></td>
+            </tr>
+            <tr>
+              <td><h4>이동 시간</h4></td>
+              <td><p>{showEvent.moveTime? showEvent.moveTime : '-'}</p></td>
             </tr>
           </table>
           {/* <Button onClick={() => { setOpenUpdate(true) }}>수정</Button> */}

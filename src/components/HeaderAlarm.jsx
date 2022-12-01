@@ -17,7 +17,7 @@ const HeaderAlarm = () => {
         <img
           src={greenee}
           className={"greenee"}
-          style={{ width: "70px", padding: "20px" }}
+          style={{ width: "110px", padding: "20px" }}
         />
       </Link>
       <div class="room-list-empty-room">

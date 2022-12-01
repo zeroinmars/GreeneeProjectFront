@@ -16,13 +16,12 @@ import UserInfo from "./pages/UserInfo";
 import AddEvent from "./components/AddEvent";
 import UpdateEvent from "./components/UpdateEvent";
 import AddMemo from "./components/AddMemo";
-import ChatbotSteps from "./components/chatbot/ChatbotSteps";
-import LabelBottomNavigation from "./components/LabelBottomNavigation";
- 
+
 /* css 파일 임포트 */
 import "./dabin.css";
 import "./index.css";
 import "./sehyoung.css";
+
 /* mui css에 css파일을 오버라이딩 하기 위한*/
 import { CacheProvider } from "@emotion/react";
 import createCache from "@emotion/cache";
