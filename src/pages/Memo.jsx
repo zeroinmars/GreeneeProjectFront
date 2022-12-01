@@ -2,8 +2,10 @@ import React from "react";
 import MemoCompo from "../components/MemoCompo";
 import MessageIcon from "@mui/icons-material/Message"
 import { Link } from "react-router-dom";
-import greenee2 from "../img/greenee.png";
-/* import ChatbotSteps from '../components/chatbot/ChatbotSteps' */
+import greenee2 from "../img/greenee.png";  
+
+import LabelBottomNavigation from "../components/LabelBottomNavigation";
+
 /* import TalkChat from '../components/chatbot/TalkChat' */
 
 /* const chatbotButtonStyle = {
@@ -18,8 +20,8 @@ import greenee2 from "../img/greenee.png";
 const Memo = () => {
   return (
     <>
-      메모페이지
       <MemoCompo></MemoCompo>
+      <LabelBottomNavigation></LabelBottomNavigation>
       {/* 챗봇 진입 */}
       {/* <Link to="/chatbotsteps">
         <MessageIcon />
@@ -31,6 +33,7 @@ const Memo = () => {
       </Link> */}
       {/* <ChatbotSteps></ChatbotSteps> */}
       {/* <TalkChat></TalkChat> */}
+      {/* <Talkbot></Talkbot> */}
     </>
   );
 };

@@ -1,0 +1,21 @@
+.room-list-empty-room{
+    background: #fff;
+    color: black;
+    padding: 13px;
+    border-radius: 20rem;
+    top: 135px;
+    right: 15px;
+    font-size: 11pt;
+    box-shadow: 2px 2px 3px #d1d1d1;
+    width: -webkit-fill-available;
+    height: fit-content;
+    margin:auto;
+    display: inline;
+    margin-right: 20px;
+}
+
+.test {
+    /* color:red; */
+    /* background-color: blue; */
+    text-align: center;
+}

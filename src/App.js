@@ -1,20 +1,24 @@
 // import Door from "./pages/Door";
 /* import Test from './pages/Test'; */
-import ChatbotSteps from "./components/chatbot/ChatbotSteps";
-import Signup from "./pages/Signup";
-import Calendar from "./pages/Calendar";
+ 
 import { Routes, Route, BrowserRouter } from "react-router-dom";
-import UserInfo from "./pages/UserInfo";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import MyProfile from "./pages/MyProfile";
-import axios from "axios";
+import ChatPage from "./pages/ChatPage";
 import Home from "./pages/Home";
-import LabelBottomNavigation from "./components/LabelBottomNavigation";
-import AddEvent from "./components/AddEvent";
 import Memo from "./pages/Memo";
-import UpdateEvent from "./components/UpdateEvent";
+import { useDispatch, useSelector } from "react-redux";
 import { createTheme, ThemeProvider } from "@mui/material"; //mui 폰트 변경
+import React, { useState, useEffect } from "react";
+import Calendar from "./pages/Calendar";
+import axios from 'axios'
+import MyProfile from "./pages/MyProfile";
+import Signup from "./pages/Signup";
+import UserInfo from "./pages/UserInfo";
+import AddEvent from "./components/AddEvent";
+import UpdateEvent from "./components/UpdateEvent";
+import AddMemo from "./components/AddMemo";
+// import ChatbotSteps from "./components/chatbot/ChatbotSteps";
+import LabelBottomNavigation from "./components/LabelBottomNavigation";
+ 
 /* css 파일 임포트 */
 import "./dabin.css";
 import "./index.css";
@@ -35,9 +39,10 @@ const theme = createTheme({
 });
 function App() {
   const email = useSelector(state=>(state.session.email));
+ 
   const dispatch = useDispatch(); // store 공간안에 값을 저장하기 위해 userDispatch함수 호출
   useEffect(() => {
-    console.log(email, '랜더')
+    
     // 화면이 랜더링 될때마다 서버에 사용자 session 정보가 있는지 없는지 검증하는 구문 세션이 있으면 로그인 되어있고 그렇지 않으면 로그인 되어있지 않다.
     axios
       .get("/lifeConcierge/api/session") // 랜더링 될때마다 get 방식으로 서버에 요청
@@ -47,17 +52,21 @@ function App() {
       .catch(() => {
         console.log("세션 호출 에러");
       });
-    console.log(email, '이메일 있는지')
+    
     axios.post("/lifeConcierge/api/showDailyEvent", {email})
     .then((res)=>{
-      dispatch({type:"DAILYEVENT", dailyEvent: res.data})
-    })
+      dispatch({type:"DAILYEVENT", dailyEvent: res.data});
+    });
 
     axios.post("/lifeConcierge/api/showSpecialEvent", {email})
     .then((res) => {
-      dispatch({type:"SPECIALEVENT", specialEvent: res.data})
-    })
+      dispatch({type:"SPECIALEVENT", specialEvent: res.data});
+    });
     
+    axios.post('/lifeConcierge/api/loginUserInfo', {email})
+    .then((res) => {
+      dispatch({type:"USERNAME", userName: res.data.name});
+    });
   });
   return (
     <div className="App">
@@ -76,13 +85,15 @@ function App() {
               <Route path="/userInfo" element={<UserInfo />} />
               <Route path="/addEvent" element={<AddEvent />} />
               <Route path="/Memo" element={<Memo />} />
+              <Route path="/addMemo" element={<AddMemo />}></Route>
               <Route path="/updateEvent" element={<UpdateEvent />}></Route>
+         
               {/* <Route path="/" element={<Door />} /> */}
-              {/* <Route path="/ChatbotSteps" element={<ChatbotSteps />} /> */}
+              <Route path="/ChatPage" element={<ChatPage />} /> 
               {/*  <Route path="/test" element={<Test/>}/> */}
             </Routes>
-            <LabelBottomNavigation></LabelBottomNavigation>
-            <ChatbotSteps></ChatbotSteps>
+           {/* <LabelBottomNavigation></LabelBottomNavigation> */}  
+              {/* <ChatbotSteps></ChatbotSteps> */}  
           </BrowserRouter>
         </CacheProvider>
       </ThemeProvider>

@@ -1,0 +1,165 @@
+.addevent{
+    width: 90%;
+    margin: auto;
+    height: 100vh;
+}
+
+.s_day{
+    background-color: white;
+}
+
+.s_time{
+    background-color: white;
+}
+
+.e_day{
+    background-color: white;
+}
+
+.e_time{
+    background-color: white;
+}
+
+.contents{
+    background-color: white;
+}
+
+.location{
+    background-color: white;
+}
+
+.registration_btn{
+    width: 90vw; 
+    margin: auto; 
+    background-color: #CEDD38; 
+    border-radius: 20px;
+}
+
+.css-nz481w-MuiInputBase-input-MuiInput-input {
+    margin-top:20px;
+}
+
+.alarm{
+    display: flex;
+}
+
+/*주요일정*/
+.important{
+    display:flex;
+    position:relative;
+    
+    
+}
+.importantfont{
+    font-size: 20px;
+    margin-top:3px;
+    margin-left:5px;
+}
+
+.star_white {
+    font-size: 170%; /* 이모지 크기 */
+    color: transparent; /* 기존 이모지 컬러 제거 */
+    text-shadow: 0 0 0 #BEBEBE;
+    position:absolute;
+    top:40%;
+    right:3%;
+}
+.star_yellow {
+    font-size:170%; /* 이모지 크기 */
+    color: transparent; /* 기존 이모지 컬러 제거 */
+    text-shadow: 0 0 0 #FF9C00;
+    position:absolute;
+    top:35%;
+    right:3%;
+}
+
+/*시작-종료 시간,날짜*/
+.css-1oku0be-MuiInputBase-root-MuiOutlinedInput-root{
+    width:100%;
+}
+
+.datetime{
+    display: flex;
+    margin: 12px 0;
+}
+
+.css-1u3bzj6-MuiFormControl-root-MuiTextField-root{
+    display: flex;
+}
+/*알람 아이콘*/
+.css-p2kfw9-MuiSvgIcon-root{
+    font-size:1em;
+    margin-top: 20px;
+    margin-right:5px;
+}
+
+/*알람 체크박스*/
+.css-r918sm-MuiInputBase-root-MuiFilledInput-root-MuiSelect-root {
+    background-color: #efefef;
+}
+
+.css-r918sm-MuiInputBase-root-MuiFilledInput-root-MuiSelect-root:hover {
+    background-color: #efefef;
+}
+
+.css-1gzkxga-MuiSelect-select-MuiInputBase-input-MuiFilledInput-input:focus{
+    background-color:#efefef;
+}
+
+.css-12wnr2w-MuiButtonBase-root-MuiCheckbox-root.Mui-checked{
+    color:red;
+}
+.css-12wnr2w-MuiButtonBase-root-MuiCheckbox-root.MuiCheckbox-indeterminate {
+    color:#ebcf00;
+}
+
+.css-1okj3ks-MuiStack-root>:not(style)+:not(style){
+    font-size:30px;
+}
+/*제목 추가*/
+.input {
+    outline: none;
+    border: none;
+    background: white;
+    border-radius: 2px;
+    color: rgba(0, 0, 0, 0.8);
+    width:360px;
+    height: 55px;
+    font-size:27px;
+    border-radius: 30px;
+    margin-top: 30px;
+    padding-left:15px;
+}
+/*첫번째 모달*/
+.tagcolor {
+    height: 30px; width: 30px;
+    border-radius: 10px;
+    margin-top:5px;
+  }
+
+.tag{
+    display: flex;
+}
+
+.css-xbq1j9-MuiTypography-root-MuiDialogTitle-root{
+    text-align: center;
+}
+
+.tagselect{
+    background-color: #efefef;
+}
+
+.App{
+    background-color:#efefef;
+}
+
+/*메모*/
+.css-10l86rx-MuiInputBase-root-MuiOutlinedInput-root{
+    background-color:#fff;
+}
+
+body{
+    color:black;
+}
+
+

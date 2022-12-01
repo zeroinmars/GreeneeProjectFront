@@ -11,7 +11,7 @@ import { useLocation } from 'react-router';
 import Progress from './FreqCompo/Progress';
 import Snackbar from './FreqCompo/Snackbar';
 import MapAPI from './MapAPI';
-
+import LabelBottomNavigation from './LabelBottomNavigation';
 
 const UpdateEvent = () => {
     const state = useLocation().state;
@@ -21,8 +21,7 @@ const UpdateEvent = () => {
     const [openTag, setOpenTag] = useState(false);
     const [openTag2, setOpenTag2] = useState(false);
     const [openCategory, setOpenCategory] = useState(false);
-    const [tag, setTag] = useState({ tagName: "", tagColor: startTagColor });
-    const [tag2, setTag2] = useState({ tagName: "", tagColor: startTagColor });
+
     const nav = useNavigate();
     const dispatch = useDispatch();
     const email = useSelector(state => (state.session.email)); // 리덕스 스토어에 저장되어있는 세션 email 값을 가져옴
@@ -30,12 +29,14 @@ const UpdateEvent = () => {
     const [eventInfo, setEventInfo] = useState({
         ...state
     });
-    const [checkSpecial, setCheckSpecial] = useState(state.checkSpecial);
-    const [preAlarm, setPreAlarm] = useState(state.preAlarm);
+    const [tag, setTag] = useState({ tagName: eventInfo.tag, tagColor: eventInfo.color });
+    const [tag2, setTag2] = useState({ tagName: '태그', tagColor: startTagColor });
+    const [checkSpecial, setCheckSpecial] = useState(eventInfo.checkSpecial);
+    const [preAlarm, setPreAlarm] = useState(eventInfo.preAlarm);
     const [checkRecommend, setCheckRecommend] = useState(false);
-    const [sLocation, setSLocation] = useState(state.sLocation);
-    const [eLocation, setELocation] = useState(state.eLocation);
-    const [memo, setMemo] = useState(state.content);
+    const [sLocation, setSLocation] = useState(eventInfo.sLocation);
+    const [eLocation, setELocation] = useState(eventInfo.eLocation);
+    const [memo, setMemo] = useState(eventInfo.content);
 
     const handleOpenTag = () => {
         setOpenTag(true);
@@ -44,10 +45,10 @@ const UpdateEvent = () => {
         setOpenTag2(true);
     }
     const [cateList, setCateList] = useState([]);
-    const [start, setStart] = useState(dayjs(new Date(state.start)));
-    const [sTime, setSTime] = useState(state.sTime);
-    const [end, setEnd] = useState(dayjs(new Date(state.end)));
-    const [eTime, setETime] = useState(state.eTime);
+    const [start, setStart] = useState(dayjs(new Date(eventInfo.start)));
+    const [sTime, setSTime] = useState(eventInfo.sTime);
+    const [end, setEnd] = useState(dayjs(new Date(eventInfo.end)));
+    const [eTime, setETime] = useState(eventInfo.eTime);
 
     const handleStartDate = (n) => {
         setStart(n);
@@ -104,10 +105,14 @@ const UpdateEvent = () => {
         let sDay = start.$y + '-' + (start.$M + 1) + '-' + start.$D;
         let eDay = end.$y + '-' + (end.$M + 1) + '-' + end.$D;
         const url = "http://localhost:5000/lifeConcierge/api/UpdateEvent";
+        console.log({
+            ...eventInfo, checkWeeks, email, checkSpecial, preAlarm, tag: tag.tagName, color: tag.tagColor,
+            cateList, start: sDay, end: eDay, sTime, eTime, sLocation, eLocation
+        })
         if (email) {
             dispatch({ type: "PROGRESS", progress: { progressToggle: true } });
             axios.post(url, {
-                ...eventInfo, checkWeeks, email, checkSpecial, preAlarm, tag, tag2,
+                ...eventInfo, checkWeeks, email, checkSpecial, preAlarm, tag: tag.tagName, color: tag.tagColor,
                 cateList, start: sDay, end: eDay, sTime, eTime, sLocation, eLocation
             })
                 .then((res) => {
@@ -130,11 +135,10 @@ const UpdateEvent = () => {
 
     return (
         <Box className='test'>
-
             <Button onClick={handleOpenTag} style={{ background: tag.tagColor, color: fontColor }}>{tag.tagName ? tag.tagName : "태그"}</Button>
             {tag.tagName == "데일리루틴" ? <Button onClick={handleOpenTag2} style={{ background: tag2.tagColor, color: fontColor }}>{tag2.tagName ? tag2.tagName : "태그"}</Button> : ""}
             <Stack spacing={1}>
-                <TextField size="small" label="제목" name="title" variant="standard" sx={{ mb: "20px" }} onChange={handleEventInfo} value={state.title} />
+                <TextField size="small" label="제목" name="title" variant="standard" sx={{ mb: "20px" }} onChange={handleEventInfo} value={eventInfo.title} />
                 {tag.tagName == "데일리루틴" ? "" : <FormControlLabel control={<Switch name="checkSpecial" onChange={() => { setCheckSpecial(!checkSpecial) }} />} label="주요일정" />}<br />
                 <LocalizationProvider dateAdapter={AdapterDayjs}>
                     <MobileDatePicker
@@ -251,6 +255,7 @@ const UpdateEvent = () => {
                     </div>
                 </DialogTitle>
             </Dialog>
+            <LabelBottomNavigation></LabelBottomNavigation>
         </Box>
     )
 }

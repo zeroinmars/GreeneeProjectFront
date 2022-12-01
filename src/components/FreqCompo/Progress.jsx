@@ -4,7 +4,6 @@ import {Dialog, DialogContent, CircularProgress} from '@mui/material';
 
 const Progress = () => {
   const progressToggle = useSelector(state=>(state.progress.progressToggle))
-  console.log(progressToggle)
   return (
     <Dialog open={progressToggle}>
       <DialogContent>

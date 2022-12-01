@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        .chat-content {
+            height: 350px;
+            overflow-y: scroll;
+        }
+
+        .line {
+            margin-top: :10px;
+            display: flex;
+        }
+
+        .chat-box {
+            background: rgb(0, 212, 236);
+            padding: 5px;
+            max-width: 200px;
+        }
+
+        .mine {
+            margin-left: auto;
+        }
+    </style>
+    <div class="chat-content">
+        <div class="line">
+            <span class="chat-box">안녕1</span>
+        </div>
+        <div class="line">
+            <span class="chat-box mine">안녕2</span>
+        </div>
+    </div>
+    <input class="chat-box" id="input">
+    <button id="send">전송</button>
+
+    <script type="module">
+        import { Configuration, OpenAIApi } from 'https://cdn.skypack.dev/openai';
+
+        document.querySelector('#send').addEventListener('click', function () {
+            let template = `
+            <div class='line'>
+                <span class='chat-box mine'>${document.querySelector('#input').value}</span>
+            </div>`
+            document.querySelector('.chat-content').insertAdjacentHTML('beforeend', template);
+
+            const configuration = new Configuration({
+                apiKey: '123123',
+            });
+            const openai = new OpenAIApi(configuration);
+
+            openai.createCompletion({
+                model: "text-ada-001",
+                prompt: document.querySelector('#input').value, //유저인풋
+                temperature: 0.7,
+                max_tokens: 15,
+                top_p: 1,
+                frequency_penalty: 0,
+                presence_penalty: 0,
+            }).then((result) => { //아웃풋
+                console.log(result.data.choices[0].text)
+                let template = `
+            <div class='line'>
+                <span class='chat-box'>${result.data.choices[0].text}</span>
+            </div>`
+                document.querySelector('.chat-content').insertAdjacentHTML('beforeend', template);
+            })
+        })
+    </script>
+</body>
+
+</html>
