@@ -6,38 +6,42 @@ import '../css/memo.css'
 import ReactDOM from 'react-dom';
 import AddIcon from '@mui/icons-material/Add';
 import { Fab, Box } from '@mui/material';
+import { useNavigate } from "react-router-dom";
 
 const MemoCompo = () => {
-const [bookMark, setBookmark] = useState(false);
-
+  const [bookMark, setBookmark] = useState(false);
+  const nav = useNavigate();
   return (
-    <div>
+    <div style={{ height: '100vh' }}>
       <HeaderAlarm></HeaderAlarm>
 
       <div>
-        <a href="/AddMemo">  
-        <button className="memo_won">+</button>
-        </a>
-      </div> 
 
-      <Memo date="10.13" title="오후 회의 준비" text="회의자료 이것저것 요것조것 챙겨서 준비할것"/>
-      <Memo date="11.13" title="운동 가기" text="오전 필라테스 가볍게 하러 가기"/>     
-      <Memo date="11.25" title="롯데월드 예정" text="길동이 둘리 또치 만나서 롯데월드가기"/>    
-      
+        <button className="memo_won" onClick={() => {nav('/AddMemo')}}>
+        <span>+</span>
+          </button>
+
+      </div>
+
+      <Memo date="10.13" title="오후 회의 준비" text="회의자료 이것저것 요것조것 챙겨서 준비할것" />
+      <Memo date="11.13" title="운동 가기" text="오전 필라테스 가볍게 하러 가기" />
+      <Memo date="11.25" title="롯데월드 예정" text="길동이 둘리 또치 만나서 롯데월드가기" />
+
     </div>
 
-  )};
+  )
+};
 
 
 
-const Memo = ({date, title, text}) => {
+const Memo = ({ date, title, text }) => {
   const [bookMark, setBookmark] = useState(false);
 
-  return(
-    <div style={{display:"flex", textDecoration:"none"}}>
+  return (
+    <div style={{ display: "flex", textDecoration: "none" }}>
       <div>
-        {!bookMark ? <span onClick={() => {setBookmark(true)}} className="star_white">⭐</span> :
-        <span onClick={() => {setBookmark(false)}} className="star_yellow">⭐</span>}
+        {!bookMark ? <span onClick={() => { setBookmark(true) }} className="star_white">⭐</span> :
+          <span onClick={() => { setBookmark(false) }} className="star_yellow">⭐</span>}
       </div>
 
       <div className="memo1">

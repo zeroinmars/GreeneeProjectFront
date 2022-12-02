@@ -123,7 +123,7 @@ const Calendar = () => {
       <FullCalendar //속성값들
         //  locale='ko' //한글 설정
         style={{ backgroundColor: 'white' }}
-        height={"700px"}
+        height={"82vh"}
         titleformat={{
           day: "narrow",
         }}
