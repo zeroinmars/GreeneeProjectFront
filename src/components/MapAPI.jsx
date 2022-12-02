@@ -5,7 +5,9 @@ import { TextField, Button } from '@mui/material'
 import { Dialog } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import SearchIcon from '@mui/icons-material/Search';
+import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import Slide from '@mui/material/Slide';
+import happygreenee from '../img/greeneehappy.png'
 import "../css/map.css"
 import "../css/AddEvent.css"
 
@@ -13,13 +15,8 @@ const { kakao } = window;
 
 const theme = createTheme({
   palette: {
-    // primary: {
-    //   // Purple and green play nicely together.
-    //   main: purple[500],
-    // },
     secondary: {
-      // This is green.A700 as hex.
-      main: '#11cb5f',
+      main: '#2ecc71',
     },
   },
 });
@@ -239,21 +236,26 @@ const MapAPI = ({ sLocation, eLocation, setSLocation, setELocation }) => {
             itemStr += '    <span>' + places.address_name + '</span>';
           }
 
-          itemStr += '  <span class="tel">' + places.phone + '</span>' +
+          itemStr += ' <span class="tel">' + places.phone + '</span>' +
             '</div>';
+          // itemStr += ' <div><span class="tel">' + places.phone + '</span>';
+
 
           el.innerHTML = itemStr;
           el.className = 'item';
 
           // 장소 선택하는 버튼 생성, 함수 집어넣기
+      
           const button = document.createElement('button');
           button.innerText = '선택';
+          button.className = 'button_choice';
           button.addEventListener('click', () => {
             setOpenCheck(true);
           });
 
           // 버튼을 각 장소 정보 li마다 넣어주기
           el.appendChild(button);
+          
 
 
           // 사용자가 리스트 내 주소를 클릭했을 때 실행하는 함수
@@ -383,33 +385,48 @@ const MapAPI = ({ sLocation, eLocation, setSLocation, setELocation }) => {
 
       <Dialog open={openMap} onClose={handleClose} fullScreen TransitionComponent={Transition}>
         <div id="menu_wrap" className="bg_white">
-
           <div id="map" style={{ width: "100%", height: "55%", overflow: "hidden" }}>
+            <HighlightOffIcon className="button_close" onClick={handleClose} fontSize="large"></HighlightOffIcon>
           </div>
           <div className="option">
-            <div>
-              <Button onClick={handleClose}>닫기</Button>
-
-              <input type="text" id="keyword" size="20" />
-              
+            <div className="button_wrap">
+              <input type="text" id="keyword" size="35"  style={{fontSize:'16px'}}/>
               <ThemeProvider theme={theme}>
-                <Button variant="contained" color='secondary' style={{color:'white', font:'bold'}}
-                  size="small" startIcon={<SearchIcon />} ref={searchButton}>
+                <Button variant="contained" color='secondary' style={{ color: 'white', font: 'bold' }}
+                  size="medium" startIcon={<SearchIcon />} ref={searchButton}>
                   검색
                 </Button>
               </ThemeProvider>
             </div>
           </div>
-
           <ul id="placesList"></ul>
           <div id="pagination"></div>
         </div>
       </Dialog>
 
-      <Dialog open={openCheck} onClose={handleCheckClose} TransitionComponent={Transition}>
-        해당 위치를 {flag}로 설정하시겠습니까?
-        <button onClick={inputLabel}>네</button>
-        <button onClick={handleCheckClose}>아니요</button>
+      <Dialog style={{ borderRadius: '20px' }} open={openCheck} onClose={handleCheckClose} TransitionComponent={Transition}>
+        <div className="location_info">
+          <div className="location_title">
+            <img src={happygreenee} style={{ width: '12vh' }}></img>
+            <h3 style={{ display: 'inline' }}> {flag == '출발지' ? startUserAddr : endUserAddr} !</h3>
+          </div>
+          <hr></hr>
+          <div style={{ paddingLeft: '15px' }}>
+            <span style={{ display: 'block' }}>주소는</span><h5>{flag == '출발지' ? startAddr : endAddr} 네요</h5>
+          </div>
+          <br></br>
+          <h6>해당 위치를 {flag}로 설정하실래요?</h6>
+          <ThemeProvider theme={theme}>
+            <div className="button_check">
+              <Button className="button_accept" variant="contained" color='secondary' size="medium" style={{ color: 'white', font: 'bold' }} onClick={inputLabel}>
+                좋아!
+              </Button>
+              <Button className="button_deny" variant="contained" color='secondary' size="medium" style={{ color: 'white', font: 'bold' }} onClick={handleCheckClose}>
+                아니
+              </Button>
+            </div>
+          </ThemeProvider>
+        </div>
       </Dialog>
 
     </>

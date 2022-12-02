@@ -116,3 +116,7 @@ code {
 .greenee20 {
   width: 50%;
 }
+.css-1bjk3jo-MuiButtonBase-root-MuiBottomNavigationAction-root.Mui-selected {
+  color: #6AA258 !important;
+  font-family: "Spoqa Han Sans Neo", "sans-serif";
+}

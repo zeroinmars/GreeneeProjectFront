@@ -1,12 +1,12 @@
 import React from "react";
-import ChatbotSteps from '../components/chatbot/infobot/ChatbotSteps'  
-import '../components/chatbot/talkbot/TalkChat.css'
+import ChatbotSteps from '../components/chatbot/infobot/ChatbotSteps';
+import '../components/chatbot/talkbot/TalkChat.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 //import TalkChat from '../components/chatbot/talkbot/TalkChat'
-import Header from '../components/chatbot/talkbot/Header'
-import Main from '../components/chatbot/talkbot/Main'
-import Footer from'../components/chatbot/talkbot/Footer'
+import Header from '../components/chatbot/talkbot/Header';
+import Main from '../components/chatbot/talkbot/Main';
+import Footer from'../components/chatbot/talkbot/Footer';
 import { useState } from 'react';
 
 function ChatPage() {

@@ -2,25 +2,39 @@ import FullCalendar from "@fullcalendar/react"; // must go before plugins
 import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
-
 import { Button, Dialog, DialogTitle, DialogActions, DialogContent } from "@mui/material"; //mui의 Dialog
 
 import dayGridPlugin from "@fullcalendar/daygrid"; // a plugin!
 
 import axios from 'axios';
 
-import greenee_surprise from '../img/greenee_surprise.png';
+import greenee_surprise from '../img/greeneetears.png';
+
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import '../css/calendar.css';
 
 /* import { List, ListItem, ListItemText, Divider } from "@mui/material";
 import interactionPlugin from "@fullcalendar/interaction";
 import { NextPlan, Preview } from "@mui/icons-material"; */
 
+
+
 const Calendar = () => {
-  
+
+  const [themeColor, setThemeColor] = useState('');
+  const theme = createTheme({
+    palette: {
+      secondary: {
+        main: (themeColor? themeColor : '#2ecc71'),
+        // main: ('#2ecc71')
+      },
+    },
+  });
+
   // 한 유저의 특별일정 전부
   const events = useSelector(state => (state.specialEvent));
   // const [events, setEvents] = useState(tempEvents);
-  
+
   const nav = useNavigate();
   const dispatch = useDispatch();
 
@@ -30,7 +44,7 @@ const Calendar = () => {
   const [eventDate, setEventDate] = useState('');
   // 날짜별 일정 리스트 상세 내용 담을 리스트
   const [eventInfo, setEventInfo] = useState([]);
-  
+
   // 일정 상세 모달
   const [openEvent, setOpenEvent] = useState(false);
   // 하나의 일정 상세를 보여줄 객체
@@ -41,8 +55,10 @@ const Calendar = () => {
 
   // 일정 삭제 모달
   const [openDelete, setOpenDelete] = useState(false);
-  // 일장 아이디
+  // 일정 아이디
   const [eventId, setEventId] = useState(0);
+
+  
 
   useEffect(() => {
     const st = setTimeout(() => {
@@ -74,38 +90,39 @@ const Calendar = () => {
     const sDate = tempEvent.start.slice(5);
     const eDate = tempEvent.end.slice(5);
 
-    setShowEvent({ ...eventInfo[e.target.value], sDate, eDate });
+    setShowEvent({ ...tempEvent, sDate, eDate });
     setOpenEvent(true);
     setEventId(tempEvent.event_id);
+    setThemeColor(tempEvent.color)
   };
 
   const deleteEvent = () => {
     const url = 'http://localhost:5000/lifeConcierge/api/deleteSpecialEvent'
 
     axios.post(url, { eventId })
-        .then((res) => {
-          if (res.data.affectedRows) {
-            dispatch({ type: "ISEVENTADDED", isEventAdded: true });
-            dispatch({ type: "PROGRESS", progress: { progressToggle: false } });
-            
-            window.location.reload(); // 새로고침..
-            // setOpenDelete(false);
-            // setOpenEvent(false);
-            // setOpenList(false);
-            
-          } else {
-            dispatch({ type: "SNACKBAR/ON", snackbar: { snackbarToggle: true, explain: "일정 삭제 실패", severity: "error" } });
-            dispatch({ type: "PROGRESS", progress: { progressToggle: false } });
-          }
-        })
-        .catch((err) => { console.log("에러 발생") });
+      .then((res) => {
+        if (res.data.affectedRows) {
+          dispatch({ type: "ISEVENTADDED", isEventAdded: true });
+          dispatch({ type: "PROGRESS", progress: { progressToggle: false } });
+
+          window.location.reload(); // 새로고침..
+          // setOpenDelete(false);
+          // setOpenEvent(false);
+          // setOpenList(false);
+
+        } else {
+          dispatch({ type: "SNACKBAR/ON", snackbar: { snackbarToggle: true, explain: "일정 삭제 실패", severity: "error" } });
+          dispatch({ type: "PROGRESS", progress: { progressToggle: false } });
+        }
+      })
+      .catch((err) => { console.log("에러 발생") });
   };
 
   return (
     <div>
       <FullCalendar //속성값들
         //  locale='ko' //한글 설정
-        style={{backgroundColor:'white'}}
+        style={{ backgroundColor: 'white' }}
         height={"700px"}
         titleformat={{
           day: "narrow",
@@ -117,7 +134,7 @@ const Calendar = () => {
         eventDisplay="list-item" //이벤트 모양? list-item, none
         eventColor="red"
         eventClick={handleClick}
-        
+
         initialView="dayGridMonth"
         droppable={true}
         buttonIcons={
@@ -150,7 +167,7 @@ const Calendar = () => {
       //  weekends={false} //주말 생성
       />
 
-      <Dialog onClose={() => {setOpenList(false);}} open={openList}>
+      <Dialog onClose={() => { setOpenList(false); }} open={openList}>
         {/* onClick={} 안에 함수이름 넣어야함 */}
         <tr>
           <td>
@@ -165,7 +182,7 @@ const Calendar = () => {
           return <div style={{ width: '330px', padding: "0 10px" }}>
             <hr></hr>
             <span>{data.sTime}</span>
-            <DialogTitle style={{textAlign: 'left'}}><span style={{ color: data.color }}>●</span> {data.title}</DialogTitle>
+            <DialogTitle style={{ textAlign: 'left' }}><span style={{ color: data.color }}>●</span> {data.title}</DialogTitle>
             <DialogContent>{data.content}</DialogContent>
             {/* <DialogActions> */}
             <Button onClick={viewEvent} value={idx}>일정 보기</Button>
@@ -175,49 +192,56 @@ const Calendar = () => {
       </Dialog>
 
       <Dialog onClose={() => { setOpenEvent(false) }} open={openEvent}>
-        <div style={{ width: '350px' }}>
+        <div style={{ width: '350px', paddingBottom: '25px' }}>
           <DialogTitle style={{ textAlign: 'center', backgroundColor: showEvent.color }}>{showEvent.title}</DialogTitle>
-          <table style={{ minWidth: "-webkit-fill-available", padding: '0 10px' }}>
+          <table className='calendar_table'>
             <tr>
-              <td><h4>장소</h4></td>
+              <td id='row_title'><span>장소</span></td>
               <td colSpan={3}><p>{showEvent.eLocation ? showEvent.eLocation : '-'}</p></td>
             </tr>
             <tr>
-              <td><h4>출발지</h4></td>
+              <td id='row_title'><span>출발지</span></td>
               <td colSpan={3}><p>{showEvent.sLocation ? showEvent.sLocation : '-'}</p></td>
             </tr>
             <tr>
-              <td><h4>내용</h4></td>
+              <td id='row_title'><span>내용</span></td>
               <td colSpan={3}><p>{showEvent.content ? showEvent.content : '-'}</p></td>
             </tr>
             <tr>
-              <td><h4>시작일</h4></td> <td><p>{showEvent.sDate}</p></td>
-              <td><h4>시간</h4></td> <td><p>{showEvent.sTime}</p></td>
+              <td id='row_title'><span>시작일</span></td> <td><p>{showEvent.sDate}</p></td>
+              <td id='row_title'><span>시간</span></td> <td><p>{showEvent.sTime}</p></td>
             </tr>
             <tr>
-              <td> <h4>종료일</h4></td> <td><p>{showEvent.eDate}</p></td>
-              <td><h4>시간</h4></td> <td><p>{showEvent.eTime}</p></td>
+              <td id='row_title'><span>종료일</span></td> <td><p>{showEvent.eDate}</p></td>
+              <td id='row_title'><span>시간</span></td> <td><p>{showEvent.eTime}</p></td>
             </tr>
             <tr>
-              <td><h4>이동 시간</h4></td>
-              <td><p>{showEvent.moveTime? showEvent.moveTime : '-'}</p></td>
+              <td id='row_title'><span>이동 시간</span></td>
+              <td><p>{showEvent.moveTime ? showEvent.moveTime : '-'}</p></td>
             </tr>
           </table>
           {/* <Button onClick={() => { setOpenUpdate(true) }}>수정</Button> */}
-          <Link 
-            to='/updateEvent'
-            state= {{
-              ...showEvent,
-              start: showEvent.start + ' ' + showEvent.sTime,
-              end: showEvent.end + ' ' + showEvent.eTime,
-              preAlarm: parseInt(showEvent.preAlarm)
-            }}
-          >
-            <Button>수정</Button>
-          </Link>
-         
-          
-          <Button onClick={() => { setOpenDelete(true) }}>삭제</Button>
+
+          <div className="button_check">
+            <ThemeProvider theme={theme}>
+              <Link
+                to='/updateEvent'
+                state={{
+                  ...showEvent,
+                  start: showEvent.start + ' ' + showEvent.sTime,
+                  end: showEvent.end + ' ' + showEvent.eTime,
+                  preAlarm: parseInt(showEvent.preAlarm)
+                }}
+                style={{ textDecoration: "none" }}
+              >
+                <Button className="button_accept" variant="contained" color='secondary' size="medium"
+                  style={{ color: 'white', font: 'bold' }}> 수정</Button>
+              </Link>
+              <Button className="button_deny" variant="contained" color='secondary' size="medium" 
+              onClick={() => { setOpenDelete(true) }}
+              style={{ color: 'white', font: 'bold' }}>삭제</Button>
+            </ThemeProvider>
+          </div>
         </div>
       </Dialog>
 
