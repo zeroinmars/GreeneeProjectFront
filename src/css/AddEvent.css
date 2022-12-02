@@ -66,7 +66,7 @@
     font-size: 170%; /* 이모지 크기 */
     color: transparent; /* 기존 이모지 컬러 제거 */
     text-shadow: 0 0 0 #BEBEBE;
-    
+    position:absolute;
     top:40%;
     right:3%;
 }
@@ -74,7 +74,7 @@
     font-size:170%; /* 이모지 크기 */
     color: transparent; /* 기존 이모지 컬러 제거 */
     text-shadow: 0 0 0 #FF9C00;
-    
+    position:absolute;
     top:40%;
     right:3%;
 }
@@ -100,6 +100,8 @@
     display: flex
 }
 
+
+
 /*알람 아이콘*/
 .css-p2kfw9-MuiSvgIcon-root{
     font-size:35px;
@@ -108,7 +110,7 @@
 }
 
 
-/*알람 체크박스*/
+/*알람 박스*/
 .css-r918sm-MuiInputBase-root-MuiFilledInput-root-MuiSelect-root {
     background-color: #efefef;
 }
@@ -121,6 +123,10 @@
     background-color:#efefef;
 }
 
+/*출발장소, 도착장소*/
+label+.css-1snbco4-MuiInputBase-root-MuiInput-root{
+  margin-top:0;
+}
 
 /*제목 추가*/
 .input {
@@ -162,17 +168,19 @@
     margin-top: 20px;
 }
 
-/*카테고리 추가*/
-.css-9nvqg8-MuiButtonBase-root-MuiButton-root{
-    color:black;
+/*추천받기*/
+.css-5ryogn-MuiButtonBase-root-MuiSwitch-switchBase.Mui-checked{
+  color:#7e7e7e
 }
 
-/*등록btn*/
+/*등록*/
 .css-ytl6fu-MuiButtonBase-root-MuiButton-root{
     background-color:#2ecc71;
     box-shadow: none;
     width:370px;
     font-size: 20px;
+    margin-top:30px;
+    border-radius:30px;
 }
 
 .css-ytl6fu-MuiButtonBase-root-MuiButton-root:hover{
@@ -183,9 +191,157 @@
 .container{
     display: grid;
     grid-template-areas:"1fr 1fr 1fr"; 
-    margin-top: 30px;
+    margin-top: 20px;
 }
 
-h3 {
-    font-weight: bold;
+/*깃발 태그*/
+.tag-container {
+    position: relative;
+  }
+  
+ 
+  .tag-container,
+  .tag-container.tag-left {
+    text-align: left;
+  }
+  .tag-container.tag-center {
+    text-align: center;
+  }
+  .tag-container.tag-right {
+    text-align: right;
+  }
+  
+  
+  .flag{
+    width: 150px;
+    height: 35px;
+    background-color: #2bcdb2;
+    position: relative;
+    padding: 0 15px;
+    /* display: inline-block; */
+    font-size: 18px;
+    line-height:35px;
+    border-radius:30px;
+    text-align: center;
+    
+  }
+  
+ 
+  .tag-title {
+    line-height: 1px;
+    color: #f0f0f0;
+    -webkit-text-shadow: 0 1px 2px rgba(0, 0, 0, 0.75);
+    -moz-text-shadow: 0 1px 2px rgba(0, 0, 0, 0.75);
+  }
+  
+
+  .tag-tail,
+  .tag-left .tag-tail {
+    position: absolute;
+    top: 0;
+    right: -25px;
+  }
+  .tag-center .tag-tail-left {
+    position: absolute;
+    top: 0;
+    left: -25px;
+  }
+  .tag-center .tag-tail-right {
+    position: absolute;
+    top: 0;
+    right: -25px;
+  }
+  .tag-right .tag-tail {
+    position: absolute;
+    top: 0;
+    left: -25px;
+  }
+  
+  [class^="tag-tail"]:after,
+  [class^="tag-tail"].tag-tail:before {
+    content: "";
+    width: 0;
+    height: 0;
+    display: block;
+  }
+  
+  .tag-tail:after,
+  .tag-left .tag-tail:after {
+    border-right: 25px solid transparent;
+    border-bottom: 17.5px solid;
+  }
+  .tag-center .tag-tail-right:after {
+    border-right: 25px solid transparent;
+    border-bottom: 25px solid;
+  }
+  .tag-center .tag-tail-left:after {
+    border-right: 25px solid transparent;
+    border-bottom: 25px solid;
+  }
+  .tag-right .tag-tail:after {
+    border-left: 25px solid transparent;
+    border-bottom: 25px solid;
+  }
+  
+  .tag-tail:before,
+  .tag-left .tag-tail:before {
+    border-right: 25px solid transparent;
+    border-top: 17.5px solid ;
+  }
+  .tag-center .tag-tail-right:after {
+    border-right: 25px solid transparent;
+    border-top: 25px solid ;
+  }
+  .tag-center .tag-tail-left:after {
+    border-left: 25px solid transparent;
+    border-top: 25px solid ;
+  }
+  .tag-right .tag-tail:before {
+    border-left: 25px solid transparent;
+    border-top: 25px solid ;
+  }
+  
+  .tag.tag-drop:before,
+  .tag-left .tag.tag-drop:before {
+    content: "";
+    width: 0;
+    height: 0;
+    border-right: 12px solid transparent;
+    border-top: 16px solid #2bcdb2;
+    display: block;
+    position: absolute;
+    bottom: -16px;
+    left: 0;
+  }
+  .tag-right .tag.tag-drop:before {
+    content: "";
+    width: 0;
+    height: 0;
+    border-left: 12px solid transparent;
+    border-right: none;
+    border-top: 16px solid #2bcdb2;
+    display: block;
+    position: absolute;
+    bottom: -16px;
+    right: 0;
+    left: initial;
+  }
+
+  *:before,
+  *:after {
+    -webkit-box-sizing-: border-box;
+    -moz-box-sizing-: border-box;
+    box-sizing: border-box;
+  }
+
+.flaginner{
+    border:0;
+    outline:0;
+}
+
+/*닫기*/
+.back{
+  margin-bottom:-30px;
+  padding:10px;
+  margin-left:332px;
 }

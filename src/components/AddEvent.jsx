@@ -1,13 +1,10 @@
 import React, { useState } from 'react'
 import { Dialog, DialogTitle, Button, Box, Stack, Switch, TextField, FormControlLabel, FormControl, Select, MenuItem, InputLabel } from '@mui/material'
-import FormHelperText from '@mui/material/FormHelperText';
 import { LocalizationProvider, TimePicker, MobileDatePicker } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
-import StarBorderIcon from '@mui/icons-material/StarBorder';
-import StarIcon from '@mui/icons-material/Star';
-import Checkbox from '@mui/material/Checkbox';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import CheckWeeks from './FreqCompo/CheckWeeks';
 import dayjs from 'dayjs';
 import axios from 'axios';
@@ -16,9 +13,9 @@ import { useNavigate } from 'react-router-dom';
 import Progress from './FreqCompo/Progress';
 import Snackbar from './FreqCompo/Snackbar';
 import MapAPI from './MapAPI';
-import LabelBottomNavigation from './LabelBottomNavigation';
 import '../css/AddEvent.css';
-
+import { fontSize, sizeWidth } from '@mui/system';
+import LabelBottomNavigation from './LabelBottomNavigation'
 
 const AddEvent = () => {
   const [fontColor,] = useState("white"); // 태그 색깔 지정 변수
@@ -53,6 +50,7 @@ const AddEvent = () => {
   const [eTime, setETime] = useState('');
 
   const handleStartDate = (n) => {
+    console.log(n)
     setStart(n);
   }
   const handleEndDate = (n) => {
@@ -130,7 +128,6 @@ const AddEvent = () => {
             dispatch({ type: "PROGRESS", progress: { progressToggle: false } });
             window.location.href = '/calendar';
          
-
           } else {
             dispatch({ type: "SNACKBAR/ON", snackbar: { snackbarToggle: true, explain: "일정등록 실패", severity: "error" } });
             dispatch({ type: "PROGRESS", progress: { progressToggle: false } });
@@ -143,68 +140,59 @@ const AddEvent = () => {
 
   }
 
+  const goback=()=>{
+    window.history.back()
+  }
+
   return (
-
     <div className='addeventbody'>
-      <Box className='addevent' style={{height:'115vh'}}>
-        {/* <button onClick={() => {
-        console.log(start.$y +'-'+ (start.$M + 1) +'-'+ start.$D);
-      }}>check</button>
-
-      <button onClick={() => {
-        console.log(sTime)
-      }}>시간 보기</button> */}
-        <Button onClick={handleOpenTag} style={{ background: tag.tagColor, color: fontColor, marginTop: '20px' }}>{tag.tagName ? tag.tagName : "태그"}</Button>
-        {tag.tagName == "데일리루틴" ? <Button onClick={handleOpenTag2} style={{ background: tag2.tagColor, color: fontColor, marginTop: '20px' }}>{tag2.tagName ? tag2.tagName : "태그"}</Button> : ""}
+      <Box className='addevent'>
+        {/* 닫기 btn */}
+        <div className="back" onClick={goback}><HighlightOffIcon sx={{ fontSize: 40 }} style={{color:'#BEBEBE'}}/></div>
+        {/* 태그 btn */}
+        <Button onClick={handleOpenTag} style={{ borderRadius:"30px", background: tag.tagColor, color: fontColor, marginTop: '20px'}}>{tag.tagName ? tag.tagName : "태그"}</Button>
+        {tag.tagName == "데일리루틴" ? <Button onClick={handleOpenTag2} style={{ borderRadius:"30px", background: tag2.tagColor, color: fontColor, marginTop: '20px' }}>{tag2.tagName ? tag2.tagName : "태그"}</Button> : ""}
         <Stack spacing={1}>
           <div className='important' >
-            <input style={{ width: "100%" }} className='input' placeholder="제목 추가" type='text' name="title" onChange={handleEventInfo} />
-            {/* <TextField size="small" placeholder="제목" name="title" variant="standard" sx={{ mb: "20px" }} onChange={handleEventInfo} /> */}
-            {/* {tag.tagName == "데일리루틴" ? "" :
-        <FormControlLabel control={<Switch name="checkSpecial" onChange={() => { setCheckSpecial(!checkSpecial) }} />} label="주요일정" />
-        } */}
+            <input style={{ width: "100%" }} className='input' placeholder="제목 추가" type='text' name="제목" onChange={handleEventInfo} />            
             {checkSpecial ? <span onClick={() => { setCheckSpecial(false) }} className="star_yellow">⭐</span> :
               <span onClick={() => { setCheckSpecial(true) }} className="star_white" star_yellow>⭐</span>}
-            {/* <div className='importantfont'>주요일정</div> */}
+          </div>
+          <div className='datetime'>
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
+              <MobileDatePicker
+                // label="시작 날짜"
+                inputFormat="YYYY/MM/DD"
+                onChange={handleStartDate}
+                value={start}
+                renderInput={(label) => <TextField size="small" variant='standard' {...label} />}
+              />
+              <TimePicker
+                // label="시작 시간"
+                value={start}
+                onChange={handleStartTime}
+                renderInput={(label) => <TextField size="small" variant='standard' {...label} />} />
+            </LocalizationProvider>
           </div>
 
+          <div className='datetime'>
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
+              <MobileDatePicker
+                // label="종료 날짜"
+                inputFormat="YYYY/MM/DD"
+                onChange={handleEndDate}
+                value={end}
+                renderInput={(label) => <TextField size="small" variant='standard' {...label} />}
+              />
+              <TimePicker
+                // label="종료 시간"
+                value={end}
+                onChange={handleEndTime}
+                renderInput={(label) => <div style={{ display: "flex" }}><TextField size="small" variant='standard' {...label} /></div>} />
+            </LocalizationProvider>
+          </div>
 
-        
-<div className='datetime'>
-        <LocalizationProvider dateAdapter={AdapterDayjs}>
-          <MobileDatePicker
-            // label="시작 날짜"
-            inputFormat="YYYY/MM/DD"
-            onChange={handleStartDate}
-            value={start}
-            renderInput={(label) => <TextField size="small" variant='standard' {...label} />}
-          />
-          <TimePicker
-            // label="시작 시간"
-            value={start}
-            onChange={handleStartTime}
-            renderInput={(label) => <TextField size="small" variant='standard' {...label} />} />
-        </LocalizationProvider>
-        </div>
-
-        <div className='datetime'>
-        <LocalizationProvider dateAdapter={AdapterDayjs}>
-          <MobileDatePicker
-            // label="종료 날짜"
-            inputFormat="YYYY/MM/DD"
-            onChange={handleEndDate}
-            value={end}
-            renderInput={(label) => <TextField size="small" variant='standard' {...label} />}
-          />
-          <TimePicker
-            // label="종료 시간"
-            value={end}
-            onChange={handleEndTime}
-            renderInput={(label) => <div style={{display:"flex"}}><TextField size="small" variant='standard' {...label} /></div>} />
-        </LocalizationProvider> 
-        </div>        
           <div className='alarm'>
-
             <NotificationsNoneIcon fontSize='large' style={{ visibility: "visible" }} />
             <FormControl variant='filled' size='small'>
               {/* <InputLabel id="demo-simple-select-label">미리 알림</InputLabel> */}
@@ -231,7 +219,7 @@ const AddEvent = () => {
           <TextField size="small" placeholder="메모" name="content" multiline rows={3} variant="outlined" sx={{ mb: "20px" }} onChange={handleEventInfo} />
           {/* <TextField label="장소" name="location" variant="outlined" sx={{mb:"20px"}} onChange={handleEventInfo}/> */}
         </Stack>
-        <div className='test'>
+        <div>
           <FormControlLabel style={{ float: "right" }} control={<Switch name="checkRecommend" onChange={() => { setCheckRecommend(!checkRecommend) }} />} label="추천받기" /><br />
 
           {checkRecommend ?
@@ -244,9 +232,9 @@ const AddEvent = () => {
                   </div>
                 </div>
               ))}
+              <AddCircleOutlineIcon onClick={() => { setOpenCategory(true) }} style={{ color: '#7e7e7e'}} sx={{ fontSize: 45 }}/>
             </div>
             : ""}
-            <AddCircleOutlineIcon onClick={() => { setOpenCategory(true) }} style={{color:'#7e7e7e'}}/>
           <Button sx={{ mt: "10px", float: "right" }} variant="contained" onClick={handleFormSubmit}>등록</Button>
         </div>
         {/* <Button sx={{ mt: "10px", float: "right" }} variant="contained" onClick={handleFormSubmit}>등록</Button> */}
