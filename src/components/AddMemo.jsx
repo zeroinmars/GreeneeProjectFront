@@ -30,17 +30,18 @@ const AddMemo = () => {
     <div>
       <div className="top">
       <button className="button">
-        <img className="arrow" src={backback}></img>
+        <img onClick={testPage} className="arrow" src={backback}></img>
       </button>
 
         <img onClick={testPage} className="trash" src={trash}></img>
 
       </div>
 
-      <div className="memo2">
-        
-          {!bookMark ? <span onClick={() => { setBookmark(true) }} className="star_white">⭐</span> :
-          <span onClick={() => { setBookmark(false) }} className="star_yellow" star_yellow>⭐</span>}
+      
+
+      <div className="memo2">         
+      {!bookMark ? <span onClick={() => { setBookmark(true) }} className="star_white">⭐</span> :
+      <span onClick={() => { setBookmark(false) }} className="star_yellow" star_yellow>⭐</span>}
           <font color="7e7e7e"><h3 style={{ display: 'inline' }}>10.20</h3>
         </font>
 
@@ -48,12 +49,14 @@ const AddMemo = () => {
           <button className="home_btn">푸라닭 치킨 4종류 먹기</button>
         </div>
 
+        <div className="memo_text">
         <font color="7e7e7e"><h4>오늘 푸라닭 치킨 먹으러 간다. 블라블라</h4></font>
+        </div>
 
       </div>
 
       <div>
-      <button className="home1_form">저장</button>
+      <button onClick={testPage} className="home1_form">저장</button>
       </div>
 
     </div>

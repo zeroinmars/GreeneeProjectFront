@@ -28,7 +28,7 @@
 
 .memo1 {
     line-height: 250%;
-    margin-left: 20px;
+    margin-left: 3px;
 }
 
 .memo2 {
@@ -39,7 +39,6 @@
 h1, h4 {
     font-family: 'S-CoreDream-3Light';
     margin: 0;
-    margin-left: 15px;
 }
 
 h2 {
@@ -52,12 +51,12 @@ h3 {
     margin: 0;
 }
 
-.star_white {
+.star_white1 {
     font-size: 150%; /* 이모지 크기 */
     color: transparent; /* 기존 이모지 컬러 제거 */
     text-shadow: 0 0 0 #bebebe; 
 }
-.star_yellow {
+.star_yellow1 {
     font-size: 150%; /* 이모지 크기 */
     color: transparent; /* 기존 이모지 컬러 제거 */
     text-shadow: 0 0 0 #ff9c00;
@@ -154,4 +153,23 @@ h3 {
     border-radius: 10px;
     /* margin: 0px; */
     text-align: center;
+}
+
+.memo_won{
+    margin-top: 10px;
+    margin-left: 89%;
+    width: 40px;
+    height: 40px;
+    font-size: 30px;
+    font-weight: 600;   
+    font-family: "S-CoreDream-3Light";
+    color: #ffffff;
+    border: none;
+    background: #bebebe;
+    border-radius: 50px;
+    text-align: center;
+}
+
+.memo_text{
+    margin-left: 17px;
 }
