@@ -1,0 +1,143 @@
+import { useState, useEffect, useRef} from 'react';
+import {useNavigate} from 'react-router-dom';
+import { FormControl, TextField, Button, Avatar, Stack } from '@mui/material';
+import "../../css/Mypage.css";
+import greenee from "../../img/greenee.png"
+import password from "./Mypageimg/password.png"
+import patchnote from "./Mypageimg/patchnote.png"
+import hAddr from "./Mypageimg/hAddr.png"
+import cAddr from "./Mypageimg/cAddr.png"
+import nickname from "./Mypageimg/nickname.png"
+import light_icon from "./Mypageimg/light.png"
+import tendancy from "./Mypageimg/tendancy.png"
+import tag from "./Mypageimg/tag.png"
+import LabelBottomNavigation from "../../components/LabelBottomNavigation";
+
+
+function Profile(){
+
+    const navigate = useNavigate()
+
+    const Logout= () => {
+        navigate("/Myprofile");
+    };
+
+
+    const EditNick= () => {
+        navigate("/EditNick");
+    };
+
+    const EditPw = () => {
+      navigate("/EditPw");
+    };
+  
+    const EdithAddr= () => {
+      navigate("/EdithAddr");
+    };
+
+    const EditcAddr= () => {
+        navigate("/EditcAddr");
+    };  
+
+    const EditTendancy =() => {
+        navigate("/Chatpage")
+    }
+    
+    const Patchnote= () => {
+      navigate("/Patchnote");
+    };
+    
+    const Edittag = () => {
+        navigate("/Edittag")
+    }
+
+  
+
+
+  const [Image, setImage] = useState("https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png")
+  const fileInput = useRef()
+  // const setFile = useRef()
+  const [file_, setFile] = useState();
+  const onChange = (e) => {
+    if(e.target.files[0]){
+              // setFile(e.target.files[0])
+          }else{ //업로드 취소할 시
+              setImage("https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png")
+              return
+          }
+    //화면에 프로필 사진 표시
+          const reader = new FileReader();
+          reader.onload = () => {
+              if(reader.readyState === 2){
+                  setImage(reader.result)
+              }
+          }
+          reader.readAsDataURL(e.target.files[0])
+      }
+
+    return(
+      <div className='profile_page'>
+      <div>
+        <Avatar className='avatar'
+        src={Image} 
+        onClick={()=>{fileInput.current.click()}}>
+        </Avatar>
+         <input type='file' style={{display:'none'}} accept='image/jpg,impge/png,image/jpeg' 
+         name='profile_img' onChange={onChange}
+         ref={fileInput}></input>
+      </div>
+      <div  className='name_mail'>  
+          <p>그리니<br />
+          green@green.com<br /><br />
+          가입날짜 2022-12-14</p>
+      </div>
+      <Button className='logout_btn' onClick={Logout}>로그아웃</Button>
+
+        <div className="my_info">
+
+                <li className='list1' onClick={EditNick}>
+                    <span className="item_text" ><img src={nickname} className='icon' /> 닉네임</span>
+                    <Button className="btn_edit"> 〉</Button>
+                </li>
+
+                <li className='list2' onClick={EditPw}>
+                    <span className="item_text"><img src={password} className='icon' /> 비밀번호</span>
+                    <Button className="btn_edit"> 〉</Button>
+                </li>
+                <li className='list3' onClick={EdithAddr}>
+                    <span className="item_text"><img src={hAddr} className='icon' /> 자택 주소</span>
+                    <Button type="button" className="btn_edit"> 〉</Button>
+                </li>
+                <li className='list4' onClick={EditcAddr}>
+                    <span className="item_text"><img src={cAddr} className='icon' /> 회사 주소</span>
+                    <Button type="button" className="btn_edit"> 〉</Button>
+                </li>
+
+                <li className='list4' onClick={EditTendancy}>
+                    <span className="item_text"><img src={tendancy} className='icon' /> 성향 정보</span>
+                    <Button type="button" className="btn_edit"> 〉</Button>
+                </li>
+
+                <li className='list4' onClick={Edittag}>
+                    <span className="item_text"><img src={tag} className='icon' /> 태그수정</span>
+                    <Button type="button" className="btn_edit"> 〉</Button>
+                </li>
+
+                <li className='list4' onClick={Patchnote}>
+                    <span className="item_text"><img src={patchnote} className='icon' /> 패치노트</span>
+                    <Button type="button" className="btn_edit"> 〉</Button>
+                </li>
+
+
+      </div>
+      <div className='foot'>
+      <p>버전 1.0.0 <br />
+       ECLIPSE</p>
+      </div>
+      <LabelBottomNavigation></LabelBottomNavigation>
+  </div>
+  )
+}
+
+
+export default Profile;

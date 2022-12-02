@@ -1,0 +1,32 @@
+.page{
+    height: 100vh;
+}
+.title{
+    font-family:'S-CoreDream-5light';
+    font-size: px;
+    text-align: center;
+    display: inline;
+    flex-direction: column;
+    height: 3vh;
+    margin-top: 3vh;
+    margin-bottom: 5%;
+    vertical-align: middle;
+}
+
+.back_btn{
+    margin-left: 5%;
+    margin-right: -5%;
+    margin-top: 3%;
+    width: 22px;  
+    display: inline;
+    float: left;
+    border: none;
+    background-color: white;
+}
+
+.finish_btn{
+    width: px;
+    font-size: 23px;
+    color: black;
+}
+

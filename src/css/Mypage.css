@@ -1,0 +1,85 @@
+.profile_page{
+  height: 105vh;
+  padding-top: 0.5vh;
+}
+
+.App h1 .title{
+  font-size: 1px;
+  padding: 0;
+  margin-top: 0;
+  display: flex;
+  text-align: center;
+}
+
+.name_mail{
+  font-size: 20px;
+  margin-top: 2vh;
+  text-align: center;
+}
+
+.avatar{
+  width: 22vw;
+  height: 10vh;
+  object-fit: cover;
+  margin: auto;
+  margin-top: 5vh;
+  display: flex;
+  justify-content: center;
+}
+
+.logout_btn{
+  padding-top: 0;
+  padding-bottom: 2vh;
+  margin: auto;
+  display: block;
+  font-size: 20px;
+  color: #949494;
+  border-bottom: #000000;
+}
+
+.my_info{
+  list-style: none;
+}
+
+.icon{
+  padding-left: 1vh;
+}
+
+.list1{
+  padding: 2vh 0vh 2vh 2vh;
+  font-size: 25px;
+  border-bottom: 1px solid #000000;
+  border-top: 1px solid #000000;
+}
+
+.list2{
+  padding: 2vh 0vh 2vh 2vh;
+  font-size: 25px;
+  border-bottom: 1px solid #000000;
+}
+
+.list3{
+  padding: 2vh 0vh 2vh 2vh;
+  font-size: 25px;
+  border-bottom: 1px solid #000000;
+}
+
+.list4{
+  padding: 2vh 0vh 2vh 2vh;
+  font-size: 25px;
+  border-bottom: 1px solid #000000;
+}
+
+.btn_edit{
+  display: inline-block;
+  float: right;
+  margin-right: 0;
+  padding-right: 0;
+  width: 5vh;
+  color: #000000;
+}
+
+.foot{
+  padding-top: 4vh;
+  text-align: center;
+}

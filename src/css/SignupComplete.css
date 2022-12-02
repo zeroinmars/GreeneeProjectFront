@@ -1,0 +1,53 @@
+.completedpage{
+    height: 100vh;
+    background-color:#D7EDBC;
+    margin: 0 auto;
+    margin-block-start: 0;
+    background-size: cover;
+}
+.title{
+    font-family:'S-CoreDream-5light';
+    text-align: center;
+    display: inline;
+    flex-direction: column;
+    height: 50px;
+    margin-top: 0%;
+    margin-bottom: 5%;
+    vertical-align: middle;
+}
+
+.greeneecomplete1{
+    width: 60%;
+    margin-bottom: 10vh;
+}
+
+.greeneecomplete2{
+    font-family:'S-CoreDream-5light';
+    font-size: 40px;
+    color: #00cc00;
+}
+
+.back_btn1{
+    background-color: #D7EDBC;
+}
+
+.greeneecomplete2{
+    font-family: 'S-CoreDream-5light';
+    text-align: center;
+    font-size: 30px;
+    color: #00cc00;
+    font-weight: bold;
+    margin-top:5%;
+    margin-bottom: 10%;
+}
+
+.complete_btn{
+    margin-top: 20vh;
+    margin-bottom: 5vh;
+    width: 80vw;
+    margin: auto;
+    font-size: 23px;
+    color: #ffffff;    
+    background-color: #CEDD38; 
+    border-radius: 20px;
+}

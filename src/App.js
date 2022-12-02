@@ -16,6 +16,14 @@ import UserInfo from "./pages/UserInfo";
 import AddEvent from "./components/AddEvent";
 import UpdateEvent from "./components/UpdateEvent";
 import AddMemo from "./components/AddMemo";
+import SignupCompleted from './components/Signup/SignupCompleted';
+import SignupCheck from './components/Signup/SignupCheck';
+import Mypage from './components/Mypage/Mypage';
+import Patchnote from './components/Mypage/Patchnote';
+import EditNick from './components/Mypage/Edit/EditNick';
+import EditPw from './components/Mypage/Edit/EditPw';
+import EditcAddr from './components/Mypage/Edit/EditcAddr';
+import EdithAddr from './components/Mypage/Edit/EdithAddr';
 // import ChatbotSteps from "./components/chatbot/ChatbotSteps";
 import LabelBottomNavigation from "./components/LabelBottomNavigation";
  
@@ -79,18 +87,25 @@ function App() {
           {/* 므이 css */}
           <BrowserRouter>
             <Routes>
-              <Route path="/" element={<Home />} />
+            <Route path="/" element={<Home />} />
               <Route path="/calendar" element={<Calendar />} />
               <Route path="/myProfile" element={<MyProfile />} />
               <Route path="/signup" element={<Signup />} />
               <Route path="/userInfo" element={<UserInfo />} />
               <Route path="/addEvent" element={<AddEvent />} />
               <Route path="/Memo" element={<Memo />} />
-              <Route path="/addMemo" element={<AddMemo />}></Route>
-              <Route path="/updateEvent" element={<UpdateEvent />}></Route>
-         
+              <Route path="/addMemo" element={<AddMemo />} />
+              <Route path="/SignupCompleted" element={<SignupCompleted />} />
+              <Route path="/SignupCheck" element={<SignupCheck />} />
+              <Route path="/Mypage" element={<Mypage />} />
+              <Route path="/Patchnote" element={<Patchnote />} />
+              <Route path="/updateEvent" element={<UpdateEvent />} />
+              <Route path="/ChatPage" element={<ChatPage />} />
+              <Route path="/EditNick" element={<EditNick />} />
+              <Route path="/EditPw" element={<EditPw />} />
+              <Route path="/EditcAddr" element={<EditcAddr />} />
+              <Route path="/EdithAddr" element={<EdithAddr />} />
               {/* <Route path="/" element={<Door />} /> */}
-              <Route path="/ChatPage" element={<ChatPage />} /> 
               {/*  <Route path="/test" element={<Test/>}/> */}
             </Routes>
            {/* <LabelBottomNavigation></LabelBottomNavigation> */}  

@@ -1,0 +1,40 @@
+.page{
+  background-color: #ffffff;
+  height: 100vh;
+}
+.h_line{
+  padding-top: 3vh; 
+  font-size: 30px;
+  font-weight: 1000;
+  padding-bottom: 3vh;
+  text-align: center;
+}
+
+.back{
+  position: absolute;
+  border: none;
+  display: inline;
+  float: left;
+  margin-top: 3vh;
+  margin-left: 5%;
+  margin-right: -5%;
+  background-color: #ffffff;
+  margin-bottom: 10vh; 
+}
+
+.edit_field{
+  margin: auto;
+  padding-bottom: 3vh;
+  width: 95%;
+}
+.edit_btn{
+  margin-top: 5vh;
+  margin-bottom: 2vh;
+  margin: auto;
+  justify-content: center;
+  width: 80%;
+  display: flex;
+  font-size: 20px;
+  color: #ffffff;
+  border-bottom: #000000;
+}
