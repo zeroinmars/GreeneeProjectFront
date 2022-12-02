@@ -128,7 +128,8 @@ const AddEvent = () => {
           if (res.data.affectedRows) {
             dispatch({ type: "ISEVENTADDED", isEventAdded: true });
             dispatch({ type: "PROGRESS", progress: { progressToggle: false } });
-            nav('/calendar');
+            window.location.href = '/calendar';
+         
 
           } else {
             dispatch({ type: "SNACKBAR/ON", snackbar: { snackbarToggle: true, explain: "일정등록 실패", severity: "error" } });
@@ -145,7 +146,7 @@ const AddEvent = () => {
   return (
 
     <div className='addeventbody'>
-      <Box className='addevent'>
+      <Box className='addevent' style={{height:'115vh'}}>
         {/* <button onClick={() => {
         console.log(start.$y +'-'+ (start.$M + 1) +'-'+ start.$D);
       }}>check</button>
@@ -168,86 +169,7 @@ const AddEvent = () => {
           </div>
 
 
-          {/* {tag.tagName !== "데일리루틴" ?
-            <div>
-              <div className='datetime'>
-                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                  <MobileDatePicker
-                    label="시작 날짜"
-                    inputFormat="YYYY/MM/DD"
-                    onChange={handleStartDate}
-                    value={start}
-                    renderInput={(label) => <TextField size="small" variant='standard' {...label} />}
-                  />
-                  <TimePicker
-                    label="시작 시간"
-                    value={start}
-                    onChange={handleStartTime}
-                    renderInput={(label) => <TextField size="small" variant='standard' {...label} />} />
-                </LocalizationProvider>
-              </div>
-
-              <div
-                className='datetime'>
-                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                  <MobileDatePicker
-                    label="종료 날짜"
-                    inputFormat="YYYY/MM/DD"
-                    onChange={handleEndDate}
-                    value={end}
-                    renderInput={(label) => <TextField size="small" variant='standard' {...label} />}
-                  />
-                  <TimePicker
-                    label="종료 시간"
-                    value={end}
-                    onChange={handleEndTime}
-                    renderInput={(label) => <div style={{ display: "flex" }}><TextField size="small" variant='standard' {...label} /></div>} />
-                </LocalizationProvider>
-              </div>
-            </div>
-            :
-            <div>
-              <div className='datetime'>
-                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                  <MobileDatePicker
-                    label="루틴 시작"
-                    inputFormat="YYYY/MM/DD"
-                    onChange={handleStartDate}
-                    value={start}
-                    renderInput={(label) => <TextField size="small" variant='standard' {...label} />}
-                  />
-                </LocalizationProvider>
-                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                  <MobileDatePicker
-                    label="루틴 종료"
-                    inputFormat="YYYY/MM/DD"
-                    onChange={handleEndDate}
-                    value={end}
-                    renderInput={(label) => <TextField size="small" variant='standard' {...label} />}
-                  />
-                </LocalizationProvider>
-
-              </div>
-
-              <div className='datetime'>
-                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                  <TimePicker
-                    label="시작 시간"
-                    value={start}
-                    onChange={handleStartTime}
-                    renderInput={(label) => <TextField size="small" variant='standard' {...label} />} />
-                </LocalizationProvider>
-
-                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                  <TimePicker
-                    label="종료 시간"
-                    value={end}
-                    onChange={handleEndTime}
-                    renderInput={(label) => <div style={{ display: "flex" }}><TextField size="small" variant='standard' {...label} /></div>} />
-                </LocalizationProvider>
-              </div>
-            </div>
-          } */}
+        
 <div className='datetime'>
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <MobileDatePicker

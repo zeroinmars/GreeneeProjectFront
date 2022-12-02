@@ -15,8 +15,13 @@ const { kakao } = window;
 
 const theme = createTheme({
   palette: {
+    // primary: {
+    //   // Purple and green play nicely together.
+    //   main: purple[500],
+    // },
     secondary: {
-      main: '#2ecc71',
+      // This is green.A700 as hex.
+      main: '#11cb5f',
     },
   },
 });
@@ -25,18 +30,18 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-const MapAPI = ({ sLocation, eLocation, setSLocation, setELocation }) => {
-  const [sLabel, setSLabel] = useState('출발 장소');
-  const [eLabel, setELabel] = useState('도착 장소');
+const SignUpMapAPI = ({ hLocation, cLocation, setHLocation, setCLocation }) => {
+  const [hLabel, setHLabel] = useState('자택 주소');
+  const [cLabel, setCLabel] = useState('회사 주소');
 
   const inputLabel = () => {
-    if (flag === '출발지') {
-      setSLabel('');
+    if (flag === '자택 주소') {
+      setHLabel('');
     } else {
-      setELabel('');
+      setCLabel('');
     }
-    setSLocation(startAddr);
-    setELocation(endAddr);
+    setHLocation(homeAddr);
+    setCLocation(comAddr);
 
     handleCheckClose();
     handleClose();
@@ -48,27 +53,27 @@ const MapAPI = ({ sLocation, eLocation, setSLocation, setELocation }) => {
   // 체크 모달 열고 닫는 상태값
   const [openCheck, setOpenCheck] = useState(false);
 
-  // 출발지, 도착지 상태값(도로명 혹은 지번 주소)
-  const [startAddr, setStartAddr] = useState('');
-  const [endAddr, setEndAddr] = useState('');
+  // 자택 주소, 회사 주소 상태값(도로명 혹은 지번 주소)
+  const [homeAddr, setHomeAddr] = useState('');
+  const [comAddr, setComAddr] = useState('');
 
-  // 출발지, 도착지 상태값(사용자가 보는 주소)
-  const [startUserAddr, setStartUserAddr] = useState(sLocation);
-  const [endUserAddr, setEndUserAddr] = useState(eLocation);
+  // 자택 주소, 회사 주소 상태값(사용자가 보는 주소)
+  const [homeUserAddr, setHomeUserAddr] = useState(hLocation);
+  const [comUserAddr, setComUserAddr] = useState(cLocation);
 
   // 지도 검색 버튼 찾기
   const searchButton = useRef();
 
-  // 사용자가 검색하려는게 출발지인지 도착지인지 확인하기
+  // 사용자가 검색하려는게 자택 주소인지 회사 주소인지 확인하기
   const [flag, setFlag] = useState('');
 
   // map 열고 닫기
-  const handleOpenStart = () => {
-    setFlag('출발지');
+  const handleOpenHome = () => {
+    setFlag('자택 주소');
     setOpenMap(true);
   }
-  const handleOpenEnd = () => {
-    setFlag('도착지')
+  const handleOpenCom = () => {
+    setFlag('회사 주소')
     setOpenMap(true);
   }
   const handleClose = () => {
@@ -261,26 +266,26 @@ const MapAPI = ({ sLocation, eLocation, setSLocation, setELocation }) => {
           // 사용자가 리스트 내 주소를 클릭했을 때 실행하는 함수
           el.addEventListener('click', (e) => {
 
-            // 출발지인지 도착지인지 확인
-            if (flag === '출발지') {
-              // 출발지 장소 이름 저장
-              setStartUserAddr(places.place_name);
+            // 자택 주소인지 회사 주소인지 확인
+            if (flag === '자택 주소') {
+              // 자택 주소 장소 이름 저장
+              setHomeUserAddr(places.place_name);
 
               // 도로명 주소 있는지 확인
               if (places.road_address_name) {
                 // 도로명 주소 저장
-                setStartAddr(places.road_address_name);
+                setHomeAddr(places.road_address_name);
               } else {
                 // 지번 주소 저장
-                setStartAddr(places.address_name);
+                setHomeAddr(places.address_name);
               }
 
             } else {
-              setEndUserAddr(places.place_name);
+              setComUserAddr(places.place_name);
               if (places.road_address_name) {
-                setEndAddr(places.road_address_name);
+                setComAddr(places.road_address_name);
               } else {
-                setEndAddr(places.address_name);
+                setComAddr(places.address_name);
               }
             }
           })
@@ -373,14 +378,14 @@ const MapAPI = ({ sLocation, eLocation, setSLocation, setELocation }) => {
     <>
       <TextField
         size="small" variant="standard" sx={{ mb: "20px" }}
-        value={startUserAddr} label={sLabel} name="sLocation"
-        onClick={handleOpenStart}
+        value={homeUserAddr} label={hLabel} name="hLocation"
+        onClick={handleOpenHome}
       />
 
       <TextField
         size="small" variant="standard" sx={{ mb: "20px" }}
-        value={endUserAddr} label={eLabel} name="eLocation"
-        onClick={handleOpenEnd}
+        value={comUserAddr} label={cLabel} name="cLocation"
+        onClick={handleOpenCom}
       />
 
       <Dialog open={openMap} onClose={handleClose} fullScreen TransitionComponent={Transition}>
@@ -408,11 +413,11 @@ const MapAPI = ({ sLocation, eLocation, setSLocation, setELocation }) => {
         <div className="location_info">
           <div className="location_title">
             <img src={happygreenee} style={{ width: '12vh' }}></img>
-            <h3 style={{ display: 'inline' }}> {flag == '출발지' ? startUserAddr : endUserAddr} !</h3>
+            <h3 style={{ display: 'inline' }}> {flag == '자택 주소' ? homeUserAddr : comUserAddr} !</h3>
           </div>
           <hr></hr>
           <div style={{ paddingLeft: '15px' }}>
-            <span style={{ display: 'block' }}>주소는</span><h5>{flag == '출발지' ? startAddr : endAddr} 네요</h5>
+            <span style={{ display: 'block' }}>주소는</span><h5>{flag == '자택 주소' ? homeAddr : comAddr} 네요</h5>
           </div>
           <br></br>
           <h6>해당 위치를 {flag}로 설정하실래요?</h6>
@@ -433,4 +438,4 @@ const MapAPI = ({ sLocation, eLocation, setSLocation, setELocation }) => {
   );
 };
 
-export default MapAPI;
+export default SignUpMapAPI;

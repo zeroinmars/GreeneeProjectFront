@@ -1,0 +1,13 @@
+.calendar_table {
+    margin: 15px;
+}
+
+#row_title {
+    padding-right: 15px;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.calendar_table p {
+    margin: 10px 0;
+}

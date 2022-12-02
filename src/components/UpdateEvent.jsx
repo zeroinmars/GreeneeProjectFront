@@ -102,18 +102,31 @@ const UpdateEvent = () => {
     }
 
     const handleFormSubmit = () => {
-        let sDay = start.$y + '-' + (start.$M + 1) + '-' + start.$D;
-        let eDay = end.$y + '-' + (end.$M + 1) + '-' + end.$D;
+        const sMonth = start.$M + 1;
+        const sDay = start.$D;
+        const eMonth = end.$M + 1;
+        const eDay = end.$D;
+
+        const sDate = start.$y + '-' + (sMonth < 10 ? '0' + sMonth : sMonth) + '-' + (sDay < 10 ? '0' + sDay : sDay);
+        const eDate = end.$y + '-' + (eMonth < 10 ? '0' + eMonth : eMonth) + '-' + (eDay < 10 ? '0' + eDay : eDay);
         const url = "http://localhost:5000/lifeConcierge/api/UpdateEvent";
-        console.log({
-            ...eventInfo, checkWeeks, email, checkSpecial, preAlarm, tag: tag.tagName, color: tag.tagColor,
-            cateList, start: sDay, end: eDay, sTime, eTime, sLocation, eLocation
-        })
+
+        let tempTag;
+        let tempColor;
+        if (tag.tagName !== '데일리루틴') {
+            tempTag = tag.tagName;
+            tempColor = tag.tagColor;
+        } else {
+            tempTag = tag2.tagName;
+            tempColor = tag2.tagColor;
+        }
+
         if (email) {
             dispatch({ type: "PROGRESS", progress: { progressToggle: true } });
             axios.post(url, {
-                ...eventInfo, checkWeeks, email, checkSpecial, preAlarm, tag: tag.tagName, color: tag.tagColor,
-                cateList, start: sDay, end: eDay, sTime, eTime, sLocation, eLocation
+                ...eventInfo, checkWeeks, email, checkSpecial, preAlarm,
+                tag: tag.tagName, color: tag.tagColor, tag2: tag2.tagName, color2: tag2.tagColor,
+                cateList, start: sDate, end: eDate, sTime, eTime, sLocation, eLocation
             })
                 .then((res) => {
                     if (res.data.affectedRows) {
@@ -134,7 +147,7 @@ const UpdateEvent = () => {
     }
 
     return (
-        <Box className='test'>
+        <Box style={{ height: "130vh" }}>
             <Button onClick={handleOpenTag} style={{ background: tag.tagColor, color: fontColor }}>{tag.tagName ? tag.tagName : "태그"}</Button>
             {tag.tagName == "데일리루틴" ? <Button onClick={handleOpenTag2} style={{ background: tag2.tagColor, color: fontColor }}>{tag2.tagName ? tag2.tagName : "태그"}</Button> : ""}
             <Stack spacing={1}>
