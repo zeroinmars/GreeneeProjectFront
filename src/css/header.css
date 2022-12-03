@@ -1,0 +1,31 @@
+.room-list-empty-room{
+    background: #fff;
+    color: black;
+    padding: 13px;
+    border-radius: 20rem;
+    top: 135px;
+    right: 15px;
+    font-size: 11pt;
+    box-shadow: 2px 2px 3px #d1d1d1;
+    width: -webkit-fill-available;
+    height: fit-content;
+    margin:auto;
+    display: inline;
+    margin-right: 20px;
+}
+
+.notice {
+    width: 25px;
+    height: 25px;
+    border-radius: 20px;
+    background-color: rgb(255, 55, 55);
+    position: absolute;
+    margin: 25px 0 0 75px;
+    text-align: center;
+    color: white;
+}
+
+.header_area {
+    background-color: #D7EDBC;
+    display: flex;
+}

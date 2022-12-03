@@ -194,7 +194,7 @@ const Calendar = () => {
       <Dialog onClose={() => { setOpenEvent(false) }} open={openEvent}>
         <div style={{ width: '350px', paddingBottom: '25px' }}>
           <DialogTitle style={{ textAlign: 'center', backgroundColor: showEvent.color }}>{showEvent.title}</DialogTitle>
-          <table className='calendar_table'>
+          <table className='calendar_table' >
             <tr>
               <td id='row_title'><span>장소</span></td>
               <td colSpan={3}><p>{showEvent.eLocation ? showEvent.eLocation : '-'}</p></td>
@@ -209,7 +209,7 @@ const Calendar = () => {
             </tr>
             <tr>
               <td id='row_title'><span>시작일</span></td> <td><p>{showEvent.sDate}</p></td>
-              <td id='row_title'><span>시간</span></td> <td><p>{showEvent.sTime}</p></td>
+              <td id='row_title' style={{paddingLeft: '15px'}}><span>시간</span></td> <td><p>{showEvent.sTime}</p></td>
             </tr>
             <tr>
               <td id='row_title'><span>종료일</span></td> <td><p>{showEvent.eDate}</p></td>
