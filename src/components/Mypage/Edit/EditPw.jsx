@@ -14,7 +14,7 @@ function EdithAddr() {
 
   return(
     <div className='page'>
-    <Button className='back' onClick={goback}><img src={backback} className='back_btn' /></Button>
+    <Button className='edit_back' onClick={goback}><img src={backback} className='back_btn' /></Button>
     <div className='h_line'>비밀번호 변경</div>
     <TextField className="edit_field" color="success" type="text" placeholder="비밀번호"></TextField>
     <Button  className='edit_btn' variant='contained'  color="success">변경하기</Button>

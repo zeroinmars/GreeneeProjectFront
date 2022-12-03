@@ -104,7 +104,6 @@ const AddEvent = () => {
     const eDate = end.$y + '-' + (eMonth < 10 ? '0' + eMonth : eMonth) + '-' + (eDay < 10 ? '0' + eDay : eDay);
     const url = "http://localhost:5000/lifeConcierge/api/addEvent";
     console.log(tag.tagName)
-
     let tempTag;
     let tempColor;
     if (tag.tagName !== '데일리루틴') {
@@ -154,7 +153,7 @@ const AddEvent = () => {
         {tag.tagName == "데일리루틴" ? <Button onClick={handleOpenTag2} style={{ borderRadius:"30px", background: tag2.tagColor, color: fontColor, marginTop: '20px' }}>{tag2.tagName ? tag2.tagName : "태그"}</Button> : ""}
         <Stack spacing={1}>
           <div className='important' >
-            <input style={{ width: "100%" }} className='input' placeholder="제목 추가" type='text' name="제목" onChange={handleEventInfo} />            
+            <input style={{ width: "100%" }} className='input' placeholder="제목 추가" type='text' name="title" onChange={handleEventInfo} />            
             {checkSpecial ? <span onClick={() => { setCheckSpecial(false) }} className="star_yellow">⭐</span> :
               <span onClick={() => { setCheckSpecial(true) }} className="star_white" star_yellow>⭐</span>}
           </div>

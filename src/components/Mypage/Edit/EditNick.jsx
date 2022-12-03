@@ -15,7 +15,7 @@ function editNick() {
 
   return(
     <div className='page'>
-    <Button className='back' onClick={goback}><img src={backback} className='back_btn' /></Button>
+    <Button className='edit_back' onClick={goback}><img src={backback} className='back_btn' /></Button>
     <div className='h_line'>닉네임 변경</div>
     <TextField className="edit_field" color="success" type="text" placeholder="닉네임">  
     </TextField>
