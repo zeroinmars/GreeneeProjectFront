@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import FullCalendar from '@fullcalendar/react' // must go before plugins
 import timeGridPlugin from '@fullcalendar/timegrid';
 import listPlugin from '@fullcalendar/list';
-import '../css/test.css';
+import '../css/header.css';
 
 function Timeline() {
   // const [events,setevents] = useState(useSelector(state => (state.dailyEvent)));
@@ -12,12 +12,13 @@ function Timeline() {
   // 임시 데이터
   const events = [
     // { start: '2021-01-01 00:00', end: '2032-01-10 00:00', color: '#efefef', title: '' },
-    { start: '2022-11-30 09:30', end: '2022-12-01 17:04', title: 'dsa', display:'none'},
-    { start: '2022-11-30 09:50', end: '2022-11-30 09:55', title: 'a' },
-    { start: '2022-12-01 09:30', end: '2022-12-01 10:40', title: 'dsa' },
-    { start: '2022-12-01 09:30', end: '2022-12-01 10:40', title: 'dsa' },
-    { start: '2022-12-01 09:30', end: '2022-12-31 10:40', title: '일정' },
-    { start: '2022-12-01', end: '2022-12-10', title: 'dasdsda', weekday: '목요일' },
+    // { start: '2022-11-30 09:30', end: '2022-12-01 17:04', title: 'dsa', display:'none'},
+    // { start: '2022-11-30 09:50', end: '2022-11-30 09:55', title: 'a' },
+    // { start: '2022-12-01 09:30', end: '2022-12-01 10:40', title: 'dsa' },
+    // { start: '2022-12-01 09:30', end: '2022-12-01 10:40', title: 'dsa' },
+    { start: '2022-12-01 09:30', end: '2023-01-31 10:30', title: 'test' },
+    {start:'2022-12-02 21:00', end: '2022-12-01 22:00', title:'저녁식사'}
+    // { start: '2022-12-01', end: '2022-12-10', title: 'dasdsda', weekday: '목요일' },
   ]
 
   return (
@@ -43,7 +44,7 @@ function Timeline() {
           }}
         locale='ko'
         timeZone='local'
-        height={'700px'}
+        height={'85vh'}
 
         headerToolbar={{
           // 날짜, today, prev, next 순서

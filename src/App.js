@@ -28,9 +28,9 @@ import EdithAddr from './components/Mypage/Edit/EdithAddr';
 import LabelBottomNavigation from "./components/LabelBottomNavigation";
  
 /* css 파일 임포트 */
-import "./dabin.css";
+import "./css/dabin.css";
+import "./css/sehyoung.css";
 import "./index.css";
-import "./sehyoung.css";
 
 /* mui css에 css파일을 오버라이딩 하기 위한*/
 import { CacheProvider } from "@emotion/react";
