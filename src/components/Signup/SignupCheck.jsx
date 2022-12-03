@@ -13,7 +13,7 @@ function SignupCompleted(){
 const navigate = useNavigate();
  
 const next = () => {
-  navigate("/");
+  navigate("/ChatPage");
 };
 
 const skip = () => {
