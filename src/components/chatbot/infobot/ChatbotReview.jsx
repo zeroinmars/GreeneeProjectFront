@@ -72,18 +72,18 @@ class ChatbotReview extends Component {
       food: food.value,
       drink: drink.value,
     };
-
+    
     /* 라우터에서 req.body.transport */
     axios
-      .post("http://127.0.0.1:5000/chatbotUpdate", data)
-      .then((res) => {
-        console.log("라우터다녀옴");
-        console.log("res: " + res);
-      })
-      .catch((res) => {
-        console.log("error");
-      });
-
+    .post("http://127.0.0.1:5000/chatbotUpdate", data)
+    .then((res) => {
+      console.log("라우터다녀옴");
+      console.log("res: " + res);
+    })
+    .catch((res) => {
+      console.log("error");
+    });
+    
     return (
       <form>
         <div style={{ width: "100%" }}>
@@ -146,7 +146,7 @@ class ChatbotReview extends Component {
               background: "#f39c12",
               marginTop: "8px",
             }}
-          >
+            >
             {" "}
             응, 앞으로 잘 부탁해{" "}
           </button>
@@ -162,3 +162,4 @@ ChatbotReview.defaultProps = {
   steps: undefined,
 };
 export default ChatbotReview;
+
