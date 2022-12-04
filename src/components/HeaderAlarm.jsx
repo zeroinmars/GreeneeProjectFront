@@ -7,52 +7,57 @@ import greenee from "../img/greenee.png";
 import '../css/header.css';
 
 
-
 const HeaderAlarm = () => {
   const userName = useSelector(state => (state.userName));
-  const specialEvent = useSelector(state => (state.specialEvent));
-
-  const [grnTalk, setGrnTalk] = useState(`안녕하세요, 반가워요`);
-
-  const si = setInterval(() => {
-    const talk = [
-      `${userName}님, 반가워요`,
-      `${userName}님, 오늘 기분은 어떠신가요?`,
-      `배가 고프네요. 지구인은 뭘 먹고 사나요?`,
-      `내 이름은 그리니! 탐정이죠.`,
-      `${userName}님, 집을 잃은 제 심정을 아시나요?`,
-      `${userName}님께 즐거운 일만 가득하길..❤️`,
-      `오늘도 황동석 부장이 야단쳤나요? \n담궈줄까요?`
-    ]
-    const idx = Math.floor((Math.random() * 7));
-    setGrnTalk(talk[idx]);
-  }, 600000) // 10분
-
+  const [specialEvent, setSpecialEvent] = useState([]);
+  const event = useSelector(state => (state.specialEvent));
   const [noticeNum, setNoticeNum] = useState(0);
   const [notiveInfo, setNoticeInfo] = useState([]);
   const [openNotice, setOpenNotice] = useState(false);
+  
+  const talk = [
+    `${userName}님, 오늘 기분은 어떠신가요?`,
+    `${userName}님, 집을 잃은 제 심정을 아시나요?`,
+    `${userName}님께 즐거운 일만 가득하길..❤️`,
+    `배가 고프네요. 지구인은 뭘 먹고 사나요?`,
+    `내 이름은 그리니! 탐정이죠.`,
+    `오늘도 황동석 부장이 야단쳤나요? \n담궈줄까요?`
+  ]
+  const talkIdx = Math.floor((Math.random() * 6));
+  const grnTalk = talk[talkIdx];
 
-  const checkAlarm = () => {
-
-  }
   // 진짜 데이터로 해보기
   useEffect(() => {
-    const sT = setTimeout(() => {
-      // console.log(specialEvent.filter(data => { return true; }))
+    if (specialEvent) {
       const events = specialEvent.filter(data => {
         const dataDate = data.start.split('-').map(data => { return parseInt(data); });
         const [year, month, day] = dataDate;
         const today = new Date().toLocaleString().split(' ').slice(0, 3).map(data => { return parseInt(data); });
         const [tYear, tMonth, tDay] = today;
-
         return year == tYear && month == tMonth && day == tDay;
       });
-
       setNoticeInfo(events);
       setNoticeNum(events.length);
-    }, 1000)
+    }
 
-  });
+  }, [specialEvent]);
+
+  // setTimeout(() => {
+  //   if (talk[talkIdx] == grnTalk) {
+  //     setGrnTalk('당신의 비서, 그리니입니다.')
+  //   } else if (talkIdx <= 3) {
+  //     setGrnTalk(talk[talkIdx].replace('userName', userName));
+  //   } else {
+  //     setGrnTalk(talk[talkIdx]);
+  //   }
+  // }, 5000) // 10분마다 그리니 대화 바꾸기 600000
+
+
+
+
+  const checkAlarm = () => {
+
+  }
 
   // 임시 알림 데이터. preAlarm 값 여부로 미리 필터 했다고 가정
   // preAlarm이 있어야 알림을 주는 일정인 것
@@ -98,18 +103,18 @@ const HeaderAlarm = () => {
     <div>
 
       {!noticeNum ?
-        <Link to="/ChatPage">
-          <div className="header_area">
+        <div className="header_area">
+          <Link to="/ChatPage">
             <img
               src={greenee}
               className={"greenee"}
               style={{ width: "110px", padding: "20px" }}
             />
-            <div class="room-list-empty-room">
-              <span>{grnTalk}</span>
-            </div>
+          </Link>
+          <div class="room-list-empty-room">
+            <span>{grnTalk}</span>
           </div>
-        </Link>
+        </div>
         :
         <div className="header_area">
           <img

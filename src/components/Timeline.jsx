@@ -16,10 +16,20 @@ function Timeline() {
     // { start: '2022-11-30 09:50', end: '2022-11-30 09:55', title: 'a' },
     // { start: '2022-12-01 09:30', end: '2022-12-01 10:40', title: 'dsa' },
     // { start: '2022-12-01 09:30', end: '2022-12-01 10:40', title: 'dsa' },
-    { start: '2022-12-01 09:30', end: '2023-01-31 10:30', title: 'test' },
-    {start:'2022-12-02 21:00', end: '2022-12-01 22:00', title:'저녁식사'}
+    {start:'2022-12-05 07:30', title:'기상', color:'#477e85'},
+    {start:'2022-12-05 08:30', end: '2022-12-05 09:00', title:'출근', color:'#ffc847'},
+    {start:'2022-12-05 12:30', end: '2022-12-05 14:00', title:'점심식사', color:'#e6c2ce'},
+    {start:'2022-12-05 18:00', end: '2022-12-05 18:30', title:'퇴근', color:'#ffc847'},
+    {start:'2022-12-05 19:00', end: '2022-12-05 19:30', title:'저녁식사', color:'#e6c2ce'},
+    { start: '2022-12-05 20:00', end: '2022-12-05 21:00', title: '헬스', color:'#855e95'},
+    {start:'2022-12-05 23:30', title:'취침', color:'#477e85'},
+    // {start:'2022-12-05 18:00', end: '2022-12-05 18:30', title:'퇴근', color:'#ffc847'},
     // { start: '2022-12-01', end: '2022-12-10', title: 'dasdsda', weekday: '목요일' },
-  ]
+  ].sort((a, b) => {
+    if (parseInt(a.start.split(' ')[1]) > parseInt(b.start.split(' ')[1])) return 1;
+    if (parseInt(a.start.split(' ')[1]) < parseInt(b.start.split(' ')[1])) return -1;
+    return 0;
+  });
 
   return (
     <>
