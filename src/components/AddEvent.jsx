@@ -165,13 +165,13 @@ const AddEvent = () => {
                 inputFormat="YYYY/MM/DD"
                 onChange={handleStartDate}
                 value={start}
-                renderInput={(label) => <TextField size="small" variant='standard' {...label} />}
+                renderInput={(label) => <TextField size="small" variant='standard' {...label} color="success"/>}
               />
               <TimePicker
                 // label="시작 시간"
                 value={start}
                 onChange={handleStartTime}
-                renderInput={(label) => <TextField size="small" variant='standard' {...label} />} />
+                renderInput={(label) => <TextField size="small" variant='standard' {...label} color="success"/>} />
             </LocalizationProvider>
           </div>
 
@@ -182,19 +182,19 @@ const AddEvent = () => {
                 inputFormat="YYYY/MM/DD"
                 onChange={handleEndDate}
                 value={end}
-                renderInput={(label) => <TextField size="small" variant='standard' {...label} />}
+                renderInput={(label) => <TextField size="small" variant='standard' {...label} color="success"/>}
               />
               <TimePicker
                 // label="종료 시간"
                 value={end}
                 onChange={handleEndTime}
-                renderInput={(label) => <div style={{ display: "flex" }}><TextField size="small" variant='standard' {...label} /></div>} />
+                renderInput={(label) => <div style={{ display: "flex" }}><TextField size="small" variant='standard' {...label} color="success"/></div>} />
             </LocalizationProvider>
           </div>
 
-          <div className='alarm'>
+          <div className='alarm' color="success">
             <NotificationsNoneIcon fontSize='large' style={{ visibility: "visible" }} />
-            <FormControl variant='filled' size='small'>
+            <FormControl variant='filled' size='small' color="success">
               {/* <InputLabel id="demo-simple-select-label">미리 알림</InputLabel> */}
               <Select
                 // labelId="demo-simple-select-label"
@@ -216,7 +216,7 @@ const AddEvent = () => {
           </MapAPI>
           {tag.tagName == "데일리루틴" ? <CheckWeeks checkWeeks={checkWeeks} setCheckWeeks={setCheckWeeks} /> : ""}
           {/* <TextField size="small" label="내용" name="content" multiline rows={5} variant="outlined" style={{marginBottom:"20px"}} onChange={handleEventInfo}/> */}
-          <TextField size="small" placeholder="메모" name="content" multiline rows={3} variant="outlined" sx={{ mb: "20px" }} onChange={handleEventInfo} />
+          <TextField color="success"size="small" placeholder="메모" name="content" multiline rows={3} variant="outlined" sx={{ mb: "20px" }} onChange={handleEventInfo} />
           {/* <TextField label="장소" name="location" variant="outlined" sx={{mb:"20px"}} onChange={handleEventInfo}/> */}
         </Stack>
         <div>

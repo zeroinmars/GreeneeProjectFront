@@ -57,10 +57,10 @@ const Login = () => {
         <img src={greenee} className={'greenee'} style={{ width: "60%", padding: "20px" }} />
         <h60 className='greeniWelcome'> 안녕, 당신의 일정을 그리는 그리니예요.</h60>
         <FormControl fullWidth>
-          <TextField variant="standard" inputRef={emailRef} label='이메일' name='email' onChange={(e) => { emailRef.current.value = e.target.value }} /><br></br>
-          <TextField variant="standard" inputRef={pwRef} label='비밀번호' name='pw' type="password" onChange={(e) => { pwRef.current.value = e.target.value; }} /><br></br>
-          <Button variant="contained" onClick={checkLogin} className='login_btn'>로그인</Button>
-          <Button variant="contained" onClick={() => { nav("/signup") }} className='signup_btn' >회원가입</Button>
+          <TextField variant="standard" color="success" inputRef={emailRef} label='이메일' name='email' onChange={(e) => { emailRef.current.value = e.target.value }} /><br></br>
+          <TextField variant="standard" color="success" inputRef={pwRef} label='비밀번호' name='pw' type="password" onChange={(e) => { pwRef.current.value = e.target.value; }} /><br></br>
+          <Button variant="contained" color="success" onClick={checkLogin} className='login_btn'>로그인</Button>
+          <Button variant="contained" color="success" onClick={() => { nav("/signup") }} className='signup_btn' >회원가입</Button>
         </FormControl>
         <SnackBar />
         <Progress />

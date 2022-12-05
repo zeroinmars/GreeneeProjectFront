@@ -371,13 +371,13 @@ const MapAPI = ({ sLocation, eLocation, setSLocation, setELocation }) => {
 
   return (
     <>
-      <TextField
+      <TextField color="success" variant="standard"
         size="small" variant="standard" sx={{ mb: "20px" }}
         value={startUserAddr} label={sLabel} name="sLocation"
         onClick={handleOpenStart}
       />
 
-      <TextField
+      <TextField color="success" variant="standard"
         size="small" variant="standard" sx={{ mb: "20px" }}
         value={endUserAddr} label={eLabel} name="eLocation"
         onClick={handleOpenEnd}
