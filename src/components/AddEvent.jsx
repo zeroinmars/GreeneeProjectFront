@@ -10,11 +10,11 @@ import dayjs from 'dayjs';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+
 import Progress from './FreqCompo/Progress';
 import Snackbar from './FreqCompo/Snackbar';
-import MapAPI from './MapAPI';
 import '../css/AddEvent.css';
-import { fontSize, sizeWidth } from '@mui/system';
+import MapAPI from './MapAPI';
 import LabelBottomNavigation from './LabelBottomNavigation'
 
 const AddEvent = () => {
@@ -126,7 +126,7 @@ const AddEvent = () => {
             dispatch({ type: "ISEVENTADDED", isEventAdded: true });
             dispatch({ type: "PROGRESS", progress: { progressToggle: false } });
             window.location.href = '/calendar';
-         
+
           } else {
             dispatch({ type: "SNACKBAR/ON", snackbar: { snackbarToggle: true, explain: "일정등록 실패", severity: "error" } });
             dispatch({ type: "PROGRESS", progress: { progressToggle: false } });
@@ -139,7 +139,7 @@ const AddEvent = () => {
 
   }
 
-  const goback=()=>{
+  const goback = () => {
     window.history.back()
   }
 
@@ -147,16 +147,17 @@ const AddEvent = () => {
     <div className='addeventbody'>
       <Box className='addevent'>
         {/* 닫기 btn */}
-        <div className="back" onClick={goback}><HighlightOffIcon sx={{ fontSize: 40 }} style={{color:'#BEBEBE'}}/></div>
+        <div className="back" onClick={goback}><HighlightOffIcon sx={{ fontSize: 40 }} style={{ color: '#BEBEBE' }} /></div>
         {/* 태그 btn */}
-        <Button onClick={handleOpenTag} style={{ borderRadius:"30px", background: tag.tagColor, color: fontColor, marginTop: '20px'}}>{tag.tagName ? tag.tagName : "태그"}</Button>
-        {tag.tagName == "데일리루틴" ? <Button onClick={handleOpenTag2} style={{ borderRadius:"30px", background: tag2.tagColor, color: fontColor, marginTop: '20px' }}>{tag2.tagName ? tag2.tagName : "태그"}</Button> : ""}
+        <Button onClick={handleOpenTag} style={{ borderRadius: "30px", background: tag.tagColor, color: fontColor, marginTop: '20px' }}>{tag.tagName ? tag.tagName : "태그"}</Button>
+        {tag.tagName == "데일리루틴" ? <Button onClick={handleOpenTag2} style={{ borderRadius: "30px", background: tag2.tagColor, color: fontColor, marginTop: '20px' }}>{tag2.tagName ? tag2.tagName : "태그"}</Button> : ""}
         <Stack spacing={1}>
           <div className='important' >
-            <input style={{ width: "100%" }} className='input' placeholder="제목 추가" type='text' name="title" onChange={handleEventInfo} />            
+            <input style={{ width: "100%" }} className='input' placeholder="제목 추가" type='text' name="title" onChange={handleEventInfo} />
             {checkSpecial ? <span onClick={() => { setCheckSpecial(false) }} className="star_yellow">⭐</span> :
               <span onClick={() => { setCheckSpecial(true) }} className="star_white" star_yellow>⭐</span>}
           </div>
+
           <div className='datetime'>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <MobileDatePicker
@@ -231,7 +232,7 @@ const AddEvent = () => {
                   </div>
                 </div>
               ))}
-              <AddCircleOutlineIcon onClick={() => { setOpenCategory(true) }} style={{ color: '#7e7e7e'}} sx={{ fontSize: 45 }}/>
+              <AddCircleOutlineIcon onClick={() => { setOpenCategory(true) }} style={{ color: '#7e7e7e' }} sx={{ fontSize: 45 }} />
             </div>
             : ""}
           <Button sx={{ mt: "10px", float: "right" }} variant="contained" onClick={handleFormSubmit}>등록</Button>
@@ -242,134 +243,134 @@ const AddEvent = () => {
         <Progress />
         {/* 태그 1 선택 모달창  */}
         <Dialog open={openTag} onClose={() => { setOpenTag(false) }}>
-      <div className='tagselect'>
-        <DialogTitle>
-          태그 선택
-        </DialogTitle>
-      </div>
-        <DialogTitle>
-          <div className='tag'>
-            <div className='tagcolor' style={{ background: '#94ab50', width:"30px"}}></div>
-            <Button name="데일리루틴" style={{ color: "black" }} onClick={(e) => { setTag({ ...tag, tagName: e.target.name, tagColor: "#94ab50" }); setOpenTag(false) }}>데일리루틴</Button>
+          <div className='tagselect'>
+            <DialogTitle>
+              태그 선택
+            </DialogTitle>
           </div>
-          <div className="tag">
-            <div className='tagcolor' style={{ background: '#ffc847', width:"30px"}}></div>
-            <Button name="업무/학교" style={{ color: "black" }} onClick={(e) => { setTag({ ...tag, tagName: e.target.name, tagColor: "#ffc847" }); setTag2({ ...tag2, tagName: "", tagColor: startTagColor }); setOpenTag(false); setCheckWeeks({ mon: false, tue: false, wed: false, thu: false, fri: false, sat: false, sun: false }) }}>업무/학교</Button><br />
-          </div>
-          <div className="tag">
-            <div className='tagcolor' style={{ background: '#8ed4c9' , width:"30px"}}></div>
-            <Button name="여행/데이트/취미" style={{ color: "black" }} onClick={(e) => { setTag({ ...tag, tagName: e.target.name, tagColor: "#8ed4c9" }); setTag2({ ...tag2, tagName: "", tagColor: startTagColor }); setOpenTag(false); setCheckWeeks({ mon: false, tue: false, wed: false, thu: false, fri: false, sat: false, sun: false }) }}>여행/데이트/취미</Button><br />
-          </div>
-          <div className="tag">
-            <div className='tagcolor' style={{ background: '#855e95' , width:"30px"}}></div>
-            <Button name="건강/헬스" style={{ color: "black" }} onClick={(e) => { setTag({ ...tag, tagName: e.target.name, tagColor: "#855e95" }); setTag2({ ...tag2, tagName: "", tagColor: startTagColor }); setOpenTag(false); setCheckWeeks({ mon: false, tue: false, wed: false, thu: false, fri: false, sat: false, sun: false }) }}>건강/헬스</Button><br />
-          </div>
-          <div className="tag">
-            <div className='tagcolor' style={{ background: '#e6c2ce' , width:"30px"}}></div>
-            <Button name="쇼핑/구매/외식" style={{ color: "black" }} onClick={(e) => { setTag({ ...tag, tagName: e.target.name, tagColor: "#e6c2ce" }); setTag2({ ...tag2, tagName: "", tagColor: startTagColor }); setOpenTag(false); setCheckWeeks({ mon: false, tue: false, wed: false, thu: false, fri: false, sat: false, sun: false }) }}>쇼핑/구매/외식</Button><br />
-          </div>
-          <div className="tag">
-            <div className='tagcolor' style={{ background: '#c7d3a5' , width:"30px"}}></div>
-            <Button name="미용/패션" style={{ color: "black" }} onClick={(e) => { setTag({ ...tag, tagName: e.target.name, tagColor: "#c7d3a5" }); setTag2({ ...tag2, tagName: "", tagColor: startTagColor }); setOpenTag(false); setCheckWeeks({ mon: false, tue: false, wed: false, thu: false, fri: false, sat: false, sun: false }) }}>미용/패션</Button><br />
-          </div>
-          <div className="tag">
-            <div className='tagcolor' style={{ background: '#477e85' , width:"30px"}}></div>
-            <Button name="개인/자기개발" style={{ color: "black" }} onClick={(e) => { setTag({ ...tag, tagName: e.target.name, tagColor: "#477e85" }); setTag2({ ...tag2, tagName: "", tagColor: startTagColor }); setOpenTag(false); setCheckWeeks({ mon: false, tue: false, wed: false, thu: false, fri: false, sat: false, sun: false }) }}>개인/자기개발</Button><br />
-          </div>  
-        </DialogTitle>
-      </Dialog>
-      {/* 태그 2 선택 모달창  */}
-      <Dialog open={openTag2} onClose={() => { setOpenTag2(false) }}>
-        <div className='tagselect'>
           <DialogTitle>
-            태그 선택
+            <div className='tag'>
+              <div className='tagcolor' style={{ background: '#94ab50', width: "30px" }}></div>
+              <Button name="데일리루틴" style={{ color: "black" }} onClick={(e) => { setTag({ ...tag, tagName: e.target.name, tagColor: "#94ab50" }); setOpenTag(false) }}>데일리루틴</Button>
+            </div>
+            <div className="tag">
+              <div className='tagcolor' style={{ background: '#ffc847', width: "30px" }}></div>
+              <Button name="업무/학교" style={{ color: "black" }} onClick={(e) => { setTag({ ...tag, tagName: e.target.name, tagColor: "#ffc847" }); setTag2({ ...tag2, tagName: "", tagColor: startTagColor }); setOpenTag(false); setCheckWeeks({ mon: false, tue: false, wed: false, thu: false, fri: false, sat: false, sun: false }) }}>업무/학교</Button><br />
+            </div>
+            <div className="tag">
+              <div className='tagcolor' style={{ background: '#8ed4c9', width: "30px" }}></div>
+              <Button name="여행/데이트/취미" style={{ color: "black" }} onClick={(e) => { setTag({ ...tag, tagName: e.target.name, tagColor: "#8ed4c9" }); setTag2({ ...tag2, tagName: "", tagColor: startTagColor }); setOpenTag(false); setCheckWeeks({ mon: false, tue: false, wed: false, thu: false, fri: false, sat: false, sun: false }) }}>여행/데이트/취미</Button><br />
+            </div>
+            <div className="tag">
+              <div className='tagcolor' style={{ background: '#855e95', width: "30px" }}></div>
+              <Button name="건강/헬스" style={{ color: "black" }} onClick={(e) => { setTag({ ...tag, tagName: e.target.name, tagColor: "#855e95" }); setTag2({ ...tag2, tagName: "", tagColor: startTagColor }); setOpenTag(false); setCheckWeeks({ mon: false, tue: false, wed: false, thu: false, fri: false, sat: false, sun: false }) }}>건강/헬스</Button><br />
+            </div>
+            <div className="tag">
+              <div className='tagcolor' style={{ background: '#e6c2ce', width: "30px" }}></div>
+              <Button name="쇼핑/구매/외식" style={{ color: "black" }} onClick={(e) => { setTag({ ...tag, tagName: e.target.name, tagColor: "#e6c2ce" }); setTag2({ ...tag2, tagName: "", tagColor: startTagColor }); setOpenTag(false); setCheckWeeks({ mon: false, tue: false, wed: false, thu: false, fri: false, sat: false, sun: false }) }}>쇼핑/구매/외식</Button><br />
+            </div>
+            <div className="tag">
+              <div className='tagcolor' style={{ background: '#c7d3a5', width: "30px" }}></div>
+              <Button name="미용/패션" style={{ color: "black" }} onClick={(e) => { setTag({ ...tag, tagName: e.target.name, tagColor: "#c7d3a5" }); setTag2({ ...tag2, tagName: "", tagColor: startTagColor }); setOpenTag(false); setCheckWeeks({ mon: false, tue: false, wed: false, thu: false, fri: false, sat: false, sun: false }) }}>미용/패션</Button><br />
+            </div>
+            <div className="tag">
+              <div className='tagcolor' style={{ background: '#477e85', width: "30px" }}></div>
+              <Button name="개인/자기개발" style={{ color: "black" }} onClick={(e) => { setTag({ ...tag, tagName: e.target.name, tagColor: "#477e85" }); setTag2({ ...tag2, tagName: "", tagColor: startTagColor }); setOpenTag(false); setCheckWeeks({ mon: false, tue: false, wed: false, thu: false, fri: false, sat: false, sun: false }) }}>개인/자기개발</Button><br />
+            </div>
           </DialogTitle>
-        </div>
-        <DialogTitle>
-          <div className="tag">
-          <div className='tagcolor' style={{ background: '#ffc847' }}></div>
-            <Button name="업무/학교" style={{ color: "black" }} onClick={(e) => { setTag2({ ...tag2, tagName: e.target.name, tagColor: "#ffc847" }); setOpenTag2(false) }}>업무/학교</Button><br />
+        </Dialog>
+        {/* 태그 2 선택 모달창  */}
+        <Dialog open={openTag2} onClose={() => { setOpenTag2(false) }}>
+          <div className='tagselect'>
+            <DialogTitle>
+              태그 선택
+            </DialogTitle>
           </div>
-          <div className="tag">
-          <div className='tagcolor' style={{ background: '#8ed4c9' }}>　</div>
-            <Button name="여행/데이트/취미" style={{ color: "black" }} onClick={(e) => { setTag2({ ...tag2, tagName: e.target.name, tagColor: "#8ed4c9" }); setOpenTag2(false) }}>여행/데이트/취미</Button><br />
-          </div>
-          <div className="tag">
-          <div className='tagcolor' style={{ background: '#855e95' }}>　</div>
-            <Button name="건강/헬스" style={{ color: "black" }} onClick={(e) => { setTag2({ ...tag2, tagName: e.target.name, tagColor: "#855e95" }); setOpenTag2(false) }}>건강/헬스</Button><br />
-          </div>
-          <div className="tag">
-          <div className='tagcolor' style={{ background: '#e6c2ce' }}>　</div>
-            <Button name="쇼핑/구매/외식" style={{ color: "black" }} onClick={(e) => { setTag2({ ...tag2, tagName: e.target.name, tagColor: "#e6c2ce" }); setOpenTag2(false) }}>쇼핑/구매/외식</Button><br />
-          </div>
-          <div className="tag">
-          <div className='tagcolor' style={{ background: '#c7d3a5' }}>　</div>
-            <Button name="미용/패션" style={{ color: "black" }} onClick={(e) => { setTag2({ ...tag2, tagName: e.target.name, tagColor: "#c7d3a5" }); setOpenTag2(false) }}>미용/패션</Button><br />
-          </div>
-          <div className="tag">
-          <div className='tagcolor' style={{ background: '#477e85' }}>　</div>
-            <Button name="개인/자기개발" style={{ color: "black" }} onClick={(e) => { setTag2({ ...tag2, tagName: e.target.name, tagColor: "#477e85" }); setOpenTag2(false) }}>개인/자기개발</Button><br />
-          </div>  
-        </DialogTitle>
-      </Dialog>
+          <DialogTitle>
+            <div className="tag">
+              <div className='tagcolor' style={{ background: '#ffc847' }}></div>
+              <Button name="업무/학교" style={{ color: "black" }} onClick={(e) => { setTag2({ ...tag2, tagName: e.target.name, tagColor: "#ffc847" }); setOpenTag2(false) }}>업무/학교</Button><br />
+            </div>
+            <div className="tag">
+              <div className='tagcolor' style={{ background: '#8ed4c9' }}></div>
+              <Button name="여행/데이트/취미" style={{ color: "black" }} onClick={(e) => { setTag2({ ...tag2, tagName: e.target.name, tagColor: "#8ed4c9" }); setOpenTag2(false) }}>여행/데이트/취미</Button><br />
+            </div>
+            <div className="tag">
+              <div className='tagcolor' style={{ background: '#855e95' }}></div>
+              <Button name="건강/헬스" style={{ color: "black" }} onClick={(e) => { setTag2({ ...tag2, tagName: e.target.name, tagColor: "#855e95" }); setOpenTag2(false) }}>건강/헬스</Button><br />
+            </div>
+            <div className="tag">
+              <div className='tagcolor' style={{ background: '#e6c2ce' }}></div>
+              <Button name="쇼핑/구매/외식" style={{ color: "black" }} onClick={(e) => { setTag2({ ...tag2, tagName: e.target.name, tagColor: "#e6c2ce" }); setOpenTag2(false) }}>쇼핑/구매/외식</Button><br />
+            </div>
+            <div className="tag">
+              <div className='tagcolor' style={{ background: '#c7d3a5' }}></div>
+              <Button name="미용/패션" style={{ color: "black" }} onClick={(e) => { setTag2({ ...tag2, tagName: e.target.name, tagColor: "#c7d3a5" }); setOpenTag2(false) }}>미용/패션</Button><br />
+            </div>
+            <div className="tag">
+              <div className='tagcolor' style={{ background: '#477e85' }}></div>
+              <Button name="개인/자기개발" style={{ color: "black" }} onClick={(e) => { setTag2({ ...tag2, tagName: e.target.name, tagColor: "#477e85" }); setOpenTag2(false) }}>개인/자기개발</Button><br />
+            </div>
+          </DialogTitle>
+        </Dialog>
 
-      <Dialog open={openCategory} onClose={() => { setOpenCategory(false) }}>
-      <div className='tagselect'>
-        <DialogTitle>
-          카테고리 선택
-        </DialogTitle>
-      </div> 
-        <DialogTitle>
-          <div className="tag">
-            <div className='tagcolor' style={{ background: '#ff3c3c' }}>　</div>
-            <Button name="건강/운동/헬스케어" style={{ color: "black", accentColor:"#ff3c3c" }} onClick={handleCategory}>건강/운동/헬스케어</Button><br />
+        <Dialog open={openCategory} onClose={() => { setOpenCategory(false) }}>
+          <div className='tagselect'>
+            <DialogTitle>
+              카테고리 선택
+            </DialogTitle>
           </div>
-          <div className="tag">
-            <div className='tagcolor' style={{ background: '#22c847' }}>　</div>
-            <Button name="금융/자산/제테크" style={{ color: "black", accentColor:'#22c847'}} onClick={handleCategory}>금융/자산/제테크</Button>
-          </div>
-          <div className="tag">
-            <div className='tagcolor' style={{ background: '#ffa585' }}>　</div>
-            <Button name="반려동물" style={{ color: "black", accentColor:'#ffa585' }} onClick={handleCategory}>반려동물</Button>
-          </div>
-          <div className="tag">
-            <div className='tagcolor' style={{ background: '#84ffc9' }}>　</div>  
-            <Button name="뷰티/패션/쇼핑" style={{ color: "black", accentColor:'#84ffc9' }} onClick={handleCategory}>뷰티/패션/쇼핑</Button>
-          </div>  
-          <div className="tag">
-            <div className='tagcolor' style={{ background: '#ff4d00' }}>　</div>
-            <Button name="생활/리빙" style={{ color: "black", accentColor:'#ff4d00' }} onClick={handleCategory}>생활/리빙</Button>
-          </div>  
-          <div className="tag">
-            <div className='tagcolor' style={{ background: "#c44569" }}>　</div>
-            <Button name="여행/레저" style={{ color: "black", accentColor:"#c44569" }} onClick={handleCategory}>여행/레저</Button>
-          </div> 
-          <div className="tag">
-            <div className='tagcolor' style={{ background: "#c8a722" }}>　</div>
-            <Button name="예술/엔터테인먼드" style={{ color: "black", accentColor:"#c8a722" }} onClick={handleCategory}>예술/엔터테인먼드</Button>
-          </div>  
-          <div className="tag">
-            <div className='tagcolor' style={{ background: "#f6d5f7" }}>　</div>
-            <Button name="유아/어린이/교육" style={{ color: "black", accentColor:"#f6d5f7" }} onClick={handleCategory}>유아/어린이/교육</Button>
-          </div>    
-          <div className="tag">
-            <div className='tagcolor' style={{ background: "#595cff" }}>　</div>
-            <Button name="음식/요리" style={{ color: "black", accentColor:"#595cff" }} onClick={handleCategory}>음식/요리</Button>
-          </div>  
-          <div className="tag">
-            <div className='tagcolor' style={{ background: "#63cdda" }}>　</div>
-            <Button name="자동차/이동수단" style={{ color: "black", accentColor:"#63cdda" }} onClick={handleCategory}>자동차/이동수단</Button>
-          </div>  
-          <div className="tag">
-            <div className='tagcolor' style={{ background: "#ffde68" }}>　</div>
-            <Button name="취미생활/자기개발" style={{ color: "black", accentColor:"#ffde68" }} onClick={handleCategory}>취미생활/자기개발</Button>
-          </div>  
-          <div className="tag">
-            <div className='tagcolor' style={{ background: "#8d2d19" }}>　</div>
-            <Button name="로컬 전용" style={{ color: "black", accentColor:"#8d2d19" }} onClick={handleCategory}>로컬 전용</Button>
-          </div>
-        </DialogTitle>
-      </Dialog>
+          <DialogTitle>
+            <div className="tag">
+              <div className='tagcolor' style={{ background: '#ff3c3c' }}></div>
+              <Button name="건강/운동/헬스케어" style={{ color: "black", accentColor: "#ff3c3c" }} onClick={handleCategory}>건강/운동/헬스케어</Button><br />
+            </div>
+            <div className="tag">
+              <div className='tagcolor' style={{ background: '#22c847' }}></div>
+              <Button name="금융/자산/제테크" style={{ color: "black", accentColor: '#22c847' }} onClick={handleCategory}>금융/자산/제테크</Button>
+            </div>
+            <div className="tag">
+              <div className='tagcolor' style={{ background: '#ffa585' }}></div>
+              <Button name="반려동물" style={{ color: "black", accentColor: '#ffa585' }} onClick={handleCategory}>반려동물</Button>
+            </div>
+            <div className="tag">
+              <div className='tagcolor' style={{ background: '#84ffc9' }}></div>
+              <Button name="뷰티/패션/쇼핑" style={{ color: "black", accentColor: '#84ffc9' }} onClick={handleCategory}>뷰티/패션/쇼핑</Button>
+            </div>
+            <div className="tag">
+              <div className='tagcolor' style={{ background: '#ff4d00' }}></div>
+              <Button name="생활/리빙" style={{ color: "black", accentColor: '#ff4d00' }} onClick={handleCategory}>생활/리빙</Button>
+            </div>
+            <div className="tag">
+              <div className='tagcolor' style={{ background: "#c44569" }}></div>
+              <Button name="여행/레저" style={{ color: "black", accentColor: "#c44569" }} onClick={handleCategory}>여행/레저</Button>
+            </div>
+            <div className="tag">
+              <div className='tagcolor' style={{ background: "#c8a722" }}></div>
+              <Button name="예술/엔터테인먼드" style={{ color: "black", accentColor: "#c8a722" }} onClick={handleCategory}>예술/엔터테인먼드</Button>
+            </div>
+            <div className="tag">
+              <div className='tagcolor' style={{ background: "#f6d5f7" }}></div>
+              <Button name="유아/어린이/교육" style={{ color: "black", accentColor: "#f6d5f7" }} onClick={handleCategory}>유아/어린이/교육</Button>
+            </div>
+            <div className="tag">
+              <div className='tagcolor' style={{ background: "#595cff" }}></div>
+              <Button name="음식/요리" style={{ color: "black", accentColor: "#595cff" }} onClick={handleCategory}>음식/요리</Button>
+            </div>
+            <div className="tag">
+              <div className='tagcolor' style={{ background: "#63cdda" }}></div>
+              <Button name="자동차/이동수단" style={{ color: "black", accentColor: "#63cdda" }} onClick={handleCategory}>자동차/이동수단</Button>
+            </div>
+            <div className="tag">
+              <div className='tagcolor' style={{ background: "#ffde68" }}></div>
+              <Button name="취미생활/자기개발" style={{ color: "black", accentColor: "#ffde68" }} onClick={handleCategory}>취미생활/자기개발</Button>
+            </div>
+            {/* <div className="tag">
+              <div className='tagcolor' style={{ background: "#8d2d19" }}></div>
+              <Button name="로컬 전용" style={{ color: "black", accentColor: "#8d2d19" }} onClick={handleCategory}>로컬 전용</Button>
+            </div> */}
+          </DialogTitle>
+        </Dialog>
       </Box>
       <LabelBottomNavigation></LabelBottomNavigation>
     </div>

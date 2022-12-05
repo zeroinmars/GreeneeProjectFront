@@ -72,18 +72,18 @@ class ChatbotReview extends Component {
       food: food.value,
       drink: drink.value,
     };
-    
+
     /* 라우터에서 req.body.transport */
-    axios
-    .post("http://127.0.0.1:5000/chatbotUpdate", data)
-    .then((res) => {
-      console.log("라우터다녀옴");
-      console.log("res: " + res);
-    })
-    .catch((res) => {
-      console.log("error");
-    });
-    
+    // axios
+    // .post("http://127.0.0.1:5000/chatbotUpdate", data)
+    // .then((res) => {
+    //   console.log("라우터다녀옴");
+    //   console.log("res: " + res);
+    // })
+    // .catch((res) => {
+    //   console.log("error");
+    // });
+
     return (
       <form>
         <div style={{ width: "100%" }}>
@@ -137,7 +137,8 @@ class ChatbotReview extends Component {
           {drink.value}
           <br></br>
           <button
-            type="submit"
+            type="button"
+            onClick={() => {window.location.href = '/'}}
             style={{
               border: "5px solid",
               borderRadius: "60px 60px 20px",

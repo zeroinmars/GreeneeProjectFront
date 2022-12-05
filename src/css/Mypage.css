@@ -1,5 +1,5 @@
 .profile_page{
-  height: 105vh;
+  height: 100vh;
   padding-top: 0.5vh;
 }
 
@@ -46,18 +46,18 @@
 }
 
 .list1{
-  padding: 2vh 0vh 2vh 2vh;
-  font-size: 25px;
+  padding: 10px 0vh 10px 2vh;
+  font-size: 20px;
   border-bottom: 1px solid #000000;
   border-top: 1px solid #000000;
 }
 
 .list2{
-  padding: 2vh 0vh 2vh 2vh;
-  font-size: 25px;
+  padding: 11px 0vh 11px 2vh;
+  font-size: 20px;
   border-bottom: 1px solid #000000;
 }
-
+/* 
 .list3{
   padding: 2vh 0vh 2vh 2vh;
   font-size: 25px;
@@ -68,7 +68,7 @@
   padding: 2vh 0vh 2vh 2vh;
   font-size: 25px;
   border-bottom: 1px solid #000000;
-}
+} */
 
 .btn_edit{
   display: inline-block;
@@ -80,6 +80,6 @@
 }
 
 .foot{
-  padding-top: 4vh;
+  padding-top: 2vh;
   text-align: center;
 }

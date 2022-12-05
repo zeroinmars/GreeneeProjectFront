@@ -31,6 +31,7 @@ const Login = () => {
           // 그래서 cofirm이라는 변수만 한개 설정한 뒤 MyProfile
           dispatch({ type: "PROGRESS", progress: { progressToggle: false } });
           dispatch({ type: "SESSION", session: res.data.rows[0] });
+          nav('/');
         } else {
           dispatch({ type: "SNACKBAR/ON", snackbar: { snackbarToggle: true, explain: "아이디가 없습니다. 적절한 아이디를 다시 작성해주세요.", severity: "error" } });
           dispatch({ type: "PROGRESS", progress: { progressToggle: false } });

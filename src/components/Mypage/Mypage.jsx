@@ -12,15 +12,28 @@ import light_icon from "./Mypageimg/light.png"
 import tendancy from "./Mypageimg/tendancy.png"
 import tag from "./Mypageimg/tag.png"
 import LabelBottomNavigation from "../../components/LabelBottomNavigation";
-
+import { useDispatch } from 'react-redux';
+import axios from 'axios';
 
 function Profile(){
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
 
-    const navigate = useNavigate()
+    const Logout = () => {
+        dispatch({type:"PROGRESS", progress:{progressToggle:true}});
+        axios.get('/lifeConcierge/api/logout')
+        .then(()=>{
+        })
+        .catch(()=>{
+          dispatch({type:"SNACKBAR/ON", snackbar:{snackbarToggle:true}});  
+        })
+        window.location.replace("/myProfile");
+      }
 
-    const Logout= () => {
-        navigate("/Myprofile");
-    };
+    // const Logout= () => {
+    //     // navigate("/Myprofile");
+    //
+    // };
 
 
     const EditNick= () => {
@@ -104,26 +117,26 @@ function Profile(){
                     <span className="item_text"><img src={password} className='icon' /> 비밀번호</span>
                     <Button className="btn_edit"> 〉</Button>
                 </li>
-                <li className='list3' onClick={EdithAddr}>
+                <li className='list2' onClick={EdithAddr}>
                     <span className="item_text"><img src={hAddr} className='icon' /> 자택 주소</span>
                     <Button type="button" className="btn_edit"> 〉</Button>
                 </li>
-                <li className='list4' onClick={EditcAddr}>
+                <li className='list2' onClick={EditcAddr}>
                     <span className="item_text"><img src={cAddr} className='icon' /> 회사 주소</span>
                     <Button type="button" className="btn_edit"> 〉</Button>
                 </li>
 
-                <li className='list4' onClick={EditTendancy}>
+                <li className='list2' onClick={EditTendancy}>
                     <span className="item_text"><img src={tendancy} className='icon' /> 성향 정보</span>
                     <Button type="button" className="btn_edit"> 〉</Button>
                 </li>
 
-                <li className='list4' onClick={Edittag}>
+                <li className='list2' onClick={Edittag}>
                     <span className="item_text"><img src={tag} className='icon' /> 태그수정</span>
                     <Button type="button" className="btn_edit"> 〉</Button>
                 </li>
 
-                <li className='list4' onClick={Patchnote}>
+                <li className='list2' onClick={Patchnote}>
                     <span className="item_text"><img src={patchnote} className='icon' /> 패치노트</span>
                     <Button type="button" className="btn_edit"> 〉</Button>
                 </li>

@@ -73,7 +73,7 @@ const Signup =  () => {
       })
     } else {
       dispatch({type:"PROGRESS", progress:{progressToggle:false}});
-      dispatch({type:"SNACKBAR/ON", snackbar:{snackbarToggle:true, explain:"비어 있는 값이 있습니다. 다시 입력 해 주세요,", severity:"error"}});
+      dispatch({type:"SNACKBAR/ON", snackbar:{snackbarToggle:true, explain:"비어 있는 칸이 있습니다. 다시 입력 해 주세요,", severity:"error"}});
     }
   }
 
