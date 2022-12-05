@@ -3,6 +3,7 @@
  
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import ChatPage from "./pages/ChatPage";
+import ChatPersonal from "./pages/ChatPersonal";
 import Home from "./pages/Home";
 import Memo from "./pages/Memo";
 import { useDispatch, useSelector } from "react-redux";
@@ -101,6 +102,7 @@ function App() {
               <Route path="/Patchnote" element={<Patchnote />} />
               <Route path="/updateEvent" element={<UpdateEvent />} />
               <Route path="/ChatPage" element={<ChatPage />} />
+              <Route path="/ChatPersonal" element={<ChatPersonal />} />
               <Route path="/EditNick" element={<EditNick />} />
               <Route path="/EditPw" element={<EditPw />} />
               <Route path="/EditcAddr" element={<EditcAddr />} />

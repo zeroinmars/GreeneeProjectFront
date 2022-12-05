@@ -9,7 +9,7 @@ import Main from '../components/chatbot/talkbot/Main';
 import Footer from '../components/chatbot/talkbot/Footer';
 import { useState } from 'react';
 
-function ChatPage() {
+function ChatPersonal() {
 
   const [message, setMessage] = useState([{ msg: "안녕하세요. AI 비서 그리니입니다.", from: false }])
 
@@ -19,20 +19,19 @@ function ChatPage() {
 
   return (
     <>
-      <Header />
+      {/* <Header />
 
       <Main message={message} />
 
 
       <Footer setMessage={getMessage} />
+ */}
 
 
-
-
-      {/* <ChatbotSteps style={{height:'1000px'}}></ChatbotSteps> */}
+      <ChatbotSteps style={{height:'1000px'}}></ChatbotSteps>
 
     </>
   );
 };
 
-export default ChatPage;
+export default ChatPersonal;
