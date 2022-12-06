@@ -4,6 +4,7 @@
     margin-top: 0;
     margin-block-start: 0;
 }
+
 .title{
     font-family:'S-CoreDream-5light';
     text-align: center;
@@ -38,16 +39,20 @@
 }
 
 .continue_btn1{
+    font-family: 'MaplestoryOTFBold';
+    font-size: 20px;
     color: #ffffff;    
-    background-color: #CEDD38; 
+    background-color: #2ecc71; 
     border-radius: 20px;
     margin-bottom: 1vh;
 }
 .nexttime_btn2{
+    font-family: 'MaplestoryOTFBold';
+    font-size: 20px;
     color: #ffffff;    
-    background-color: #CEDD38; 
-
+    background-color: #f39c12; 
     border-radius: 20px;
+
 }
 
 .greeneecomplete2{
