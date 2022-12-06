@@ -52,9 +52,8 @@ const Login = () => {
       <img src='../img/greenihead.png' className='greenihead'></img>   
       <div style={{backgrounImage : "url(" + greenihead + ")"  }}>*/}
       <div style={{ padding: "20px", backgroundColor: '#D7EDBC' }}>
-        {/* <div className='divLogin' style={{    width:"80%", border:"1px solid black", padding:"20px"}}>  */}
         <div className='divLogin'>
-        <img src={greenee} className='greenee' style={{ width: "60%", padding: "20px" }} />
+        <img src={greenee} className='greenee_img'  />
         <h60 className='login_title'> <p className='large_f'> 일정관리는 언제나</p><p className='gr_greenee'>Greenee</p></h60>
         <FormControl fullWidth>
           <TextField variant="standard" color="success" inputRef={emailRef} label='이메일' name='email' onChange={(e) => { emailRef.current.value = e.target.value }} /><br></br>
