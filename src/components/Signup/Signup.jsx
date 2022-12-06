@@ -84,11 +84,8 @@ const Signup =  () => {
   return (
     <>
     <div className='page'>
-    <div className='title'>
-    <h1><button className='back_btn' onClick={goback}><img src={backback} className='back_btn' /></button>
-      회원가입
-    </h1>
-    </div>
+    <Button className='edit_back' onClick={goback}><img src={backback} className='back_btn' /></Button>
+    <div className='s_h_line'>회원가입</div>
     <Box>
       <Container sx={{height:'100vh'}}>
         <Stack spacing={2} alignItems="stretch">

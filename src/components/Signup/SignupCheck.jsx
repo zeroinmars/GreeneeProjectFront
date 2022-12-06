@@ -27,9 +27,9 @@ const goback = () => {
   return (
     <>
       <div className='check_page'>
-        <div className=''>
+        <div>
         <Button className='back_btn1' onClick={goback}><img src={backback} /></Button>
-          <div className='h_line'>회원가입</div>
+          <div className='s_h_line'>회원가입</div>
         </div>
         <div className='divLogin' style={{ width: "90%", height: '100%', padding: "20px", backgroundColor: '#D7EDBC', scrollbarWidth: 'none' }}>
           <img src={greenee} className='greeneecomplete1' />

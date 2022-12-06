@@ -32,9 +32,9 @@
 }
 
 .greeneecomplete2{
-    font-family: 'S-CoreDream-5light';
+    font-family: 'MaplestoryOTFBold';
     text-align: center;
-    font-size: 30px;
+    font-size: 40px;
     color: #00cc00;
     font-weight: bold;
     margin-top:5%;
@@ -48,6 +48,6 @@
     margin: auto;
     font-size: 23px;
     color: #ffffff;    
-    background-color: #CEDD38; 
+    background-color: #2ecc71; 
     border-radius: 20px;
 }
