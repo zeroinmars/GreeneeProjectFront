@@ -24,13 +24,13 @@ class ChatbotSteps extends Component {
       footerStyle: { background: "#efefef" },
       bubbleOptionStyle: { background: "#f39c12" },
       botAvatar: avatarArray[Math.floor(Math.random() * avatarArray.length)],
-      // floating: "true" /* 채팅창 버튼으로 자동 플로팅 */,
+      // floating: "true", /* 채팅창 버튼으로 자동 플로팅 */
       // floatingStyle: floatingStyle,
       //floatingIcon={greenihead},
       //submitButtonStyle:{},
       //inputStyle:{},
       //width: {},
-      height: '900px',
+      //height: {},
     };
     return (
       <>
@@ -144,7 +144,7 @@ function randomT() {
 const steps = [
   {
     id: "0",
-    message: randomF(),
+    message:  randomF(),
     trigger: "1",
   },
   {
@@ -428,7 +428,6 @@ const lightTheme = {
   botFontColor: "#fff",
   userBubbleColor: "#f39c12",
   userFontColor: "#fff",
-
 };
 /* 플로팅(채팅창 아이콘) 스타일 */
 const floatingStyle = {

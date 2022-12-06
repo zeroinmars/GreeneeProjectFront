@@ -6,6 +6,7 @@
   border-radius: 20px 20px 20px 0px !important;
   vertical-align: top;
 }
+
 .my-message {
   background: #f39c12 !important;
   color: #fff !important;
@@ -90,12 +91,12 @@ footer {
 .a2 {
   background: #2ecc71;
   padding: 0px !important;
-  width: 25% !important;
+  width: 24% !important;
   /* position: absolute; */
   /* display: inline-block; */
   display: inline-block;
   float: left;
-  margin-right: 10px;
+  margin-right: 8px;
   margin-bottom: 10px;
   border-radius: 10px 10px 10px 0px !important;
 }

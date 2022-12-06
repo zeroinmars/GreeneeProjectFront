@@ -18,18 +18,8 @@ function ChatPersonal() {
   }
 
   return (
-    <>
-      {/* <Header />
-
-      <Main message={message} />
-
-
-      <Footer setMessage={getMessage} />
- */}
-
-
+    <>      
       <ChatbotSteps style={{height:'1000px'}}></ChatbotSteps>
-
     </>
   );
 };

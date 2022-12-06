@@ -11,7 +11,7 @@ import { useState } from 'react';
 
 function ChatPage() {
 
-  const [message, setMessage] = useState([{ msg: "안녕하세요. AI 비서 그리니입니다.", from: false }])
+  const [message, setMessage] = useState([{ msg: "안녕하세요! ", from: false }])
 
   const getMessage = (msg, from) => {
     setMessage((current) => [...current, ({ msg: msg, from: from })])
