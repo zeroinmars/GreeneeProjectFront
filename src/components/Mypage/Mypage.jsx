@@ -100,9 +100,9 @@ function Profile(){
          ref={fileInput}></input>
       </div>
       <div  className='name_mail'>  
-          <p>그리니<br />
-          green@green.com<br /><br />
-          가입날짜 2022-12-14</p>
+          <p>김게을<br />
+          kim@green.com<br /><br />
+          가입날짜 2022-12-05</p>
       </div>
       <Button className='logout_btn' onClick={Logout}>로그아웃</Button>
 

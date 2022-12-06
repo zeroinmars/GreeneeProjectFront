@@ -88,11 +88,11 @@ const HeaderAlarm = () => {
   // 시작 날짜나 시간이 없는데 preAlarm 값을 넣는 등의 예외는 일단 무시.
   const events = [
     { title: '회식', start: '2022-12-05', end: '2022-12-05',
-    sTime: '18:30', eTime: '21:00',
-       preAlarm: 60,sLocation:'어딘가', content:'일정 내용', moveTime:'20분', eLocation: '광주 서구 경열로 33', color: 'red' },
-    { title: '미팅', start: '2022-12-05', end: '2022-12-05',
-    sTime: '12:00', eTime: '17:00',
-       preAlarm: 30,sLocation:'어딘가', content:'일정 내용', moveTime:'20분', eLocation: '광주 동구청', color: 'blue' },
+    sTime: '18:30', eTime: '19:31',
+       preAlarm: 60, sLocation:'광주 동구 서남로 1', content:'회식하기 시러', moveTime:'23분', eLocation: '광주 서구 경열로 33', color: '#ffc847' },
+    // { title: '미팅', start: '2022-12-05', end: '2022-12-05',
+    // sTime: '12:00', eTime: '17:00',
+    //    preAlarm: 30,sLocation:'어딘가', content:'일정 내용', moveTime:'20분', eLocation: '광주 동구청', color: 'blue' },
   ]
   const noticeList = events.map((data, idx) => {
     const [year, month, day] = data.start.split('-');
@@ -122,7 +122,8 @@ const HeaderAlarm = () => {
     );
   })
 
-  const [noticeNum, setNoticeNum] = useState(noticeList.length);
+  const [noticeNum, setNoticeNum] = useState(0);
+  // const [noticeNum, setNoticeNum] = useState(noticeList.length);
   const [noticeInfo, setNoticeInfo] = useState('');
   const [openNoticeList, setOpenNoticeList] = useState(false);
   const [openNoticeInfo, setOpenNoticeInfo] = useState(false);
