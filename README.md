@@ -3,15 +3,15 @@
 
 사용 기술: React
 
-### 대충 화면 별 사진 넣어보기
+###
 
-1. 홈 화면
+### ![image](https://user-images.githubusercontent.com/103303021/206183510-25d957a3-2f03-4c3a-8f2f-36c60351bc07.png)
+    1. 어플 시작 첫 화면
+    2. 회원가입
+    3. 회원가입 완료 후 그리니가 성향을 물어본다.
 
-![1  로그인](https://user-images.githubusercontent.com/103303021/206176423-9fbf5109-67ee-4dbd-9f4e-4b309a2f7505.png)
 
-
-
-2. 
+1. 
 ![KakaoTalk_20221204_003611111](https://user-images.githubusercontent.com/103303021/206159132-f3868f55-e339-431a-aa12-0be69e5757a7.jpg)
 
 ![KakaoTalk_20221204_003611111](https://user-images.githubusercontent.com/103303021/206159132-f3868f55-e339-431a-aa12-0be69e5757a7.jpg)
