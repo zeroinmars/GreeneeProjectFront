@@ -7,7 +7,8 @@
 
 1. 홈 화면
 
-![KakaoTalk_20221204_003611111](https://user-images.githubusercontent.com/103303021/206159132-f3868f55-e339-431a-aa12-0be69e5757a7.jpg)
+![1  로그인](https://user-images.githubusercontent.com/103303021/206176423-9fbf5109-67ee-4dbd-9f4e-4b309a2f7505.png)
+
 
 
 2. 
