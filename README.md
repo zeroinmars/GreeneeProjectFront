@@ -5,7 +5,8 @@
 
 ###
 
-### ![image](https://user-images.githubusercontent.com/103303021/206183510-25d957a3-2f03-4c3a-8f2f-36c60351bc07.png)
+### ![image](https://user-images.githubusercontent.com/103303021/206184303-f2ea6ded-ab0d-4b6c-85aa-c74a71744bfe.png)
+
     1. 어플 시작 첫 화면
     2. 회원가입
     3. 회원가입 완료 후 그리니가 성향을 물어본다.
