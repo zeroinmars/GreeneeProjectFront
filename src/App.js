@@ -2,7 +2,7 @@
 /* import Test from './pages/Test'; */
  
 import { Routes, Route, BrowserRouter } from "react-router-dom";
-import ChatPage from "./pages/ChatPage";
+// import ChatPage from "./pages/ChatPage";
 import Home from "./pages/Home";
 import Memo from "./pages/Memo";
 import { useDispatch, useSelector } from "react-redux";
@@ -26,7 +26,11 @@ import EditcAddr from './components/Mypage/Edit/EditcAddr';
 import EdithAddr from './components/Mypage/Edit/EdithAddr';
 // import ChatbotSteps from "./components/chatbot/ChatbotSteps";
 import LabelBottomNavigation from "./components/LabelBottomNavigation";
- 
+import ChatPage from './components/chatbot/talkbot/ChatPage';
+import ChatbotSteps from './components/chatbot/infobot/ChatbotSteps';
+
+
+
 /* css 파일 임포트 */
 import "./css/dabin.css";
 import "./css/sehyoung.css";
@@ -93,13 +97,14 @@ function App() {
               <Route path="/signup" element={<Signup />} />
               <Route path="/userInfo" element={<UserInfo />} />
               <Route path="/addEvent" element={<AddEvent />} />
-              <Route path="/Memo" element={<Memo />} />
+              <Route path="/memo" element={<Memo />} />
               <Route path="/addMemo" element={<AddMemo />} />
               <Route path="/SignupCompleted" element={<SignupCompleted />} />
               <Route path="/SignupCheck" element={<SignupCheck />} />
               <Route path="/Mypage" element={<Mypage />} />
               <Route path="/Patchnote" element={<Patchnote />} />
               <Route path="/updateEvent" element={<UpdateEvent />} />
+              <Route path="/ChatbotSteps" element={<ChatbotSteps />} />
               <Route path="/ChatPage" element={<ChatPage />} />
               <Route path="/EditNick" element={<EditNick />} />
               <Route path="/EditPw" element={<EditPw />} />

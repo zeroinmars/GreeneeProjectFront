@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import '../css/memo.css'
-// import { Fab, Box } from '@mui/material';
+import { TextField } from '@mui/material';
 import backback from "../img/backback2.png";
 import trash from "../img/trash.png";
 // import Button from "@mui/material/Button";
@@ -10,6 +10,9 @@ import LabelBottomNavigation from "./LabelBottomNavigation";
 
 // title, date, checkSpecial, content, 
 const AddMemo = () => {
+  const [memo, setMemo] = useState({
+    
+  });
   const [bookMark, setBookmark] = useState(false);
   const [title, setTitle] = useState("");
   const nav = useNavigate();
@@ -25,7 +28,9 @@ const AddMemo = () => {
   const handleTitle = () => {
     setTitle(title);
   }
-
+  const handleMemo = (e) => [
+    setMemo({...memo, content: e.target.name})
+  ]
   return (
     <div style={{height:'100vh'}}>
       <button onClick={testPage} className="home1_form">저장</button>
@@ -48,13 +53,13 @@ const AddMemo = () => {
         </font>
 
         <div className="home2_form">
-          <button className="home_btn">푸라닭 치킨 4종류 먹기</button>
+          <input className="home_btn"/>
         </div>
 
         <div className="memo_text">
-          <font color="7e7e7e">
-            <h4>멘토쌤이 푸라닭 4종류 사주셨다. 블랙알리오올리오 ? 바질양념 쩝쩝 존맛탱</h4>
-          </font>
+          {/* <font color="7e7e7e"></font> */}
+          <TextField color="success" size="small" placeholder="메모" name="content" multiline rows={3} variant="outlined" onChange={handleMemo} />
+          
         </div>
 
       </div>
