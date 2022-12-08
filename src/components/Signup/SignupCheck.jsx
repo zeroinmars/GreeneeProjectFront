@@ -32,8 +32,8 @@ const goback = () => {
           <div className='s_h_line'>회원가입</div>
         </div>
         <div className='divLogin' style={{ width: "90%", height: '100%', padding: "20px", backgroundColor: '#D7EDBC', scrollbarWidth: 'none' }}>
-          <img src={greenee} className='greeneecomplete1' />
-          <h60 className='greeneecomplete2'> 정보를 받았어요<br />이제 성향을 알려주세요</h60>
+          <img src={greenee} className='greeneecomplete_c1' />
+          <h6 className='greeneecomplete2'> 정보를 받았어요<br />이제 성향을 알려주세요</h6>
           <FormControl fullWidth>
             <Button variant="contained" onClick={next} className='continue_btn1'>입력하러가기</Button>
             <div className='space'></div>

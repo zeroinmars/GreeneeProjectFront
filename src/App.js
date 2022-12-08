@@ -25,6 +25,7 @@ import EditNick from './components/Mypage/Edit/EditNick';
 import EditPw from './components/Mypage/Edit/EditPw';
 import EditcAddr from './components/Mypage/Edit/EditcAddr';
 import EdithAddr from './components/Mypage/Edit/EdithAddr';
+import MemoPage from './pages/MemoPage'
 import Edittag from './components/Mypage/Edit/Edittag';
 // import ChatbotSteps from "./components/chatbot/ChatbotSteps";
 import LabelBottomNavigation from "./components/LabelBottomNavigation";
@@ -95,7 +96,9 @@ function App() {
               <Route path="/signup" element={<Signup />} />
               <Route path="/userInfo" element={<UserInfo />} />
               <Route path="/addEvent" element={<AddEvent />} />
-              <Route path="/Memo" element={<Memo />} />
+              {/* <Route path="/Memo" element={<Memo />} /> */}
+              
+              <Route path="/Memo" element={<MemoPage />} />
               <Route path="/addMemo" element={<AddMemo />} />
               <Route path="/SignupCompleted" element={<SignupCompleted />} />
               <Route path="/SignupCheck" element={<SignupCheck />} />

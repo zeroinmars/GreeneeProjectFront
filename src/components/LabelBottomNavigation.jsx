@@ -5,21 +5,25 @@ import SentimentSatisfiedAltIcon from '@mui/icons-material/SentimentSatisfiedAlt
 import HomeIcon from "@mui/icons-material/Home";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import ArticleIcon from '@mui/icons-material/Article';
-
+import axios from "axios";
 /* import AddIcon from '@mui/icons-material/Add'; */
 
 
 import { Box } from "@mui/material";
+
 
  
 
 export default function LabelBottomNavigation() {
   const [value, setValue] = React.useState("recents");
   const nav = useNavigate();
-
+  
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+  const moveMemo = () => {
+    window.location.href = 'http://127.0.0.1:5500/LifeConciergeFront/eclipseReduxMemo/index.html'
+  }
 
   return (
     <div>
@@ -65,7 +69,7 @@ export default function LabelBottomNavigation() {
               value="memo"
               icon={<ArticleIcon />}
             />
-
+          
             <BottomNavigationAction
               onClick={() => {
                 nav("/Mypage");

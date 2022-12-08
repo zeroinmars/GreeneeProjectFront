@@ -2,7 +2,7 @@ import { Navbar } from "react-bootstrap";
 /* 뒤로가기 */
 import { useNavigate } from "react-router-dom";
 import React from "react";
-// import x2 from "../../../img/x2.png"
+ 
 /* import HistorySample from '../../../HistorySample'; */
 
 function Header() {

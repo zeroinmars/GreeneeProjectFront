@@ -23,14 +23,14 @@ class ChatbotSteps extends Component {
       botDelay:  0,
       footerStyle: { background: "#efefef" },
       bubbleOptionStyle: { background: "#f39c12" },
-      botAvatar: avatarArray[Math.floor(Math.random() * avatarArray.length)],
+      botAvatar: a2,
       // floating: "true", /* 채팅창 버튼으로 자동 플로팅 */
       // floatingStyle: floatingStyle,
       //floatingIcon={greenihead},
       //submitButtonStyle:{},
       //inputStyle:{},
       //width: {},
-      //height: {},
+      height: '101vh',
     };
     return (
       <>

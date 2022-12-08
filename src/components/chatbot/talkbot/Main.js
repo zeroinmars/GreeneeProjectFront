@@ -8,7 +8,6 @@ import a4 from "../../../img/a4.jpg";
 import a5 from "../../../img/a5.jpg";
 import a6 from "../../../img/a6.jpg";
 import a7 from "../../../img/a7.jpg"; 
-import temp from "../../../img/임시.png";
 let avatarArray = [a1,a2,a3,a4,a5,a6,a7]
 let avatar = avatarArray[Math.floor(Math.random() * avatarArray.length)]
 
@@ -26,7 +25,7 @@ function Main(props) {
             <Toast className="other-message">
               <Toast.Body>
                 <img
-                  src={temp}
+                  src={avatar}
                   className={"a2"}
                   style={{ width: "2px", padding: "0px" }}
                 />
@@ -39,5 +38,4 @@ function Main(props) {
     </main>
   );
 }
-
 export default Main;

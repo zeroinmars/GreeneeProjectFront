@@ -6,6 +6,10 @@
     margin-block-start: 0;
     background-size: cover;
 }
+.compelte_ment{
+    font-size: 30px;
+    margin: 8vh 0;
+}
 .title{
     font-family:'S-CoreDream-5light';
     text-align: center;
@@ -17,8 +21,8 @@
     vertical-align: middle;
 }
 
-.greeneecomplete1{
-    width: 60%;
+.greeneecomplete_c2{
+    width: 90%;
     margin-bottom: 10vh;
 }
 
