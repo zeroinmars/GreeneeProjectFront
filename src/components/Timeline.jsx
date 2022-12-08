@@ -11,16 +11,16 @@ function Timeline() {
   
   // 임시 데이터
   const events = [
-    {start:'2022-12-05 07:30', title:'기상', color:'#477e85'},
+    {start:'2022-12-08 07:30', title:'기상', color:'#477e85'},
     // {start:'2022-12-05 08:30', end: '2022-12-05 09:00', title:'출근', color:'#ffc847'},
-    {start:'2022-12-05 09:00', title:'출근', color:'#ffc847'},
+    {start:'2022-12-08 09:00', title:'출근', color:'#ffc847'},
     // {start:'2022-12-05 12:30', end: '2022-12-05 14:00', title:'점심식사', color:'#e6c2ce'},
-    {start:'2022-12-05 12:30', title:'점심 식사', color:'#e6c2ce'},
+    {start:'2022-12-08 12:30', title:'점심 식사', color:'#e6c2ce'},
     // {start:'2022-12-05 18:00', end: '2022-12-05 18:30', title:'퇴근', color:'#ffc847'},    
-    {start:'2022-12-05 18:00', title:'퇴근', color:'#ffc847'},
-    {start:'2022-12-05 19:00', title:'저녁 식사', color:'#e6c2ce'},
-    {start:'2022-12-05 20:00', title:'운동', color:'#477e85'},
-    {start:'2022-12-05 23:30', title:'취침', color:'#477e85'},
+    {start:'2022-12-08 18:00', title:'퇴근', color:'#ffc847'},
+    // {start:'2022-12-08 19:00', title:'저녁 식사', color:'#e6c2ce'},
+    // {start:'2022-12-08 20:00', title:'운동', color:'#477e85'},
+    // {start:'2022-12-08 23:30', title:'취침', color:'#477e85'},
     // {start:'2022-12-05 19:00', end: '2022-12-05 20:00', title:'저녁식사', color:'#e6c2ce'},
   ].sort((a, b) => {
     if (parseInt(a.start.split(' ')[1]) > parseInt(b.start.split(' ')[1])) return 1;

@@ -137,7 +137,8 @@ class ChatbotReview extends Component {
           {drink.value}
           <br></br>
           <button
-            type="submit"
+            type="button"
+            onClick={() => { window.location.href = '/signupcompleted' }}
             style={{
               border: "5px solid",
               borderRadius: "60px 60px 20px",

@@ -194,7 +194,7 @@ const HeaderAlarm = () => {
     );
   });
 
-  const [noticeNum, setNoticeNum] = useState(2);
+  const [noticeNum, setNoticeNum] = useState(0);
   // const [noticeNum, setNoticeNum] = useState(noticeList.length);
   const [noticeInfo, setNoticeInfo] = useState("");
   const [openNoticeList, setOpenNoticeList] = useState(false);
