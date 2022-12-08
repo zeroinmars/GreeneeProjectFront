@@ -10,6 +10,7 @@ import greenee from '../img/greenee.png';
 import '../css/Login.css';
 import axios from 'axios';
 
+
 const Login = () => {
   const nav = useNavigate();
   const emailRef = useRef(); //사용자가 적은 email input 태그에 할당된 Ref  
@@ -47,7 +48,6 @@ const Login = () => {
 
   return (
     <>
-      
       {/* <div style={{ backgrounImage : "url(" + greenihead + ")" }}> 
       <img src='../img/greenihead.png' className='greenihead'></img>   
       <div style={{backgrounImage : "url(" + greenihead + ")"  }}>*/}

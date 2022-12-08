@@ -1,3 +1,7 @@
+.patch_page{
+  height: 100vh;
+}
+
 .return_btn{
   width: 90%;
   display: inline-block;
@@ -6,6 +10,7 @@
 
 .patch_contents{
   text-align: center;
+  background-color: #ffffff;
 }
 .title{
   font-size: 40px;
@@ -23,12 +28,12 @@
   border-bottom: 1px solid #000000;
 }
 
-.foot{
+.pat_foot{
   border-top: 1px solid #000000;
   background-color: #ffffff;
   padding-bottom: 4vh;
 }
-.foot p{
+.foot_p{
   font-size: 20px;
   margin: auto;
 }

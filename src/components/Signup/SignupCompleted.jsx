@@ -29,7 +29,7 @@ const goback = () => {
         </div>
         <div className='divLogin' style={{ width: "90%", height: '100%', padding: "20px", backgroundColor: '#D7EDBC', scrollbarWidth: 'none' }}>
           
-          <h60 className='greeneecomplete2'> 환영합니다!<br />이제 그리니가<br />일상에 행복을 <br/>드릴게요♡</h60>
+          <p className='compelte_ment'> 환영합니다!<br />이제 그리니가<br />일상에 행복을 <br/>드릴게요♡</p>
           <img src={greenee} className='greeneecomplete1' />
           <FormControl fullWidth>
             <Button variant="contained" onClick={onClick} className='complete_btn'>일정관리 시작하기</Button>

@@ -68,7 +68,7 @@ export default function LabelBottomNavigation() {
 
             <BottomNavigationAction
               onClick={() => {
-                nav("/myProfile");
+                nav("/Mypage");
               }}
               label="MY"
               value="myProfile"

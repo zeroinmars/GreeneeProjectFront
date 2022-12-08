@@ -25,6 +25,7 @@ import EditNick from './components/Mypage/Edit/EditNick';
 import EditPw from './components/Mypage/Edit/EditPw';
 import EditcAddr from './components/Mypage/Edit/EditcAddr';
 import EdithAddr from './components/Mypage/Edit/EdithAddr';
+import Edittag from './components/Mypage/Edit/Edittag';
 // import ChatbotSteps from "./components/chatbot/ChatbotSteps";
 import LabelBottomNavigation from "./components/LabelBottomNavigation";
  
@@ -107,6 +108,7 @@ function App() {
               <Route path="/EditPw" element={<EditPw />} />
               <Route path="/EditcAddr" element={<EditcAddr />} />
               <Route path="/EdithAddr" element={<EdithAddr />} />
+              <Route path="/Edittag" element={<Edittag />} />
               {/* <Route path="/" element={<Door />} /> */}
               {/*  <Route path="/test" element={<Test/>}/> */}
             </Routes>

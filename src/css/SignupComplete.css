@@ -1,4 +1,5 @@
 .completedpage{
+    font-family: 'MaplestoryOTFBold';
     height: 100vh;
     background-color:#D7EDBC;
     margin: 0 auto;
@@ -21,17 +22,11 @@
     margin-bottom: 10vh;
 }
 
-.greeneecomplete2{
-    font-family:'S-CoreDream-5light';
-    font-size: 40px;
-    color: #00cc00;
-}
-
 .back_btn1{
     background-color: #D7EDBC;
 }
 
-.greeneecomplete2{
+.complete_ment{
     font-family: 'MaplestoryOTFBold';
     text-align: center;
     font-size: 35px;

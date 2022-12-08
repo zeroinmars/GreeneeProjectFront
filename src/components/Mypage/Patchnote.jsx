@@ -21,7 +21,7 @@ const Patchnote = () => {
   }
   
   return(
-    <div>
+    <div className='patch_page'>
       <div id='wrapper'>
       <h1 className='title'>패치노트</h1>
       <br></br>
@@ -34,7 +34,7 @@ const Patchnote = () => {
         <Button className='return_btn' color='success' variant='contained' onClick={goback}>돌아가기</Button>
       </div>
         
-        <footer className='foot'>
+        <footer className='foot_p'>
           <p>버전 1.0.0</p>
         </footer>
       
