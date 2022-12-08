@@ -15,7 +15,7 @@ import {
 
 import greenee from "../img/greenee.png";
 import "../css/header.css";
-import "./HeaderAlarm.css";
+import "../css/HeaderAlarm.css";
 
 const HeaderAlarm = () => {
   const [recommendLists, setRecommendList] = useState([
@@ -69,9 +69,8 @@ const HeaderAlarm = () => {
 
     const tempInfo = (
       <div className="dd">
-        <DialogTitle
-          style={{ textAlign: "center", backgroundColor: '#2ecc71' }}
-        >
+        <DialogTitle className="notice_title"
+          style={{backgroundColor: notice.color}}>
           {notice.title}
         </DialogTitle>
         <table className="calendar_table">
@@ -136,9 +135,9 @@ const HeaderAlarm = () => {
             </td>
           </tr>
 
-          <tr className="ss">
+          {/* <tr className="ss">
             <td colSpan={2} className="suc2">
-              추천이 있습니다. 확인하시겠습니까?
+              
             </td>
             <td className="suc3" colSpan={3}>
               {" "}
@@ -148,11 +147,22 @@ const HeaderAlarm = () => {
                   setOpenRecommend(true);
                 }}
               >
-                승낙
+                관련된 추천 확인하기
               </button>
             </td>
-          </tr>
+          </tr> */}
         </table>
+          <div className="recommend_Check">
+        <p>"{notice.title}" 관련 그리니가 추천한 내용</p>
+        <button style={{ color: 'white' }}
+          className="suc"
+          onClick={() => {
+            setOpenRecommend(true);
+          }}
+        >
+          보기
+        </button>
+        </div>
         {/* <div className="button_check">
             <ThemeProvider theme={theme}>
               <Link
@@ -241,7 +251,7 @@ const HeaderAlarm = () => {
   const talkIdx = Math.floor(Math.random() * 6);
   const grnTalk = talk[talkIdx];
 
-  const deleteNotice = () => {};
+  const deleteNotice = () => { };
 
   return (
     <div>
@@ -335,7 +345,8 @@ const HeaderAlarm = () => {
         }}
         open={openRecommend}
       >
-        <DialogTitle style={{ background: '#2ecc71' ,  height: '74px'}}>
+        <DialogTitle className="recommend_title"
+        >
           <p
             className="bacc"
             onClick={() => {
@@ -344,12 +355,12 @@ const HeaderAlarm = () => {
           >
             뒤로
           </p>{" "}
-          오늘 여기는 어떠신가요?
+          이런 곳은 어때요?
         </DialogTitle>
         <DialogContent>
           {recommendLists.map((data, list) => (
             <div>
-              <div key={list} style={{ display: "flex", margin: "20px" }}>
+              <div key={list} style={{ display: "flex"}}>
                 <Table>
                   {/*    <img style={{float:"right"}} src="http://via.placeholder.com/10.png/09f/fff​" alt={data.image} />  */}
 
@@ -357,6 +368,7 @@ const HeaderAlarm = () => {
                     <TableCell
                       colspan={2}
                       style={{ fontSize: "20px", fontWeight: "1000" }}
+                      className=''
                     >
                       {data.title}
                     </TableCell>
@@ -378,9 +390,9 @@ const HeaderAlarm = () => {
                   </TableRow>
                 </Table>
               </div>
-              <div style={{ position: "relative", right: "-120px" }}>
-                <Button 
-                sx={{  marginRight:'5px',  background:'#f39c12',borderRadius : '20px',color:'#fff !important'}}
+              <div style={{ position: "relative", right: "-120px", margin:'10px 0' }}>
+                <Button
+                  sx={{ marginRight: '5px', background: '#f39c12', borderRadius: '20px', color: '#fff !important' }}
                   onClick={() => {
                     setOpenDetail(true);
                   }}
@@ -388,15 +400,16 @@ const HeaderAlarm = () => {
                   자세히보기
                 </Button>
                 <Button
-                sx={{    background:'#f39c12',borderRadius : '20px',color:'#fff !important'}}
+                  sx={{ background: '#f39c12', borderRadius: '20px', color: '#fff !important' }}
                   onClick={() => {
-                    setOpenRecommend(false);
+                    // setOpenRecommend(false);
                     setOpenScore(true);
                   }}
                 >
-                  좋아요!!
+                  좋아요!
                 </Button>
               </div>
+                
 
             </div>
           ))}
@@ -409,7 +422,7 @@ const HeaderAlarm = () => {
         }}
         open={openScore}
       >
-        <DialogTitle sx={{background:'#2ecc71' , color:'#fff', borderRadius:'20px', fontSize:'20px'}}>이번 추천은 만족 스러웠나요?</DialogTitle>
+        <DialogTitle sx={{ background: '#2ecc71', color: '#fff', borderRadius: '20px', fontSize: '20px' }}>이번 추천은 만족 스러웠나요?</DialogTitle>
         <DialogContent>
           <Rating
             /*   style={{paddingBottom:"0px"}} */
@@ -429,7 +442,7 @@ const HeaderAlarm = () => {
             다음에 하기
           </Button>
           <Button
-          sx={{background:'#f39c12 !important' , color:'#fff !important', borderRadius:'15px' }}
+            sx={{ background: '#f39c12 !important', color: '#fff !important', borderRadius: '15px' }}
             onClick={() => {
               setOpenScore(false);
               setOpenNoticeInfo(false);
@@ -447,7 +460,7 @@ const HeaderAlarm = () => {
         }}
         open={openDetail}
       >
-        <DialogTitle  sx= {{background:'#2ecc71' , color:'#fff',textAlign:'center',borderRadius:'20px'}}>한남동 나른한 오후 </DialogTitle>
+        <DialogTitle sx={{ background: '#2ecc71', color: '#fff', textAlign: 'center', borderRadius: '20px' }}>한남동 나른한 오후 </DialogTitle>
         <DialogContent>
           <div>카카오 api</div>
           <Table>
@@ -470,7 +483,7 @@ const HeaderAlarm = () => {
               setOpenNoticeList(false);
             }}
           >
-            좋아요!!
+            좋아요!
           </Button>
         </DialogActions>
       </Dialog>

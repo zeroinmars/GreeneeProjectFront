@@ -54,9 +54,7 @@ function App() {
     <div className="App">
       
       <div className="app-sidebar-header">
-        <button style={{backgroundColor:'#2ecc71', border:'0', color:'white', fontSize:'25px', fontWeight:'bold' }}
-          onClick={() => {window.history.back()}}
-          >
+        <button className="memo_back_btn" onClick={() => {window.history.back()}}>
           {'<'}</button>
         {/* 헤더 */}
         <h1>메모</h1>

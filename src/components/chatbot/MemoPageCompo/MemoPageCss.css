@@ -57,6 +57,15 @@ button:hover {
 }
 .app-sidebar-header h1 {
   margin: 0;
+  font-family: 'MaplestoryOTFBold';
+}
+
+.memo_back_btn {
+  background-color:#2ecc71;
+  border: 0; 
+  color: white; 
+  font-size: 25px;
+  font-weight: bold; 
 }
 
 .app-sidebar-notes {
@@ -91,6 +100,13 @@ button:hover {
   color: black;
 }
 
+.app-sidebar-note.active, .app-sidebar-note.active small{
+  background-color: #81fab4 !important
+}
+.app-sidebar-note.false, .app-sidebar-note.false small{
+  background-color: #F0FDDD
+}
+
 /* NOTE EDITOR/PREVIEW (MAIN) STYLES */
 
 .app-main {
@@ -115,29 +131,34 @@ button:hover {
 
 /* Editing */
 .app-main-note-edit {
- 
+  font-family:'MaplestoryOTFBold';
   padding: 5px;
   position: fixed;
-  bottom: 51px;
+  bottom: 55px;
   width: 99.9%;
-  background: #2ecc71;
+  background: #ddecc5;
+  border-radius: 5px;
 }
 
 .app-main-note-edit input,
 textarea {
   display: block;
   border: 1px solid #ddd;
-  margin-bottom: 5px;
+  /* margin-bottom: 5px; */
   width: 100%;
-  height: calc(50vh - 130px);
+  /* height: calc(50vh - 130px); */
   padding: 10px;
   resize: none;
-  font-size: inherit;
   font-family: inherit;
 }
 .app-main-note-edit input {
   height: 50px;
-  font-size: 2rem;
+  /* font-size: 2rem; */
+  font-size: 25px;
+}
+.app-main-note-edit textarea {
+  height: 200px;
+  font-size: 20px;
 }
 
 /* Preview */

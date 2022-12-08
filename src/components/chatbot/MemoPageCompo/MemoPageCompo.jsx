@@ -2,7 +2,7 @@
 
 const Main = ({ activeNote, onUpdateNote }) => {
 
-  
+
   const onEditField = (field, value) => {
     onUpdateNote({
       ...activeNote,
@@ -26,14 +26,13 @@ const Main = ({ activeNote, onUpdateNote }) => {
           autoFocus
         />
         <textarea
-        style={{height:"100px"}}
           id="body"
           placeholder="내용"
           value={activeNote.body}
           onChange={(e) => onEditField("body", e.target.value)}
         />
       </div>
-{/*       <div className="app-main-note-preview">
+      {/*       <div className="app-main-note-preview">
         <h1 className="preview-title">{activeNote.title}</h1>
         <ReactMarkdown className="markdown-preview">
           {activeNote.body}

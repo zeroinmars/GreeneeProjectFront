@@ -11,6 +11,7 @@ import a4 from "../../../img/a4.jpg";
 import a5 from "../../../img/a5.jpg";
 import a6 from "../../../img/a6.jpg";
 import a7 from "../../../img/a7.jpg";
+import '../../../css/chatBot.css';
 /* export */
 class ChatbotSteps extends Component {
   render(props) {
@@ -30,7 +31,7 @@ class ChatbotSteps extends Component {
       //submitButtonStyle:{},
       //inputStyle:{},
       //width: {},
-      height: '101vh',
+      height: '100.5vh',
     };
     return (
       <>
@@ -38,11 +39,14 @@ class ChatbotSteps extends Component {
           <div
             style={{
               marginRight: "-1px",
-              marginTop: "-7.73px",
+              marginTop: "0px",
               borderColor: "#fff",
             }}
           >
+            <button className="chatbot_back_btn" 
+            onClick={() => { window.history.back() }}>{'<'}</button>
             <ChatBot {...config} />
+            
           </div>
         </ThemeProvider>
       </>
