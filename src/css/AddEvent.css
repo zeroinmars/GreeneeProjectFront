@@ -66,7 +66,7 @@
     font-size: 170%; /* 이모지 크기 */
     color: transparent; /* 기존 이모지 컬러 제거 */
     text-shadow: 0 0 0 #BEBEBE;
-    /* position:absolute; */
+    position:absolute;
     top:40%;
     right:3%;
 }
@@ -74,7 +74,7 @@
     font-size:170%; /* 이모지 크기 */
     color: transparent; /* 기존 이모지 컬러 제거 */
     text-shadow: 0 0 0 #FF9C00;
-    /* position:absolute; */
+    position:absolute;
     top:40%;
     right:3%;
 }

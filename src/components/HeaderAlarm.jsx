@@ -56,7 +56,7 @@ const HeaderAlarm = () => {
     const eDate = notice.end.slice(5);
 
     const tempInfo = (
-      <div className="dd">
+      <div className="modal_pad">
         <DialogTitle className="notice_title"
           style={{ backgroundColor: notice.color }}>
           {notice.title}
@@ -161,7 +161,7 @@ const HeaderAlarm = () => {
       title: '미팅', start: '2022-12-05', end: '2022-12-05',
       sTime: '12:00', eTime: '17:00',
       preAlarm: 30, sLocation: '어딘가', content: '일정 내용', moveTime: '20분', eLocation: '광주 동구청', color: 'rgb(71, 126, 133)'
-    },
+    }
   ];
   const noticeList = events.map((data, idx) => {
     const [year, month, day] = data.start.split("-");
@@ -184,7 +184,7 @@ const HeaderAlarm = () => {
         <br></br>
         <div>
           <h4 className="alarm_title">{data.title} </h4>
-          <h5 style={{display:'inline'}}>일정이 <strong>{data.preAlarm}분</strong> 후에 시작합니다.</h5> 
+          <h5 style={{ display: 'inline' }}>일정이 <strong>{data.preAlarm}분</strong> 후에 시작합니다.</h5>
         </div>
         <br></br>
         <div>
@@ -259,8 +259,10 @@ const HeaderAlarm = () => {
         }}
         open={openNoticeList}
       >
-        <h4 className="alarm_list">알림</h4>
-        {noticeList}
+        <div className="modal_pad">
+          <h4 className="alarm_list_title">알림</h4>
+          {noticeList}
+        </div>
       </Dialog>
 
       <Dialog
@@ -278,75 +280,77 @@ const HeaderAlarm = () => {
         }}
         open={openRecommend}
       >
-        <DialogTitle className="recommend_title"
-        >
-          <p
-            className="bacc"
-            onClick={() => {
-              setOpenRecommend(false);
-            }}
+        <div className="modal_pad">
+          <DialogTitle className="recommend_title"
           >
-            뒤로
-          </p>{" "}
-          이런 곳은 어때요?
-        </DialogTitle>
-        <DialogContent>
-          {recommendLists.map((data, list) => (
-            <div>
-              <div key={list} style={{ display: "flex" }}>
-                <Table>
-                  {/*    <img style={{float:"right"}} src="http://via.placeholder.com/10.png/09f/fff​" alt={data.image} />  */}
+            <p
+              className="bacc"
+              onClick={() => {
+                setOpenRecommend(false);
+              }}
+            >
+              뒤로
+            </p>{" "}
+            이런 곳은 어때요?
+          </DialogTitle>
+          <DialogContent>
+            {recommendLists.map((data, list) => (
+              <div>
+                <div key={list} style={{ display: "flex" }}>
+                  <Table>
+                    {/*    <img style={{float:"right"}} src="http://via.placeholder.com/10.png/09f/fff​" alt={data.image} />  */}
 
-                  <TableRow>
-                    <TableCell
-                      colspan={2}
-                      style={{ fontSize: "20px", fontWeight: "1000" }}
-                      className=''
-                    >
-                      {data.title}
-                    </TableCell>
-                  </TableRow>
+                    <TableRow>
+                      <TableCell
+                        colspan={2}
+                        style={{ fontSize: "20px", fontWeight: "1000" }}
+                        className=''
+                      >
+                        {data.title}
+                      </TableCell>
+                    </TableRow>
 
-                  <TableRow>
-                    <TableCell>영업시간</TableCell>
-                    <TableCell>
-                      {data.start} - {data.end}
-                    </TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell>장소</TableCell>
-                    <TableCell>{data.location}</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell>전화번호</TableCell>
-                    <TableCell>{data.tel}</TableCell>
-                  </TableRow>
-                </Table>
+                    <TableRow>
+                      <TableCell>영업시간</TableCell>
+                      <TableCell>
+                        {data.start} - {data.end}
+                      </TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell>장소</TableCell>
+                      <TableCell>{data.location}</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell>전화번호</TableCell>
+                      <TableCell>{data.tel}</TableCell>
+                    </TableRow>
+                  </Table>
+                </div>
+                <div style={{ position: "relative", right: "-120px", margin: '10px 0' }}>
+                  <Button
+                    sx={{ marginRight: '5px', background: '#f39c12', borderRadius: '20px', color: '#fff !important' }}
+                    onClick={() => {
+                      setOpenDetail(true);
+                    }}
+                  >
+                    자세히보기
+                  </Button>
+                  <Button
+                    sx={{ background: '#f39c12', borderRadius: '20px', color: '#fff !important' }}
+                    onClick={() => {
+                      // setOpenRecommend(false);
+                      setOpenScore(true);
+                    }}
+                  >
+                    좋아요!
+                  </Button>
+                </div>
+
+
               </div>
-              <div style={{ position: "relative", right: "-120px", margin: '10px 0' }}>
-                <Button
-                  sx={{ marginRight: '5px', background: '#f39c12', borderRadius: '20px', color: '#fff !important' }}
-                  onClick={() => {
-                    setOpenDetail(true);
-                  }}
-                >
-                  자세히보기
-                </Button>
-                <Button
-                  sx={{ background: '#f39c12', borderRadius: '20px', color: '#fff !important' }}
-                  onClick={() => {
-                    // setOpenRecommend(false);
-                    setOpenScore(true);
-                  }}
-                >
-                  좋아요!
-                </Button>
-              </div>
-
-
-            </div>
-          ))}
-        </DialogContent>
+            ))}
+          </DialogContent>
+        </div>
       </Dialog>
 
       <Dialog
@@ -355,36 +359,38 @@ const HeaderAlarm = () => {
         }}
         open={openScore}
       >
-        <DialogTitle sx={{ background: '#2ecc71', color: '#fff', borderRadius: '20px', fontSize: '20px' }}>이번 추천은 만족 스러웠나요?</DialogTitle>
-        <DialogContent>
-          <Rating
-            /*   style={{paddingBottom:"0px"}} */
-            name="score"
-            value={score}
-            onChange={(event, newValue) => {
-              setScore(newValue);
-            }}
-          />
-        </DialogContent>
-        <DialogActions>
-          <Button
-            onClick={() => {
-              setOpenScore(false);
-            }}
-          >
-            다음에 하기
-          </Button>
-          <Button
-            sx={{ background: '#f39c12 !important', color: '#fff !important', borderRadius: '15px' }}
-            onClick={() => {
-              setOpenScore(false);
-              setOpenNoticeInfo(false);
-              setOpenNoticeList(false);
-            }}
-          >
-            제출
-          </Button>
-        </DialogActions>
+        <div className="modal_pad">
+          <DialogTitle sx={{ background: '#2ecc71', color: '#fff', borderRadius: '20px', fontSize: '20px' }}>이번 추천은 만족 스러웠나요?</DialogTitle>
+          <DialogContent>
+            <Rating
+              /*   style={{paddingBottom:"0px"}} */
+              name="score"
+              value={score}
+              onChange={(event, newValue) => {
+                setScore(newValue);
+              }}
+            />
+          </DialogContent>
+          <DialogActions>
+            <Button
+              onClick={() => {
+                setOpenScore(false);
+              }}
+            >
+              다음에 하기
+            </Button>
+            <Button
+              sx={{ background: '#f39c12 !important', color: '#fff !important', borderRadius: '15px' }}
+              onClick={() => {
+                setOpenScore(false);
+                setOpenNoticeInfo(false);
+                setOpenNoticeList(false);
+              }}
+            >
+              제출
+            </Button>
+          </DialogActions>
+        </div>
       </Dialog>
 
       <Dialog
@@ -393,32 +399,34 @@ const HeaderAlarm = () => {
         }}
         open={openDetail}
       >
-        <DialogTitle sx={{ background: '#2ecc71', color: '#fff', textAlign: 'center', borderRadius: '20px' }}>한남동 나른한 오후 </DialogTitle>
-        <DialogContent>
-          <div>카카오 api</div>
-          <Table>
-            <TableRow>
-              <TableCell>메뉴</TableCell> <TableCell> 돈까스, 카레, 김밥</TableCell>{" "}
-            </TableRow>
-            <TableRow>
-              <TableCell>방문자 사진</TableCell> <TableCell></TableCell>{" "}
-            </TableRow>
-            <TableRow>
-              <TableCell>방문자 리뷰</TableCell> <TableCell></TableCell>{" "}
-            </TableRow>
-          </Table>
-        </DialogContent>
-        <DialogActions>
-          <Button
-            onClick={() => {
-              setOpenScore(false);
-              setOpenNoticeInfo(false);
-              setOpenNoticeList(false);
-            }}
-          >
-            좋아요!
-          </Button>
-        </DialogActions>
+        <div className="modal_pad">
+          <DialogTitle sx={{ background: '#2ecc71', color: '#fff', textAlign: 'center', borderRadius: '20px' }}>한남동 나른한 오후 </DialogTitle>
+          <DialogContent>
+            <div>카카오 api</div>
+            <Table>
+              <TableRow>
+                <TableCell>메뉴</TableCell> <TableCell> 돈까스, 카레, 김밥</TableCell>{" "}
+              </TableRow>
+              <TableRow>
+                <TableCell>방문자 사진</TableCell> <TableCell></TableCell>{" "}
+              </TableRow>
+              <TableRow>
+                <TableCell>방문자 리뷰</TableCell> <TableCell></TableCell>{" "}
+              </TableRow>
+            </Table>
+          </DialogContent>
+          <DialogActions>
+            <Button
+              onClick={() => {
+                setOpenScore(false);
+                setOpenNoticeInfo(false);
+                setOpenNoticeList(false);
+              }}
+            >
+              좋아요!
+            </Button>
+          </DialogActions>
+        </div>
       </Dialog>
     </div>
   );

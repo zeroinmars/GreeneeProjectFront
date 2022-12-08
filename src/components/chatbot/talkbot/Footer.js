@@ -24,10 +24,10 @@ var history = fewshot;
 var mode = 0;
 /* config */
 var config = {
-  model: "text-davinci-003",
+  model: "davinci:ft-personal-2022-12-07-08-51-09",
   stop: ["prompt", "completion", "->"],
   temperature: 0.5,
-  max_tokens: 150,
+  max_tokens: 200,
   top_p: 1,
   frequency_penalty: 0.5,
   presence_penalty: 0,
@@ -36,7 +36,7 @@ var config = {
 /* api */
 const { Configuration, OpenAIApi } = require("openai");
 const configuration = new Configuration({
-  apiKey: "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",
+  apiKey: "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",
 });
 const openai = new OpenAIApi(configuration);
 
@@ -104,7 +104,7 @@ function Footer(props) {
       config.model = "davinci:ft-personal-2022-12-07-08-51-09";
       //config.model = "text-davinci-003";
       config.temperature = 0.5;
-      config.max_tokens = 150;
+      config.max_tokens = 200;
       config.top_p = 1;
       config.frequency_penalty = 0.5;
       config.presence_penalty = 0;
@@ -119,7 +119,13 @@ function Footer(props) {
     if (mode == 0) {
       console.log("mode:", mode);
       /* 대화 모드 프롬프트 */
-      var prompt_initial = document.querySelector(".input-form").value + "->";
+  
+      var prompt_initial =
+      "prompt : " +
+      document.querySelector(".input-form").value + "->" +
+      " \ncompletion : ";
+
+
       //var prompt = history + ' \n' + prompt_initial
       var prompt = history + " \n" + prompt_initial;
       console.log("대화모드프롬프트확인", prompt);

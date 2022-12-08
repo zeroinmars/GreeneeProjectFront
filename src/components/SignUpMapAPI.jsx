@@ -395,7 +395,7 @@ const SignUpMapAPI = ({ hLocation, cLocation, setHLocation, setCLocation }) => {
           </div>
           <div className="option">
             <div className="button_wrap">
-              <input type="text" id="keyword" size="35"  style={{fontSize:'16px'}}/>
+              <input type="text" id="keyword" size="34"  style={{fontSize:'16px'}}/>
               <ThemeProvider theme={theme}>
                 <Button variant="contained" color='secondary' style={{ color: 'white', font: 'bold' }}
                   size="medium" startIcon={<SearchIcon />} ref={searchButton}>

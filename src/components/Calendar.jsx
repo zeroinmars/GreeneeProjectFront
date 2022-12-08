@@ -252,17 +252,22 @@ const Calendar = () => {
       </Dialog>
 
       <Dialog onClose={() => { setOpenDelete(false) }} open={openDelete}>
-        <img src={greenee_surprise}></img>
-        정말 일정을 삭제하시게요?!
+      
+        <DialogTitle className='delete_event_title' style={{backgroundColor:showEvent.color}}>
+        {showEvent.title} {showEvent.sDate} 
+        </DialogTitle>
+        <img className="ask_greenee" src={greenee_surprise}></img>
+        <DialogContent><p>정말 일정을 삭제하시게요?!</p></DialogContent>
+        
         <Button onClick={deleteEvent}>응</Button>
         <Button onClick={() => { setOpenDelete(false) }}>아니야</Button>
       </Dialog>
 
-      <Dialog onClose={() => { setOpenUpdate(false) }} open={openUpdate}>
+      {/* <Dialog onClose={() => { setOpenUpdate(false) }} open={openUpdate}>
         <div>
           dsad
         </div>
-      </Dialog>
+      </Dialog> */}
 
     </div>
   );

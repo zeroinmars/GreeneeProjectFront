@@ -219,6 +219,9 @@
     display: flex;
     align-items: center;
 }
+.location_title h3 {
+    font-family: 'MaplestoryOTFBold';
+}
 h6 {
     text-align: center;
     margin-bottom: 15px;

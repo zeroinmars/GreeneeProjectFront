@@ -1,11 +1,9 @@
 /* 그리니아이콘 누르면 나오는 알림창 */
-.MuiPaper-root {
-    /* background: #fff; */
-    border-radius: 20px !important;
+.modal_pad {
     padding: 15px;
 }
 
-.alarm_list {
+.alarm_list_title {
     margin-bottom: 0px;
     background: #2ecc71;
     padding: 15px;
@@ -34,7 +32,7 @@
     text-align: center; 
     background-color: #2ecc71;
     color: white;
-    padding-bottom: 4px;
+    padding-bottom: 15px;
     border-radius: 20px;
     width:310px;
 }
@@ -142,16 +140,16 @@
 
 
 /* 달력 현재날짜 */
-.css-18icojf-MuiButtonBase-root-MuiPickersDay-root.Mui-selected {
+/* .css-18icojf-MuiButtonBase-root-MuiPickersDay-root.Mui-selected {
     background: #2ecc71 !important
 }
+  */
 
 
 
-
-.css-hlj6pa-MuiDialogActions-root>:not(:first-of-type) {
+/* .css-hlj6pa-MuiDialogActions-root>:not(:first-of-type) {
     color: #fff;
-}
+} */
 
  
 /* .css-9nvqg8-MuiButtonBase-root-MuiButton-root {

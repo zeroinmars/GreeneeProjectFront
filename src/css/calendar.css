@@ -55,3 +55,14 @@
     word-spacing: 2px;
 
 }
+
+.ask_greenee {
+    height: 40%;
+
+}
+
+.delete_event_title {
+    border-radius: 20px;
+    text-align: center;
+    color: white;
+}
