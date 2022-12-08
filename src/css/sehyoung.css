@@ -1,7 +1,18 @@
 a {
-    color: #000000 !important;
-    text-decoration: none;
-  }
-   .css-7qbake {
-    background: #AFE372 !important;
-  }
+  color: #000000 !important;
+  text-decoration: none;
+}
+
+.css-7qbake {
+  background: #AFE372 !important;
+}
+
+.hisSampleButton {
+  margin-left: 364px !important;
+  background: #2ECC71 !important;
+  border-color: #2ECC71 !important;
+  float: right;
+  fill: #fff;
+  border-bottom: 2px solid #2ECC71;
+  border-right: 2px solid #2ECC71;
+}

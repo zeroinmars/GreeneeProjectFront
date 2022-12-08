@@ -10,6 +10,7 @@ import greenee from '../img/greenee.png';
 import '../css/Login.css';
 import axios from 'axios';
 
+
 const Login = () => {
   const nav = useNavigate();
   const emailRef = useRef(); //사용자가 적은 email input 태그에 할당된 Ref  
@@ -47,18 +48,17 @@ const Login = () => {
 
   return (
     <>
-      
       {/* <div style={{ backgrounImage : "url(" + greenihead + ")" }}> 
       <img src='../img/greenihead.png' className='greenihead'></img>   
       <div style={{backgrounImage : "url(" + greenihead + ")"  }}>*/}
-      <div style={{ padding: "20px", backgroundColor: '#D7EDBC' }}>
-        {/* <div className='divLogin' style={{    width:"80%", border:"1px solid black", padding:"20px"}}>  */}
-        <div className='divLogin' style={{marginTop:'40px'}}>
-        <img src={greenee} className={'greenee'} style={{ width: "60%", padding: "20px" }} />
-        <h60 className='greeniWelcome'> 안녕, 당신의 일정을 그리는 그리니예요.</h60>
+      <div style={{ padding: "0 20px", backgroundColor: '#D7EDBC' }}>
+        <div className='divLogin'>
+        <img src={greenee} className='greenee_img'  />
+        <h60 className='login_title'> <p className='large_f'> 일정관리는 언제나</p><p className='gr_greenee'>Greenee</p></h60>
         <FormControl fullWidth>
           <TextField variant="standard" color="success" inputRef={emailRef} label='이메일' name='email' onChange={(e) => { emailRef.current.value = e.target.value }} /><br></br>
           <TextField variant="standard" color="success" inputRef={pwRef} label='비밀번호' name='pw' type="password" onChange={(e) => { pwRef.current.value = e.target.value; }} /><br></br>
+          <Button color='success' className='find_id_pw'>아이디 /비밀번호 찾기</Button>
           <Button variant="contained" color="success" onClick={checkLogin} className='login_btn'>로그인</Button>
           <Button variant="contained" color="success" onClick={() => { nav("/signup") }} className='signup_btn' >회원가입</Button>
         </FormControl>

@@ -11,6 +11,7 @@ import a4 from "../../../img/a4.jpg";
 import a5 from "../../../img/a5.jpg";
 import a6 from "../../../img/a6.jpg";
 import a7 from "../../../img/a7.jpg";
+import '../../../css/chatBot.css';
 /* export */
 class ChatbotSteps extends Component {
   render(props) {
@@ -23,14 +24,14 @@ class ChatbotSteps extends Component {
       botDelay:  0,
       footerStyle: { background: "#efefef" },
       bubbleOptionStyle: { background: "#f39c12" },
-      botAvatar: avatarArray[Math.floor(Math.random() * avatarArray.length)],
+      botAvatar: a2,
       // floating: "true", /* 채팅창 버튼으로 자동 플로팅 */
-      floatingStyle: floatingStyle,
+      // floatingStyle: floatingStyle,
       //floatingIcon={greenihead},
       //submitButtonStyle:{},
       //inputStyle:{},
       //width: {},
-      //height: {},
+      height: '100.5vh',
     };
     return (
       <>
@@ -38,11 +39,14 @@ class ChatbotSteps extends Component {
           <div
             style={{
               marginRight: "-1px",
-              marginTop: "-7.73px",
+              marginTop: "0px",
               borderColor: "#fff",
             }}
           >
+            <button className="chatbot_back_btn" 
+            onClick={() => { window.history.back() }}>{'<'}</button>
             <ChatBot {...config} />
+            
           </div>
         </ThemeProvider>
       </>

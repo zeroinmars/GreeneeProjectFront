@@ -154,7 +154,9 @@ label+.css-1snbco4-MuiInputBase-root-MuiInput-root{
     display: flex;
 }
 
-
+.css-xbq1j9-MuiTypography-root-MuiDialogTitle-root{
+    text-align: center;
+}
 
 .tagselect{
     background-color: #efefef;

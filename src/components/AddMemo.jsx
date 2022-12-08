@@ -7,6 +7,7 @@ import trash from "../img/trash.png";
 // import { makeStyles } from '@mui/styles';
 import { useNavigate } from 'react-router-dom';
 import LabelBottomNavigation from "./LabelBottomNavigation";
+import HeaderAlarm from "./HeaderAlarm";
 
 // title, date, checkSpecial, content, 
 const AddMemo = () => {
@@ -33,6 +34,7 @@ const AddMemo = () => {
   ]
   return (
     <div style={{height:'100vh'}}>
+      <HeaderAlarm></HeaderAlarm>
       <button onClick={testPage} className="home1_form">저장</button>
       <div className="top">
         <button className="button">

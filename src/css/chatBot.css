@@ -1,0 +1,29 @@
+.greeniChatbot {
+    z-index: 1;
+    position: relative;
+}
+
+.greeniChatbot h2 {
+    margin-left: 40px;
+    font-weight: bold;
+}
+.greeniChatbot img {
+    width: 60px;
+    height: auto;
+}
+
+.chatbot_back_btn {
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    z-index: 2;
+    position: absolute;
+    border: 0;
+    background-color: #2ecc71;
+    margin: 12px 0 0 10px
+}
+
+.bjVPgW {
+    height: 60px;
+    min-width: 0;
+}

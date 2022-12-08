@@ -1,0 +1,167 @@
+/* 그리니아이콘 누르면 나오는 알림창 */
+.modal_pad {
+    padding: 15px;
+}
+
+.alarm_list_title {
+    margin-bottom: 0px;
+    background: #2ecc71;
+    padding: 15px;
+    color: #fff;
+    border-radius: 20px;
+    text-align: center;
+    font-family: 'MaplestoryOTFBold';
+    font-size: 25px;
+}
+.alarm_title {
+    display: inline;
+    font-family: 'MaplestoryOTFBold';
+
+}
+/* 회식  (그 후 또 누르면 나오는 창 */
+.notice_title {
+    text-align: center; 
+    background-color: #2ecc71;
+    color: white;
+    padding: 10px;
+    border-radius: 20px;
+    margin: 0 0 15px 0;
+}
+.recommend_title {
+    margin: 5px;
+    text-align: center; 
+    background-color: #2ecc71;
+    color: white;
+    padding-bottom: 15px;
+    border-radius: 20px;
+    width:310px;
+}
+
+/* 그 안 틀 */
+.calendar_table {
+    width: 330px;
+}
+.calendar_table span {
+    display: block;
+    margin: 10px 0;
+}
+
+/* 왼쪽글자 가운데 */
+#row_title {
+    text-align: center !important;
+    margin-right: 0px !important;
+    padding: 0px !important;
+    width: 84px !important;
+}
+
+/* 승낙버튼 */
+.suc {
+    background-color: #f39c12;
+    color: #fff;
+    border: #f39c12;
+    border-radius: 14px;
+    text-align: center !important;
+    margin-left: 60px;
+    padding: 0px !important;
+    margin: auto;
+    padding: 0px !important;
+    width: 50%;
+    height: 45px;
+}
+
+.recommend_Check {
+    text-align: center;
+}
+.recommend_Check p {
+    color:#01642b
+}
+
+.ss {
+    text-align: center !important;
+}
+
+.ggg {
+    padding-left: 0px !important;
+    padding: 0px !important;
+    width: 50px;
+}
+
+.ggg2 {
+    width: 300px;
+}
+
+.suc2 {
+    width: 159px;
+}
+
+.suc3 {
+    /*     text-align: center!important;
+    margin-left: 100px!important; */
+}
+
+
+/* 세번쨰 창 */
+/* 뒤로가기버튼 */
+.bacc {
+    text-align: center;
+    float: right;
+    background-color: #f39c12;
+    border-radius: 10px;
+    color: white;
+    padding-top: 3px;
+    padding-bottom: 7px;
+    width: 45px;
+    height: 35px;
+    font-size: 17px;
+}
+
+/* 네번째창 */
+
+
+.MuiRating-root .MuiRating-sizeMedium .css-1bosw7e-MuiRating-root {
+    margin-top: 10px !important;
+
+}
+
+.MuiDialogActions-root .MuiDialogActions-spacing .css-hlj6pa-MuiDialogActions-root {
+    margin: 20px;
+}
+
+
+
+.css-ypiqx9-MuiDialogContent-root {
+
+    padding: 0px !important;
+    padding-left: 10px !important;
+    margin-top: 18px;
+}
+
+
+
+
+/* 달력 현재날짜 */
+/* .css-18icojf-MuiButtonBase-root-MuiPickersDay-root.Mui-selected {
+    background: #2ecc71 !important
+}
+  */
+
+
+
+/* .css-hlj6pa-MuiDialogActions-root>:not(:first-of-type) {
+    color: #fff;
+} */
+
+ 
+/* .css-9nvqg8-MuiButtonBase-root-MuiButton-root {
+    background: #f39c12;
+    border-radius: 15px;
+    color: #fff !important;
+}  */
+
+
+
+/* 달력 아래 cancel ok버튼 */
+.css-hlj6pa-MuiDialogActions-root {
+    margin-right: 20px;
+
+}
