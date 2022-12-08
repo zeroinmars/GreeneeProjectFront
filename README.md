@@ -1,4 +1,4 @@
-# LifeConcierge_Front
+그리니.AI
 For rendering UI
 dsdsadssdkaljdaklsj
 1
