@@ -51,7 +51,7 @@ const Login = () => {
       {/* <div style={{ backgrounImage : "url(" + greenihead + ")" }}> 
       <img src='../img/greenihead.png' className='greenihead'></img>   
       <div style={{backgrounImage : "url(" + greenihead + ")"  }}>*/}
-      <div style={{ padding: "20px", backgroundColor: '#D7EDBC' }}>
+      <div style={{ padding: "0 20px", backgroundColor: '#D7EDBC' }}>
         <div className='divLogin'>
         <img src={greenee} className='greenee_img'  />
         <h60 className='login_title'> <p className='large_f'> 일정관리는 언제나</p><p className='gr_greenee'>Greenee</p></h60>

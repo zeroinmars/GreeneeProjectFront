@@ -49,18 +49,6 @@ const HeaderAlarm = () => {
   const [openScore, setOpenScore] = useState(false);
   const [openRecommend, setOpenRecommend] = useState(false);
   const userName = useSelector((state) => state.userName);
-  // const [specialEvent, setSpecialEvent] = useState(state => (state.specialEvent));
-  // const event = useSelector();
-  // const [noticeList, setNoticeInfo] = useState([]);
-
-  // const theme = createTheme({
-  //   palette: {
-  //     secondary: {
-  //       main: (themeColor? themeColor : '#2ecc71'),
-  //       // main: ('#2ecc71')
-  //     },
-  //   },
-  // });
 
   const showNoticeInfo = (e) => {
     const notice = events[e.target.id];
@@ -70,7 +58,7 @@ const HeaderAlarm = () => {
     const tempInfo = (
       <div className="dd">
         <DialogTitle className="notice_title"
-          style={{backgroundColor: notice.color}}>
+          style={{ backgroundColor: notice.color }}>
           {notice.title}
         </DialogTitle>
         <table className="calendar_table">
@@ -79,7 +67,7 @@ const HeaderAlarm = () => {
               <span>장소</span>
             </td>
             <td colSpan={3}>
-              <p>{notice.eLocation ? notice.eLocation : "-"}</p>
+              <span>{notice.eLocation ? notice.eLocation : "-"}</span>
             </td>
           </tr>
           <tr>
@@ -87,7 +75,7 @@ const HeaderAlarm = () => {
               <span>출발지</span>
             </td>
             <td colSpan={3}>
-              <p>{notice.sLocation ? notice.sLocation : "-"}</p>
+              <span>{notice.sLocation ? notice.sLocation : "-"}</span>
             </td>
           </tr>
           <tr>
@@ -95,7 +83,7 @@ const HeaderAlarm = () => {
               <span>내용</span>
             </td>
             <td colSpan={3}>
-              <p>{notice.content ? notice.content : "-"}</p>
+              <span>{notice.content ? notice.content : "-"}</span>
             </td>
           </tr>
           <tr>
@@ -103,13 +91,13 @@ const HeaderAlarm = () => {
               <span>시작일</span>
             </td>{" "}
             <td>
-              <p>{sDate}</p>
+              <span>{sDate}</span>
             </td>
             <td id="row_title" className="ggg">
               <span>시간</span>
             </td>{" "}
             <td>
-              <p>{notice.sTime}</p>
+              <span>{notice.sTime}</span>
             </td>
           </tr>
           <tr>
@@ -117,13 +105,13 @@ const HeaderAlarm = () => {
               <span>종료일</span>
             </td>{" "}
             <td>
-              <p>{eDate}</p>
+              <span>{eDate}</span>
             </td>
             <td id="row_title" className="ggg">
               <span>시간</span>
             </td>{" "}
             <td>
-              <p>{notice.eTime}</p>
+              <span>{notice.eTime}</span>
             </td>
           </tr>
           <tr>
@@ -131,58 +119,21 @@ const HeaderAlarm = () => {
               <span>이동 시간</span>
             </td>
             <td colSpan={2}>
-              <p>{notice.moveTime ? notice.moveTime : "-"}</p>
+              <span>{notice.moveTime ? notice.moveTime : "-"}</span>
             </td>
           </tr>
-
-          {/* <tr className="ss">
-            <td colSpan={2} className="suc2">
-              
-            </td>
-            <td className="suc3" colSpan={3}>
-              {" "}
-              <button style={{color:'white'}}
-                className="suc"
-                onClick={() => {
-                  setOpenRecommend(true);
-                }}
-              >
-                관련된 추천 확인하기
-              </button>
-            </td>
-          </tr> */}
         </table>
-          <div className="recommend_Check">
-        <p>"{notice.title}" 관련 그리니가 추천한 내용</p>
-        <button style={{ color: 'white' }}
-          className="suc"
-          onClick={() => {
-            setOpenRecommend(true);
-          }}
-        >
-          보기
-        </button>
+        <div className="recommend_Check">
+          <p>"{notice.title}" 관련 그리니가 추천한 내용</p>
+          <button style={{ color: 'white' }}
+            className="suc"
+            onClick={() => {
+              setOpenRecommend(true);
+            }}
+          >
+            보기
+          </button>
         </div>
-        {/* <div className="button_check">
-            <ThemeProvider theme={theme}>
-              <Link
-                to='/updateEvent'
-                state={{
-                  ...showEvent,
-                  start: showEvent.start + ' ' + showEvent.sTime,
-                  end: showEvent.end + ' ' + showEvent.eTime,
-                  preAlarm: parseInt(showEvent.preAlarm)
-                }}
-                style={{ textDecoration: "none" }}
-              >
-                <Button className="button_accept" variant="contained" color='secondary' size="medium"
-                  style={{ color: 'white', font: 'bold' }}> 수정</Button>
-              </Link>
-              <Button className="button_deny" variant="contained" color='secondary' size="medium" 
-              onClick={() => { setOpenDelete(true) }}
-              style={{ color: 'white', font: 'bold' }}>삭제</Button>
-            </ThemeProvider>
-          </div> */}
       </div>
     );
     setNoticeInfo(tempInfo);
@@ -206,9 +157,11 @@ const HeaderAlarm = () => {
       eLocation: "광주 서구 경열로 33",
       color: "#ffc847",
     },
-    // { title: '미팅', start: '2022-12-05', end: '2022-12-05',
-    // sTime: '12:00', eTime: '17:00',
-    //    preAlarm: 30,sLocation:'어딘가', content:'일정 내용', moveTime:'20분', eLocation: '광주 동구청', color: 'blue' },
+    {
+      title: '미팅', start: '2022-12-05', end: '2022-12-05',
+      sTime: '12:00', eTime: '17:00',
+      preAlarm: 30, sLocation: '어딘가', content: '일정 내용', moveTime: '20분', eLocation: '광주 동구청', color: 'rgb(71, 126, 133)'
+    },
   ];
   const noticeList = events.map((data, idx) => {
     const [year, month, day] = data.start.split("-");
@@ -224,17 +177,24 @@ const HeaderAlarm = () => {
     return (
       <div id={idx} onClick={showNoticeInfo}>
         <hr></hr>
-        <span style={{ color: data.color }}> ● </span>
-        {alarmTime.toLocaleString()}
+        <div>
+          <span style={{ color: data.color }}> ● </span>
+          {alarmTime.toLocaleString()}
+        </div>
         <br></br>
-        <h5 style={{ display: "inline" }}>{data.title}</h5>
-        일정이 <strong>{data.preAlarm}분</strong> 후에 시작합니다. <br></br>
-        시작 시간: {date} {time} <br></br>
+        <div>
+          <h4 className="alarm_title">{data.title} </h4>
+          <h5 style={{display:'inline'}}>일정이 <strong>{data.preAlarm}분</strong> 후에 시작합니다.</h5> 
+        </div>
+        <br></br>
+        <div>
+          시작 시간: {date} {time}
+        </div>
       </div>
     );
   });
 
-  const [noticeNum, setNoticeNum] = useState(1);
+  const [noticeNum, setNoticeNum] = useState(2);
   // const [noticeNum, setNoticeNum] = useState(noticeList.length);
   const [noticeInfo, setNoticeInfo] = useState("");
   const [openNoticeList, setOpenNoticeList] = useState(false);
@@ -299,35 +259,8 @@ const HeaderAlarm = () => {
         }}
         open={openNoticeList}
       >
-        <h4 style={{ textAlign: "center" }}>알림</h4>
+        <h4 className="alarm_list">알림</h4>
         {noticeList}
-        {/* {noticeList.map((data) => {
-          const [year, month, day] = data.start.split('-');
-          const [hour, minute] = data.sTime.split(':');
-
-          const date = `${year}년 ${month}월 ${day}일`;
-          const time = `${hour}시 ${minute}분`;
-
-          const eventDate = new Date(data.start + ' ' + data.sTime);
-          const ms = data.preAlarm * 60 * 1000;
-          const alarmTime = new Date(eventDate - ms);
-
-          return (
-            <div onClick={checkAlarm}>
-              <hr></hr>
-
-              <span style={{ color: 'red' }}> ● </span>
-              {alarmTime.toLocaleString()}
-
-
-              <br></br>
-              <h5 style={{ display: 'inline' }}>{data.title}</h5>
-              일정이 <strong>{parseInt(data.preAlarm)}분</strong> 후에 시작합니다. <br></br>
-
-              시작 시간: {date} {time} <br></br>
-            </div>
-          );
-        })} */}
       </Dialog>
 
       <Dialog
@@ -360,7 +293,7 @@ const HeaderAlarm = () => {
         <DialogContent>
           {recommendLists.map((data, list) => (
             <div>
-              <div key={list} style={{ display: "flex"}}>
+              <div key={list} style={{ display: "flex" }}>
                 <Table>
                   {/*    <img style={{float:"right"}} src="http://via.placeholder.com/10.png/09f/fff​" alt={data.image} />  */}
 
@@ -390,7 +323,7 @@ const HeaderAlarm = () => {
                   </TableRow>
                 </Table>
               </div>
-              <div style={{ position: "relative", right: "-120px", margin:'10px 0' }}>
+              <div style={{ position: "relative", right: "-120px", margin: '10px 0' }}>
                 <Button
                   sx={{ marginRight: '5px', background: '#f39c12', borderRadius: '20px', color: '#fff !important' }}
                   onClick={() => {
@@ -409,7 +342,7 @@ const HeaderAlarm = () => {
                   좋아요!
                 </Button>
               </div>
-                
+
 
             </div>
           ))}

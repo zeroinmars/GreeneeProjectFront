@@ -5,14 +5,21 @@
     padding: 15px;
 }
 
-h4 {
-    margin-bottom: 0px !important;
+.alarm_list {
+    margin-bottom: 0px;
     background: #2ecc71;
     padding: 15px;
     color: #fff;
     border-radius: 20px;
+    text-align: center;
+    font-family: 'MaplestoryOTFBold';
+    font-size: 25px;
 }
+.alarm_title {
+    display: inline;
+    font-family: 'MaplestoryOTFBold';
 
+}
 /* 회식  (그 후 또 누르면 나오는 창 */
 .notice_title {
     text-align: center; 
@@ -20,9 +27,7 @@ h4 {
     color: white;
     padding: 10px;
     border-radius: 20px;
-    margin: 0px;
-    
-    
+    margin: 0 0 15px 0;
 }
 .recommend_title {
     margin: 5px;
@@ -34,13 +39,13 @@ h4 {
     width:310px;
 }
 
-/* 전체틀 속 틀 */
-.dd {}
-
 /* 그 안 틀 */
 .calendar_table {
-
-    /* margin-right: 70px!important; */
+    width: 330px;
+}
+.calendar_table span {
+    display: block;
+    margin: 10px 0;
 }
 
 /* 왼쪽글자 가운데 */
@@ -104,7 +109,6 @@ h4 {
     float: right;
     background-color: #f39c12;
     border-radius: 10px;
-    margin-left: 10px;
     color: white;
     padding-top: 3px;
     padding-bottom: 7px;
