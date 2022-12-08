@@ -1,6 +1,6 @@
 .show_event_info {
-    width: 320px;
-    padding-bottom: 25px;
+    width: 350px;
+    padding: 15px;
 }
 .show_event_title {
     text-align: center;
@@ -46,7 +46,7 @@
     border: #f39c12;
     border-radius: 14px;
     font-size: 15px;
-    float: right;
+    margin-left: 70%;
 }
 
 .event_info_title {
@@ -58,9 +58,13 @@
 
 .ask_greenee {
     height: 40%;
-
+    width: 50%;
 }
 
+.delete_event {
+    padding: 15px;
+    text-align: center;
+}
 .delete_event_title {
     border-radius: 20px;
     text-align: center;

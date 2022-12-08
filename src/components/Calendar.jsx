@@ -170,31 +170,33 @@ const Calendar = () => {
 
       <Dialog onClose={() => { setOpenList(false); }} open={openList}>
         {/* onClick={} 안에 함수이름 넣어야함 */}
-        <div className='event_list_title'>
-          <DialogTitle style={{ textAlign: 'center' }}>{eventDate}</DialogTitle>
+        <div className="modal_pad">
+          <div className='event_list_title'>
+            <DialogTitle style={{ textAlign: 'center' }}>{eventDate}</DialogTitle>
 
-          <Button className='event_add_btn' onClick={() => { nav('/addEvent') }}>일정 추가</Button>
-        </div>
-
-        {eventInfo.map((data, idx) => {
-          return <div style={{ width: '320px', padding: "0 10px" }}>
-            <hr></hr>
-            <DialogTitle className="event_info_title">
-
-              <span style={{ color: data.color }}>● </span>
-              <span>{data.title} </span>
-              <span> {data.sTime}</span>
-
-            </DialogTitle>
-            <DialogContent>
-              {data.content ? <p>{data.content}</p> : <></>}
-            </DialogContent>
-
-            {/* <DialogActions> */}
-            <Button className='event_list_btn' onClick={viewEvent} value={idx}>자세히 보기</Button>
-            {/* </DialogActions> */}
+            <Button className='event_add_btn' onClick={() => { nav('/addEvent') }}>일정 추가</Button>
           </div>
-        })}
+
+          {eventInfo.map((data, idx) => {
+            return <div style={{ width: '320px', padding: "0 10px" }}>
+              <hr></hr>
+              <DialogTitle className="event_info_title">
+
+                <span style={{ color: data.color }}>● </span>
+                <span>{data.title} </span>
+                <span> {data.sTime}</span>
+
+              </DialogTitle>
+              <DialogContent>
+                {data.content ? <p>{data.content}</p> : <></>}
+              </DialogContent>
+
+              {/* <DialogActions> */}
+              <Button className='event_list_btn' onClick={viewEvent} value={idx}>자세히 보기</Button>
+              {/* </DialogActions> */}
+            </div>
+          })}
+        </div>
       </Dialog>
 
       <Dialog onClose={() => { setOpenEvent(false) }} open={openEvent}>
@@ -252,15 +254,24 @@ const Calendar = () => {
       </Dialog>
 
       <Dialog onClose={() => { setOpenDelete(false) }} open={openDelete}>
-      
-        <DialogTitle className='delete_event_title' style={{backgroundColor:showEvent.color}}>
-        {showEvent.title} {showEvent.sDate} 
-        </DialogTitle>
-        <img className="ask_greenee" src={greenee_surprise}></img>
-        <DialogContent><p>정말 일정을 삭제하시게요?!</p></DialogContent>
-        
-        <Button onClick={deleteEvent}>응</Button>
-        <Button onClick={() => { setOpenDelete(false) }}>아니야</Button>
+        <div className="delete_event">
+          <DialogTitle className='delete_event_title' style={{ backgroundColor: showEvent.color }}>
+            {showEvent.title} {showEvent.sDate}
+          </DialogTitle>
+          <img className="ask_greenee" src={greenee_surprise}></img>
+          <DialogContent><p>정말 일정을 삭제하시게요?!</p></DialogContent>
+
+          <ThemeProvider theme={theme}>
+
+            <Button className="button_accept" variant="contained" color='secondary' size="medium"
+              onClick={deleteEvent} style={{ color: 'white', font: 'bold' }}> 응</Button>
+
+            <Button className="button_deny" variant="contained" color='secondary' size="medium"
+              onClick={() => { setOpenDelete(false) }}
+              style={{ color: 'white', font: 'bold' }}>아니</Button>
+          </ThemeProvider>
+
+        </div>
       </Dialog>
 
       {/* <Dialog onClose={() => { setOpenUpdate(false) }} open={openUpdate}>
