@@ -418,12 +418,13 @@ const MapAPI = ({ sLocation, eLocation, setSLocation, setELocation }) => {
           <h6>해당 위치를 {flag}로 설정하실래요?</h6>
           <ThemeProvider theme={theme}>
             <div className="button_check">
+            <Button className="button_deny" variant="contained" color='secondary' size="medium" style={{ color: 'white', font: 'bold' }} onClick={handleCheckClose}>
+                아니
+              </Button>
               <Button className="button_accept" variant="contained" color='secondary' size="medium" style={{ color: 'white', font: 'bold' }} onClick={inputLabel}>
                 좋아!
               </Button>
-              <Button className="button_deny" variant="contained" color='secondary' size="medium" style={{ color: 'white', font: 'bold' }} onClick={handleCheckClose}>
-                아니
-              </Button>
+              
             </div>
           </ThemeProvider>
         </div>
