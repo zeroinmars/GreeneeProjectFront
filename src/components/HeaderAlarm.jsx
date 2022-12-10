@@ -1,29 +1,34 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom"
-import { Button, Dialog, DialogTitle, DialogActions, DialogContent } from "@mui/material";
+import { Link } from "react-router-dom";
+import {
+  Dialog,
+  DialogTitle,
+  DialogActions,
+  DialogContent,
+} from "@mui/material";
 
 import greenee from "../img/greenee.png";
 import '../css/header.css';
 
 
 const HeaderAlarm = () => {
-  const userName = useSelector(state => (state.userName));
-  // const [specialEvent, setSpecialEvent] = useState(state => (state.specialEvent));
-  // const event = useSelector();
-  // const [noticeList, setNoticeInfo] = useState([]);
+  const reduxEvent = useSelector(state => (state.specialEvent));
+  const userName = useSelector((state) => state.userName);
+  const [specialEvent, setSpecialEvent] = useState([]);
+  const [noticeNum, setNoticeNum] = useState(0);
 
-  // const theme = createTheme({
-  //   palette: {
-  //     secondary: {
-  //       main: (themeColor? themeColor : '#2ecc71'),
-  //       // main: ('#2ecc71')
-  //     },
-  //   },
-  // });
+  useEffect(() => {
+    console.log(noticeNum)
+    console.log(reduxEvent)
+    if (reduxEvent && reduxEvent != '없는 계정') {
+      setSpecialEvent(reduxEvent);
+      setNoticeNum(reduxEvent.length);
+    }
+  })
   
   const showNoticeInfo = (e) => {
-    const notice = events[e.target.id];
+    const notice = specialEvent[e.target.id];
     const sDate = notice.start.slice(5);
     const eDate = notice.end.slice(5);
     
@@ -57,17 +62,6 @@ const HeaderAlarm = () => {
             <td><p>{notice.moveTime ? notice.moveTime : '-'}</p></td>
           </tr>
         </table>
-        <div className="recommend_Check">
-          <p>"{notice.title}" 관련 그리니가 추천한 내용</p>
-          <button style={{ color: 'white' }}
-            className="suc"
-            onClick={() => {
-              setOpenRecommend(true);
-            }}
-          >
-            보기
-          </button>
-        </div>
       </div>
     );
     setNoticeInfo(tempInfo);
@@ -78,43 +72,27 @@ const HeaderAlarm = () => {
   // preAlarm이 있어야 알림을 주는 일정인 것
   // 시작 날짜나 시간이 없는데 preAlarm 값을 넣는 등의 예외는 일단 무시.
   const events = [
-    { title: '회식', start: '2022-12-05', end: '2022-12-05',
-    sTime: '18:30', eTime: '21:00',
-       preAlarm: 60,sLocation:'어딘가', content:'일정 내용', moveTime:'20분', eLocation: '광주 서구 경열로 33', color: 'red' },
-    { title: '미팅', start: '2022-12-05', end: '2022-12-05',
-    sTime: '12:00', eTime: '17:00',
-       preAlarm: 30,sLocation:'어딘가', content:'일정 내용', moveTime:'20분', eLocation: '광주 동구청', color: 'blue' },
-  ]
-  const noticeList = events.map((data, idx) => {
-    const [year, month, day] = data.start.split('-');
-    const [hour, minute] = data.sTime.split(':');
+    {
+      title: "회식",
+      start: "2022-12-08",
+      end: "2022-12-08",
+      sTime: "18:30",
+      eTime: "19:30",
+      preAlarm: 60,
+      sLocation: "광주 동구 서남로 1",
+      content: "회식하기 시러",
+      moveTime: "23분",
+      eLocation: "광주 서구 경열로 33",
+      color: "#ffc847",
+    },
+    {
+      title: '헬스', start: '2022-12-08', end: '2022-12-08',
+      sTime: '20:00', eTime: '21:00',
+      preAlarm: 30, sLocation: '광주 서구 경열로 33', content: '회식 후 헬스!', moveTime: '5분', eLocation: '광주 서구 죽봉대로 37', color: 'rgb(71, 126, 133)'
+    },
+  ];
 
-    const date = `${year}년 ${month}월 ${day}일`;
-    const time = `${hour}시 ${minute}분`;
-
-    const eventDate = new Date(data.start + ' ' + data.sTime);
-    const ms = data.preAlarm * 60 * 1000;
-    const alarmTime = new Date(eventDate - ms);
-
-    return (
-      <div id={idx} onClick={showNoticeInfo}>
-        <hr></hr>
-
-        <span style={{ color: data.color }}> ● </span>
-        {alarmTime.toLocaleString()}
-
-
-        <br></br>
-        <h5 style={{ display: 'inline' }}>{data.title}</h5>
-        일정이 <strong>{data.preAlarm}분</strong> 후에 시작합니다. <br></br>
-
-        시작 시간: {date} {time} <br></br>
-      </div>
-    );
-  })
-
-  const [noticeNum, setNoticeNum] = useState(noticeList.length);
-  const [noticeInfo, setNoticeInfo] = useState('');
+  const [noticeInfo, setNoticeInfo] = useState("");
   const [openNoticeList, setOpenNoticeList] = useState(false);
   const [openNoticeInfo, setOpenNoticeInfo] = useState(false);
 
@@ -193,36 +171,46 @@ const HeaderAlarm = () => {
         </div>
       }
 
-      <Dialog onClose={() => { setOpenNoticeList(false) }} open={openNoticeList}>
-        <h4 style={{ textAlign: 'center' }}>알림</h4>
-        {noticeList}
-        {/* {noticeList.map((data) => {
-          const [year, month, day] = data.start.split('-');
-          const [hour, minute] = data.sTime.split(':');
+      <Dialog
+        onClose={() => {
+          setOpenNoticeList(false);
+        }}
+        open={openNoticeList}
+      >
+        <div className="modal_pad">
+          <h4 className="alarm_list_title">알림</h4>
+          {typeof specialEvent == 'object' && specialEvent.length  ? specialEvent.map((data, idx) => {
+            const [year, month, day] = data.start.split("-");
+            const [hour, minute] = data.sTime.split(":");
 
-          const date = `${year}년 ${month}월 ${day}일`;
-          const time = `${hour}시 ${minute}분`;
+            const date = `${year}년 ${month}월 ${day}일`;
+            const time = `${hour}시 ${minute}분`;
 
-          const eventDate = new Date(data.start + ' ' + data.sTime);
-          const ms = data.preAlarm * 60 * 1000;
-          const alarmTime = new Date(eventDate - ms);
+            const eventDate = new Date(data.start + " " + data.sTime);
+            const ms = data.preAlarm * 60 * 1000;
+            const alarmTime = new Date(eventDate - ms);
 
-          return (
-            <div onClick={checkAlarm}>
-              <hr></hr>
-
-              <span style={{ color: 'red' }}> ● </span>
-              {alarmTime.toLocaleString()}
-
-
-              <br></br>
-              <h5 style={{ display: 'inline' }}>{data.title}</h5>
-              일정이 <strong>{parseInt(data.preAlarm)}분</strong> 후에 시작합니다. <br></br>
-
-              시작 시간: {date} {time} <br></br>
-            </div>
-          );
-        })} */}
+            return (
+              <div>
+                <hr></hr>
+                <div>
+                  <span style={{ color: data.color }}> ● </span>
+                  {alarmTime.toLocaleString()}
+                </div>
+                <br></br>
+                <div>
+                  <h4 className="alarm_title">{data.title} </h4>
+                  <h5 style={{ display: 'inline' }}>일정이 <strong>{parseInt(data.preAlarm)}분</strong> 후에 시작합니다.</h5>
+                </div>
+                <br></br>
+                <div>
+                  시작 시간: {date} {time}
+                </div>
+                <button className="event_list_btn" id={idx} onClick={showNoticeInfo}>  자세히 보기 </button>
+              </div>
+            );
+          }) : "none"}
+        </div>
       </Dialog>
 
       <Dialog onClose={() => { setOpenNoticeInfo(false) }} open={openNoticeInfo}>

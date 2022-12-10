@@ -53,7 +53,7 @@ function Profile(){
     };  
 
     const EditTendancy =() => {
-        navigate("/Chatpage")
+        navigate("/Chatpersonal")
     }
     
     const Patchnote= () => {

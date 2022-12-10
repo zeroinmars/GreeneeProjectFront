@@ -71,6 +71,7 @@
 
 .recommend_Check {
     text-align: center;
+    margin-top: 10px;
 }
 .recommend_Check p {
     color:#01642b
@@ -128,13 +129,13 @@
 }
 
 
-
-.css-ypiqx9-MuiDialogContent-root {
+ 
+.recommend_list {
 
     padding: 0px !important;
     padding-left: 10px !important;
     margin-top: 18px;
-}
+} 
 
 
 

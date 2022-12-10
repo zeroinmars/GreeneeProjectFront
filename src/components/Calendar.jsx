@@ -2,7 +2,18 @@ import FullCalendar from "@fullcalendar/react"; // must go before plugins
 import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
-import { Button, Dialog, DialogTitle, DialogActions, DialogContent } from "@mui/material"; //mui의 Dialog
+
+import {
+  Rating,
+  Table,
+  TableRow,
+  TableCell,
+  Button,
+  Dialog,
+  DialogTitle,
+  DialogActions,
+  DialogContent,
+} from "@mui/material";
 
 import dayGridPlugin from "@fullcalendar/daygrid"; // a plugin!
 
@@ -59,6 +70,41 @@ const Calendar = () => {
   // 일정 아이디
   const [eventId, setEventId] = useState(0);
 
+  const [openNoticeList, setOpenNoticeList] = useState(false);
+  const [openNoticeInfo, setOpenNoticeInfo] = useState(false);
+
+
+
+  const [recommendLists, setRecommendList] = useState([
+    {
+      title: "한남동 나른한 오후",
+      image: "https://picsum.photos/200/300​",
+      tel: "0507-1344-8722",
+      start: "11:30",
+      end: "22:00",
+      location: " 광주 동구 지산동",
+    },
+    {
+      title: "양만휘해물생합칼국수 본점",
+      image: "https://picsum.photos/200/300​",
+      tel: "062-222-7977",
+      start: "11:00",
+      end: "23:00",
+      location: " 광주 동구 지산동",
+    },
+    {
+      title: "샤오바오 충장로점",
+      image: "https://picsum.photos/200/300​",
+      tel: "0507-1453-8123",
+      start: "11:00",
+      end: "23:30",
+      location: " 광주 동구 금남로2가",
+    },
+  ]);
+  const [openDetail, setOpenDetail] = useState(false);
+  const [score, setScore] = useState(0);
+  const [openScore, setOpenScore] = useState(false);
+  const [openRecommend, setOpenRecommend] = useState(false);
 
 
   useEffect(() => {
@@ -242,14 +288,25 @@ const Calendar = () => {
                 }}
                 style={{ textDecoration: "none" }}
               >
-                <Button className="button_accept" variant="contained" color='secondary' size="medium"
+                <Button className="button_deny" variant="contained" color='secondary' size="medium"
                   style={{ color: 'white', font: 'bold' }}> 수정</Button>
               </Link>
-              <Button className="button_deny" variant="contained" color='secondary' size="medium"
+              <Button className="button_accept" variant="contained" color='secondary' size="medium"
                 onClick={() => { setOpenDelete(true) }}
                 style={{ color: 'white', font: 'bold' }}>삭제</Button>
             </ThemeProvider>
           </div>
+          <div className="recommend_Check">
+          <p>"{showEvent.title}" 관련 그리니가 추천한 내용</p>
+          <button style={{ color: 'white' }}
+            className="suc"
+            onClick={() => {
+              setOpenRecommend(true);
+            }}
+          >
+            보기
+          </button>
+        </div>
         </div>
       </Dialog>
 
@@ -262,15 +319,170 @@ const Calendar = () => {
           <DialogContent><p>정말 일정을 삭제하시게요?!</p></DialogContent>
 
           <ThemeProvider theme={theme}>
-
+          <Button className="button_deny" variant="contained" color='secondary' size="medium"
+              onClick={() => { setOpenDelete(false) }}
+              style={{ color: 'white', font: 'bold' }}>아니</Button>
             <Button className="button_accept" variant="contained" color='secondary' size="medium"
               onClick={deleteEvent} style={{ color: 'white', font: 'bold' }}> 응</Button>
 
-            <Button className="button_deny" variant="contained" color='secondary' size="medium"
-              onClick={() => { setOpenDelete(false) }}
-              style={{ color: 'white', font: 'bold' }}>아니</Button>
+            
           </ThemeProvider>
 
+        </div>
+      </Dialog>
+      <Dialog
+        className="recommend_list"
+        onClose={() => {
+          setOpenRecommend(false);
+        }}
+        open={openRecommend}
+      >
+        <div className="modal_pad">
+          <DialogTitle className="recommend_title"
+          >
+            <p
+              className="bacc"
+              onClick={() => {
+                setOpenRecommend(false);
+              }}
+            >
+              뒤로
+            </p>{" "}
+            이런 곳은 어때요?
+          </DialogTitle>
+          <DialogContent>
+            {recommendLists.map((data, list) => (
+              <div>
+                <div key={list} style={{ display: "flex" }}>
+                  <Table>
+                    {/*    <img style={{float:"right"}} src="http://via.placeholder.com/10.png/09f/fff​" alt={data.image} />  */}
+
+                    <TableRow>
+                      <TableCell
+                        colspan={2}
+                        style={{ fontSize: "20px", fontWeight: "1000" }}
+                        className=''
+                      >
+                        {data.title}
+                      </TableCell>
+                    </TableRow>
+
+                    <TableRow>
+                      <TableCell>영업시간</TableCell>
+                      <TableCell>
+                        {data.start} - {data.end}
+                      </TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell>장소</TableCell>
+                      <TableCell>{data.location}</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell>전화번호</TableCell>
+                      <TableCell>{data.tel}</TableCell>
+                    </TableRow>
+                  </Table>
+                </div>
+                <div style={{ position: "relative", right: "-120px", margin: '10px 0' }}>
+                  <Button
+                    sx={{ marginRight: '5px', background: '#f39c12', borderRadius: '20px', color: '#fff !important' }}
+                    onClick={() => {
+                      setOpenDetail(true);
+                    }}
+                  >
+                    자세히보기
+                  </Button>
+                  <Button
+                    sx={{ background: '#f39c12', borderRadius: '20px', color: '#fff !important' }}
+                    onClick={() => {
+                      // setOpenRecommend(false);
+                      setOpenScore(true);
+                    }}
+                  >
+                    좋아요!
+                  </Button>
+                </div>
+
+
+              </div>
+            ))}
+          </DialogContent>
+        </div>
+      </Dialog>
+
+      <Dialog
+        onClose={() => {
+          setOpenScore(false);
+        }}
+        open={openScore}
+      >
+        <div className="modal_pad">
+          <DialogTitle sx={{ background: '#2ecc71', color: '#fff', borderRadius: '20px', fontSize: '20px' }}>이번 추천은 만족 스러웠나요?</DialogTitle>
+          <DialogContent>
+            <Rating
+              /*   style={{paddingBottom:"0px"}} */
+              name="score"
+              value={score}
+              onChange={(event, newValue) => {
+                setScore(newValue);
+              }}
+            />
+          </DialogContent>
+          <DialogActions>
+            <Button
+              onClick={() => {
+                setOpenScore(false);
+              }}
+            >
+              다음에 하기
+            </Button>
+            <Button
+              sx={{ background: '#f39c12 !important', color: '#fff !important', borderRadius: '15px' }}
+              onClick={() => {
+                setOpenScore(false);
+                setOpenNoticeInfo(false);
+                setOpenNoticeList(false);
+              }}
+            >
+              제출
+            </Button>
+          </DialogActions>
+        </div>
+      </Dialog>
+
+      <Dialog
+        onClose={() => {
+          setOpenDetail(false);
+        }}
+        open={openDetail}
+      >
+        <div className="modal_pad">
+          <DialogTitle sx={{ background: '#2ecc71', color: '#fff', textAlign: 'center', borderRadius: '20px' }}>한남동 나른한 오후 </DialogTitle>
+          <DialogContent>
+            <div>카카오 api</div>
+            <Table>
+              <TableRow>
+                <TableCell>메뉴</TableCell> <TableCell> 돈까스, 카레, 김밥</TableCell>{" "}
+              </TableRow>
+              <TableRow>
+                <TableCell>방문자 사진</TableCell> <TableCell></TableCell>{" "}
+              </TableRow>
+              <TableRow>
+                <TableCell>방문자 리뷰</TableCell> <TableCell></TableCell>{" "}
+              </TableRow>
+            </Table>
+          </DialogContent>
+          <DialogActions>
+            <Button
+              onClick={() => {
+                setOpenScore(false);
+                setOpenNoticeInfo(false);
+                setOpenNoticeList(false);
+              }}
+            >
+              좋아요!
+            </Button>
+          </DialogActions>
         </div>
       </Dialog>
 
