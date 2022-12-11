@@ -297,16 +297,16 @@ const Calendar = () => {
             </ThemeProvider>
           </div>
           <div className="recommend_Check">
-          <p>"{showEvent.title}" 관련 그리니가 추천한 내용</p>
-          <button style={{ color: 'white' }}
-            className="suc"
-            onClick={() => {
-              setOpenRecommend(true);
-            }}
-          >
-            보기
-          </button>
-        </div>
+            <p>"{showEvent.title}" 관련 그리니가 추천한 내용</p>
+            <button style={{ color: 'white' }}
+              className="suc"
+              onClick={() => {
+                setOpenRecommend(true);
+              }}
+            >
+              보기
+            </button>
+          </div>
         </div>
       </Dialog>
 
@@ -319,13 +319,13 @@ const Calendar = () => {
           <DialogContent><p>정말 일정을 삭제하시게요?!</p></DialogContent>
 
           <ThemeProvider theme={theme}>
-          <Button className="button_deny" variant="contained" color='secondary' size="medium"
+
+            <Button className="button_deny" variant="contained" color='secondary' size="medium"
+              onClick={deleteEvent} style={{ color: 'white', font: 'bold' }}> 응</Button>
+            <Button className="button_accept" variant="contained" color='secondary' size="medium"
               onClick={() => { setOpenDelete(false) }}
               style={{ color: 'white', font: 'bold' }}>아니</Button>
-            <Button className="button_accept" variant="contained" color='secondary' size="medium"
-              onClick={deleteEvent} style={{ color: 'white', font: 'bold' }}> 응</Button>
 
-            
           </ThemeProvider>
 
         </div>

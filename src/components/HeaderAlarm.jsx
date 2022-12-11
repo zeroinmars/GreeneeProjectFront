@@ -19,12 +19,12 @@ const HeaderAlarm = () => {
   const [noticeNum, setNoticeNum] = useState(0);
 
   useEffect(() => {
-    console.log(noticeNum)
-    console.log(reduxEvent)
-    if (reduxEvent && reduxEvent != '없는 계정') {
-      setSpecialEvent(reduxEvent);
-      setNoticeNum(reduxEvent.length);
-    }
+    // console.log(noticeNum)
+    // console.log(reduxEvent)
+    // if (reduxEvent && reduxEvent != '없는 계정') {
+    //   setSpecialEvent(reduxEvent);
+    //   setNoticeNum(reduxEvent.length);
+    // }
   })
   
   const showNoticeInfo = (e) => {
@@ -139,7 +139,6 @@ const HeaderAlarm = () => {
     `${userName}님, 건강이 최우선이라고 하더군요!`,
     `${userName}님께 즐거운 일만 가득하길..`,
     `배가 고프네요. 지구인은 뭘 먹고 사나요?`,
-    `내 이름은 그리니! 탐정이죠.`,
     `오늘은 어떤 일이 일어날까요?`,
   ];
   const talkIdx = Math.floor(Math.random() * 6);
