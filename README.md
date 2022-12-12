@@ -78,7 +78,7 @@
 
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/103303021/207070277-70bd31e5-1c65-4b42-96c4-28160d430481.gif">
-<img src="https://user-images.githubusercontent.com/103303021/207070542-3f1b645a-713b-4f27-82c7-20e84f916225.gif">
+<img src="https://user-images.githubusercontent.com/103303021/207070277-70bd31e5-1c65-4b42-96c4-28160d430481.gif" width="30%">
+<img src="https://user-images.githubusercontent.com/103303021/207070542-3f1b645a-713b-4f27-82c7-20e84f916225.gif" width="30%">
 
 </p>
