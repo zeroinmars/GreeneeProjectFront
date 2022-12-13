@@ -165,7 +165,7 @@ const UpdateEvent = () => {
                     <div className='important' >
                         <input style={{ width: "100%" }} className='input' type='text' name="title" onChange={handleEventInfo} value={eventInfo.title} />
                         {checkSpecial ? <span onClick={() => { setCheckSpecial(false) }} className="star_yellow">⭐</span> :
-                            <span onClick={() => { setCheckSpecial(true) }} className="star_white" star_yellow>⭐</span>}
+                            <span onClick={() => { setCheckSpecial(true) }} className="star_white">⭐</span>}
                     </div>
 
 

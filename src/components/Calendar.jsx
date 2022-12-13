@@ -76,29 +76,61 @@ const Calendar = () => {
 
 
   const [recommendLists, setRecommendList] = useState([
+    // {
+    //   title: "한남동 나른한 오후",
+    //   image: "https://picsum.photos/200/300​",
+    //   tel: "0507-1344-8722",
+    //   start: "11:30",
+    //   end: "22:00",
+    //   location: " 광주 동구 지산동",
+    // },
+    // {
+    //   title: "양만휘해물생합칼국수 본점",
+    //   image: "https://picsum.photos/200/300​",
+    //   tel: "062-222-7977",
+    //   start: "11:00",
+    //   end: "23:00",
+    //   location: " 광주 동구 지산동",
+    // },
+    // {
+    //   title: "샤오바오 충장로점",
+    //   image: "https://picsum.photos/200/300​",
+    //   tel: "0507-1453-8123",
+    //   start: "11:00",
+    //   end: "23:30",
+    //   location: " 광주 동구 금남로2가",
+    // },
     {
-      title: "한남동 나른한 오후",
-      image: "https://picsum.photos/200/300​",
+      title: "건반",
       tel: "0507-1344-8722",
       start: "11:30",
       end: "22:00",
-      location: " 광주 동구 지산동",
+      location: "인천광역시",
+      info:"반려동물 영양제 정보, 비교"
     },
     {
-      title: "양만휘해물생합칼국수 본점",
-      image: "https://picsum.photos/200/300​",
+      title: "생식선생",
       tel: "062-222-7977",
       start: "11:00",
       end: "23:00",
-      location: " 광주 동구 지산동",
+      location: "인천광역시",
+      info:"반려동물 자연식, 수제간식물"
     },
     {
-      title: "샤오바오 충장로점",
-      image: "https://picsum.photos/200/300​",
+      title: "반려소반",
       tel: "0507-1453-8123",
       start: "11:00",
       end: "23:30",
-      location: " 광주 동구 금남로2가",
+      location: "인천광역시",
+      info:"반려동물 간식물"
+    },
+    {
+      title: "펫스니즈",
+      tel: "0507-1453-8123",
+      start: "11:00",
+      end: "23:30",
+      location: "인천광역시",
+      info:"반려동물 건강검진 키트"
     },
   ]);
   const [openDetail, setOpenDetail] = useState(false);
@@ -270,7 +302,7 @@ const Calendar = () => {
               <td id='row_title'><span>시간</span></td> <td><p>{showEvent.eTime}</p></td>
             </tr>
             <tr>
-              <td id='row_title'><span>이동 시간</span></td>
+              <td id='row_title'><span>이동 시간(자가용)</span></td>
               <td><p>{showEvent.moveTime ? showEvent.moveTime : '-'}</p></td>
             </tr>
           </table>
@@ -313,7 +345,7 @@ const Calendar = () => {
       <Dialog onClose={() => { setOpenDelete(false) }} open={openDelete}>
         <div className="delete_event">
           <DialogTitle className='delete_event_title' style={{ backgroundColor: showEvent.color }}>
-            {showEvent.title} {showEvent.sDate}
+          {showEvent.sDate} {showEvent.title}
           </DialogTitle>
           <img className="ask_greenee" src={greenee_surprise}></img>
           <DialogContent><p>정말 일정을 삭제하시게요?!</p></DialogContent>
@@ -367,20 +399,24 @@ const Calendar = () => {
                       </TableCell>
                     </TableRow>
 
-                    <TableRow>
+                    {/* <TableRow>
                       <TableCell>영업시간</TableCell>
                       <TableCell>
                         {data.start} - {data.end}
                       </TableCell>
+                    </TableRow> */}
+                    <TableRow>
+                      <TableCell>정보</TableCell>
+                      <TableCell>{data.info}</TableCell>
                     </TableRow>
                     <TableRow>
                       <TableCell>장소</TableCell>
                       <TableCell>{data.location}</TableCell>
                     </TableRow>
-                    <TableRow>
+                    {/* <TableRow>
                       <TableCell>전화번호</TableCell>
                       <TableCell>{data.tel}</TableCell>
-                    </TableRow>
+                    </TableRow> */}
                   </Table>
                 </div>
                 <div style={{ position: "relative", right: "-120px", margin: '10px 0' }}>
@@ -417,10 +453,10 @@ const Calendar = () => {
         open={openScore}
       >
         <div className="modal_pad">
-          <DialogTitle sx={{ background: '#2ecc71', color: '#fff', borderRadius: '20px', fontSize: '20px' }}>이번 추천은 만족 스러웠나요?</DialogTitle>
+          <DialogTitle sx={{ padding:'10px 24px',textAlign:'center', background: '#2ecc71', color: '#fff', borderRadius: '20px', fontSize: '20px' }}>좋아요!</DialogTitle>
           <DialogContent>
             <Rating
-              /*   style={{paddingBottom:"0px"}} */
+              style={{textAlign:'center', marginTop:'10px'}}
               name="score"
               value={score}
               onChange={(event, newValue) => {
@@ -428,8 +464,9 @@ const Calendar = () => {
               }}
             />
           </DialogContent>
-          <DialogActions>
+          <DialogActions style={{marginLeft:'10px'}}>
             <Button
+              
               onClick={() => {
                 setOpenScore(false);
               }}
@@ -450,7 +487,7 @@ const Calendar = () => {
         </div>
       </Dialog>
 
-      <Dialog
+      {/* <Dialog
         onClose={() => {
           setOpenDetail(false);
         }}
@@ -459,7 +496,6 @@ const Calendar = () => {
         <div className="modal_pad">
           <DialogTitle sx={{ background: '#2ecc71', color: '#fff', textAlign: 'center', borderRadius: '20px' }}>한남동 나른한 오후 </DialogTitle>
           <DialogContent>
-            <div>카카오 api</div>
             <Table>
               <TableRow>
                 <TableCell>메뉴</TableCell> <TableCell> 돈까스, 카레, 김밥</TableCell>{" "}
@@ -484,7 +520,7 @@ const Calendar = () => {
             </Button>
           </DialogActions>
         </div>
-      </Dialog>
+      </Dialog> */}
 
       {/* <Dialog onClose={() => { setOpenUpdate(false) }} open={openUpdate}>
         <div>
