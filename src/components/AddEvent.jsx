@@ -147,7 +147,7 @@ const AddEvent = () => {
     <div className='addeventbody'>
       <Box className='addevent'>
         {/* 닫기 btn */}
-        <div className="back" onClick={goback}><HighlightOffIcon sx={{ fontSize: 40 }} style={{ color: '#BEBEBE' }} /></div>
+        <div className="back" onClick={goback}><HighlightOffIcon sx={{ fontSize: 40, marginTop:'20px' }} style={{ color: '#BEBEBE' }} /></div>
         {/* 태그 btn */}
         <Button onClick={handleOpenTag} style={{ borderRadius: "30px", background: tag.tagColor, color: fontColor, marginTop: '20px' }}>{tag.tagName ? tag.tagName : "태그"}</Button>
         {tag.tagName == "데일리루틴" ? <Button onClick={handleOpenTag2} style={{ borderRadius: "30px", background: tag2.tagColor, color: fontColor, marginTop: '20px' }}>{tag2.tagName ? tag2.tagName : "태그"}</Button> : ""}
@@ -155,7 +155,7 @@ const AddEvent = () => {
           <div className='important' >
             <input style={{ width: "100%" }} className='input' placeholder="제목 추가" type='text' name="title" onChange={handleEventInfo} />
             {checkSpecial ? <span onClick={() => { setCheckSpecial(false) }} className="star_yellow">⭐</span> :
-              <span onClick={() => { setCheckSpecial(true) }} className="star_white" star_yellow>⭐</span>}
+              <span onClick={() => { setCheckSpecial(true) }} className="star_white">⭐</span>}
           </div>
 
           <div className='datetime'>
