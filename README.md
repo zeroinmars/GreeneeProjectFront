@@ -1,5 +1,5 @@
 <h1>바쁜 현대인들에게 일정을 작성하게 하고 일정정보를 바탕으로 맞춤형 서비스 제공하는 인공지능 라이프 컨시어지 앱</h1>
-
+https://www.notion.so/f1c3c112b7e849dbaad847dd292946fe#f0b94a99ae484e6a83a0f226213714db
 ![image](https://user-images.githubusercontent.com/110643793/206852504-b6e44eea-185b-4da3-ac48-2bcbd23a8089.png)
 ![image](https://user-images.githubusercontent.com/110643793/206852511-4016fac0-5d09-4b17-a3b5-7ef8f730b752.png)
 ![image](https://user-images.githubusercontent.com/110643793/206852517-71c06369-ccfe-4f6f-8f97-9350823e6002.png)
